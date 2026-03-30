@@ -1,236 +1,230 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
 <title>Najmul Hasan CV</title>
 
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-  * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+*{margin:0;padding:0;box-sizing:border-box}
 
-  @page {
-    size: A4;
-    margin: 16mm;
-  }
+@page {
+  size: A4;
+  margin: 14mm;
+}
 
-  html, body {
-    width: 100%;
-    background: #fff;
-  }
+body{
+  font-family:'Inter',sans-serif;
+  font-size:10pt;
+  color:#111;
+  line-height:1.35;
+}
 
-  body {
-    font-family: 'Inter', sans-serif;
-    color: #111;
-    font-size: 10pt;
-    line-height: 1.35;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
+.cv{
+  width:100%;
+}
 
-  .cv {
-    width: 100%;
-  }
+/* HEADER */
+.header{
+  margin-bottom:8px;
+}
 
-  .header {
-    padding-bottom: 8px;
-    margin-bottom: 10px;
-    border-bottom: 1px solid #111;
-  }
+.name{
+  font-size:20pt;
+  font-weight:700;
+}
 
-  .name {
-    font-size: 20pt;
-    font-weight: 700;
-    line-height: 1.05;
-  }
+.role{
+  font-size:10pt;
+  margin-top:2px;
+}
 
-  .role {
-    font-size: 10pt;
-    margin-top: 2px;
-  }
+.contact{
+  font-size:8.7pt;
+  margin-top:3px;
+}
 
-  .contact {
-    margin-top: 4px;
-    font-size: 8.8pt;
-  }
+.contact a{
+  color:#000;
+  text-decoration:none;
+}
 
-  .contact a,
-  .project-links a {
-    color: #111;
-    text-decoration: none;
-  }
+/* SECTION */
+.section{
+  margin-top:8px;
+}
 
-  .section {
-    margin-top: 9px;
-    break-inside: avoid;
-  }
+.section-title{
+  font-size:9pt;
+  font-weight:700;
+  text-transform:uppercase;
+  border-bottom:1px solid #000;
+  padding-bottom:2px;
+  margin-bottom:3px;
+}
 
-  .section-title {
-    font-size: 9pt;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-    padding-bottom: 3px;
-    border-bottom: 1px solid #111;
-    margin-bottom: 5px;
-  }
+/* TEXT */
+.summary{
+  font-size:9pt;
+}
 
-  .summary {
-    font-size: 9pt;
-  }
+/* SKILLS */
+.skill-line{
+  font-size:9pt;
+  margin-bottom:1px;
+}
 
-  .skills-line {
-    font-size: 9pt;
-    margin-bottom: 2px;
-  }
+/* PROJECT */
+.project{
+  margin-bottom:6px;
+}
 
-  .skills-line strong {
-    font-weight: 700;
-  }
+.project-title{
+  font-weight:700;
+  font-size:9.3pt;
+}
 
-  .project {
-    margin-bottom: 8px;
-    break-inside: avoid;
-  }
+.project-links{
+  font-size:8.3pt;
+  margin:1px 0;
+}
 
-  .project-name {
-    font-size: 9.4pt;
-    font-weight: 700;
-    margin-bottom: 1px;
-  }
+.project-links a{
+  color:#000;
+  text-decoration:none;
+}
 
-  .project-links {
-    font-size: 8.2pt;
-    margin-bottom: 2px;
-  }
+.project-desc{
+  font-size:8.8pt;
+}
 
-  .project-links a {
-    text-decoration: none;
-  }
+.demo{
+  font-size:8.5pt;
+  margin-top:1px;
+}
 
-  .project-desc {
-    font-size: 8.9pt;
-  }
+/* EXPERIENCE / EDUCATION */
+.entry{
+  margin-bottom:5px;
+}
 
-  .demo-login {
-    font-size: 8.4pt;
-    margin-top: 2px;
-  }
+.entry-title{
+  font-weight:700;
+  font-size:9.2pt;
+}
 
-  .entry {
-    margin-bottom: 6px;
-    break-inside: avoid;
-  }
+.entry-meta{
+  font-size:8.4pt;
+}
 
-  .entry-title {
-    font-size: 9.2pt;
-    font-weight: 700;
-  }
-
-  .entry-meta {
-    font-size: 8.5pt;
-  }
-
-  .entry-desc {
-    font-size: 8.8pt;
-    margin-top: 1px;
-  }
-
-  .muted {
-    color: #333;
-  }
+.entry-desc{
+  font-size:8.7pt;
+}
 </style>
 </head>
 
 <body>
-  <div class="cv">
-    <div class="header">
-      <div class="name">Najmul Hasan</div>
-      <div class="role">Full Stack Developer</div>
-      <div class="contact">
-        najmulhasanshahin@gmail.com | +8801840242448 | Dhaka, Bangladesh<br />
-        <a href="https://www.linkedin.com/">LinkedIn</a> | <a href="https://github.com/najmulcodes">GitHub</a> | <a href="https://najmul-portfolio-six.vercel.app">Portfolio</a>
-      </div>
-    </div>
 
-    <div class="section">
-      <div class="section-title">Summary</div>
-      <div class="summary">
-        Full Stack Developer experienced in building scalable web applications using React, Next.js, Node.js, and MongoDB. Developed production-ready platforms with authentication, role-based systems, and payment integration.
-      </div>
-    </div>
+<div class="cv">
 
-    <div class="section">
-      <div class="section-title">Skills</div>
-      <div class="skills-line"><strong>Languages:</strong> JavaScript</div>
-      <div class="skills-line"><strong>Frontend:</strong> React, Next.js, HTML, CSS</div>
-      <div class="skills-line"><strong>Backend:</strong> Node.js, Express.js</div>
-      <div class="skills-line"><strong>Database:</strong> MongoDB</div>
-      <div class="skills-line"><strong>Tools:</strong> Git, GitHub, Firebase, Stripe, Vercel</div>
-    </div>
-
-    <div class="section">
-      <div class="section-title">Projects</div>
-
-      <div class="project">
-        <div class="project-name">Badar Uddin Welfare (Full Stack)</div>
-        <div class="project-links">
-          <a href="https://badaruddinwelfareorg.vercel.app">Preview</a> | <a href="https://github.com/najmulcodes/badaruddinwelfare-client">Client Code</a> | <a href="https://github.com/najmulcodes/badaruddinwelfare-server">Server Code</a>
-        </div>
-        <div class="project-desc">
-          Built a full-stack charity platform with JWT authentication and role-based dashboards. Implemented donation tracking and approval workflows.
-        </div>
-      </div>
-
-      <div class="project">
-        <div class="project-name">MicroTask Platform</div>
-        <div class="project-links">
-          <a href="https://microtask-client-iota.vercel.app">Preview</a> | <a href="https://github.com/najmulcodes/microtask-client">Client Code</a>
-        </div>
-        <div class="project-desc">
-          Developed a role-based task marketplace with Stripe payments and secure authentication.
-        </div>
-        <div class="demo-login">
-          <strong>Demo Login:</strong> Email <strong>admin@microtask.com</strong> | Password <strong>Admin123</strong> | Role <strong>Admin</strong>
-        </div>
-      </div>
-
-      <div class="project">
-        <div class="project-name">Care.xyz</div>
-        <div class="project-links">
-          <a href="https://care-xyz-baby-sitting-elderly-care.vercel.app">Preview</a> | <a href="https://github.com/najmulcodes/Care.xyz---Baby-Sitting-Elderly-Care-Service-Platform">Client Code</a>
-        </div>
-        <div class="project-desc">
-          Built a caregiver booking platform using Next.js with authentication and dynamic pricing.
-        </div>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="section-title">Experience</div>
-      <div class="entry">
-        <div class="entry-title">Data Entry Specialist</div>
-        <div class="entry-meta muted">Nation IT Limited · 2024 – Present</div>
-        <div class="entry-desc">Managed structured data and ensured accuracy.</div>
-      </div>
-    </div>
-
-    <div class="section">
-      <div class="section-title">Education</div>
-      <div class="entry">
-        <div class="entry-title">BBA — Accounting &amp; Finance</div>
-        <div class="entry-meta muted">City College · 2019 – 2023</div>
-      </div>
-      <div class="entry">
-        <div class="entry-title">Complete Web Development</div>
-        <div class="entry-meta muted">Programming Hero · 2025 – 2026</div>
-      </div>
+  <!-- HEADER -->
+  <div class="header">
+    <div class="name">Najmul Hasan</div>
+    <div class="role">Full Stack Developer</div>
+    <div class="contact">
+      najmulhasanshahin@gmail.com | +8801840242448 | Dhaka, Bangladesh<br>
+      <a href="#">LinkedIn</a> | 
+      <a href="https://github.com/najmulcodes">GitHub</a> | 
+      <a href="https://najmul-portfolio-six.vercel.app">Portfolio</a>
     </div>
   </div>
+
+  <!-- SUMMARY -->
+  <div class="section">
+    <div class="section-title">Summary</div>
+    <div class="summary">
+      Full Stack Developer experienced in building scalable web applications using React, Next.js, Node.js, and MongoDB. Developed production-ready platforms with authentication, role-based systems, and payment integration.
+    </div>
+  </div>
+
+  <!-- SKILLS -->
+  <div class="section">
+    <div class="section-title">Skills</div>
+    <div class="skill-line"><strong>Languages:</strong> JavaScript</div>
+    <div class="skill-line"><strong>Frontend:</strong> React, Next.js, HTML, CSS</div>
+    <div class="skill-line"><strong>Backend:</strong> Node.js, Express.js</div>
+    <div class="skill-line"><strong>Database:</strong> MongoDB</div>
+    <div class="skill-line"><strong>Tools:</strong> Git, GitHub, Firebase, Stripe, Vercel</div>
+  </div>
+
+  <!-- PROJECTS -->
+  <div class="section">
+    <div class="section-title">Projects</div>
+
+    <div class="project">
+      <div class="project-title">Badar Uddin Welfare (Full Stack)</div>
+      <div class="project-links">
+        <a href="https://badaruddinwelfareorg.vercel.app">Preview</a> | 
+        <a href="https://github.com/najmulcodes/badaruddinwelfare-client">Client Code</a> | 
+        <a href="https://github.com/najmulcodes/badaruddinwelfare-server">Server Code</a>
+      </div>
+      <div class="project-desc">
+        Built a full-stack charity platform with JWT authentication and role-based dashboards. Implemented donation tracking and approval workflows.
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-title">MicroTask Platform</div>
+      <div class="project-links">
+        <a href="https://microtask-client-iota.vercel.app">Preview</a> | 
+        <a href="https://github.com/najmulcodes/microtask-client">Client Code</a>
+      </div>
+      <div class="project-desc">
+        Developed a role-based task marketplace with Stripe payments and secure authentication.
+      </div>
+      <div class="demo">
+        Demo Login: Email admin@microtask.com | Password Admin123 | Role Admin
+      </div>
+    </div>
+
+    <div class="project">
+      <div class="project-title">Care.xyz</div>
+      <div class="project-links">
+        <a href="https://care-xyz-baby-sitting-elderly-care.vercel.app">Preview</a> | 
+        <a href="https://github.com/najmulcodes/Care.xyz---Baby-Sitting-Elderly-Care-Service-Platform">Client Code</a>
+      </div>
+      <div class="project-desc">
+        Built a caregiver booking platform using Next.js with authentication and dynamic pricing.
+      </div>
+    </div>
+
+  </div>
+
+  <!-- EXPERIENCE -->
+  <div class="section">
+    <div class="section-title">Experience</div>
+    <div class="entry">
+      <div class="entry-title">Data Entry Specialist</div>
+      <div class="entry-meta">Nation IT Limited · 2024 – Present</div>
+      <div class="entry-desc">Managed structured data and ensured accuracy.</div>
+    </div>
+  </div>
+
+  <!-- EDUCATION -->
+  <div class="section">
+    <div class="section-title">Education</div>
+    <div class="entry">
+      <div class="entry-title">BBA — Accounting & Finance</div>
+      <div class="entry-meta">City College · 2019 – 2023</div>
+    </div>
+    <div class="entry">
+      <div class="entry-title">Complete Web Development</div>
+      <div class="entry-meta">Programming Hero · 2025 – 2026</div>
+    </div>
+  </div>
+
+</div>
+
 </body>
 </html>
