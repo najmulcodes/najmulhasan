@@ -413,7 +413,7 @@ export default function Portfolio() {
           <div className="p-hero-card">
             <div className="p-card-photo-wrap">
               <div className="p-card-photo-ring">
-                <img src="/profile.jpg" alt="Najmul Hasan"
+                <img src="/profile.png" alt="Najmul Hasan"
                   onError={e => {
                     e.currentTarget.style.display = "none";
                     e.currentTarget.parentElement.innerHTML = '<div class="p-card-initials">NH</div>';
