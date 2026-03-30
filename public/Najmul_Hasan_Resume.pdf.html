@@ -3,289 +3,245 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
-<title>Najmul Hasan — Full Stack Developer CV</title>
+<title>Najmul Hasan — Full Stack Developer</title>
+
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
-  *{margin:0;padding:0;box-sizing:border-box}
-  html{font-size:10pt}
-  body{
-    font-family:'Inter',sans-serif;
-    background:#fff;
-    color:#1a1a2e;
-    line-height:1.55;
-    max-width:800px;
-    margin:0 auto;
-    padding:40px 48px;
-  }
-  .mono{font-family:'JetBrains Mono',monospace}
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
 
-  /* Header */
-  .cv-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:28px;padding-bottom:20px;border-bottom:2px solid #0d9488}
-  .cv-name{font-size:26pt;font-weight:700;letter-spacing:-.03em;color:#0f172a;line-height:1.1;margin-bottom:4px}
-  .cv-role{font-size:11pt;font-weight:500;color:#0d9488;font-family:'JetBrains Mono',monospace}
-  .cv-contact{text-align:right;font-size:8.5pt;color:#475569;line-height:1.8}
-  .cv-contact a{color:#0d9488;text-decoration:none}
+*{margin:0;padding:0;box-sizing:border-box}
 
-  /* Section */
-  .cv-section{margin-bottom:22px}
-  .cv-section-title{
-    font-size:8.5pt;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
-    color:#0d9488;margin-bottom:10px;padding-bottom:5px;
-    border-bottom:1px solid #e2e8f0;
-  }
+@page {
+  size: A4;
+  margin: 20mm 18mm;
+}
 
-  /* Summary */
-  .cv-summary{font-size:9.5pt;color:#334155;line-height:1.65;max-width:680px}
+body{
+  font-family:'Inter',sans-serif;
+  color:#0f172a;
+  line-height:1.5;
+  font-size:10pt;
+}
 
-  /* Skills */
-  .cv-skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 32px}
-  .cv-skill-row{display:flex;align-items:center;gap:8px;font-size:9pt}
-  .cv-skill-label{color:#64748b;width:110px;flex-shrink:0}
-  .cv-skill-tags{display:flex;flex-wrap:wrap;gap:4px}
-  .cv-tag{
-    background:#f0fdfa;color:#0d9488;border:1px solid #99f6e4;
-    border-radius:4px;padding:1px 7px;font-size:7.5pt;
-    font-family:'JetBrains Mono',monospace;font-weight:500;
-  }
+.cv-header{
+  display:flex;
+  justify-content:space-between;
+  border-bottom:2px solid #0d9488;
+  padding-bottom:14px;
+  margin-bottom:18px;
+}
 
-  /* Projects */
-  .cv-project{margin-bottom:16px;padding:14px 16px;border:1px solid #e2e8f0;border-left:3px solid #0d9488;border-radius:4px}
-  .cv-project-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px}
-  .cv-project-name{font-size:10.5pt;font-weight:700;color:#0f172a}
-  .cv-project-stack{font-size:7.5pt;color:#0d9488;font-family:'JetBrains Mono',monospace;text-align:right}
-  .cv-project-tagline{font-size:8.5pt;color:#0d9488;font-weight:500;margin-bottom:6px}
-  .cv-project-desc{font-size:8.5pt;color:#475569;line-height:1.6}
-  .cv-project-links{display:flex;gap:12px;margin-top:6px;font-size:8pt}
-  .cv-project-links a{color:#0d9488;text-decoration:none;font-family:'JetBrains Mono',monospace}
+.cv-name{
+  font-size:24pt;
+  font-weight:700;
+}
 
-  /* Flagship badge */
-  .cv-flagship{display:inline-block;background:#f0fdfa;color:#0d9488;border:1px solid #99f6e4;border-radius:3px;padding:1px 6px;font-size:7pt;font-weight:700;text-transform:uppercase;letter-spacing:.06em;margin-left:6px;vertical-align:middle}
+.cv-role{
+  color:#0d9488;
+  font-size:10pt;
+  margin-top:2px;
+}
 
-  /* Experience / Education */
-  .cv-entry{margin-bottom:12px}
-  .cv-entry-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2px}
-  .cv-entry-title{font-size:10pt;font-weight:600;color:#0f172a}
-  .cv-entry-period{font-size:8.5pt;color:#64748b;font-family:'JetBrains Mono',monospace}
-  .cv-entry-sub{font-size:8.5pt;color:#64748b;margin-bottom:4px}
-  .cv-entry-desc{font-size:8.5pt;color:#475569;line-height:1.55}
+.cv-contact{
+  text-align:right;
+  font-size:8.5pt;
+  color:#475569;
+}
 
-  /* Footer */
-  .cv-footer{margin-top:28px;padding-top:14px;border-top:1px solid #e2e8f0;display:flex;justify-content:space-between;font-size:8pt;color:#94a3b8}
-  .cv-footer span{font-family:'JetBrains Mono',monospace}
+.cv-contact a{
+  color:#0d9488;
+  text-decoration:none;
+}
 
-  @media print{
-    body{padding:28px 36px}
-    .cv-project{break-inside:avoid}
-    .cv-entry{break-inside:avoid}
-  }
+.cv-section{
+  margin-bottom:16px;
+  page-break-inside: avoid;
+}
+
+.cv-title{
+  font-size:8pt;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#0d9488;
+  margin-bottom:6px;
+  border-bottom:1px solid #e2e8f0;
+  padding-bottom:3px;
+}
+
+.cv-summary{
+  font-size:9pt;
+  color:#334155;
+}
+
+.cv-skills{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+}
+
+.cv-tag{
+  border:1px solid #99f6e4;
+  background:#f0fdfa;
+  padding:2px 6px;
+  border-radius:4px;
+  font-size:7.5pt;
+}
+
+.cv-project{
+  margin-bottom:10px;
+}
+
+.cv-project-title{
+  font-weight:600;
+  font-size:9.5pt;
+}
+
+.cv-project-desc{
+  font-size:8.5pt;
+  color:#475569;
+  margin-top:2px;
+}
+
+.cv-links{
+  margin-top:3px;
+}
+
+.cv-links a{
+  display:inline-block;
+  padding:2px 6px;
+  border:1px solid #0d9488;
+  border-radius:4px;
+  background:#f0fdfa;
+  font-size:7pt;
+  margin-right:6px;
+  text-decoration:none;
+  color:#0d9488;
+}
+
+.cv-entry{
+  font-size:8.8pt;
+}
+
+.cv-sub{
+  font-size:8pt;
+  color:#64748b;
+}
 </style>
 </head>
+
 <body>
 
 <!-- Header -->
 <div class="cv-header">
   <div>
     <div class="cv-name">Najmul Hasan</div>
-    <div class="cv-role mono">Full Stack Developer — MERN &amp; Next.js</div>
+    <div class="cv-role">Full Stack Developer — MERN & Next.js</div>
   </div>
+
   <div class="cv-contact">
     <div><a href="mailto:najmulhasanshahin@gmail.com">najmulhasanshahin@gmail.com</a></div>
-    <div><a href="https://wa.me/8801840242448">+880 1840 242 448</a></div>
+    <div><a href="https://wa.me/8801840242448">+8801840242448</a></div>
     <div>Dhaka, Bangladesh</div>
     <div><a href="https://github.com/najmulcodes">github.com/najmulcodes</a></div>
-    <div><a href="https://najmul-portfolio-six.vercel.app">najmul-portfolio-six.vercel.app</a></div>
+    <div><a href="https://najmul-portfolio-six.vercel.app">portfolio</a></div>
   </div>
 </div>
 
 <!-- Summary -->
 <div class="cv-section">
-  <div class="cv-section-title">Professional Summary</div>
-  <p class="cv-summary">
-    Full Stack Developer with hands-on experience building production-ready web applications using the MERN stack and Next.js.
-    Specializes in JWT-secured authentication, role-based access control, REST API design, and Stripe payment integration.
-    Delivered platforms for real-world use cases including charity fund management, freelance task marketplaces, and care-service booking systems.
-    Background in data operations and IT support strengthens an analytical, systems-thinking approach to software engineering.
-  </p>
+  <div class="cv-title">Summary</div>
+  <div class="cv-summary">
+    Full Stack Developer experienced in building scalable web applications using React, Next.js, Node.js, and MongoDB.
+    Developed production-ready platforms with authentication, role-based systems, and payment integration.
+    Focused on clean architecture, performance, and real-world usability.
+  </div>
 </div>
 
 <!-- Skills -->
 <div class="cv-section">
-  <div class="cv-section-title">Technical Skills</div>
-  <div class="cv-skills-grid">
-    <div class="cv-skill-row">
-      <span class="cv-skill-label">Frontend</span>
-      <div class="cv-skill-tags">
-        <span class="cv-tag">React</span>
-        <span class="cv-tag">Next.js</span>
-        <span class="cv-tag">JavaScript</span>
-        <span class="cv-tag">HTML/CSS</span>
-      </div>
-    </div>
-    <div class="cv-skill-row">
-      <span class="cv-skill-label">Backend</span>
-      <div class="cv-skill-tags">
-        <span class="cv-tag">Node.js</span>
-        <span class="cv-tag">Express.js</span>
-        <span class="cv-tag">REST API</span>
-      </div>
-    </div>
-    <div class="cv-skill-row">
-      <span class="cv-skill-label">Database</span>
-      <div class="cv-skill-tags">
-        <span class="cv-tag">MongoDB</span>
-        <span class="cv-tag">Mongoose</span>
-      </div>
-    </div>
-    <div class="cv-skill-row">
-      <span class="cv-skill-label">Auth &amp; Payments</span>
-      <div class="cv-skill-tags">
-        <span class="cv-tag">JWT</span>
-        <span class="cv-tag">Firebase</span>
-        <span class="cv-tag">Stripe</span>
-        <span class="cv-tag">Google OAuth</span>
-      </div>
-    </div>
-    <div class="cv-skill-row">
-      <span class="cv-skill-label">Styling</span>
-      <div class="cv-skill-tags">
-        <span class="cv-tag">Tailwind CSS</span>
-        <span class="cv-tag">Framer Motion</span>
-        <span class="cv-tag">DaisyUI</span>
-      </div>
-    </div>
-    <div class="cv-skill-row">
-      <span class="cv-skill-label">Tools</span>
-      <div class="cv-skill-tags">
-        <span class="cv-tag">Git</span>
-        <span class="cv-tag">GitHub</span>
-        <span class="cv-tag">Vercel</span>
-        <span class="cv-tag">Netlify</span>
-        <span class="cv-tag">Cloudinary</span>
-      </div>
-    </div>
+  <div class="cv-title">Technical Skills</div>
+  <div class="cv-skills">
+    <span class="cv-tag">React</span>
+    <span class="cv-tag">Next.js</span>
+    <span class="cv-tag">JavaScript</span>
+    <span class="cv-tag">HTML/CSS</span>
+    <span class="cv-tag">Node.js</span>
+    <span class="cv-tag">Express.js</span>
+    <span class="cv-tag">MongoDB</span>
+    <span class="cv-tag">JWT</span>
+    <span class="cv-tag">Firebase</span>
+    <span class="cv-tag">Stripe</span>
+    <span class="cv-tag">Git</span>
+    <span class="cv-tag">GitHub</span>
+    <span class="cv-tag">Vercel</span>
   </div>
 </div>
 
 <!-- Projects -->
 <div class="cv-section">
-  <div class="cv-section-title">Projects</div>
+  <div class="cv-title">Projects</div>
 
   <div class="cv-project">
-    <div class="cv-project-header">
-      <div class="cv-project-name">Badar Uddin Welfare <span class="cv-flagship">Flagship</span></div>
-      <div class="cv-project-stack">React · Node.js · Express · MongoDB · JWT · Cloudinary</div>
-    </div>
-    <div class="cv-project-tagline">Full Stack Charity Management Platform</div>
+    <div class="cv-project-title">Badar Uddin Welfare</div>
     <div class="cv-project-desc">
-      Production-ready charity management system for a family-run welfare organization (20+ members, 24+ months active).
-      Features a public donation portal, JWT-secured member dashboards, three-tier role-based access control (Member / Admin / Super Admin),
-      fund &amp; spending tracking, help request approval workflows, and Cloudinary media management.
+      Built a full-stack charity platform with JWT authentication and role-based dashboards.
+      Implemented donation tracking, approval workflows, and media management.
     </div>
-    <div class="cv-project-links">
-      <a href="https://badaruddinwelfareorg.vercel.app">🔗 Live</a>
-      <a href="https://github.com/najmulcodes/badaruddinwelfare-client">⌥ GitHub (Client)</a>
+    <div class="cv-links">
+      <a href="https://badaruddinwelfareorg.vercel.app">Live</a>
+      <a href="https://github.com/najmulcodes/badaruddinwelfare-client">GitHub</a>
     </div>
   </div>
 
   <div class="cv-project">
-    <div class="cv-project-header">
-      <div class="cv-project-name">MicroTask Platform</div>
-      <div class="cv-project-stack">React · Node.js · MongoDB · JWT · Stripe · React Query</div>
-    </div>
-    <div class="cv-project-tagline">Role-Based Freelance Task Marketplace with Stripe Payments</div>
+    <div class="cv-project-title">MicroTask Platform</div>
     <div class="cv-project-desc">
-      Full-stack micro-tasking marketplace with three isolated role dashboards (Worker / Buyer / Admin).
-      Workers earn coins by completing tasks; Buyers post tasks and review submissions; Admins manage the ecosystem.
-      Integrates Stripe for coin purchases, Google OAuth, JWT route protection, and React Query for server state.
+      Developed a role-based task marketplace with Worker, Buyer, and Admin dashboards.
+      Integrated Stripe payments and secured routes using JWT.
     </div>
-    <div class="cv-project-links">
-      <a href="https://microtask-client-iota.vercel.app">🔗 Live</a>
-      <a href="https://github.com/najmulcodes/microtask-client">⌥ GitHub</a>
+    <div class="cv-links">
+      <a href="https://microtask-client-iota.vercel.app">Live</a>
+      <a href="https://github.com/najmulcodes/microtask-client">GitHub</a>
     </div>
   </div>
 
   <div class="cv-project">
-    <div class="cv-project-header">
-      <div class="cv-project-name">Care.xyz</div>
-      <div class="cv-project-stack">Next.js · Firebase · Tailwind CSS · DaisyUI</div>
-    </div>
-    <div class="cv-project-tagline">Babysitting &amp; Elderly Care Booking Platform</div>
+    <div class="cv-project-title">Care.xyz</div>
     <div class="cv-project-desc">
-      Next.js care-service platform for booking professional caregivers across Bangladesh.
-      Features cascading location selectors for all 8 divisions, dynamic cost calculation,
-      Firebase-powered Google &amp; email authentication, private booking routes, and a fully responsive UI.
+      Built a caregiver booking platform using Next.js with Firebase authentication and dynamic pricing.
+      Designed responsive UI and protected booking workflows.
     </div>
-    <div class="cv-project-links">
-      <a href="https://care-xyz-baby-sitting-elderly-care.vercel.app">🔗 Live</a>
-      <a href="https://github.com/najmulcodes/Care.xyz---Baby-Sitting-Elderly-Care-Service-Platform">⌥ GitHub</a>
+    <div class="cv-links">
+      <a href="https://care-xyz-baby-sitting-elderly-care.vercel.app">Live</a>
+      <a href="https://github.com/najmulcodes/Care.xyz---Baby-Sitting-Elderly-Care-Service-Platform">GitHub</a>
     </div>
   </div>
 
-  <div class="cv-project">
-    <div class="cv-project-header">
-      <div class="cv-project-name">ClubSphere</div>
-      <div class="cv-project-stack">React · Node.js · Express · MongoDB · JWT · Tailwind CSS</div>
-    </div>
-    <div class="cv-project-tagline">Membership &amp; Event Management System</div>
-    <div class="cv-project-desc">
-      Full-stack club management application with JWT-secured authentication, role-based Admin and Member dashboards,
-      event creation and scheduling, and a membership approval workflow with complete CRUD operations.
-    </div>
-    <div class="cv-project-links">
-      <a href="https://clubsphere-client1.netlify.app/">🔗 Live</a>
-      <a href="https://github.com/najmulcodes/clubsphere-client">⌥ GitHub</a>
-    </div>
-  </div>
 </div>
 
 <!-- Experience -->
 <div class="cv-section">
-  <div class="cv-section-title">Professional Experience</div>
+  <div class="cv-title">Experience</div>
 
   <div class="cv-entry">
-    <div class="cv-entry-header">
-      <div class="cv-entry-title">Data Entry Specialist</div>
-      <div class="cv-entry-period">2024 – Present</div>
-    </div>
-    <div class="cv-entry-sub">Nation IT Limited · Dhaka, Bangladesh</div>
-    <div class="cv-entry-desc">Managing structured data operations, maintaining records, and ensuring data accuracy across business workflows.</div>
-  </div>
-
-  <div class="cv-entry">
-    <div class="cv-entry-header">
-      <div class="cv-entry-title">Computer Operator</div>
-      <div class="cv-entry-period">2015 – 2017</div>
-    </div>
-    <div class="cv-entry-sub">IT Solution Feni · Bangladesh</div>
-    <div class="cv-entry-desc">Provided IT support and computer operations, handling technical troubleshooting and system maintenance.</div>
+    <strong>Data Entry Specialist</strong>
+    <div class="cv-sub">Nation IT Limited · 2024 – Present</div>
+    Managed structured data operations and ensured accuracy across business workflows.
   </div>
 </div>
 
 <!-- Education -->
 <div class="cv-section">
-  <div class="cv-section-title">Education &amp; Certification</div>
+  <div class="cv-title">Education</div>
 
   <div class="cv-entry">
-    <div class="cv-entry-header">
-      <div class="cv-entry-title">BBA — Accounting &amp; Finance</div>
-      <div class="cv-entry-period">2019 – 2023</div>
-    </div>
-    <div class="cv-entry-sub">City College · CGPA: 3.04 / 4.00</div>
+    <strong>BBA — Accounting & Finance</strong>
+    <div class="cv-sub">City College · 2019 – 2023</div>
   </div>
 
   <div class="cv-entry">
-    <div class="cv-entry-header">
-      <div class="cv-entry-title">Certification — Complete Web Development (Full Stack)</div>
-      <div class="cv-entry-period">2025 – 2026</div>
-    </div>
-    <div class="cv-entry-sub">Programming Hero · Batch 12 — React, Next.js, Node.js, Express, MongoDB &amp; Deployment</div>
+    <strong>Complete Web Development</strong>
+    <div class="cv-sub">Programming Hero · 2025 – 2026</div>
   </div>
-</div>
-
-<!-- Footer -->
-<div class="cv-footer">
-  <span>Najmul Hasan · Full Stack Developer</span>
-  <span>najmulhasanshahin@gmail.com · github.com/najmulcodes</span>
 </div>
 
 </body>
