@@ -441,7 +441,7 @@ export default function Portfolio() {
             </div>
             <div className="p-card-actions">
               <a
-                href="/Najmul_Hasan_Resume.pdf.html"
+                href="/Najmul_Hasan_Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-card-cta"
