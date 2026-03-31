@@ -1,10 +1,19 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
-
+import WordRotate from "../components/WordRotate";
+import { motion } from "framer-motion";
 export default function Portfolio() {
   const navRef = useRef(null);
   const [year, setYear] = useState("");
   const [menuOpen, setMenuOpen] = useState(false);
+
+const greetings = [
+  "Hello,",
+  "Hola,",
+  "Bonjour,",
+  "مرحبا،",
+  "こんにちは"
+];
 
   useEffect(() => {
     const fa = document.createElement("link");
@@ -140,8 +149,21 @@ export default function Portfolio() {
         .p-hero-tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--fm);font-size:.72rem;color:var(--teal);background:var(--teal-dim);border:1px solid var(--teal-mid);padding:5px 14px;border-radius:20px;margin-bottom:24px;animation:p-fadeUp .6s ease both}
         .p-tag-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);box-shadow:0 0 8px var(--teal);animation:p-pulse 1.8s infinite}
         .p-hero-title{font-size:clamp(2.2rem,4.5vw,3.8rem);font-weight:700;line-height:1.1;letter-spacing:-.03em;animation:p-fadeUp .6s .1s ease both;margin-bottom:20px}
-        .p-hero-title .hi{display:block;color:var(--muted);font-weight:400;font-size:.58em;margin-bottom:4px}
-        .p-hero-title .role{display:block;font-size:.56em;font-weight:400;color:var(--teal);letter-spacing:0;margin-top:8px}
+.p-hero-title .hi{
+  display: inline-block;
+  color: var(--muted);
+  font-weight: 400;
+  font-size: 0.6em;
+  line-height: 1.2;
+  margin-bottom: 10px;
+  min-height: 1.2em;
+  letter-spacing: 0.02em;
+}       
+.p-hero-title .name{
+  display: block;
+  will-change: transform, opacity;
+}
+.p-hero-title .role{display:block;font-size:.56em;font-weight:400;color:var(--teal);letter-spacing:0;margin-top:8px}
         .p-hero-desc{color:var(--muted);font-size:.92rem;max-width:500px;line-height:1.85;margin-bottom:36px;animation:p-fadeUp .6s .2s ease both}
         .p-hero-btns{display:flex;gap:12px;flex-wrap:wrap;animation:p-fadeUp .6s .3s ease both}
         .p-btn-teal{display:inline-flex;align-items:center;gap:8px;padding:11px 28px;background:var(--teal);color:#0d1117;font-weight:700;font-size:.84rem;border-radius:9px;transition:opacity .2s,transform .2s,box-shadow .2s}
@@ -395,11 +417,29 @@ export default function Portfolio() {
               <span className="p-tag-dot" />
               Available for opportunities
             </div>
-            <h1 className="p-hero-title">
-              <span className="hi">Hey,</span>
-              I&apos;m Najmul,
-              <span className="role">Full-Stack Developer · MERN · React · Next.js</span>
-            </h1>
+<h1 className="p-hero-title">
+  <span className="hi">
+    <WordRotate words={greetings} />
+  </span>
+
+  <motion.span
+  key="name"
+  className="name"
+  initial={{ opacity: 0, y: 8 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{
+    duration: 0.6,
+    ease: [0.4, 0, 0.2, 1],
+    delay: 0.15
+  }}
+>
+  I&apos;m Najmul Hasan
+</motion.span>
+
+  <span className="role">
+    Full-Stack Developer · MERN · React · Next.js
+  </span>
+</h1>
             <p className="p-hero-desc">
               Business graduate turned developer — I build structured, scalable web applications
               with React, Node.js and MongoDB. Focused on clean code and great user experience.
@@ -526,63 +566,136 @@ export default function Portfolio() {
       </section>
 
       {/* PROJECTS */}
-      <section id="projects" className="p-section alt">
-        <div className="p-inner">
-          <p className="p-sec-label p-reveal">Selected work</p>
-          <h2 className="p-sec-title p-reveal">My <span>Projects</span></h2>
-          <div className="p-proj-list">
-            {[
-              {name:"Badar Uddin Welfare",flagship:true,featured:true,tagline:"Charity Management Platform",desc:"A full-stack charity management system for a family-run welfare organization. Features a public website for donation requests and a private member portal with dashboards for tracking funds, donations, and help request approvals.",stack:["React","Node.js","Express","MongoDB","JWT","Cloudinary","Tailwind CSS"],live:"https://badaruddinwelfareorg.vercel.app/",code:"https://github.com/najmulcodes/badaruddinwelfare-client",img:"/projects/badaruddin.png"},
-              {name:"MicroTask Platform",featured:true,tagline:"Freelance Micro-Tasking Marketplace",desc:"A full-stack micro-tasking platform with three role-based dashboards for Workers, Buyers and Admins. Workers earn coins by completing tasks, Buyers post tasks and review submissions, and Admins manage the entire ecosystem. Includes Stripe payments and Google OAuth.",stack:["React","Node.js","Express","MongoDB","JWT","Stripe","Tailwind CSS"],live:"https://microtask-client-iota.vercel.app",code:"https://github.com/najmulcodes/microtask-client",creds:{email:"admin@microtask.com",password:"Admin123",role:"Admin"},img:"/projects/microtask.png"},
-              {name:"ClubSphere",featured:true,tagline:"Membership & Event Management System",desc:"A full-stack application for local clubs to manage members, events and admin workflows. Features role-based dashboards, JWT-protected routes and a complete membership approval flow.",stack:["React","Node.js","Express","MongoDB","JWT","Tailwind CSS"],live:"https://clubsphere-client1.netlify.app/",code:"https://github.com/najmulcodes/clubsphere-client",img:"/projects/clubsphere.png"},
-              {name:"BookHub",featured:true,tagline:"Online Book Platform",desc:"A dynamic book browsing and management platform. Users can explore, add, edit and delete books via a REST API with real-time state synchronisation.",stack:["React","Node.js","Express","MongoDB"],live:"https://bookhub-heaven.surge.sh",code:"https://github.com/najmulcodes/bookhub-client",img:"/projects/bookhub.png"},
-              {name:"Care.xyz",featured:false,tagline:"Baby Sitting & Elderly Care Platform",desc:"A Next.js care service platform for finding and booking professional caregivers across Bangladesh. Features cascading location selectors for all 8 divisions, dynamic cost calculation, private booking routes, and Google + email authentication via Firebase.",stack:["Next.js","React","Firebase","Tailwind CSS","DaisyUI"],live:"https://care-xyz-baby-sitting-elderly-care.vercel.app",code:"https://github.com/najmulcodes/Care.xyz---Baby-Sitting-Elderly-Care-Service-Platform",img:"/projects/carexyz.png"},
-              {name:"GreenNest",featured:false,tagline:"Indoor Plant Care & Store",desc:"A responsive plant care and store-inspired web app for plant enthusiasts. Clean UI design, interactive components and responsive layouts across all devices.",stack:["React","Tailwind CSS","Netlify"],live:"https://neon-cendol-639b69.netlify.app",code:"https://github.com/najmulcodes/GreenNest---Indoor-Plant-Care-and-Store",img:"/projects/greennest.png"},
-            ].map(({name,featured,flagship,tagline,desc,stack,live,code,creds,img})=>(
-              <article key={name} className={`p-proj-card p-reveal${flagship?" flagship":""}${featured?" featured":""}`}>
+<section id="projects" className="p-section alt">
+  <div className="p-inner">
+    <p className="p-sec-label p-reveal">Selected work</p>
+    <h2 className="p-sec-title p-reveal">My <span>Projects</span></h2>
 
-                {/* LEFT: Thumbnail */}
-                <div className="p-proj-thumb-wrap">
-                  <img
-                    src={img}
-                    alt={name}
-                    className="p-proj-thumb"
-                    onError={e=>{e.currentTarget.style.display="none"}}
-                  />
-                </div>
+    <div className="p-proj-list">
+      {[
+        {
+          name: "Badar Uddin Welfare",
+          flagship: true,
+          featured: true,
+          tagline: "Charity Management Platform",
+          desc: "A production-focused charity management system designed for real organizational use. Includes donation request workflows, admin approval system, and role-based dashboards to manage funds, activities, and beneficiary records.",
+          stack: ["React", "Node.js", "Express", "MongoDB", "JWT", "Cloudinary"],
+          live: "https://badaruddinwelfareorg.vercel.app/",
+          code: "https://github.com/najmulcodes/badaruddinwelfare-client",
+          img: "/projects/badaruddin.png"
+        },
 
-                {/* MIDDLE: Content */}
-                <div className="p-proj-body">
-                  <div className="p-proj-header">
-                    <h3 className="p-proj-name">{name}</h3>
-                    {flagship ? <span className="p-feat-badge flagship">Flagship</span> : featured && <span className="p-feat-badge">Featured</span>}
-                  </div>
-                  <p className="p-proj-tagline">{tagline}</p>
-                  <p className="p-proj-desc">{desc}</p>
-                  {creds && (
-                    <div className="p-proj-creds">
-                      <div className="cred-title"><i className="fas fa-key" /> Demo Login</div>
-                      <div className="cred-row">Email &nbsp;<span className="cred-val">{creds.email}</span></div>
-                      <div className="cred-row">Password &nbsp;<span className="cred-val">{creds.password}</span></div>
-                      <div className="cred-row">Role &nbsp;<span className="cred-val">{creds.role}</span></div>
-                    </div>
-                  )}
-                  <div className="p-proj-stack">
-                    {stack.map(t=><span key={t} className="p-tech">{t}</span>)}
-                  </div>
-                </div>
+        {
+          name: "MicroTask Platform",
+          featured: true,
+          tagline: "Role-Based Freelance Marketplace",
+          desc: "A multi-role micro-tasking platform with Worker, Buyer, and Admin dashboards. Includes task lifecycle management, secure JWT authentication, Stripe-based payments, and submission approval workflows.",
+          stack: ["React", "Node.js", "Express", "MongoDB", "JWT", "Stripe"],
+          live: "https://microtask-client-iota.vercel.app",
+          code: "https://github.com/najmulcodes/microtask-client",
+          creds: {
+            email: "admin@microtask.com",
+            password: "Admin123",
+            role: "Admin"
+          },
+          img: "/projects/microtask.png"
+        },
 
-                {/* RIGHT: Buttons */}
-                <div className="p-proj-actions">
-                  <a href={live} target="_blank" rel="noreferrer" className="p-proj-btn live"><i className="fas fa-external-link-alt" /> Live</a>
-                  <a href={code} target="_blank" rel="noreferrer" className="p-proj-btn code"><i className="fab fa-github" /> Code</a>
-                </div>
+        {
+          name: "Care.xyz",
+          featured: true,
+          tagline: "Care Service Booking Platform (Next.js)",
+          desc: "A Next.js-based service platform for booking caregivers across Bangladesh. Features dynamic pricing, cascading location filtering, private booking routes, and Firebase authentication.",
+          stack: ["Next.js", "React", "Firebase", "Tailwind CSS"],
+          live: "https://care-xyz-baby-sitting-elderly-care.vercel.app",
+          code: "https://github.com/najmulcodes/Care.xyz---Baby-Sitting-Elderly-Care-Service-Platform",
+          img: "/projects/carexyz.png"
+        },
 
-              </article>
-            ))}
+        {
+          name: "ClubSphere",
+          featured: false,
+          tagline: "Membership & Event Management System",
+          desc: "A role-based club management system with event handling, membership approval flows, and protected routes using JWT authentication.",
+          stack: ["React", "Node.js", "Express", "MongoDB"],
+          live: "https://clubsphere-client1.netlify.app/",
+          code: "https://github.com/najmulcodes/clubsphere-client",
+          img: "/projects/clubsphere.png"
+        },
+
+        {
+          name: "BookHub",
+          featured: false,
+          tagline: "Book Management Platform",
+          desc: "A CRUD-based application for managing books with REST API integration. Includes real-time UI updates and structured data handling.",
+          stack: ["React", "Node.js", "Express", "MongoDB"],
+          live: "https://bookhub-heaven.surge.sh",
+          code: "https://github.com/najmulcodes/bookhub-client",
+          img: "/projects/bookhub.png"
+        }
+      ].map(({ name, featured, flagship, tagline, desc, stack, live, code, creds, img }) => (
+
+        <article key={name} className={`p-proj-card p-reveal${flagship ? " flagship" : ""}${featured ? " featured" : ""}`}>
+
+          {/* LEFT: Thumbnail */}
+          <div className="p-proj-thumb-wrap">
+            <img
+              src={img}
+              alt={name}
+              className="p-proj-thumb"
+              onError={e => { e.currentTarget.style.display = "none" }}
+            />
           </div>
-        </div>
-      </section>
+
+          {/* MIDDLE: Content */}
+          <div className="p-proj-body">
+            <div className="p-proj-header">
+              <h3 className="p-proj-name">{name}</h3>
+              {flagship ? (
+                <span className="p-feat-badge flagship">Flagship</span>
+              ) : featured && (
+                <span className="p-feat-badge">Featured</span>
+              )}
+            </div>
+
+            <p className="p-proj-tagline">{tagline}</p>
+            <p className="p-proj-desc">{desc}</p>
+
+            {creds && (
+              <div className="p-proj-creds">
+                <div className="cred-title"><i className="fas fa-key" /> Demo Login</div>
+                <div className="cred-row">Email <span className="cred-val">{creds.email}</span></div>
+                <div className="cred-row">Password <span className="cred-val">{creds.password}</span></div>
+                <div className="cred-row">Role <span className="cred-val">{creds.role}</span></div>
+              </div>
+            )}
+
+            <div className="p-proj-stack">
+              {stack.map(t => <span key={t} className="p-tech">{t}</span>)}
+            </div>
+          </div>
+
+          {/* RIGHT: Actions */}
+          <div className="p-proj-actions">
+            <a href={live} target="_blank" rel="noreferrer" className="p-proj-btn live">
+              <i className="fas fa-external-link-alt" /> Live
+            </a>
+
+            <a href={code} target="_blank" rel="noreferrer" className="p-proj-btn code">
+              <i className="fab fa-github" /> Code
+            </a>
+
+            {/* NEW REQUIRED BUTTON */}
+            <a href={`/projects/${name.toLowerCase().replace(/\s+/g, "-")}`} className="p-proj-btn code">
+              Details
+            </a>
+          </div>
+
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* EXPERIENCE */}
       <section id="experience" className="p-section">

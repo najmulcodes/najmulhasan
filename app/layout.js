@@ -19,7 +19,6 @@ export const metadata = {
     "Next.js Developer",
     "Node.js Developer",
     "MongoDB",
-    "TypeScript",
     "Web Developer Portfolio",
     "Bangladesh Developer",
   ],
@@ -30,7 +29,7 @@ export const metadata = {
   openGraph: {
     title: "Najmul Hasan | Full-Stack Developer",
     description:
-      "Full-Stack Developer specialising in React, Next.js, Node.js and MongoDB. MERN Stack · TypeScript.",
+      "Full-Stack Developer specialising in React, Next.js, Node.js and MongoDB.",
     url: "https://najmul-portfolio-six.vercel.app",
     siteName: "Najmul Hasan Portfolio",
     images: [
@@ -61,13 +60,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        style={{
-          fontFamily: "ui-sans-serif, system-ui, sans-serif",
-          margin: 0,
-          padding: 0,
-        }}
-      >
+      <body className="app-body">
         {children}
       </body>
     </html>
