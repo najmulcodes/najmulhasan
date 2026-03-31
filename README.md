@@ -116,8 +116,7 @@ projects/
 badaruddin.png  
 bookhub.png  
 carexyz.png  
-clubsphere.png  
-greennest.png  
+clubsphere.png    
 microtask.png  
 
 ---
@@ -137,7 +136,6 @@ microtask.png
   </tr>
   <tr>
     <td align="center"><b>Care.xyz</b><br/><img src="./public/projects/carexyz.png" alt="Care.xyz thumbnail" width="320"/></td>
-    <td align="center"><b>GreenNest</b><br/><img src="./public/projects/greennest.png" alt="GreenNest thumbnail" width="320"/></td>
   </tr>
 </table>
 
@@ -205,19 +203,6 @@ Features:
 • Dynamic cost calculation  
 • Private booking routes  
 • Firebase authentication  
-
----
-
-## GreenNest – Indoor Plant Care & Store
-
-A responsive plant care and store-inspired web app for plant enthusiasts.
-
-Features:
-
-• Interactive UI components  
-• Responsive design  
-• Clean visual presentation  
-• Modern frontend layout  
 
 ---
 
