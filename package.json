@@ -11,6 +11,7 @@
   "dependencies": {
     "framer-motion": "^12.38.0",
     "next": "16.1.6",
+    "puppeteer": "^24.40.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
     "react-icons": "^5.5.0"
@@ -24,5 +25,19 @@
     "eslint-config-next": "16.1.6",
     "tailwindcss": "^4",
     "typescript": "^5"
-  }
+  },
+  "description": "<!-- PREMIUM HEADER -->",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/najmulcodes/najmul-portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/najmulcodes/najmul-portfolio/issues"
+  },
+  "homepage": "https://github.com/najmulcodes/najmul-portfolio#readme"
 }
