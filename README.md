@@ -10,13 +10,12 @@ A modern developer portfolio showcasing projects, technical skills, experience, 
 </p>
 
 <p align="center">
-
-<img src="https://img.shields.io/badge/Next.js-Framework-black?style=for-the-badge&logo=next.js"/>
-<img src="https://img.shields.io/badge/React-Frontend-blue?style=for-the-badge&logo=react"/>
-<img src="https://img.shields.io/badge/TailwindCSS-UI-38bdf8?style=for-the-badge&logo=tailwindcss"/>
+<img src="https://img.shields.io/badge/Next.js%2016-Framework-black?style=for-the-badge&logo=next.js"/>
+<img src="https://img.shields.io/badge/React%2019-Frontend-blue?style=for-the-badge&logo=react"/>
+<img src="https://img.shields.io/badge/Custom%20CSS-Styling-00e5c3?style=for-the-badge"/>
 <img src="https://img.shields.io/badge/Framer%20Motion-Animations-purple?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/Formspree-Contact-ff6347?style=for-the-badge"/>
 <img src="https://img.shields.io/badge/Vercel-Deployment-black?style=for-the-badge&logo=vercel"/>
-
 </p>
 
 ---
@@ -26,6 +25,14 @@ A modern developer portfolio showcasing projects, technical skills, experience, 
 **Live Website**
 
 https://najmul-portfolio-six.vercel.app/
+
+---
+
+## Portfolio Thumbnail
+
+<p align="center">
+  <img src="./public/projects/portfolio.png" alt="Najmul Hasan Portfolio" width="720"/>
+</p>
 
 ---
 
@@ -57,8 +64,14 @@ React 19
 ### Styling
 Custom CSS in App Router global styles
 
+### Animations
+Framer Motion
+
 ### Icons / Fonts
 Font Awesome + Google Fonts
+
+### Contact Form
+Formspree
 
 ### Deployment
 Vercel
@@ -68,11 +81,9 @@ Vercel
 # ✨ Key Features
 
 ### Modern Developer Portfolio
-
 Clean layout designed to showcase projects, skills, and background professionally.
 
 ### Fully Responsive
-
 Optimized for:
 
 • Mobile  
@@ -80,19 +91,16 @@ Optimized for:
 • Desktop  
 
 ### Smooth Navigation
-
 • Fixed top navigation  
 • Section-based scrolling  
 • Active section indicators  
 
 ### Animated Interface
-
 • Reveal-on-scroll effects  
 • Interactive cards  
 • Smooth hover states  
 
 ### Professional Sections
-
 • Hero introduction  
 • About me  
 • Skills grid  
@@ -105,19 +113,28 @@ Optimized for:
 
 # 📂 Project Structure
 
-app/  
-layout.js  
-page.js  
-globals.css  
+```
+app/
+├── layout.js
+├── page.js
+└── globals.css
 
-public/  
-profile.jpg  
-projects/  
-badaruddin.png  
-bookhub.png  
-carexyz.png  
-clubsphere.png    
-microtask.png  
+components/
+├── Navbar.jsx
+├── Footer.jsx
+├── ContactForm.jsx
+└── WordRotate.jsx
+
+public/
+├── profile.jpg
+└── projects/
+    ├── portfolio.png
+    ├── badaruddin.png
+    ├── bookhub.png
+    ├── carexyz.png
+    ├── clubsphere.png
+    └── microtask.png
+```
 
 ---
 
@@ -136,6 +153,7 @@ microtask.png
   </tr>
   <tr>
     <td align="center"><b>Care.xyz</b><br/><img src="./public/projects/carexyz.png" alt="Care.xyz thumbnail" width="320"/></td>
+    <td></td>
   </tr>
 </table>
 
@@ -242,7 +260,7 @@ https://wa.me/8801840242448
 Clone the repository
 
 ```bash
-git clone https://github.com/Shariarx6T9/najmul-portfolio.git
+git clone https://github.com/najmulcodes/najmul-portfolio.git
 ```
 
 Navigate to the project folder

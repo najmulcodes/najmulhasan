@@ -36,24 +36,24 @@ export default function ContactForm() {
       <style>{`
         .cf-card{
           background:var(--bg2);border:1px solid var(--border);
-          border-radius:16px;padding:32px 30px;position:relative;
-          overflow:hidden;margin-bottom:8px;
+          border-radius:16px;padding:20px 22px;position:relative;
+          overflow:hidden;margin-bottom:0;
         }
         .cf-card::before{
           content:'';position:absolute;top:0;left:0;right:0;height:2px;
           background:linear-gradient(90deg,var(--teal),rgba(0,229,195,.1));
         }
-        .cf-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-        .cf-group{margin-bottom:20px}
+        .cf-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+        .cf-group{margin-bottom:12px}
         .cf-lbl{
-          display:block;font-size:.78rem;font-weight:600;
-          color:var(--white);margin-bottom:8px;letter-spacing:.04em;
+          display:block;font-size:.72rem;font-weight:600;
+          color:var(--white);margin-bottom:5px;letter-spacing:.04em;
         }
         .cf-input,.cf-textarea{
           width:100%;box-sizing:border-box;
           background:var(--bg);border:1px solid var(--border);
-          border-radius:10px;padding:12px 16px;
-          color:var(--white);font-size:.88rem;
+          border-radius:9px;padding:9px 13px;
+          color:var(--white);font-size:.84rem;
           font-family:var(--fh);transition:border-color .2s,box-shadow .2s;
           outline:none;resize:none;
         }
@@ -62,14 +62,14 @@ export default function ContactForm() {
           border-color:var(--teal-mid);
           box-shadow:0 0 0 3px rgba(0,229,195,.07);
         }
-        .cf-textarea{min-height:140px}
+        .cf-textarea{min-height:90px}
         .cf-btn{
-          width:100%;padding:13px 20px;background:var(--teal);
+          width:100%;padding:10px 20px;background:var(--teal);
           color:#0d1117;font-family:var(--fh);font-weight:700;
-          font-size:.9rem;border:none;border-radius:10px;
+          font-size:.86rem;border:none;border-radius:9px;
           cursor:pointer;display:flex;align-items:center;
           justify-content:center;gap:8px;
-          transition:opacity .2s,transform .2s,box-shadow .2s;margin-top:4px;
+          transition:opacity .2s,transform .2s,box-shadow .2s;margin-top:2px;
         }
         .cf-btn:hover:not(:disabled){
           opacity:.88;transform:translateY(-2px);

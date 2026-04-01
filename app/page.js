@@ -1,57 +1,49 @@
 "use client";
 import { useEffect } from "react";
 import WordRotate from "../components/WordRotate";
+import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import { motion } from "framer-motion";
-
+import ContactForm from "../components/ContactForm";
 export default function Portfolio() {
-  const greetings = ["Hello,", "Hola,", "Bonjour,", "مرحبا،", "こんにちは"];
+
+const greetings = [
+  "Hello,",
+  "Hola,",
+  "Bonjour,",
+  "مرحبا،",
+  "こんにちは"
+];
 
   useEffect(() => {
     const fa = document.createElement("link");
     fa.rel = "stylesheet";
-    fa.href =
-      "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css";
+    fa.href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css";
     document.head.appendChild(fa);
 
     const fonts = document.createElement("link");
     fonts.rel = "stylesheet";
-    fonts.href =
-      "https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap";
+    fonts.href = "https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap";
     document.head.appendChild(fonts);
 
-    const sections = [
-      "hero",
-      "about",
-      "skills",
-      "projects",
-      "experience",
-      "education",
-      "contact",
-    ];
-    const navLinks = document.querySelectorAll(".p-nav-links a");
-    const dots = document.querySelectorAll(".p-side-dot");
+    const sections = ["hero","about","skills","projects","experience","education","contact"];
+    const navLinks  = document.querySelectorAll(".p-nav-links a");
+    const dots      = document.querySelectorAll(".p-side-dot");
 
-    const secObs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (!entry.isIntersecting) return;
-          const id = entry.target.id;
-          navLinks.forEach((a) => a.classList.remove("active"));
-          const match = document.querySelector(
-            `.p-nav-links a[href="#${id}"]`
-          );
-          if (match) match.classList.add("active");
-          dots.forEach((d) => d.classList.remove("active"));
-          const idx = sections.indexOf(id);
-          if (idx >= 0 && dots[idx]) dots[idx].classList.add("active");
-        });
-      },
-      { rootMargin: "-40% 0px -55% 0px", threshold: 0 }
-    );
+    const secObs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const id  = entry.target.id;
+        const idx = sections.indexOf(id);
+        navLinks.forEach(a => a.classList.remove("active"));
+        const match = document.querySelector(`.p-nav-links a[href="#${id}"]`);
+        if (match) match.classList.add("active");
+        dots.forEach(d => d.classList.remove("active"));
+        if (idx >= 0 && dots[idx]) dots[idx].classList.add("active");
+      });
+    }, { rootMargin: "-40% 0px -55% 0px", threshold: 0 });
 
-    sections.forEach((id) => {
+    sections.forEach(id => {
       const el = document.getElementById(id);
       if (el) secObs.observe(el);
     });
@@ -64,18 +56,15 @@ export default function Portfolio() {
     });
 
     const reveals = document.querySelectorAll(".p-reveal");
-    const revObs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e, i) => {
-          if (e.isIntersecting) {
-            setTimeout(() => e.target.classList.add("p-visible"), i * 55);
-            revObs.unobserve(e.target);
-          }
-        });
-      },
-      { threshold: 0.08 }
-    );
-    reveals.forEach((el) => revObs.observe(el));
+    const revObs  = new IntersectionObserver(entries => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add("p-visible"), i * 55);
+          revObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    reveals.forEach(el => revObs.observe(el));
 
     return () => {
       secObs.disconnect();
@@ -151,21 +140,21 @@ export default function Portfolio() {
         .p-hero-tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--fm);font-size:.72rem;color:var(--teal);background:var(--teal-dim);border:1px solid var(--teal-mid);padding:5px 14px;border-radius:20px;margin-bottom:24px;animation:p-fadeUp .6s ease both}
         .p-tag-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);box-shadow:0 0 8px var(--teal);animation:p-pulse 1.8s infinite}
         .p-hero-title{font-size:clamp(2.2rem,4.5vw,3.8rem);font-weight:700;line-height:1.1;letter-spacing:-.03em;animation:p-fadeUp .6s .1s ease both;margin-bottom:20px}
-        .p-hero-title .hi{
-          display: inline-block;
-          color: var(--muted);
-          font-weight: 400;
-          font-size: 0.6em;
-          line-height: 1.2;
-          margin-bottom: 10px;
-          min-height: 1.2em;
-          letter-spacing: 0.02em;
-        }
-        .p-hero-title .name{
-          display: block;
-          will-change: transform, opacity;
-        }
-        .p-hero-title .role{display:block;font-size:.56em;font-weight:400;color:var(--teal);letter-spacing:0;margin-top:8px}
+.p-hero-title .hi{
+  display: inline-block;
+  color: var(--muted);
+  font-weight: 400;
+  font-size: 0.6em;
+  line-height: 1.2;
+  margin-bottom: 10px;
+  min-height: 1.2em;
+  letter-spacing: 0.02em;
+}       
+.p-hero-title .name{
+  display: block;
+  will-change: transform, opacity;
+}
+.p-hero-title .role{display:block;font-size:.56em;font-weight:400;color:var(--teal);letter-spacing:0;margin-top:8px}
         .p-hero-desc{color:var(--muted);font-size:.92rem;max-width:500px;line-height:1.85;margin-bottom:36px;animation:p-fadeUp .6s .2s ease both}
         .p-hero-btns{display:flex;gap:12px;flex-wrap:wrap;animation:p-fadeUp .6s .3s ease both}
         .p-btn-teal{display:inline-flex;align-items:center;gap:8px;padding:11px 28px;background:var(--teal);color:#0d1117;font-weight:700;font-size:.84rem;border-radius:9px;transition:opacity .2s,transform .2s,box-shadow .2s}
@@ -366,18 +355,17 @@ export default function Portfolio() {
         }
       `}</style>
 
+      <Navbar />
+
       {/* Topo bg */}
       <div className="p-topo" />
 
       {/* Side dots */}
       <div className="p-side-nav">
-        {["hero","about","skills","projects","experience","education","contact"].map((s, i) => (
-          <div key={s} className={`p-side-dot${i === 0 ? " active" : ""}`} title={s} />
+        {["hero","about","skills","projects","experience","education","contact"].map((s,i) => (
+          <div key={s} className={`p-side-dot${i===0?" active":""}`} title={s} />
         ))}
       </div>
-
-      {/* ── NAVBAR (single instance from component) ── */}
-      <Navbar />
 
       {/* HERO */}
       <section id="hero">
@@ -387,48 +375,46 @@ export default function Portfolio() {
               <span className="p-tag-dot" />
               Available for opportunities
             </div>
-            <h1 className="p-hero-title">
-              <span className="hi">
-                <WordRotate words={greetings} />
-              </span>
-              <motion.span
-                key="name"
-                className="name"
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1], delay: 0.15 }}
-              >
-                I&apos;m Najmul Hasan
-              </motion.span>
-              <span className="role">
-                Full-Stack Developer · MERN · React · Next.js
-              </span>
-            </h1>
+<h1 className="p-hero-title">
+  <span className="hi">
+    <WordRotate words={greetings} />
+  </span>
+
+  <motion.span
+  key="name"
+  className="name"
+  initial={{ opacity: 0, y: 8 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{
+    duration: 0.6,
+    ease: [0.4, 0, 0.2, 1],
+    delay: 0.15
+  }}
+>
+  I&apos;m Najmul Hasan
+</motion.span>
+
+  <span className="role">
+    Full-Stack Developer · MERN · React · Next.js
+  </span>
+</h1>
             <p className="p-hero-desc">
-              Business graduate turned developer — I build structured, scalable web
-              applications with React, Node.js and MongoDB. Focused on clean code
-              and great user experience.
+              Business graduate turned developer — I build structured, scalable web applications
+              with React, Node.js and MongoDB. Focused on clean code and great user experience.
             </p>
             <div className="p-hero-btns">
-              <a href="#projects" className="p-btn-teal">
-                <i className="fas fa-rocket" /> View Projects
-              </a>
-              <a href="#contact" className="p-btn-ghost">
-                <i className="fas fa-paper-plane" /> Let&apos;s Talk
-              </a>
+              <a href="#projects" className="p-btn-teal"><i className="fas fa-rocket" /> View Projects</a>
+              <a href="#contact" className="p-btn-ghost"><i className="fas fa-paper-plane" /> Let&apos;s Talk</a>
             </div>
           </div>
 
           <div className="p-hero-card">
             <div className="p-card-photo-wrap">
               <div className="p-card-photo-ring">
-                <img
-                  src="/profile.png"
-                  alt="Najmul Hasan"
-                  onError={(e) => {
+                <img src="/profile.png" alt="Najmul Hasan"
+                  onError={e => {
                     e.currentTarget.style.display = "none";
-                    e.currentTarget.parentElement.innerHTML =
-                      '<div class="p-card-initials">NH</div>';
+                    e.currentTarget.parentElement.innerHTML = '<div class="p-card-initials">NH</div>';
                   }}
                 />
               </div>
@@ -437,26 +423,14 @@ export default function Portfolio() {
             <div className="p-card-name">Najmul Hasan</div>
             <div className="p-card-role">// Full-Stack Developer · MERN Stack</div>
             <div className="p-card-meta">
-              <div className="p-card-meta-row">
-                <i className="fas fa-envelope" />
-                <a href="mailto:najmulhasanshahin@gmail.com">najmulhasanshahin@gmail.com</a>
-              </div>
-              <div className="p-card-meta-row">
-                <i className="fas fa-map-marker-alt" />Dhaka, Bangladesh
-              </div>
-              <div className="p-card-meta-row">
-                <i className="fas fa-briefcase" />Full-time / Freelance
-              </div>
-              <div className="p-card-meta-row">
-                <i className="fas fa-globe" />
-                <a href="https://najmul-portfolio-six.vercel.app/" target="_blank" rel="noreferrer">
-                  najmul-portfolio-six.vercel.app
-                </a>
-              </div>
+              <div className="p-card-meta-row"><i className="fas fa-envelope" /><a href="mailto:najmulhasanshahin@gmail.com">najmulhasanshahin@gmail.com</a></div>
+              <div className="p-card-meta-row"><i className="fas fa-map-marker-alt" />Dhaka, Bangladesh</div>
+              <div className="p-card-meta-row"><i className="fas fa-briefcase" />Full-time / Freelance</div>
+              <div className="p-card-meta-row"><i className="fas fa-globe" /><a href="https://najmul-portfolio-six.vercel.app/" target="_blank" rel="noreferrer">najmul-portfolio-six.vercel.app</a></div>
             </div>
             <div className="p-card-divider" />
             <div className="p-card-stats">
-              {[["4","Programming Languages"],["6","Dev Tools"],["10+","Projects Built"]].map(([n, l]) => (
+              {[["4", "Programming Languages"], ["6", "Dev Tools"], ["10+", "Projects Built"]].map(([n, l]) => (
                 <div key={l} className="p-stat-box">
                   <div className="p-stat-num">{n}</div>
                   <div className="p-stat-lbl">{l}</div>
@@ -511,7 +485,7 @@ export default function Portfolio() {
               <p>I hold a <strong>Bachelor of Business Administration in Accounting &amp; Finance</strong> and have worked across data operations and IT support — fields that sharpened my analytical thinking and problem-solving mindset.</p>
               <p>When I&apos;m not coding, I enjoy reading blogs, learning or picking up some new hands-on side projects.</p>
               <div className="p-tags">
-                {["React","Node.js","MongoDB","Express","JavaScript","Tailwind CSS","REST API","JWT"].map(t => (
+                {["React","Node.js","MongoDB","Express","JavaScript","Tailwind CSS","REST API","JWT"].map(t=>(
                   <span key={t} className="p-tag">{t}</span>
                 ))}
               </div>
@@ -525,22 +499,20 @@ export default function Portfolio() {
         <div className="p-inner">
           <p className="p-sec-label p-reveal">Technical skills</p>
           <h2 className="p-sec-title p-reveal"><span>&lt;/&gt;</span> Skills</h2>
-          <p style={{color:"var(--muted)",fontSize:".86rem",marginTop:"-40px",marginBottom:"44px"}} className="p-reveal">
-            Striving to never stop learning and improving.
-          </p>
+          <p style={{color:"var(--muted)",fontSize:".86rem",marginTop:"-40px",marginBottom:"44px"}} className="p-reveal">Striving to never stop learning and improving.</p>
           <div className="p-skills-grid">
             {[
               {cat:"Web Development", icons:[["fab fa-html5","HTML5"],["fab fa-css3-alt","CSS3"],["fab fa-js","JS"],["fab fa-react","React"]]},
               {cat:"Backend / API",    icons:[["fab fa-node-js","Node.js"],["fas fa-server","Express","#68a063"],["fas fa-database","MongoDB"],["fas fa-lock","JWT","#f7df1e"]]},
               {cat:"Tools & Platforms",icons:[["fab fa-git-alt","Git"],["fab fa-github","GitHub"],["fas fa-cloud","Netlify","#00c7b7"],["fas fa-bolt","Vercel","#e2e2e2"]]},
               {cat:"Design & Styling", icons:[["fas fa-wind","Tailwind","#38bdf8"],["fas fa-palette","Framer","#b57bee"],["fab fa-figma","Figma","#f24e1e"],["fab fa-npm","npm"]]},
-            ].map(({cat, icons}) => (
+            ].map(({cat,icons})=>(
               <div key={cat} className="p-skill-card p-reveal">
                 <div className="p-skill-cat"><div className="p-skill-dot"/><span className="p-skill-lbl">{cat}</span></div>
                 <div className="p-skill-icons">
-                  {icons.map(([cls, label, color]) => (
+                  {icons.map(([cls,label,color])=>(
                     <div key={label} className="p-icon-box">
-                      <i className={cls} style={color ? {color} : {}} />
+                      <i className={cls} style={color?{color}:{}} />
                       <span>{label}</span>
                     </div>
                   ))}
@@ -552,102 +524,136 @@ export default function Portfolio() {
       </section>
 
       {/* PROJECTS */}
-      <section id="projects" className="p-section alt">
-        <div className="p-inner">
-          <p className="p-sec-label p-reveal">Selected work</p>
-          <h2 className="p-sec-title p-reveal">My <span>Projects</span></h2>
-          <div className="p-proj-list">
-            {[
-              {
-                name:"Badar Uddin Welfare",flagship:true,featured:true,
-                tagline:"Charity Management Platform",
-                desc:"A production-focused charity management system designed for real organizational use. Includes donation request workflows, admin approval system, and role-based dashboards to manage funds, activities, and beneficiary records.",
-                stack:["React","Node.js","Express","MongoDB","JWT","Cloudinary"],
-                live:"https://badaruddinwelfareorg.vercel.app/",
-                code:"https://github.com/najmulcodes/badaruddinwelfare-client",
-                img:"/projects/badaruddin.png"
-              },
-              {
-                name:"MicroTask Platform",featured:true,
-                tagline:"Role-Based Freelance Marketplace",
-                desc:"A multi-role micro-tasking platform with Worker, Buyer, and Admin dashboards. Includes task lifecycle management, secure JWT authentication, Stripe-based payments, and submission approval workflows.",
-                stack:["React","Node.js","Express","MongoDB","JWT","Stripe"],
-                live:"https://microtask-client-iota.vercel.app",
-                code:"https://github.com/najmulcodes/microtask-client",
-                creds:{email:"admin@microtask.com",password:"Admin123",role:"Admin"},
-                img:"/projects/microtask.png"
-              },
-              {
-                name:"Care.xyz",featured:true,
-                tagline:"Care Service Booking Platform (Next.js)",
-                desc:"A Next.js-based service platform for booking caregivers across Bangladesh. Features dynamic pricing, cascading location filtering, private booking routes, and Firebase authentication.",
-                stack:["Next.js","React","Firebase","Tailwind CSS"],
-                live:"https://care-xyz-baby-sitting-elderly-care.vercel.app",
-                code:"https://github.com/najmulcodes/Care.xyz---Baby-Sitting-Elderly-Care-Service-Platform",
-                img:"/projects/carexyz.png"
-              },
-              {
-                name:"ClubSphere",featured:false,
-                tagline:"Membership & Event Management System",
-                desc:"A role-based club management system with event handling, membership approval flows, and protected routes using JWT authentication.",
-                stack:["React","Node.js","Express","MongoDB"],
-                live:"https://clubsphere-client1.netlify.app/",
-                code:"https://github.com/najmulcodes/clubsphere-client",
-                img:"/projects/clubsphere.png"
-              },
-              {
-                name:"BookHub",featured:false,
-                tagline:"Book Management Platform",
-                desc:"A CRUD-based application for managing books with REST API integration. Includes real-time UI updates and structured data handling.",
-                stack:["React","Node.js","Express","MongoDB"],
-                live:"https://bookhub-heaven.surge.sh",
-                code:"https://github.com/najmulcodes/bookhub-client",
-                img:"/projects/bookhub.png"
-              }
-            ].map(({name,featured,flagship,tagline,desc,stack,live,code,creds,img}) => (
-              <article key={name} className={`p-proj-card p-reveal${flagship?" flagship":""}${featured?" featured":""}`}>
-                <div className="p-proj-thumb-wrap">
-                  <img src={img} alt={name} className="p-proj-thumb" onError={e=>{e.currentTarget.style.display="none"}} />
-                </div>
-                <div className="p-proj-body">
-                  <div className="p-proj-header">
-                    <h3 className="p-proj-name">{name}</h3>
-                    {flagship ? (
-                      <span className="p-feat-badge flagship">Flagship</span>
-                    ) : featured && (
-                      <span className="p-feat-badge">Featured</span>
-                    )}
-                  </div>
-                  <p className="p-proj-tagline">{tagline}</p>
-                  <p className="p-proj-desc">{desc}</p>
-                  {creds && (
-                    <div className="p-proj-creds">
-                      <div className="cred-title"><i className="fas fa-key" /> Demo Login</div>
-                      <div className="cred-row">Email <span className="cred-val">{creds.email}</span></div>
-                      <div className="cred-row">Password <span className="cred-val">{creds.password}</span></div>
-                      <div className="cred-row">Role <span className="cred-val">{creds.role}</span></div>
-                    </div>
-                  )}
-                  <div className="p-proj-stack">
-                    {stack.map(t => <span key={t} className="p-tech">{t}</span>)}
-                  </div>
-                </div>
-                <div className="p-proj-actions">
-                  <a href={live} target="_blank" rel="noreferrer" className="p-proj-btn live">
-                    <i className="fas fa-external-link-alt" /> Live
-                  </a>
-                  <a href={code} target="_blank" rel="noreferrer" className="p-proj-btn code">
-                    <i className="fab fa-github" /> Code
-                  </a>
-                  <a href={`/projects/${name.toLowerCase().replace(/\s+/g,"-")}`} className="p-proj-btn code">
-                    Details
-                  </a>
-                </div>
-              </article>
-            ))}
+<section id="projects" className="p-section alt">
+  <div className="p-inner">
+    <p className="p-sec-label p-reveal">Selected work</p>
+    <h2 className="p-sec-title p-reveal">My <span>Projects</span></h2>
+
+    <div className="p-proj-list">
+      {[
+        {
+          name: "Badar Uddin Welfare",
+          flagship: true,
+          featured: true,
+          tagline: "Charity Management Platform",
+          desc: "A production-focused charity management system designed for real organizational use. Includes donation request workflows, admin approval system, and role-based dashboards to manage funds, activities, and beneficiary records.",
+          stack: ["React", "Node.js", "Express", "MongoDB", "JWT", "Cloudinary"],
+          live: "https://badaruddinwelfareorg.vercel.app/",
+          code: "https://github.com/najmulcodes/badaruddinwelfare-client",
+          img: "/projects/badaruddin.png"
+        },
+
+        {
+          name: "MicroTask Platform",
+          featured: true,
+          tagline: "Role-Based Freelance Marketplace",
+          desc: "A multi-role micro-tasking platform with Worker, Buyer, and Admin dashboards. Includes task lifecycle management, secure JWT authentication, Stripe-based payments, and submission approval workflows.",
+          stack: ["React", "Node.js", "Express", "MongoDB", "JWT", "Stripe"],
+          live: "https://microtask-client-iota.vercel.app",
+          code: "https://github.com/najmulcodes/microtask-client",
+          creds: {
+            email: "admin@microtask.com",
+            password: "Admin123",
+            role: "Admin"
+          },
+          img: "/projects/microtask.png"
+        },
+
+        {
+          name: "Care.xyz",
+          featured: true,
+          tagline: "Care Service Booking Platform (Next.js)",
+          desc: "A Next.js-based service platform for booking caregivers across Bangladesh. Features dynamic pricing, cascading location filtering, private booking routes, and Firebase authentication.",
+          stack: ["Next.js", "React", "Firebase", "Tailwind CSS"],
+          live: "https://care-xyz-baby-sitting-elderly-care.vercel.app",
+          code: "https://github.com/najmulcodes/Care.xyz---Baby-Sitting-Elderly-Care-Service-Platform",
+          img: "/projects/carexyz.png"
+        },
+
+        {
+          name: "ClubSphere",
+          featured: false,
+          tagline: "Membership & Event Management System",
+          desc: "A role-based club management system with event handling, membership approval flows, and protected routes using JWT authentication.",
+          stack: ["React", "Node.js", "Express", "MongoDB"],
+          live: "https://clubsphere-client1.netlify.app/",
+          code: "https://github.com/najmulcodes/clubsphere-client",
+          img: "/projects/clubsphere.png"
+        },
+
+        {
+          name: "BookHub",
+          featured: false,
+          tagline: "Book Management Platform",
+          desc: "A CRUD-based application for managing books with REST API integration. Includes real-time UI updates and structured data handling.",
+          stack: ["React", "Node.js", "Express", "MongoDB"],
+          live: "https://bookhub-heaven.surge.sh",
+          code: "https://github.com/najmulcodes/bookhub-client",
+          img: "/projects/bookhub.png"
+        }
+      ].map(({ name, featured, flagship, tagline, desc, stack, live, code, creds, img }) => (
+
+        <article key={name} className={`p-proj-card p-reveal${flagship ? " flagship" : ""}${featured ? " featured" : ""}`}>
+
+          {/* LEFT: Thumbnail */}
+          <div className="p-proj-thumb-wrap">
+            <img
+              src={img}
+              alt={name}
+              className="p-proj-thumb"
+              onError={e => { e.currentTarget.style.display = "none" }}
+            />
           </div>
-        </div>
-      </section>
+
+          {/* MIDDLE: Content */}
+          <div className="p-proj-body">
+            <div className="p-proj-header">
+              <h3 className="p-proj-name">{name}</h3>
+              {flagship ? (
+                <span className="p-feat-badge flagship">Flagship</span>
+              ) : featured && (
+                <span className="p-feat-badge">Featured</span>
+              )}
+            </div>
+
+            <p className="p-proj-tagline">{tagline}</p>
+            <p className="p-proj-desc">{desc}</p>
+
+            {creds && (
+              <div className="p-proj-creds">
+                <div className="cred-title"><i className="fas fa-key" /> Demo Login</div>
+                <div className="cred-row">Email <span className="cred-val">{creds.email}</span></div>
+                <div className="cred-row">Password <span className="cred-val">{creds.password}</span></div>
+                <div className="cred-row">Role <span className="cred-val">{creds.role}</span></div>
+              </div>
+            )}
+
+            <div className="p-proj-stack">
+              {stack.map(t => <span key={t} className="p-tech">{t}</span>)}
+            </div>
+          </div>
+
+          {/* RIGHT: Actions */}
+          <div className="p-proj-actions">
+            <a href={live} target="_blank" rel="noreferrer" className="p-proj-btn live">
+              <i className="fas fa-external-link-alt" /> Live
+            </a>
+
+            <a href={code} target="_blank" rel="noreferrer" className="p-proj-btn code">
+              <i className="fab fa-github" /> Code
+            </a>
+
+            {/* NEW REQUIRED BUTTON */}
+            <a href={`/projects/${name.toLowerCase().replace(/\s+/g, "-")}`} className="p-proj-btn code">
+              Details
+            </a>
+          </div>
+
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
 
       {/* EXPERIENCE */}
       <section id="experience" className="p-section">
@@ -659,7 +665,7 @@ export default function Portfolio() {
               {title:"Data Entry Specialist",sub:"Nation IT Limited",period:"2024 – Present",current:true,desc:"Managing structured data operations, maintaining records and ensuring data accuracy across business workflows."},
               {title:"Computer Operator",sub:"IT Solution Feni",period:"2015 – 2017",current:false,desc:"Provided IT support and computer operations, handling technical troubleshooting and system maintenance."},
               {title:"Cashier",sub:"Alkhimah Allraqiyat Restaurant — Saudi Arabia",period:"Overseas",current:false,desc:"Managed point-of-sale transactions, customer service, and daily cash reconciliation."},
-            ].map(({title,sub,period,current,desc}) => (
+            ].map(({title,sub,period,current,desc})=>(
               <div key={title} className="p-tl-item p-reveal">
                 <div className="p-tl-card">
                   <div className="p-tl-top">
@@ -688,7 +694,7 @@ export default function Portfolio() {
               {title:"Certification — Complete Web Development",sub:"Programming Hero",period:"2025 – 2026",extra:null,desc:"Full Stack Track — covering React, Node.js, Express, MongoDB and deployment."},
               {title:"HSC — Business Studies",sub:"South East Degree College",period:"2013 – 2015",extra:null,desc:null},
               {title:"SSC — Business Studies",sub:"FazilPur Farhad Nagar Zinnah High School",period:"2007 – 2013",extra:null,desc:null},
-            ].map(({title,sub,period,extra,desc}) => (
+            ].map(({title,sub,period,extra,desc})=>(
               <div key={title} className="p-tl-item p-reveal">
                 <div className="p-tl-card">
                   <div className="p-tl-top">
@@ -707,28 +713,172 @@ export default function Portfolio() {
       </section>
 
       {/* CONTACT */}
-      <section id="contact" className="p-section">
+      <section id="contact" className="p-section" style={{paddingBottom:"60px"}}>
+        <style>{`
+          .p-ct-header{text-align:center;margin-bottom:36px}
+          .p-ct-header .p-sec-label{justify-content:center}
+          .p-ct-header .p-sec-label::after{display:none}
+          .p-ct-header .p-sec-title{margin-bottom:12px}
+          .p-ct-sub{color:var(--muted);font-size:.88rem;line-height:1.8}
+
+          /* equal 1:1 columns */
+          .p-ct-grid{
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:28px;
+            align-items:start;
+            margin-bottom:24px;
+          }
+
+          /* LEFT – no outer card, just floating items */
+          .p-ct-left{display:flex;flex-direction:column;gap:14px}
+
+          .p-ct-item{
+            display:flex;align-items:center;gap:16px;
+            padding:18px 20px;
+            background:var(--bg2);
+            border:1px solid var(--border);
+            border-radius:14px;
+            text-decoration:none;
+            transition:border-color .22s,box-shadow .22s,transform .22s;
+          }
+          .p-ct-item:hover{
+            border-color:var(--teal-mid);
+            box-shadow:0 6px 24px rgba(0,229,195,.08);
+            transform:translateX(4px);
+          }
+          .p-ct-icon{
+            width:42px;height:42px;border-radius:11px;flex-shrink:0;
+            background:var(--teal-dim);border:1px solid var(--teal-mid);
+            display:flex;align-items:center;justify-content:center;
+          }
+          .p-ct-icon i{color:var(--teal);font-size:.92rem}
+          .p-ct-lbl{
+            font-size:.65rem;font-weight:700;letter-spacing:.1em;
+            text-transform:uppercase;color:var(--muted);margin-bottom:3px;
+          }
+          .p-ct-val{font-size:.86rem;color:var(--white);font-weight:600;line-height:1.3}
+
+          /* RIGHT – form same size, no extra wrapper */
+          .p-ct-form-wrap{
+            /* cf-card already has its own bg/border/radius from ContactForm */
+          }
+
+          /* Social row */
+          .p-ct-soc{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+          .p-ct-soc-btn{
+            display:inline-flex;align-items:center;gap:9px;
+            padding:11px 24px;border-radius:12px;
+            border:1px solid var(--border);background:var(--bg2);
+            font-size:.8rem;font-weight:600;color:var(--muted);
+            transition:all .22s;
+          }
+          .p-ct-soc-btn i{font-size:.95rem}
+          .p-ct-soc-btn:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(0,229,195,.1)}
+          .p-ct-soc-btn.gh:hover{border-color:rgba(255,255,255,.25);color:var(--white);background:rgba(255,255,255,.05)}
+          .p-ct-soc-btn.li:hover{border-color:rgba(10,102,194,.5);color:#0a66c2;background:rgba(10,102,194,.08)}
+          .p-ct-soc-btn.wa:hover{border-color:rgba(37,211,102,.4);color:#25d366;background:rgba(37,211,102,.08)}
+
+          /* Copyright */
+          .p-ct-copy{
+            text-align:center;padding-top:20px;
+            border-top:1px solid var(--border);
+            font-size:.75rem;color:var(--muted);
+          }
+          .p-ct-copy span{color:var(--teal)}
+
+          @media(max-width:760px){
+            .p-ct-grid{grid-template-columns:1fr}
+          }
+        `}</style>
+
         <div className="p-inner">
-          <div className="p-contact-wrap">
-            <p className="p-sec-label p-reveal" style={{justifyContent:"center"}}>Get in touch</p>
-            <h2 className="p-sec-title p-reveal" style={{marginBottom:0}}>Let&apos;s Work <span>Together</span></h2>
-            <p style={{color:"var(--muted)",fontSize:".88rem",marginTop:14}} className="p-reveal">
-              Open to full-time roles, freelance projects and collaborations.<br/>I&apos;d love to hear about what you&apos;re building.
+
+          {/* HEADER – centered */}
+          <div className="p-ct-header">
+            <p className="p-sec-label p-reveal">Get in touch</p>
+            <h2 className="p-sec-title p-reveal">
+              Let&apos;s Work <span>Together</span>
+            </h2>
+            <p className="p-ct-sub p-reveal">
+              Open to full-time roles, freelance projects and collaborations.
+              <br />
+              I&apos;d love to hear about what you&apos;re building.
             </p>
-            <a href="mailto:najmulhasanshahin@gmail.com" className="p-contact-email p-reveal">
-              <i className="fas fa-envelope" /> najmulhasanshahin@gmail.com
-            </a>
-            <div className="p-social-row p-reveal">
-              <a href="https://github.com/najmulcodes" target="_blank" rel="noreferrer" className="p-soc-btn"><i className="fab fa-github" /> GitHub</a>
-              <a href="https://www.linkedin.com/in/najmulcodes/" target="_blank" rel="noreferrer" className="p-soc-btn"><i className="fab fa-linkedin" /> LinkedIn</a>
-              <a href="https://wa.me/8801840242448" target="_blank" rel="noreferrer" className="p-soc-btn"><i className="fab fa-whatsapp" /> WhatsApp</a>
-            </div>
           </div>
+
+          {/* TWO-COLUMN GRID */}
+          <div className="p-ct-grid">
+
+            {/* LEFT – free-floating info items, no outer wrapper box */}
+            <div className="p-ct-left p-reveal">
+
+              {/* Email – opens mail client */}
+              <a href="mailto:najmulhasanshahin@gmail.com" className="p-ct-item">
+                <div className="p-ct-icon"><i className="fas fa-envelope" /></div>
+                <div>
+                  <p className="p-ct-lbl">Email</p>
+                  <p className="p-ct-val">najmulhasanshahin@gmail.com</p>
+                </div>
+              </a>
+
+              {/* Phone – opens dialer */}
+              <a href="tel:+8801840242448" className="p-ct-item">
+                <div className="p-ct-icon"><i className="fas fa-phone" /></div>
+                <div>
+                  <p className="p-ct-lbl">Phone</p>
+                  <p className="p-ct-val">+880 1840-242448</p>
+                </div>
+              </a>
+
+              {/* Location */}
+              <div className="p-ct-item" style={{cursor:"default"}}>
+                <div className="p-ct-icon"><i className="fas fa-map-marker-alt" /></div>
+                <div>
+                  <p className="p-ct-lbl">Location</p>
+                  <p className="p-ct-val">Dhaka, Bangladesh</p>
+                </div>
+              </div>
+
+              {/* Response time */}
+              <div className="p-ct-item" style={{cursor:"default"}}>
+                <div className="p-ct-icon"><i className="fas fa-clock" /></div>
+                <div>
+                  <p className="p-ct-lbl">Response Time</p>
+                  <p className="p-ct-val">Within 24 hours</p>
+                </div>
+              </div>
+
+            </div>
+
+            {/* RIGHT – contact form (equal width, no extra wrapper) */}
+            <div className="p-ct-form-wrap p-reveal">
+              <ContactForm />
+            </div>
+
+          </div>
+
+          {/* SOCIAL BUTTONS – centered */}
+          <div className="p-ct-soc p-reveal">
+            <a href="https://github.com/najmulcodes" target="_blank" rel="noreferrer" className="p-ct-soc-btn gh">
+              <i className="fab fa-github" /> GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/najmulcodes/" target="_blank" rel="noreferrer" className="p-ct-soc-btn li">
+              <i className="fab fa-linkedin" /> LinkedIn
+            </a>
+            <a href="https://wa.me/8801840242448" target="_blank" rel="noreferrer" className="p-ct-soc-btn wa">
+              <i className="fab fa-whatsapp" /> WhatsApp
+            </a>
+          </div>
+
+          {/* COPYRIGHT */}
+          <p className="p-ct-copy p-reveal">
+            © {new Date().getFullYear()} <span>Najmul Hasan</span>. Crafted with Next.js &amp; Tailwind CSS. All rights reserved.
+          </p>
+
         </div>
       </section>
 
-      {/* ── FOOTER (single instance from component) ── */}
-      <Footer />
     </>
   );
 }
