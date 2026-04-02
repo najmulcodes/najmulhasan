@@ -570,6 +570,17 @@ const greetings = [
           img: "/projects/carexyz.png"
         },
 
+                {
+          name: "BookHub",
+          featured: false,
+          tagline: "Book Management Platform",
+          desc: "A CRUD-based application for managing books with REST API integration. Includes real-time UI updates and structured data handling.",
+          stack: ["React", "Node.js", "Express", "MongoDB"],
+          live: "https://bookhub-heaven.surge.sh",
+          code: "https://github.com/najmulcodes/bookhub-client",
+          img: "/projects/bookhub.png"
+        },
+
         {
           name: "ClubSphere",
           featured: false,
@@ -579,18 +590,8 @@ const greetings = [
           live: "https://clubsphere-client1.netlify.app/",
           code: "https://github.com/najmulcodes/clubsphere-client",
           img: "/projects/clubsphere.png"
-        },
-
-        {
-          name: "BookHub",
-          featured: false,
-          tagline: "Book Management Platform",
-          desc: "A CRUD-based application for managing books with REST API integration. Includes real-time UI updates and structured data handling.",
-          stack: ["React", "Node.js", "Express", "MongoDB"],
-          live: "https://bookhub-heaven.surge.sh",
-          code: "https://github.com/najmulcodes/bookhub-client",
-          img: "/projects/bookhub.png"
         }
+
       ].map(({ name, featured, flagship, tagline, desc, stack, live, code, creds, img }) => (
 
         <article key={name} className={`p-proj-card p-reveal${flagship ? " flagship" : ""}${featured ? " featured" : ""}`}>
@@ -662,7 +663,7 @@ const greetings = [
           <h2 className="p-sec-title p-reveal">Professional <span>Experience</span></h2>
           <div className="p-timeline">
             {[
-              {title:"Data Entry Specialist",sub:"Nation IT Limited",period:"2024 – Present",current:true,desc:"Managing structured data operations, maintaining records and ensuring data accuracy across business workflows."},
+              {title:"Data Entry Specialist",sub:"Nation IT Limited",period:"2024 – June 2025",current:true,desc:"Managing structured data operations, maintaining records and ensuring data accuracy across business workflows."},
               {title:"Computer Operator",sub:"IT Solution Feni",period:"2015 – 2017",current:false,desc:"Provided IT support and computer operations, handling technical troubleshooting and system maintenance."},
               {title:"Cashier",sub:"Alkhimah Allraqiyat Restaurant — Saudi Arabia",period:"Overseas",current:false,desc:"Managed point-of-sale transactions, customer service, and daily cash reconciliation."},
             ].map(({title,sub,period,current,desc})=>(
@@ -672,7 +673,7 @@ const greetings = [
                     <div><div className="p-tl-title">{title}</div><div className="p-tl-sub">{sub}</div></div>
                     <div style={{display:"flex",flexDirection:"column",gap:6,alignItems:"flex-end"}}>
                       <span className="p-tl-period">{period}</span>
-                      {current && <span className="p-current">Current</span>}
+                      {current && <span className="p-current">Last Job</span>}
                     </div>
                   </div>
                   <p className="p-tl-desc">{desc}</p>
