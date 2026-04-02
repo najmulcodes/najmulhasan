@@ -19,8 +19,8 @@ body{
 font-family:'Inter',sans-serif;
 color:#1a1a1a;
 line-height:1.3;
-max-width:850px;
-padding:40px;
+max-width:900px;
+padding:30px;
 margin:0 auto;
 background-color:#fff;
 font-size:10.5pt;
@@ -41,50 +41,50 @@ pointer-events:auto;
 
 header{
 text-align:center;
-margin-bottom:16px;
+margin-bottom:6px;
 }
 
 h1{
 font-size:24pt;
-font-weight:700;
-margin-bottom:5px;
+font-weight:900;
+margin-bottom:1px;
 color:#000;
 }
 
 .role{
-font-size:13pt;
-font-weight:500;
+font-size:14pt;
+font-weight:600;
 color:#444;
-margin-bottom:8px;
+margin-bottom:4px;
 }
 
 .contact-row{
 display:flex;
 justify-content:center;
 align-items:center;
-gap:12px;
+gap:14px;
 font-size:9.5pt;
-margin-bottom:4px;
+margin-bottom:8px;
 }
 
 .social-row{
 display:flex;
 justify-content:center;
 align-items:center;
-gap:12px;
+gap:10px;
 font-size:9.5pt;
 }
 
 .icon-text{
 display:inline-flex;
 align-items:center;
-gap:10px;
+gap:8px;
 color:#1a1a1a;
 text-decoration:none;
 }
 
 .icon-text i{
-font-size:10pt;
+font-size:12pt;
 width:12px;
 text-align:center;
 color:#333;
@@ -92,22 +92,22 @@ color:#333;
 
 .link-accent{
 color:#0b57d0 !important;
-font-weight:700;
+font-weight:900;
 }
 
 /* sections */
 
 section{
-margin-bottom:12px;
-padding-left: 2px
+margin-bottom:2px;
+padding-left: 8px
 }
 
 h2{
-font-size:11pt;
-font-weight:700;
-border-bottom:1px solid #333;
-margin-bottom:8px;
-padding-bottom:5px;
+font-size:13pt;
+font-weight:900;
+border-bottom:1.5px solid #333;
+margin-bottom:1px;
+padding-bottom:1px;
 text-transform:uppercase;
 }
 
@@ -119,46 +119,53 @@ color:#1a1a1a;
 /* projects */
 
 .project{
-margin-bottom:10px;
+margin-bottom:2px;
 }
 
 .project-header{
 display:flex;
 justify-content:space-between;
 align-items:baseline;
-margin-bottom:5px;
+margin-bottom:1px;
 }
 
 .project-title{
-font-weight:700;
-font-size:12pt;
+font-weight:900;
+font-size:11pt;
 }
 
 .project-links{
-font-size:9pt;
+font-size:10pt;
 }
 
 .project-links a{
 color:#0b57d0;
 text-decoration:underline;
-font-weight:600;
+font-weight:700;
+}
+
+.overview{
+font-size:10pt;
+font-weight:800;
+color:#815252;
+margin: bottom 4px;
 }
 
 .tech-stack{
 font-size:10pt;
-font-weight:700;
+font-weight:900;
 color:#444;
-margin-bottom:2px;
+margin: bottom 4px;
 }
 
 ul{
 list-style-type:disc;
-margin-left:18px;
-margin-top:8px;
+margin-left:30px;
+margin-top:2px;
 }
 
 li{
-margin-bottom:6px;
+margin-bottom:1px;
 }
 
 /* rows */
@@ -167,7 +174,7 @@ margin-bottom:6px;
 display:flex;
 justify-content:space-between;
 align-items:baseline;
-margin-bottom:10px;
+margin-bottom:1px;
 }
 
 .bold{
@@ -226,7 +233,7 @@ padding:0;
 <h2>Career Objective</h2>
 
 <p class="small">
-Full Stack Developer with hands-on experience building and deploying MERN stack applications featuring authentication, payment integration, and role-based access control. Seeking a junior role to contribute to real-world products and grow within a collaborative team.
+Full Stack Developer with hands-on experience building and deploying real-world web applications featuring secure authentication, role-based access control, and payment integration. Focused on writing clean, scalable code and contributing effectively to production-ready systems within a collaborative team.
 </p>
 
 </section>
@@ -262,89 +269,81 @@ Full Stack Developer with hands-on experience building and deploying MERN stack 
 
 <div class="project">
 
-<div class="project-header">
+  <div class="project-header">
+    <span class="project-title">Badar Uddin Welfare (Full Stack Web App)</span>
+    <div class="project-links">
+      <a href="https://badaruddinwelfareorg.vercel.app" target="_blank">Preview</a> |
+      <a href="https://github.com/najmulcodes/badaruddinwelfare-client" target="_blank">Client Code</a>
+    </div>
+  </div>
 
-<span class="project-title">Badar Uddin Welfare (Full Stack Web App)</span>
+  <p class="overview">
+    A role-based donation management platform enabling donors, admins, and volunteers to manage funds, approvals, and activities efficiently.
+  </p>
 
-<div class="project-links">
+  <ul class="small">
+    <li>Designed secure JWT authentication with role-based dashboards for donor, admin, and volunteer access control.</li>
+    <li>Developed end-to-end donation workflow including request submission, approval system, and fund tracking.</li>
+    <li>Built dynamic and responsive UI with real-time fund allocation insights using Tailwind CSS.</li>
+  </ul>
 
-<a href="https://badaruddinwelfareorg.vercel.app" target="_blank">Preview</a> |
-<a href="https://github.com/najmulcodes/badaruddinwelfare-client" target="_blank">Client Code</a>
-</div>
-
-</div>
-
-<p class="tech-stack">Technology: React, Tailwind, Node.js, Express, MongoDB, Firebase Auth, JWT</p>
-
-<ul class="small">
-
-<li>Built JWT authentication with role-based dashboards for donor, admin, and volunteer.</li>
-
-<li>Implemented donation tracking and approval workflows.</li>
-
-<li>Delivered a fully responsive UI with Tailwind CSS featuring dynamic fund allocation displays.</li>
-
-</ul>
+  <p class="tech-stack">
+    Technology: React, Tailwind CSS, Node.js, Express.js, MongoDB, Firebase Authentication, JWT
+  </p>
 
 </div>
-
 
 
 <div class="project">
 
-<div class="project-header">
+  <div class="project-header">
+    <span class="project-title">MicroTask Platform</span>
+    <div class="project-links">
+      <a href="https://microtask-client-iota.vercel.app/" target="_blank">Preview</a> |
+      <a href="https://github.com/najmulcodes/microtask-client" target="_blank">Client Code</a>
+    </div>
+  </div>
 
-<span class="project-title">MicroTask Platform</span>
+  <p class="overview">
+    A task marketplace platform where users can create, manage, and complete micro-tasks with secure payment integration.
+  </p>
 
-<div class="project-links">
+  <ul class="small">
+    <li>Integrated Stripe payment system with secure checkout flow using Firebase Auth and JWT.</li>
+    <li>Implemented role-based dashboards for task creators and workers with real-time task status updates.</li>
+    <li>Optimized database structure in MongoDB to efficiently manage task-user relationships and transactions.</li>
+  </ul>
 
-<a href="https://microtask-client-iota.vercel.app/" target="_blank">Preview</a> |
-<a href="https://github.com/najmulcodes/microtask-client" target="_blank">Client Code</a>
-
-</div>
-
-</div>
-
-<p class="tech-stack">Technology: React, Tailwind, Node.js, Express, MongoDB, Firebase Auth, Stripe, JWT</p>
-
-<ul class="small">
-
-<li>Engineered a secure checkout workflow integrating Stripe API and Firebase Auth with JWT.</li>
-
-<li>Built role-based dashboards for task management, approvals, and real-time order statuses.</li>
-
-<li>Optimised data management using MongoDB to handle complex relationships between users and tasks.</li>
-
-</ul>
+  <p class="tech-stack">
+    Technology: React, Tailwind CSS, Node.js, Express.js, MongoDB, Firebase Authentication, Stripe API, JWT
+  </p>
 
 </div>
-
 
 
 <div class="project">
 
-<div class="project-header">
+  <div class="project-header">
+    <span class="project-title">Care.xyz (Service Booking Platform)</span>
+    <div class="project-links">
+      <a href="https://care-xyz-baby-sitting-elderly-care.vercel.app/" target="_blank">Preview</a> |
+      <a href="https://github.com/najmulcodes/Care.xyz---Baby-Sitting-Elderly-Care-Service-Platform" target="_blank">Client Code</a>
+    </div>
+  </div>
 
-<span class="project-title">Care.xyz</span>
+  <p class="overview">
+    A service booking platform for babysitting and elderly care, enabling users to schedule services with secure authentication and flexible booking options.
+  </p>
 
-<div class="project-links">
+  <ul class="small">
+    <li>Implemented authentication system using NextAuth with credential and OAuth providers.</li>
+    <li>Developed booking system with availability scheduling, dynamic pricing, and confirmation flow.</li>
+    <li>Built scalable frontend architecture using Next.js and TypeScript with clean UI using Tailwind CSS.</li>
+  </ul>
 
-<a href="https://care-xyz-baby-sitting-elderly-care.vercel.app/" target="_blank">Preview</a> |
-<a href="https://github.com/najmulcodes/Care.xyz---Baby-Sitting-Elderly-Care-Service-Platform" target="_blank">Client Code</a>
-
-</div>
-
-</div>
-
-<p class="tech-stack">Technology: Next.js, TypeScript, NextAuth, MongoDB, Tailwind CSS</p>
-
-<ul class="small">
-
-<li>Implemented full authentication flow using NextAuth with credential and OAuth providers.</li>
-
-<li>Built booking system with availability scheduling, dynamic pricing, and confirmation workflows.</li>
-
-</ul>
+  <p class="tech-stack">
+    Technology: Next.js, TypeScript, NextAuth.js, MongoDB, Tailwind CSS
+  </p>
 
 </div>
 
@@ -377,7 +376,7 @@ Managed structured data pipelines ensuring accuracy, consistency, and timely del
 <span class="bold">BBA Accounting & Finance</span>
 <span>2019 – 2023</span>
 </div>
-<div class="entry" style="margin-top: 6px;">
+<div class="entry" style="margin-top: 2px;">
             <div>
 <p class="small">City College Dhaka, Bangladesh</p>
 
@@ -392,16 +391,31 @@ Managed structured data pipelines ensuring accuracy, consistency, and timely del
 <div class="split-row">
 <span class="bold">Complete Web Development Course – Programming Hero</span>
 <span>2025 – 2026</span>
+
 </div>
 
-<p class="small">
+<p><ul>
+
+<li><b class="small">
+
 <a href="https://drive.google.com/file/d/1npAH6Q-1M70o7lRlyuFjzFLO0IYJ8M11/view?usp=sharing" target="_blank">
 <i class="fa-solid fa-certificate"></i> View Certificate
 </a>
-</p>
+
+</b></li>
+
+</ul></p>
 
 </section>
+<br>
 
+<section>
+
+<h2>LANGUAGES</h2>
+
+<p class="small">Bengali (Native), English (Fluent), Hindi (Fluent), Arabic (Fluent)</p>
+
+</section>
 
 </body>
 </html>
