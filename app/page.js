@@ -873,7 +873,7 @@ const greetings = [
 
           {/* COPYRIGHT */}
           <p className="p-ct-copy p-reveal">
-            © {new Date().getFullYear()} <span>Najmul Hasan</span>. Crafted with Next.js &amp; Tailwind CSS. All rights reserved.
+            © {new Date().getFullYear()} <span>Najmul Hasan . All rights reserved.</span> — Crafted with Next.js &amp; Tailwind CSS.
           </p>
 
         </div>
