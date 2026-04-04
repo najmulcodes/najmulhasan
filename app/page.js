@@ -140,21 +140,21 @@ const greetings = [
         .p-hero-tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--fm);font-size:.72rem;color:var(--teal);background:var(--teal-dim);border:1px solid var(--teal-mid);padding:5px 14px;border-radius:20px;margin-bottom:24px;animation:p-fadeUp .6s ease both}
         .p-tag-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);box-shadow:0 0 8px var(--teal);animation:p-pulse 1.8s infinite}
         .p-hero-title{font-size:clamp(2.2rem,4.5vw,3.8rem);font-weight:700;line-height:1.1;letter-spacing:-.03em;animation:p-fadeUp .6s .1s ease both;margin-bottom:20px}
-.p-hero-title .hi{
-  display: inline-block;
-  color: var(--muted);
-  font-weight: 400;
-  font-size: 0.6em;
-  line-height: 1.2;
-  margin-bottom: 10px;
-  min-height: 1.2em;
-  letter-spacing: 0.02em;
-}       
-.p-hero-title .name{
-  display: block;
-  will-change: transform, opacity;
-}
-.p-hero-title .role{display:block;font-size:.56em;font-weight:400;color:var(--teal);letter-spacing:0;margin-top:8px}
+        .p-hero-title .hi{
+          display: inline-block;
+          color: var(--muted);
+          font-weight: 400;
+          font-size: 0.6em;
+          line-height: 1.2;
+          margin-bottom: 10px;
+          min-height: 1.2em;
+          letter-spacing: 0.02em;
+        }
+        .p-hero-title .name{
+          display: block;
+          will-change: transform, opacity;
+        }
+        .p-hero-title .role{display:block;font-size:.56em;font-weight:400;color:var(--teal);letter-spacing:0;margin-top:8px}
         .p-hero-desc{color:var(--muted);font-size:.92rem;max-width:500px;line-height:1.85;margin-bottom:36px;animation:p-fadeUp .6s .2s ease both}
         .p-hero-btns{display:flex;gap:12px;flex-wrap:wrap;animation:p-fadeUp .6s .3s ease both}
         .p-btn-teal{display:inline-flex;align-items:center;gap:8px;padding:11px 28px;background:var(--teal);color:#0d1117;font-weight:700;font-size:.84rem;border-radius:9px;transition:opacity .2s,transform .2s,box-shadow .2s}
@@ -284,25 +284,15 @@ const greetings = [
         .p-current{display:inline-flex;align-items:center;gap:5px;font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#3fb950;padding:2px 9px;border-radius:20px;background:rgba(63,185,80,.08);border:1px solid rgba(63,185,80,.22)}
         .p-current::before{content:'';width:5px;height:5px;border-radius:50%;background:#3fb950;animation:p-pulse 1.5s infinite}
 
-        .p-contact-wrap{max-width:640px;margin:0 auto;text-align:center}
-        .p-contact-wrap .p-sec-label{justify-content:center}
-        .p-contact-wrap .p-sec-label::after{display:none}
-        .p-contact-email{display:inline-flex;align-items:center;gap:12px;margin:32px 0 28px;padding:18px 34px;background:var(--bg2);border:1px solid var(--border);border-radius:12px;font-family:var(--fm);font-size:.88rem;color:var(--white);transition:border-color .2s,transform .2s,box-shadow .2s}
-        .p-contact-email:hover{border-color:var(--teal-mid);transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.3)}
-        .p-contact-email i{color:var(--teal)}
-        .p-social-row{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
-        .p-soc-btn{display:inline-flex;align-items:center;gap:9px;padding:10px 22px;border-radius:10px;border:1px solid var(--border);background:rgba(255,255,255,.03);font-size:.8rem;font-weight:500;color:var(--muted);transition:all .2s}
-        .p-soc-btn:hover{border-color:var(--teal-mid);color:var(--teal);background:var(--teal-dim);transform:translateY(-2px)}
-
-        .p-footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 6vw;text-align:center;position:relative;z-index:1}
-        .p-footer p{font-size:.76rem;color:var(--muted)}
-        .p-footer span{color:var(--teal)}
-
         @keyframes p-fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
         @keyframes p-pulse{0%,100%{opacity:1}50%{opacity:.3}}
         @keyframes p-blink{50%{opacity:0}}
         .p-reveal{opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s ease}
         .p-reveal.p-visible{opacity:1;transform:none}
+
+        .p-footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 6vw;text-align:center;position:relative;z-index:1}
+        .p-footer p{font-size:.76rem;color:var(--muted)}
+        .p-footer span{color:var(--teal)}
 
         .p-dl-mobile{display:none}
         @media(max-width:900px){
@@ -356,11 +346,8 @@ const greetings = [
       `}</style>
 
       <Navbar />
-
-      {/* Topo bg */}
       <div className="p-topo" />
 
-      {/* Side dots */}
       <div className="p-side-nav">
         {["hero","about","skills","projects","experience","education","contact"].map((s,i) => (
           <div key={s} className={`p-side-dot${i===0?" active":""}`} title={s} />
@@ -375,29 +362,23 @@ const greetings = [
               <span className="p-tag-dot" />
               Available for opportunities
             </div>
-<h1 className="p-hero-title">
-  <span className="hi">
-    <WordRotate words={greetings} />
-  </span>
-
-  <motion.span
-  key="name"
-  className="name"
-  initial={{ opacity: 0, y: 8 }}
-  animate={{ opacity: 1, y: 0 }}
-  transition={{
-    duration: 0.6,
-    ease: [0.4, 0, 0.2, 1],
-    delay: 0.15
-  }}
->
-  I&apos;m Najmul Hasan
-</motion.span>
-
-  <span className="role">
-    Full-Stack Developer · MERN · React · Next.js
-  </span>
-</h1>
+            <h1 className="p-hero-title">
+              <span className="hi">
+                <WordRotate words={greetings} />
+              </span>
+              <motion.span
+                key="name"
+                className="name"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1], delay: 0.15 }}
+              >
+                I&apos;m Najmul Hasan
+              </motion.span>
+              <span className="role">
+                Full-Stack Developer · MERN · React · Next.js
+              </span>
+            </h1>
             <p className="p-hero-desc">
               Business graduate turned developer — I build structured, scalable web applications
               with React, Node.js and MongoDB. Focused on clean code and great user experience.
@@ -438,12 +419,7 @@ const greetings = [
               ))}
             </div>
             <div className="p-card-actions">
-              <a
-                href="/Najmul_Hasan_Resume.pdf"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-card-cta"
-              >
+              <a href="/Najmul_Hasan_Resume.pdf" target="_blank" rel="noopener noreferrer" className="p-card-cta">
                 <i className="fas fa-file-alt" /> Resume
               </a>
             </div>
@@ -524,173 +500,144 @@ const greetings = [
       </section>
 
       {/* PROJECTS */}
-<section id="projects" className="p-section alt">
-  <div className="p-inner">
-    <p className="p-sec-label p-reveal">Selected work</p>
-    <h2 className="p-sec-title p-reveal">My <span>Projects</span></h2>
+      <section id="projects" className="p-section alt">
+        <div className="p-inner">
+          <p className="p-sec-label p-reveal">Selected work</p>
+          <h2 className="p-sec-title p-reveal">My <span>Projects</span></h2>
 
-    <div className="p-proj-list">
-      {[
-        {
-          name: "Badar Uddin Welfare",
-          flagship: true,
-          featured: true,
-          tagline: "Charity Management Platform",
-          desc: "A production-focused charity management system designed for real organizational use. Includes donation request workflows, admin approval system, and role-based dashboards to manage funds, activities, and beneficiary records.",
-          stack: ["React", "Node.js", "Express", "MongoDB", "JWT", "Cloudinary"],
-          live: "https://badaruddinwelfareorg.vercel.app/",
-          code: "https://github.com/najmulcodes/badaruddinwelfare-client",
-          img: "/projects/badaruddin.png"
-        },
+          <div className="p-proj-list">
+            {[
+              {
+                name: "Badar Uddin Welfare",
+                flagship: true,
+                featured: true,
+                tagline: "Charity Management Platform",
+                desc: "A production-focused charity management system designed for real organizational use. Includes donation request workflows, admin approval system, and role-based dashboards to manage funds, activities, and beneficiary records.",
+                stack: ["React", "Node.js", "Express", "MongoDB", "JWT", "Cloudinary"],
+                live: "https://badaruddinwelfareorg.vercel.app/",
+                code: "https://github.com/najmulcodes/badaruddinwelfare-client",
+                img: "/projects/badaruddin.png"
+              },
+              {
+                name: "MicroTask Platform",
+                featured: true,
+                tagline: "Role-Based Freelance Marketplace",
+                desc: "A multi-role micro-tasking platform with Worker, Buyer, and Admin dashboards. Includes task lifecycle management, secure JWT authentication, Stripe-based payments, and submission approval workflows.",
+                stack: ["React", "Node.js", "Express", "MongoDB", "JWT", "Stripe"],
+                live: "https://microtask-client-iota.vercel.app",
+                code: "https://github.com/najmulcodes/microtask-client",
+                creds: { email: "admin@microtask.com", password: "Admin123", role: "Admin" },
+                img: "/projects/microtask.png"
+              },
+              {
+                name: "DevFolio Analyzer",
+                featured: true,
+                tagline: "AI-Powered GitHub Profile Analyzer",
+                desc: "A full-stack analytics dashboard that fetches real GitHub data, scores profiles deterministically across 6 factors, and generates AI-powered insights using the Claude API — with graceful fallback when unavailable.",
+                stack: ["React", "Node.js", "Express", "MongoDB", "JWT", "GitHub API", "Anthropic Claude"],
+                live: "https://devfolio-analyzer.vercel.app/",
+                code: "https://github.com/najmulcodes/devfolio-analyzer",
+                img: "/projects/devfolio-analyzer.png"
+              },
+              {
+                name: "LiveCollab",
+                featured: true,
+                tagline: "Real-Time Team Collaboration Platform",
+                desc: "A full-stack real-time Kanban board with live drag-and-drop sync across all connected users, workspace management with invite codes, live presence indicators, and a timestamped activity log.",
+                stack: ["React", "Vite", "Tailwind CSS", "Zustand", "Node.js", "Express", "Socket.IO", "MongoDB", "JWT"],
+                live: "https://livecollab-rho.vercel.app/",
+                code: "https://github.com/najmulcodes/livecollab-client",
+                img: "/projects/livecollab.png"
+              },
+              {
+                name: "Care.xyz",
+                featured: true,
+                tagline: "Care Service Booking Platform (Next.js)",
+                desc: "A Next.js-based service platform for booking caregivers across Bangladesh. Features dynamic pricing, cascading location filtering, private booking routes, and Firebase authentication.",
+                stack: ["Next.js", "React", "Firebase", "Tailwind CSS"],
+                live: "https://care-xyz-baby-sitting-elderly-care.vercel.app",
+                code: "https://github.com/najmulcodes/Care.xyz---Baby-Sitting-Elderly-Care-Service-Platform",
+                img: "/projects/carexyz.png"
+              },
+              {
+                name: "Gatherly",
+                featured: false,
+                tagline: "Community Discovery Platform",
+                desc: "A community discovery and management platform for Bangladesh built with Next.js 14 App Router. Features credential and Google OAuth auth via NextAuth.js, a searchable community catalog, event listings, and a fully responsive mobile-first design.",
+                stack: ["Next.js 14", "NextAuth.js", "Custom CSS", "localStorage"],
+                live: "https://gatherly-navy.vercel.app/",
+                code: "https://github.com/najmulcodes/Gatherly",
+                img: "/projects/gatherly.png"
+              },
+              {
+                name: "ClubSphere",
+                featured: false,
+                tagline: "Membership & Event Management System",
+                desc: "A role-based club management system with event handling, membership approval flows, and protected routes using JWT authentication.",
+                stack: ["React", "Node.js", "Express", "MongoDB"],
+                live: "https://clubsphere-client1.netlify.app/",
+                code: "https://github.com/najmulcodes/clubsphere-client",
+                img: "/projects/clubsphere.png"
+              },
+              {
+                name: "BookHub",
+                featured: false,
+                tagline: "Book Management Platform",
+                desc: "A CRUD-based application for managing books with REST API integration. Includes real-time UI updates and structured data handling.",
+                stack: ["React", "Node.js", "Express", "MongoDB"],
+                live: "https://bookhub-heaven.surge.sh",
+                code: "https://github.com/najmulcodes/bookhub-client",
+                img: "/projects/bookhub.png"
+              },
+            ].map(({ name, featured, flagship, tagline, desc, stack, live, code, creds, img }) => (
 
-        {
-          name: "MicroTask Platform",
-          featured: true,
-          tagline: "Role-Based Freelance Marketplace",
-          desc: "A multi-role micro-tasking platform with Worker, Buyer, and Admin dashboards. Includes task lifecycle management, secure JWT authentication, Stripe-based payments, and submission approval workflows.",
-          stack: ["React", "Node.js", "Express", "MongoDB", "JWT", "Stripe"],
-          live: "https://microtask-client-iota.vercel.app",
-          code: "https://github.com/najmulcodes/microtask-client",
-          creds: {
-            email: "admin@microtask.com",
-            password: "Admin123",
-            role: "Admin"
-          },
-          img: "/projects/microtask.png"
-        },
+              <article key={name} className={`p-proj-card p-reveal${flagship ? " flagship" : ""}${featured ? " featured" : ""}`}>
 
+                <div className="p-proj-thumb-wrap">
+                  <img src={img} alt={name} className="p-proj-thumb" onError={e => { e.currentTarget.style.display = "none" }} />
+                </div>
 
-        {
-          name: "DevFolio Analyzer",
-          featured: true,
-          tagline: "AI-Powered GitHub Profile Analyzer",
-          desc: "A full-stack analytics dashboard that fetches real GitHub data, scores profiles deterministically across 6 factors, and generates AI-powered insights using the Claude API — with graceful fallback when unavailable.",
-          stack: ["React", "Node.js", "Express", "MongoDB", "JWT", "GitHub API", "Anthropic Claude"],
-          live: "https://devfolio-analyzer.vercel.app/",
-          code: "https://github.com/najmulcodes/devfolio-analyzer",
-          img: "/projects/devfolio-analyzer.png"
-        },
- 
-        {
-          name: "LiveCollab",
-          featured: true,
-          tagline: "Real-Time Team Collaboration Platform",
-          desc: "A full-stack real-time Kanban board with live drag-and-drop sync across all connected users, workspace management with invite codes, live presence indicators, and a timestamped activity log.",
-          stack: ["React", "Vite", "Tailwind CSS", "Zustand", "Node.js", "Express", "Socket.IO", "MongoDB", "JWT"],
-          live: "https://livecollab-rho.vercel.app/",
-          code: "https://github.com/najmulcodes/livecollab-client",
-          img: "/projects/livecollab.png"
-        },
- 
-        {
-          name: "Gatherly",
-          featured: false,
-          tagline: "Community Discovery Platform",
-          desc: "A community discovery and management platform for Bangladesh built with Next.js 14 App Router. Features credential and Google OAuth auth via NextAuth.js, a searchable community catalog, event listings, and a fully responsive mobile-first design.",
-          stack: ["Next.js 14", "NextAuth.js", "Custom CSS", "localStorage"],
-          live: "https://gatherly-navy.vercel.app/",
-          code: "https://github.com/najmulcodes/Gatherly",
-          img: "/projects/gatherly.png"
-        }
- 
-      ].map(({ name, featured, flagship, tagline, desc, stack, live, code, creds, img }) => (
- 
-        {
-          name: "Care.xyz",
-          featured: true,
-          tagline: "Care Service Booking Platform (Next.js)",
-          desc: "A Next.js-based service platform for booking caregivers across Bangladesh. Features dynamic pricing, cascading location filtering, private booking routes, and Firebase authentication.",
-          stack: ["Next.js", "React", "Firebase", "Tailwind CSS"],
-          live: "https://care-xyz-baby-sitting-elderly-care.vercel.app",
-          code: "https://github.com/najmulcodes/Care.xyz---Baby-Sitting-Elderly-Care-Service-Platform",
-          img: "/projects/carexyz.png"
-        },
+                <div className="p-proj-body">
+                  <div className="p-proj-header">
+                    <h3 className="p-proj-name">{name}</h3>
+                    {flagship ? (
+                      <span className="p-feat-badge flagship">Flagship</span>
+                    ) : featured && (
+                      <span className="p-feat-badge">Featured</span>
+                    )}
+                  </div>
+                  <p className="p-proj-tagline">{tagline}</p>
+                  <p className="p-proj-desc">{desc}</p>
+                  {creds && (
+                    <div className="p-proj-creds">
+                      <div className="cred-title"><i className="fas fa-key" /> Demo Login</div>
+                      <div className="cred-row">Email <span className="cred-val">{creds.email}</span></div>
+                      <div className="cred-row">Password <span className="cred-val">{creds.password}</span></div>
+                      <div className="cred-row">Role <span className="cred-val">{creds.role}</span></div>
+                    </div>
+                  )}
+                  <div className="p-proj-stack">
+                    {stack.map(t => <span key={t} className="p-tech">{t}</span>)}
+                  </div>
+                </div>
 
-                {
-          name: "BookHub",
-          featured: false,
-          tagline: "Book Management Platform",
-          desc: "A CRUD-based application for managing books with REST API integration. Includes real-time UI updates and structured data handling.",
-          stack: ["React", "Node.js", "Express", "MongoDB"],
-          live: "https://bookhub-heaven.surge.sh",
-          code: "https://github.com/najmulcodes/bookhub-client",
-          img: "/projects/bookhub.png"
-        },
+                <div className="p-proj-actions">
+                  <a href={live} target="_blank" rel="noreferrer" className="p-proj-btn live">
+                    <i className="fas fa-external-link-alt" /> Live
+                  </a>
+                  <a href={code} target="_blank" rel="noreferrer" className="p-proj-btn code">
+                    <i className="fab fa-github" /> Code
+                  </a>
+                  <a href={`/projects/${name.toLowerCase().replace(/\s+/g, "-")}`} className="p-proj-btn code">
+                    Details
+                  </a>
+                </div>
 
-        {
-          name: "ClubSphere",
-          featured: false,
-          tagline: "Membership & Event Management System",
-          desc: "A role-based club management system with event handling, membership approval flows, and protected routes using JWT authentication.",
-          stack: ["React", "Node.js", "Express", "MongoDB"],
-          live: "https://clubsphere-client1.netlify.app/",
-          code: "https://github.com/najmulcodes/clubsphere-client",
-          img: "/projects/clubsphere.png"
-        }
-
-      ].map(({ name, featured, flagship, tagline, desc, stack, live, code, creds, img }) => (
-
-        <article key={name} className={`p-proj-card p-reveal${flagship ? " flagship" : ""}${featured ? " featured" : ""}`}>
-
-          {/* LEFT: Thumbnail */}
-          <div className="p-proj-thumb-wrap">
-            <img
-              src={img}
-              alt={name}
-              className="p-proj-thumb"
-              onError={e => { e.currentTarget.style.display = "none" }}
-            />
+              </article>
+            ))}
           </div>
-
-          {/* MIDDLE: Content */}
-          <div className="p-proj-body">
-            <div className="p-proj-header">
-              <h3 className="p-proj-name">{name}</h3>
-              {flagship ? (
-                <span className="p-feat-badge flagship">Flagship</span>
-              ) : featured && (
-                <span className="p-feat-badge">Featured</span>
-              )}
-            </div>
-
-            <p className="p-proj-tagline">{tagline}</p>
-            <p className="p-proj-desc">{desc}</p>
-
-            {creds && (
-              <div className="p-proj-creds">
-                <div className="cred-title"><i className="fas fa-key" /> Demo Login</div>
-                <div className="cred-row">Email <span className="cred-val">{creds.email}</span></div>
-                <div className="cred-row">Password <span className="cred-val">{creds.password}</span></div>
-                <div className="cred-row">Role <span className="cred-val">{creds.role}</span></div>
-              </div>
-            )}
-
-            <div className="p-proj-stack">
-              {stack.map(t => <span key={t} className="p-tech">{t}</span>)}
-            </div>
-          </div>
-
-          {/* RIGHT: Actions */}
-          <div className="p-proj-actions">
-            <a href={live} target="_blank" rel="noreferrer" className="p-proj-btn live">
-              <i className="fas fa-external-link-alt" /> Live
-            </a>
-
-            <a href={code} target="_blank" rel="noreferrer" className="p-proj-btn code">
-              <i className="fab fa-github" /> Code
-            </a>
-
-            {/* NEW REQUIRED BUTTON */}
-            <a href={`/projects/${name.toLowerCase().replace(/\s+/g, "-")}`} className="p-proj-btn code">
-              Details
-            </a>
-          </div>
-
-        </article>
-      ))}
-    </div>
-  </div>
-</section>
+        </div>
+      </section>
 
       {/* EXPERIENCE */}
       <section id="experience" className="p-section">
@@ -757,145 +704,61 @@ const greetings = [
           .p-ct-header .p-sec-label::after{display:none}
           .p-ct-header .p-sec-title{margin-bottom:12px}
           .p-ct-sub{color:var(--muted);font-size:.88rem;line-height:1.8}
-
-          /* equal 1:1 columns */
-          .p-ct-grid{
-            display:grid;
-            grid-template-columns:1fr 1fr;
-            gap:28px;
-            align-items:start;
-            margin-bottom:24px;
-          }
-
-          /* LEFT – no outer card, just floating items */
+          .p-ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;margin-bottom:24px;}
           .p-ct-left{display:flex;flex-direction:column;gap:14px}
-
-          .p-ct-item{
-            display:flex;align-items:center;gap:16px;
-            padding:18px 20px;
-            background:var(--bg2);
-            border:1px solid var(--border);
-            border-radius:14px;
-            text-decoration:none;
-            transition:border-color .22s,box-shadow .22s,transform .22s;
-          }
-          .p-ct-item:hover{
-            border-color:var(--teal-mid);
-            box-shadow:0 6px 24px rgba(0,229,195,.08);
-            transform:translateX(4px);
-          }
-          .p-ct-icon{
-            width:42px;height:42px;border-radius:11px;flex-shrink:0;
-            background:var(--teal-dim);border:1px solid var(--teal-mid);
-            display:flex;align-items:center;justify-content:center;
-          }
+          .p-ct-item{display:flex;align-items:center;gap:16px;padding:18px 20px;background:var(--bg2);border:1px solid var(--border);border-radius:14px;text-decoration:none;transition:border-color .22s,box-shadow .22s,transform .22s;}
+          .p-ct-item:hover{border-color:var(--teal-mid);box-shadow:0 6px 24px rgba(0,229,195,.08);transform:translateX(4px);}
+          .p-ct-icon{width:42px;height:42px;border-radius:11px;flex-shrink:0;background:var(--teal-dim);border:1px solid var(--teal-mid);display:flex;align-items:center;justify-content:center;}
           .p-ct-icon i{color:var(--teal);font-size:.92rem}
-          .p-ct-lbl{
-            font-size:.65rem;font-weight:700;letter-spacing:.1em;
-            text-transform:uppercase;color:var(--muted);margin-bottom:3px;
-          }
+          .p-ct-lbl{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;}
           .p-ct-val{font-size:.86rem;color:var(--white);font-weight:600;line-height:1.3}
-
-          /* RIGHT – form same size, no extra wrapper */
-          .p-ct-form-wrap{
-            /* cf-card already has its own bg/border/radius from ContactForm */
-          }
-
-          /* Social row */
           .p-ct-soc{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:24px}
-          .p-ct-soc-btn{
-            display:inline-flex;align-items:center;gap:9px;
-            padding:11px 24px;border-radius:12px;
-            border:1px solid var(--border);background:var(--bg2);
-            font-size:.8rem;font-weight:600;color:var(--muted);
-            transition:all .22s;
-          }
+          .p-ct-soc-btn{display:inline-flex;align-items:center;gap:9px;padding:11px 24px;border-radius:12px;border:1px solid var(--border);background:var(--bg2);font-size:.8rem;font-weight:600;color:var(--muted);transition:all .22s;}
           .p-ct-soc-btn i{font-size:.95rem}
           .p-ct-soc-btn:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(0,229,195,.1)}
           .p-ct-soc-btn.gh:hover{border-color:rgba(255,255,255,.25);color:var(--white);background:rgba(255,255,255,.05)}
           .p-ct-soc-btn.li:hover{border-color:rgba(10,102,194,.5);color:#0a66c2;background:rgba(10,102,194,.08)}
           .p-ct-soc-btn.wa:hover{border-color:rgba(37,211,102,.4);color:#25d366;background:rgba(37,211,102,.08)}
-
-          /* Copyright */
-          .p-ct-copy{
-            text-align:center;padding-top:20px;
-            border-top:1px solid var(--border);
-            font-size:.75rem;color:var(--muted);
-          }
+          .p-ct-copy{text-align:center;padding-top:20px;border-top:1px solid var(--border);font-size:.75rem;color:var(--muted);}
           .p-ct-copy span{color:var(--teal)}
-
-          @media(max-width:760px){
-            .p-ct-grid{grid-template-columns:1fr}
-          }
+          @media(max-width:760px){.p-ct-grid{grid-template-columns:1fr}}
         `}</style>
 
         <div className="p-inner">
-
-          {/* HEADER – centered */}
           <div className="p-ct-header">
             <p className="p-sec-label p-reveal">Get in touch</p>
-            <h2 className="p-sec-title p-reveal">
-              Let&apos;s Work <span>Together</span>
-            </h2>
+            <h2 className="p-sec-title p-reveal">Let&apos;s Work <span>Together</span></h2>
             <p className="p-ct-sub p-reveal">
-              Open to full-time roles, freelance projects and collaborations.
-              <br />
+              Open to full-time roles, freelance projects and collaborations.<br />
               I&apos;d love to hear about what you&apos;re building.
             </p>
           </div>
 
-          {/* TWO-COLUMN GRID */}
           <div className="p-ct-grid">
-
-            {/* LEFT – free-floating info items, no outer wrapper box */}
             <div className="p-ct-left p-reveal">
-
-              {/* Email – opens mail client */}
               <a href="mailto:najmulhasanshahin@gmail.com" className="p-ct-item">
                 <div className="p-ct-icon"><i className="fas fa-envelope" /></div>
-                <div>
-                  <p className="p-ct-lbl">Email</p>
-                  <p className="p-ct-val">najmulhasanshahin@gmail.com</p>
-                </div>
+                <div><p className="p-ct-lbl">Email</p><p className="p-ct-val">najmulhasanshahin@gmail.com</p></div>
               </a>
-
-              {/* Phone – opens dialer */}
               <a href="tel:+8801840242448" className="p-ct-item">
                 <div className="p-ct-icon"><i className="fas fa-phone" /></div>
-                <div>
-                  <p className="p-ct-lbl">Phone</p>
-                  <p className="p-ct-val">+880 1840-242448</p>
-                </div>
+                <div><p className="p-ct-lbl">Phone</p><p className="p-ct-val">+880 1840-242448</p></div>
               </a>
-
-              {/* Location */}
               <div className="p-ct-item" style={{cursor:"default"}}>
                 <div className="p-ct-icon"><i className="fas fa-map-marker-alt" /></div>
-                <div>
-                  <p className="p-ct-lbl">Location</p>
-                  <p className="p-ct-val">Dhaka, Bangladesh</p>
-                </div>
+                <div><p className="p-ct-lbl">Location</p><p className="p-ct-val">Dhaka, Bangladesh</p></div>
               </div>
-
-              {/* Response time */}
               <div className="p-ct-item" style={{cursor:"default"}}>
                 <div className="p-ct-icon"><i className="fas fa-clock" /></div>
-                <div>
-                  <p className="p-ct-lbl">Response Time</p>
-                  <p className="p-ct-val">Within 24 hours</p>
-                </div>
+                <div><p className="p-ct-lbl">Response Time</p><p className="p-ct-val">Within 24 hours</p></div>
               </div>
-
             </div>
 
-            {/* RIGHT – contact form (equal width, no extra wrapper) */}
-            <div className="p-ct-form-wrap p-reveal">
+            <div className="p-reveal">
               <ContactForm />
             </div>
-
           </div>
 
-          {/* SOCIAL BUTTONS – centered */}
           <div className="p-ct-soc p-reveal">
             <a href="https://github.com/najmulcodes" target="_blank" rel="noreferrer" className="p-ct-soc-btn gh">
               <i className="fab fa-github" /> GitHub
@@ -908,11 +771,9 @@ const greetings = [
             </a>
           </div>
 
-          {/* COPYRIGHT */}
           <p className="p-ct-copy p-reveal">
             © {new Date().getFullYear()} <span>Najmul Hasan . All rights reserved.</span> — Crafted with Next.js &amp; Tailwind CSS.
           </p>
-
         </div>
       </section>
 
