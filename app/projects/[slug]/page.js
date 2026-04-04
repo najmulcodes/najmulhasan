@@ -114,7 +114,7 @@ const projects = {
     name: "LiveCollab",
     tagline: "Real-Time Team Collaboration Platform",
     img: "/projects/livecollab.png",
-    live: "https://livecollab.vercel.app",
+    live: "https://livecollab-rho.vercel.app/",
     code: "https://github.com/najmulcodes/livecollab",
     overview:
       "A full-stack real-time Kanban collaboration platform where teams can create workspaces, invite members, and drag-and-drop cards with instant sync across all connected browsers.",
