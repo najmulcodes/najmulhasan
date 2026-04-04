@@ -559,6 +559,42 @@ const greetings = [
           img: "/projects/microtask.png"
         },
 
+
+        {
+          name: "DevFolio Analyzer",
+          featured: true,
+          tagline: "AI-Powered GitHub Profile Analyzer",
+          desc: "A full-stack analytics dashboard that fetches real GitHub data, scores profiles deterministically across 6 factors, and generates AI-powered insights using the Claude API — with graceful fallback when unavailable.",
+          stack: ["React", "Node.js", "Express", "MongoDB", "JWT", "GitHub API", "Anthropic Claude"],
+          live: "https://devfolio-analyzer.vercel.app/",
+          code: "https://github.com/najmulcodes/devfolio-analyzer",
+          img: "/projects/devfolio-analyzer.png"
+        },
+ 
+        {
+          name: "LiveCollab",
+          featured: true,
+          tagline: "Real-Time Team Collaboration Platform",
+          desc: "A full-stack real-time Kanban board with live drag-and-drop sync across all connected users, workspace management with invite codes, live presence indicators, and a timestamped activity log.",
+          stack: ["React", "Vite", "Tailwind CSS", "Zustand", "Node.js", "Express", "Socket.IO", "MongoDB", "JWT"],
+          live: "https://livecollab-rho.vercel.app/",
+          code: "https://github.com/najmulcodes/livecollab-client",
+          img: "/projects/livecollab.png"
+        },
+ 
+        {
+          name: "Gatherly",
+          featured: false,
+          tagline: "Community Discovery Platform",
+          desc: "A community discovery and management platform for Bangladesh built with Next.js 14 App Router. Features credential and Google OAuth auth via NextAuth.js, a searchable community catalog, event listings, and a fully responsive mobile-first design.",
+          stack: ["Next.js 14", "NextAuth.js", "Custom CSS", "localStorage"],
+          live: "https://gatherly-navy.vercel.app/",
+          code: "https://github.com/najmulcodes/Gatherly",
+          img: "/projects/gatherly.png"
+        }
+ 
+      ].map(({ name, featured, flagship, tagline, desc, stack, live, code, creds, img }) => (
+ 
         {
           name: "Care.xyz",
           featured: true,

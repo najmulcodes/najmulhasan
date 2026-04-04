@@ -71,6 +71,124 @@ const projects = {
     future: ["Add messaging", "Improve UX", "Add filtering"],
   },
 
+  "devfolio-analyzer": {
+    name: "DevFolio Analyzer",
+    tagline: "AI-Powered GitHub Profile Analyzer",
+    img: "/projects/devfolio-analyzer.png",
+    live: "https://devfolio-analyzer.vercel.app/",
+    code: "https://github.com/najmulcodes/devfolio-analyzer",
+    overview:
+      "A full-stack web application that analyses developer GitHub profiles and generates a structured evaluation — score, strengths, weaknesses, and AI-powered suggestions — presented in a modern analytics dashboard.",
+    features: [
+      "GitHub Profile Analysis — fetches real data via the GitHub REST API",
+      "Deterministic scoring (0–100) across 6 factors: repos, stars, followers, activity, profile completeness, portfolio bonus",
+      "AI-Powered Insights using Claude (Anthropic) API with graceful fallback",
+      "Guest Mode — instant analysis with no account required",
+      "Authenticated users can save history and track score improvement over time",
+      "KPI cards, score-over-time chart (Recharts), and recent activity table",
+    ],
+    tech: {
+      frontend: ["React 18", "React Router", "Recharts"],
+      backend: ["Node.js", "Express"],
+      database: ["MongoDB", "Mongoose"],
+      auth: ["JWT", "bcryptjs"],
+    },
+    challenges: [
+      "Keeping deterministic scoring consistent regardless of AI availability",
+      "Rate-limiting GitHub API calls without a token (60 req/hr)",
+      "Paginating and persisting analysis history per authenticated user",
+    ],
+    solutions: [
+      "Score calculated before any AI call; Claude response layered on top",
+      "Optional GitHub token support bumps limit to 5 000 req/hr",
+      "MongoDB-backed Analysis model with paginated history endpoints",
+    ],
+    future: [
+      "Add repository language breakdown chart",
+      "Compare two profiles side-by-side",
+      "Email digest of weekly score changes",
+    ],
+  },
+ 
+  livecollab: {
+    name: "LiveCollab",
+    tagline: "Real-Time Team Collaboration Platform",
+    img: "/projects/livecollab.png",
+    live: "https://livecollab.vercel.app",
+    code: "https://github.com/najmulcodes/livecollab",
+    overview:
+      "A full-stack real-time Kanban collaboration platform where teams can create workspaces, invite members, and drag-and-drop cards with instant sync across all connected browsers.",
+    features: [
+      "JWT-based register / login with protected routes",
+      "Workspaces — create teams, invite via code, manage members",
+      "Real-Time Kanban Board — drag-and-drop with live sync via Socket.IO",
+      "Live Presence — see who's online in your workspace in real time",
+      "Timestamped Activity Log for every board action",
+      "Zustand + React Query for efficient client-side state",
+    ],
+    tech: {
+      frontend: ["React 18", "Vite", "Tailwind CSS", "Zustand", "React Query", "@dnd-kit"],
+      backend: ["Node.js", "Express", "Socket.IO"],
+      database: ["MongoDB", "Mongoose"],
+      auth: ["JWT", "bcrypt"],
+    },
+    challenges: [
+      "Broadcasting card position changes with sub-100 ms latency",
+      "Preventing conflicting updates when two users drag simultaneously",
+      "Keeping presence state accurate when users disconnect unexpectedly",
+    ],
+    solutions: [
+      "Socket.IO rooms scoped per workspace for minimal broadcast surface",
+      "Optimistic UI updates with server reconciliation on conflict",
+      "Heartbeat + disconnect events to clean up stale presence entries",
+    ],
+    future: [
+      "Add card comments and file attachments",
+      "Email notifications for @mentions",
+      "Export board as CSV or PDF",
+    ],
+  },
+ 
+  gatherly: {
+    name: "Gatherly",
+    tagline: "Community Discovery Platform",
+    img: "/projects/gatherly.png",
+    live: "https://gatherly-navy.vercel.app/",
+    code: "https://github.com/najmulcodes/gatherly",
+    overview:
+      "Gatherly connects people with local communities across Bangladesh — photography, hiking, books, tech, food, and more. Organisers get simple tools to list their community and surface upcoming gatherings; everyone else gets one place to discover what's happening close to home.",
+    features: [
+      "Landing page with hero, stats, featured communities, categories, and testimonials",
+      "Email/password credentials + optional Google OAuth via NextAuth.js",
+      "Searchable, filterable community catalog with category chips and member counts",
+      "Community detail pages with banner, description, tags, and join button",
+      "Protected 'Start a Community' form with inline validation",
+      "Protected 'Manage Communities' table with View and Remove actions",
+      "Fully responsive mobile-first layout with hamburger nav",
+    ],
+    tech: {
+      frontend: ["Next.js 14 (App Router)", "NextAuth.js v4", "Custom CSS (violet/purple palette)"],
+      backend: ["NextAuth Credentials + Google OAuth"],
+      database: ["localStorage (demo)"],
+      auth: ["NextAuth.js", "JWT sessions"],
+    },
+    challenges: [
+      "Persisting user-created communities without a backend database",
+      "Hiding removed seed communities consistently across sessions",
+      "Keeping route protection simple with Next.js middleware",
+    ],
+    solutions: [
+      "localStorage CRUD helpers in src/lib/club-store.js",
+      "Separate localStorage key tracks removed community IDs",
+      "middleware.js protects /add-club and /manage-clubs at the edge",
+    ],
+    future: [
+      "Replace localStorage with Prisma + PostgreSQL backend",
+      "Add real-time RSVP counts with Socket.IO",
+      "Push notifications for upcoming gatherings",
+    ],
+  },
+ 
   "care.xyz": {
     name: "Care.xyz",
     tagline: "Care Service Booking Platform",
