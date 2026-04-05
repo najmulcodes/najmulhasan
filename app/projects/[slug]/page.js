@@ -109,7 +109,7 @@ const projects = {
       "Email digest of weekly score changes",
     ],
   },
- 
+
   livecollab: {
     name: "LiveCollab",
     tagline: "Real-Time Team Collaboration Platform",
@@ -148,7 +148,7 @@ const projects = {
       "Export board as CSV or PDF",
     ],
   },
- 
+
   gatherly: {
     name: "Gatherly",
     tagline: "Community Discovery Platform",
@@ -188,7 +188,7 @@ const projects = {
       "Push notifications for upcoming gatherings",
     ],
   },
- 
+
   "care.xyz": {
     name: "Care.xyz",
     tagline: "Care Service Booking Platform",
@@ -299,7 +299,25 @@ export default function ProjectDetails() {
         }
         a{text-decoration:none;color:inherit}
 
-        /* Navbar styles (must be present on slug page too) */
+        /* ── PROJECT IMAGE — full width, no crop ── */
+        .proj-img-wrap {
+          margin-bottom: 36px;
+          border-radius: 14px;
+          overflow: hidden;
+          border: 1px solid rgba(255,255,255,.07);
+          box-shadow: 0 10px 40px rgba(0,0,0,.4);
+          background: var(--bg2);
+          /* Let the image determine the height naturally */
+          line-height: 0;
+        }
+        .proj-img-wrap img {
+          width: 100%;
+          height: auto;          /* full image visible — no crop */
+          display: block;
+          object-fit: contain;   /* contain keeps aspect ratio intact */
+        }
+
+        /* Navbar styles */
         .p-nav{
           position:fixed;top:0;left:0;right:0;z-index:100;
           display:flex;align-items:center;justify-content:space-between;
@@ -370,7 +388,7 @@ export default function ProjectDetails() {
         }
         .p-back-btn:hover{color:var(--teal);border-color:var(--teal-mid);background:var(--teal-dim)}
 
-        /* Project detail content */
+        /* Project action buttons */
         .p-proj-btn{
           display:inline-flex;align-items:center;gap:7px;
           font-size:.8rem;font-weight:600;padding:10px 20px;
@@ -382,21 +400,20 @@ export default function ProjectDetails() {
         .p-proj-btn.code:hover{color:var(--teal);border-color:var(--teal);}
       `}</style>
 
-      {/* ── NAVBAR (single instance from component) ── */}
       <Navbar />
 
-      {/* Page content — push below fixed navbar */}
       <div style={{ paddingTop: "36px", background: "var(--bg)", minHeight: "100vh" }}>
         <div className="p-inner" style={{ maxWidth: "900px", margin: "0 auto", padding: "40px 16px" }}>
 
           <Link href="/#projects" className="p-back-btn">← Back to Projects</Link>
 
-          {/* IMAGE */}
-          <div style={{
-            marginBottom: "36px", borderRadius: "14px", overflow: "hidden",
-            border: "1px solid rgba(255,255,255,.07)", boxShadow: "0 10px 40px rgba(0,0,0,.4)",
-          }}>
-            <img src={project.img} alt={project.name} style={{ width: "100%", aspectRatio: "16/9", objectFit: "cover" }} />
+          {/* ── PROJECT IMAGE — full, no cropping ── */}
+          <div className="proj-img-wrap">
+            <img
+              src={project.img}
+              alt={project.name}
+              loading="lazy"
+            />
           </div>
 
           {/* HEADER */}
@@ -446,7 +463,6 @@ export default function ProjectDetails() {
         </div>
       </div>
 
-      {/* ── FOOTER (single instance from component) ── */}
       <Footer />
     </>
   );

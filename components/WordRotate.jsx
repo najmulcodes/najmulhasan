@@ -16,7 +16,7 @@ export default function WordRotate({ words = [] }) {
   }, [words]);
 
   return (
-    <span style={{ display: "inline-block", position: "relative" }}>
+    <span style={{ display: "inline-block" }}>
       <AnimatePresence mode="wait">
         <motion.span
           key={words[index]}
