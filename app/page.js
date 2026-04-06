@@ -535,7 +535,7 @@ const greetings = [
                 tagline: "AI-Powered GitHub And Portfolio Profile Analyzer",
                 desc: "A full-stack analytics dashboard that fetches real GitHub data, scores profiles deterministically across 6 factors, and generates AI-powered insights using the Claude API — with graceful fallback when unavailable.",
                 stack: ["React", "Node.js", "Express", "MongoDB", "JWT", "GitHub API", "Anthropic Claude"],
-                live: "https://devfolio-analyzer.vercel.app/",
+                live: "https://devfolioanalyzer.vercel.app/",
                 code: "https://github.com/najmulcodes/devfolio-analyzer",
                 img: "/projects/devfolio-analyzer.png"
               },
