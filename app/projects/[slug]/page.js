@@ -75,7 +75,7 @@ const projects = {
     name: "DevFolio Analyzer",
     tagline: "AI-Powered GitHub Profile Analyzer",
     img: "/projects/devfolio-analyzer.png",
-    live: "https://devfolio-analyzer.vercel.app/",
+    live: "https://devfolioanalyzer.vercel.app/",
     code: "https://github.com/najmulcodes/devfolio-analyzer",
     overview:
       "A full-stack web application that analyses developer GitHub profiles and generates a structured evaluation — score, strengths, weaknesses, and AI-powered suggestions — presented in a modern analytics dashboard.",
