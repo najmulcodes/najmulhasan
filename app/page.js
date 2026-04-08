@@ -529,16 +529,16 @@ const greetings = [
                 creds: { email: "admin@microtask.com", password: "Admin123", role: "Admin" },
                 img: "/projects/microtask.png"
               },
-                {
+                 {
                   name: "DevFolio Analyzer",
                   featured: true,
-                  tagline: "Analyze. Score. Improve your developer profile.",
-                  desc: "A SaaS-style analytics platform that evaluates GitHub and portfolio profiles using deterministic scoring and AI-generated insights. Built with a focus on real-time feedback, clean UX, and production-level architecture.",
+                  tagline: "Understand your developer profile. Improve what actually matters.",
+                  desc: "A SaaS-style platform that analyzes GitHub and portfolio profiles, transforming raw developer data into structured insights, scoring, and actionable recommendations. Built with a focus on clarity, real-time feedback, and a clean analytics-driven interface.",
                   stack: ["React", "Node.js", "Express", "MongoDB", "JWT", "GitHub API", "Anthropic Claude"],
                   live: "https://devfolioanalyzer.vercel.app/",
-                  code: "https://github.com/najmulcodes/devfolioanalyzer",
+                  code: "https://github.com/najmulcodes/devfolio-analyzer",
                   img: "/projects/devfolio-analyzer.png"
-                  },
+                },
               {
                 name: "LiveCollab",
                 featured: true,
