@@ -71,44 +71,50 @@ const projects = {
     future: ["Add messaging", "Improve UX", "Add filtering"],
   },
 
-  "devfolio-analyzer": {
-    name: "DevFolio Analyzer",
-    tagline: "AI-Powered GitHub Profile Analyzer",
-    img: "/projects/devfolio-analyzer.png",
-    live: "https://devfolioanalyzer.vercel.app/",
-    code: "https://github.com/najmulcodes/devfolio-analyzer",
-    overview:
-      "A full-stack web application that analyses developer GitHub profiles and generates a structured evaluation — score, strengths, weaknesses, and AI-powered suggestions — presented in a modern analytics dashboard.",
-    features: [
-      "GitHub Profile Analysis — fetches real data via the GitHub REST API",
-      "Deterministic scoring (0–100) across 6 factors: repos, stars, followers, activity, profile completeness, portfolio bonus",
-      "AI-Powered Insights using Claude (Anthropic) API with graceful fallback",
-      "Guest Mode — instant analysis with no account required",
-      "Authenticated users can save history and track score improvement over time",
-      "KPI cards, score-over-time chart (Recharts), and recent activity table",
-    ],
-    tech: {
-      frontend: ["React 18", "React Router", "Recharts"],
-      backend: ["Node.js", "Express"],
-      database: ["MongoDB", "Mongoose"],
-      auth: ["JWT", "bcryptjs"],
-    },
-    challenges: [
-      "Keeping deterministic scoring consistent regardless of AI availability",
-      "Rate-limiting GitHub API calls without a token (60 req/hr)",
-      "Paginating and persisting analysis history per authenticated user",
-    ],
-    solutions: [
-      "Score calculated before any AI call; Claude response layered on top",
-      "Optional GitHub token support bumps limit to 5 000 req/hr",
-      "MongoDB-backed Analysis model with paginated history endpoints",
-    ],
-    future: [
-      "Add repository language breakdown chart",
-      "Compare two profiles side-by-side",
-      "Email digest of weekly score changes",
-    ],
+"devfolio-analyzer": {
+  name: "DevFolio Analyzer",
+  tagline: "Turn your GitHub profile into actionable insights",
+  img: "/projects/devfolio-analyzer.png",
+  live: "https://devfolioanalyzer.vercel.app/",
+  code: "https://github.com/najmulcodes/devfolioanalyzer",
+
+  overview:
+    "DevFolio Analyzer is a full-stack SaaS-style platform that evaluates developer GitHub profiles and portfolios, transforming raw data into structured insights, scoring, and actionable recommendations. The system combines deterministic scoring with AI-generated feedback to deliver clarity through a modern, analytics-driven interface.",
+
+  features: [
+    "Real-time GitHub profile analysis using the GitHub REST API",
+    "Deterministic scoring (0–100) across key factors including activity, engagement, and profile completeness",
+    "AI-powered insights using Claude API with reliable fallback handling",
+    "Guest mode for instant analysis without authentication",
+    "Authenticated user system with persistent history tracking",
+    "Interactive dashboard with KPI cards, score trends, and activity insights",
+  ],
+
+  tech: {
+    frontend: ["React 18", "React Router", "Recharts"],
+    backend: ["Node.js", "Express"],
+    database: ["MongoDB", "Mongoose"],
+    auth: ["JWT", "bcryptjs"],
   },
+
+  challenges: [
+    "Maintaining consistent scoring independent of AI availability",
+    "Handling GitHub API rate limits in unauthenticated environments",
+    "Designing scalable storage for user-specific analysis history",
+  ],
+
+  solutions: [
+    "Separated deterministic scoring logic from AI layer to ensure reliability",
+    "Implemented optional token support to extend API rate limits",
+    "Built paginated MongoDB-based history system for efficient data retrieval",
+  ],
+
+  future: [
+    "Repository-level language and contribution breakdown",
+    "Side-by-side developer profile comparison",
+    "Automated weekly performance insights and reports",
+  ],
+},
 
   livecollab: {
     name: "LiveCollab",
