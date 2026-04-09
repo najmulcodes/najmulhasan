@@ -162,33 +162,190 @@ const greetings = [
         .p-btn-ghost{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;border:1px solid rgba(255,255,255,.12);color:var(--white);font-size:.84rem;border-radius:9px;background:transparent;transition:border-color .2s,background .2s,transform .2s}
         .p-btn-ghost:hover{border-color:var(--teal-mid);background:var(--teal-dim);transform:translateY(-2px)}
 
+        /* ─── UPGRADED PROFILE CARD ─── */
         .p-hero-card{
-          background:linear-gradient(145deg,var(--bg2) 0%,rgba(28,35,51,.9) 100%);
-          border:1px solid rgba(255,255,255,.09);border-radius:20px;
-          padding:28px 26px 24px;animation:p-fadeUp .6s .15s ease both;
-          position:relative;overflow:hidden;
+          background:linear-gradient(160deg,#131c28 0%,#0d1117 60%,#111a24 100%);
+          border:1px solid rgba(0,229,195,0.14);
+          border-radius:22px;
+          padding:26px 24px 22px;
+          animation:p-fadeUp .6s .15s ease both;
+          position:relative;
+          overflow:hidden;
+          box-shadow:0 0 0 1px rgba(0,229,195,0.04) inset, 0 24px 64px rgba(0,0,0,0.5);
         }
-        .p-hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--teal) 0%,rgba(0,229,195,.15) 100%)}
+        /* top accent bar */
+        .p-hero-card::before{
+          content:'';position:absolute;top:0;left:0;right:0;height:2px;
+          background:linear-gradient(90deg,var(--teal) 0%,#0099ff 60%,transparent 100%);
+        }
+        /* ambient glow behind card */
+        .p-hero-card::after{
+          content:'';position:absolute;
+          top:-40px;right:-40px;
+          width:180px;height:180px;
+          background:radial-gradient(circle,rgba(0,229,195,0.09) 0%,transparent 70%);
+          pointer-events:none;
+        }
+
+        /* photo */
         .p-card-photo-wrap{position:relative;width:86px;height:86px;margin-bottom:16px}
-        .p-card-photo-ring{width:86px;height:86px;border-radius:50%;padding:2.5px;background:linear-gradient(135deg,var(--teal),#0099ff 60%,transparent);display:flex;align-items:center;justify-content:center}
-        .p-card-photo-ring img{width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:top center;border:2px solid var(--bg2)}
+        .p-card-photo-ring{
+          width:86px;height:86px;border-radius:50%;
+          padding:2.5px;
+          background:linear-gradient(135deg,var(--teal),#0099ff 60%,transparent);
+          display:flex;align-items:center;justify-content:center;
+        }
+        .p-card-photo-ring img{width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:top center;border:2px solid #0d1117}
         .p-card-initials{width:100%;height:100%;border-radius:50%;background:linear-gradient(135deg,var(--teal),#0099ff);display:flex;align-items:center;justify-content:center;font-size:1.6rem;font-weight:700;color:#0d1117}
-        .p-card-online{position:absolute;bottom:3px;right:3px;width:14px;height:14px;border-radius:50%;background:#3fb950;border:2px solid var(--bg2);box-shadow:0 0 8px rgba(63,185,80,.55);animation:p-pulse 2s infinite}
+        .p-card-online{position:absolute;bottom:3px;right:3px;width:14px;height:14px;border-radius:50%;background:#3fb950;border:2px solid #0d1117;box-shadow:0 0 8px rgba(63,185,80,.55);animation:p-pulse 2s infinite}
+
+        /* name + role */
         .p-card-name{font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:2px;letter-spacing:-.01em}
         .p-card-role{font-family:var(--fm);font-size:.7rem;color:var(--teal);margin-bottom:18px;opacity:.85}
-        .p-card-meta{display:flex;flex-direction:column;gap:9px;margin-bottom:20px}
-        .p-card-meta-row{display:flex;align-items:center;gap:10px;font-size:.78rem;color:var(--muted);line-height:1.3}
+
+        /* meta rows */
+        .p-card-meta{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
+        .p-card-meta-row{
+          display:flex;align-items:center;gap:10px;
+          font-size:.75rem;color:var(--muted);line-height:1.3;
+          padding:7px 10px;
+          border-radius:9px;
+          background:rgba(255,255,255,0.03);
+          border:1px solid transparent;
+          transition:border-color .2s, background .2s;
+        }
+        .p-card-meta-row:hover{
+          border-color:rgba(0,229,195,0.12);
+          background:rgba(0,229,195,0.04);
+        }
         .p-card-meta-row i{color:var(--teal);width:13px;text-align:center;font-size:.72rem;flex-shrink:0}
         .p-card-meta-row a{color:var(--muted);transition:color .2s}
         .p-card-meta-row a:hover{color:var(--teal)}
-        .p-card-divider{height:1px;background:var(--border);margin:16px 0}
-        .p-card-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-        .p-stat-box{text-align:center;background:var(--bg3);border-radius:10px;padding:12px 6px;border:1px solid var(--border);transition:border-color .2s}
-        .p-stat-box:hover{border-color:var(--teal-mid)}
-        .p-stat-num{font-size:1.35rem;font-weight:700;color:var(--teal);line-height:1;margin-bottom:5px}
-        .p-stat-lbl{font-size:.6rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;line-height:1.3}
-        .p-card-cta{margin-top:18px;width:100%;display:flex;justify-content:center;align-items:center;gap:8px;padding:10px 20px;background:var(--teal);color:#0d1117;font-family:var(--fh);font-weight:700;font-size:.8rem;border-radius:9px;border:none;cursor:pointer;transition:opacity .2s,transform .2s,box-shadow .2s}
-        .p-card-cta:hover{opacity:.88;transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,229,195,.28)}
+
+        .p-card-divider{height:1px;background:rgba(255,255,255,0.06);margin:16px 0}
+
+        /* ── STAT BOXES ── */
+        .p-card-stats{
+          display:grid;
+          grid-template-columns:repeat(3,1fr);
+          gap:10px;
+          margin-bottom:18px;
+        }
+        .p-stat-box{
+          position:relative;
+          height:90px;
+          display:flex;
+          flex-direction:column;
+          justify-content:center;
+          align-items:center;
+          text-align:center;
+          padding:10px 6px;
+          border-radius:14px;
+          background:rgba(255,255,255,0.03);
+          border:1px solid rgba(0,229,195,0.12);
+          overflow:hidden;
+          transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+          cursor:default;
+        }
+        .p-stat-box::before{
+          content:'';
+          position:absolute;
+          inset:0;
+          background:radial-gradient(circle at top center, rgba(0,229,195,0.14), transparent 70%);
+          opacity:0;
+          transition:opacity .3s ease;
+        }
+        .p-stat-box:hover{
+          transform:translateY(-4px);
+          border-color:rgba(0,229,195,0.35);
+          box-shadow:0 10px 28px rgba(0,229,195,0.10);
+        }
+        .p-stat-box:hover::before{opacity:1}
+        .p-stat-num{
+          font-size:1.3rem;
+          font-weight:700;
+          color:#00ffd0;
+          line-height:1;
+          margin-bottom:4px;
+          position:relative;z-index:1;
+        }
+        .p-stat-lbl{
+          font-size:.58rem;
+          color:rgba(255,255,255,0.55);
+          text-transform:uppercase;
+          letter-spacing:.08em;
+          line-height:1.3;
+          position:relative;z-index:1;
+        }
+
+        /* ── BADGE PILLS (new) ── */
+        .p-card-badges{
+          display:flex;
+          flex-direction:column;
+          gap:8px;
+          margin-bottom:18px;
+        }
+        .p-card-badge-row{
+          display:flex;
+          align-items:center;
+          gap:10px;
+          padding:9px 12px;
+          border-radius:10px;
+          background:rgba(255,255,255,0.025);
+          border:1px solid rgba(0,229,195,0.10);
+          transition:border-color .2s, background .2s;
+        }
+        .p-card-badge-row:hover{
+          border-color:rgba(0,229,195,0.22);
+          background:rgba(0,229,195,0.04);
+        }
+        .p-badge-icon{
+          width:28px;height:28px;border-radius:8px;flex-shrink:0;
+          background:rgba(0,229,195,0.10);
+          border:1px solid rgba(0,229,195,0.18);
+          display:flex;align-items:center;justify-content:center;
+          font-size:.72rem;color:var(--teal);
+        }
+        .p-badge-text{
+          display:flex;flex-direction:column;gap:1px;
+        }
+        .p-badge-title{
+          font-size:.75rem;font-weight:700;color:var(--white);line-height:1.2;letter-spacing:.01em;
+        }
+        .p-badge-sub{
+          font-size:.65rem;color:var(--muted);line-height:1.2;font-family:var(--fm);
+        }
+
+        /* ── CTA BUTTON ── */
+        .p-card-cta{
+          margin-top:6px;
+          width:100%;
+          display:flex;justify-content:center;align-items:center;gap:8px;
+          padding:12px 20px;
+          border-radius:12px;
+          background:linear-gradient(135deg,#00ffd0 0%,#00c9a7 100%);
+          color:#00221d;
+          font-family:var(--fh);
+          font-weight:700;
+          font-size:.84rem;
+          border:none;cursor:pointer;
+          position:relative;overflow:hidden;
+          transition:transform .25s ease, box-shadow .25s ease;
+          text-decoration:none;
+        }
+        .p-card-cta::before{
+          content:'';
+          position:absolute;inset:0;
+          background:radial-gradient(circle at top center, rgba(255,255,255,0.28), transparent 65%);
+          opacity:0;
+          transition:opacity .3s ease;
+        }
+        .p-card-cta:hover{
+          transform:translateY(-2px);
+          box-shadow:0 10px 30px rgba(0,255,208,0.28);
+        }
+        .p-card-cta:hover::before{opacity:1}
+        .p-card-cta:active{transform:scale(0.97)}
 
         .p-section{padding:100px 6vw;position:relative;z-index:1}
         .p-section.alt{background:var(--bg2)}
@@ -389,7 +546,9 @@ const greetings = [
             </div>
           </div>
 
+          {/* ── UPGRADED PROFILE CARD ── */}
           <div className="p-hero-card">
+            {/* Photo */}
             <div className="p-card-photo-wrap">
               <div className="p-card-photo-ring">
                 <img src="/profile.png" alt="Najmul Hasan"
@@ -401,28 +560,38 @@ const greetings = [
               </div>
               <span className="p-card-online" />
             </div>
+
+            {/* Name + role */}
             <div className="p-card-name">Najmul Hasan</div>
             <div className="p-card-role">// Full-Stack Developer · MERN Stack</div>
+
+            {/* Meta rows */}
             <div className="p-card-meta">
               <div className="p-card-meta-row"><i className="fas fa-envelope" /><a href="mailto:najmulhasanshahin@gmail.com">najmulhasanshahin@gmail.com</a></div>
               <div className="p-card-meta-row"><i className="fas fa-map-marker-alt" />Dhaka, Bangladesh</div>
               <div className="p-card-meta-row"><i className="fas fa-briefcase" />Full-time / Freelance</div>
-              <div className="p-card-meta-row"><i className="fas fa-globe" /><a href="https://najmulcodes.vercel.app/" target="_blank" rel="noreferrer">najmulcodes.vercel.app</a></div>
+              <div className="p-card-meta-row"><i className="fas fa-globe" /><a href="https://najmul-portfolio-six.vercel.app/" target="_blank" rel="noreferrer">najmul-portfolio-six.vercel.app</a></div>
             </div>
             <div className="p-card-divider" />
+
+            {/* Stats */}
             <div className="p-card-stats">
-              {[["4", "Programming Languages"], ["6", "Dev Tools"], ["10+", "Projects Built"]].map(([n, l]) => (
+              {[
+                ["6+", "Production Projects"],
+                ["MERN", "Ecosystem"],
+                ["UI/UX", "User Focused"],
+              ].map(([n, l]) => (
                 <div key={l} className="p-stat-box">
                   <div className="p-stat-num">{n}</div>
                   <div className="p-stat-lbl">{l}</div>
                 </div>
               ))}
             </div>
-            <div className="p-card-actions">
-              <a href="/Najmul_Hasan_Resume.pdf" target="_blank" rel="noopener noreferrer" className="p-card-cta">
-                <i className="fas fa-file-alt" /> Resume
-              </a>
-            </div>
+
+            {/* CTA */}
+            <a href="/Najmul_Hasan_Resume.pdf" target="_blank" rel="noopener noreferrer" className="p-card-cta">
+              <i className="fas fa-file-alt" /> Resume
+            </a>
           </div>
         </div>
       </section>
@@ -777,6 +946,7 @@ const greetings = [
         </div>
       </section>
 
+      <Footer />
     </>
   );
 }
