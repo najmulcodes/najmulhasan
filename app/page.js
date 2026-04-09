@@ -106,7 +106,6 @@ const greetings = [
             repeating-radial-gradient(circle at 75% 18%,transparent 0,transparent 58px,rgba(0,229,195,1) 59px,transparent 60px),
             repeating-radial-gradient(circle at 55% 82%,transparent 0,transparent 76px,rgba(0,229,195,1) 77px,transparent 78px);
         }
-
         .p-nav{
           position:fixed;top:0;left:0;right:0;z-index:100;
           display:flex;align-items:center;justify-content:space-between;
@@ -278,7 +277,6 @@ const greetings = [
           position:relative;z-index:1;
         }
 
-        /* ── BADGE PILLS (new) ── */
         .p-card-badges{
           display:flex;
           flex-direction:column;
@@ -316,7 +314,7 @@ const greetings = [
           font-size:.65rem;color:var(--muted);line-height:1.2;font-family:var(--fm);
         }
 
-        /* ── CTA BUTTON ── */
+        /* ── CTA btn── */
         .p-card-cta{
           margin-top:6px;
           width:100%;
