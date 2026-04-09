@@ -22,10 +22,10 @@ A modern developer portfolio showcasing projects, technical skills, experience, 
 
 # 🌐 Live Portfolio
 
-**👉 [najmul-portfolio-six.vercel.app](https://najmul-portfolio-six.vercel.app/)**
+**👉 [najmulcodes.vercel.app](https://najmulcodes.vercel.app/)**
 
 <p align="center">
-  <a href="https://najmul-portfolio-six.vercel.app/" target="_blank">
+  <a href="https://najmulcodes.vercel.app/" target="_blank">
     <img src="./public/projects/portfolio.png" alt="Najmul Hasan Portfolio" width="720"/>
   </a>
 </p>
