@@ -567,7 +567,7 @@ const greetings = [
             <div className="p-card-meta">
               <div className="p-card-meta-row"><i className="fas fa-envelope" /><a href="mailto:najmulhasanshahin@gmail.com">najmulhasanshahin@gmail.com</a></div>
               <div className="p-card-meta-row"><i className="fas fa-map-marker-alt" />Dhaka, Bangladesh</div>
-              <div className="p-card-meta-row"><i className="fas fa-briefcase" />Full-time / Freelance</div>
+              <div className="p-card-meta-row"><i className="fas fa-briefcase" />Open to Full-time & Freelance</div>
               <div className="p-card-meta-row"><i className="fas fa-globe" /><a href="https://najmulcodes.vercel.app/" target="_blank" rel="noreferrer">najmulcodes.vercel.app</a></div>
             </div>
             <div className="p-card-divider" />
