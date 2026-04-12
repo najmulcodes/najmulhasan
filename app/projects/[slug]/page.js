@@ -9,10 +9,10 @@ import Footer from "../../../components/Footer";
 const projects = {
   "devfolio-analyzer": {
     name: "DevFolio Analyzer",
-    tagline: "GitHub profile intelligence — scored, structured, and actionable.",
+    tagline: "Porfolio & GitHub profile intelligence — scored, structured, and actionable.",
     img: "/projects/devfolio-analyzer.png",
     live: "https://devfolioanalyzer.vercel.app/",
-    code: "https://github.com/najmulcodes/devfolio-analyzer",
+    code: "https://github.com/najmulcodes/devfolioanalyzer",
     overview:
       "Connects the GitHub REST API with Anthropic Claude to evaluate developer profiles across contribution consistency, repository quality, tech breadth, and documentation depth. Scoring is deterministic and decoupled from the AI layer — a stable numeric score is computed first, then Claude generates qualitative feedback on top of it. This ensures the dashboard renders correctly regardless of model response variance. Authenticated users get a persistent analysis history; guest mode allows instant evaluation without signup.",
     features: [

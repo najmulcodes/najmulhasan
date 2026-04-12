@@ -575,7 +575,7 @@ const greetings = [
               ))}
             </div>
 
-            <a href="/Najmul_Hasan_Resume.pdf" target="_blank" rel="noopener noreferrer" className="p-card-cta">
+            <a href="https://drive.google.com/file/d/1sHxGHO29oPhT-yzq8B47znDVpPOGYnS8/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="p-card-cta">
               <i className="fas fa-file-alt" /> Resume
             </a>
           </div>
@@ -668,7 +668,7 @@ const greetings = [
                 flagship: true,
                 featured: true,
                 name: "DevFolio Analyzer",
-                tagline: "GitHub profile intelligence — scored, structured, and actionable.",
+                tagline: "Porfolio & GitHub profile intelligence — scored, structured, and actionable.",
                 desc: "Connects the GitHub REST API with Anthropic Claude to evaluate developer profiles across contribution consistency, repository quality, tech breadth, and documentation depth. Scoring is deterministic and separated from the AI layer — Claude generates qualitative feedback on top of a stable numeric score, so the dashboard renders correctly even when the AI response varies.",
                 stack: ["React", "Node.js", "Express", "MongoDB", "JWT", "GitHub API", "Anthropic Claude"],
                 live: "https://devfolioanalyzer.vercel.app/",
