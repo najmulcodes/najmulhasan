@@ -172,12 +172,10 @@ const greetings = [
           overflow:hidden;
           box-shadow:0 0 0 1px rgba(0,229,195,0.04) inset, 0 24px 64px rgba(0,0,0,0.5);
         }
-        /* top accent bar */
         .p-hero-card::before{
           content:'';position:absolute;top:0;left:0;right:0;height:2px;
           background:linear-gradient(90deg,var(--teal) 0%,#0099ff 60%,transparent 100%);
         }
-        /* ambient glow behind card */
         .p-hero-card::after{
           content:'';position:absolute;
           top:-40px;right:-40px;
@@ -186,7 +184,6 @@ const greetings = [
           pointer-events:none;
         }
 
-        /* photo */
         .p-card-photo-wrap{position:relative;width:86px;height:86px;margin-bottom:16px}
         .p-card-photo-ring{
           width:86px;height:86px;border-radius:50%;
@@ -198,11 +195,9 @@ const greetings = [
         .p-card-initials{width:100%;height:100%;border-radius:50%;background:linear-gradient(135deg,var(--teal),#0099ff);display:flex;align-items:center;justify-content:center;font-size:1.6rem;font-weight:700;color:#0d1117}
         .p-card-online{position:absolute;bottom:3px;right:3px;width:14px;height:14px;border-radius:50%;background:#3fb950;border:2px solid #0d1117;box-shadow:0 0 8px rgba(63,185,80,.55);animation:p-pulse 2s infinite}
 
-        /* name + role */
         .p-card-name{font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:2px;letter-spacing:-.01em}
         .p-card-role{font-family:var(--fm);font-size:.7rem;color:var(--teal);margin-bottom:18px;opacity:.85}
 
-        /* meta rows */
         .p-card-meta{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
         .p-card-meta-row{
           display:flex;align-items:center;gap:10px;
@@ -223,7 +218,6 @@ const greetings = [
 
         .p-card-divider{height:1px;background:rgba(255,255,255,0.06);margin:16px 0}
 
-        /* ── STAT BOXES ── */
         .p-card-stats{
           display:grid;
           grid-template-columns:repeat(3,1fr);
@@ -314,7 +308,6 @@ const greetings = [
           font-size:.65rem;color:var(--muted);line-height:1.2;font-family:var(--fm);
         }
 
-        /* ── CTA btn── */
         .p-card-cta{
           margin-top:6px;
           width:100%;
@@ -546,7 +539,6 @@ const greetings = [
 
           {/* ── UPGRADED PROFILE CARD ── */}
           <div className="p-hero-card">
-            {/* Photo */}
             <div className="p-card-photo-wrap">
               <div className="p-card-photo-ring">
                 <img src="/profile.png" alt="Najmul Hasan"
@@ -559,11 +551,9 @@ const greetings = [
               <span className="p-card-online" />
             </div>
 
-            {/* Name + role */}
             <div className="p-card-name">Najmul Hasan</div>
             <div className="p-card-role">// Full-Stack Developer · MERN Stack</div>
 
-            {/* Meta rows */}
             <div className="p-card-meta">
               <div className="p-card-meta-row"><i className="fas fa-envelope" /><a href="mailto:najmulhasanshahin@gmail.com">najmulhasanshahin@gmail.com</a></div>
               <div className="p-card-meta-row"><i className="fas fa-map-marker-alt" />Dhaka, Bangladesh</div>
@@ -572,7 +562,6 @@ const greetings = [
             </div>
             <div className="p-card-divider" />
 
-            {/* Stats */}
             <div className="p-card-stats">
               {[
                 ["6+", "Production Projects"],
@@ -586,7 +575,6 @@ const greetings = [
               ))}
             </div>
 
-            {/* CTA */}
             <a href="/Najmul_Hasan_Resume.pdf" target="_blank" rel="noopener noreferrer" className="p-card-cta">
               <i className="fas fa-file-alt" /> Resume
             </a>
@@ -675,88 +663,105 @@ const greetings = [
           <div className="p-proj-list">
             {[
               {
-                name: "Badar Uddin Welfare",
+                slug: "devfolio-analyzer",
+                category: "flagship",
                 flagship: true,
                 featured: true,
-                tagline: "Charity Management Platform",
-                desc: "A production-focused charity management system designed for real organizational use. Includes donation request workflows, admin approval system, and role-based dashboards to manage funds, activities, and beneficiary records.",
-                stack: ["React", "Node.js", "Express", "MongoDB", "JWT", "Cloudinary"],
-                live: "https://badaruddinwelfareorg.vercel.app/",
-                code: "https://github.com/najmulcodes/badaruddinwelfare-client",
-                img: "/projects/badaruddin.png"
+                name: "DevFolio Analyzer",
+                tagline: "GitHub profile intelligence — scored, structured, and actionable.",
+                desc: "Connects the GitHub REST API with Anthropic Claude to evaluate developer profiles across contribution consistency, repository quality, tech breadth, and documentation depth. Scoring is deterministic and separated from the AI layer — Claude generates qualitative feedback on top of a stable numeric score, so the dashboard renders correctly even when the AI response varies.",
+                stack: ["React", "Node.js", "Express", "MongoDB", "JWT", "GitHub API", "Anthropic Claude"],
+                live: "https://devfolioanalyzer.vercel.app/",
+                code: "https://github.com/najmulcodes/devfolio-analyzer",
+                img: "/projects/devfolio-analyzer.png"
               },
               {
-                name: "MicroTask Platform",
+                slug: "livecollab",
+                category: "flagship",
+                flagship: true,
                 featured: true,
-                tagline: "Role-Based Freelance Marketplace",
-                desc: "A multi-role micro-tasking platform with Worker, Buyer, and Admin dashboards. Includes task lifecycle management, secure JWT authentication, Stripe-based payments, and submission approval workflows.",
-                stack: ["React", "Node.js", "Express", "MongoDB", "JWT", "Stripe"],
-                live: "https://microtask-client-iota.vercel.app",
-                code: "https://github.com/najmulcodes/microtask-client",
-                creds: { email: "admin@microtask.com", password: "Admin123", role: "Admin" },
-                img: "/projects/microtask.png"
-              },
-                 {
-                  name: "DevFolio Analyzer",
-                  featured: true,
-                  tagline: "Understand your developer profile. Improve what actually matters.",
-                  desc: "A SaaS-style platform that analyzes GitHub and portfolio profiles, transforming raw developer data into structured insights, scoring, and actionable recommendations. Built with a focus on clarity, real-time feedback, and a clean analytics-driven interface.",
-                  stack: ["React", "Node.js", "Express", "MongoDB", "JWT", "GitHub API", "Anthropic Claude"],
-                  live: "https://devfolioanalyzer.vercel.app/",
-                  code: "https://github.com/najmulcodes/devfolio-analyzer",
-                  img: "/projects/devfolio-analyzer.png"
-                },
-              {
                 name: "LiveCollab",
-                featured: true,
-                tagline: "Real-Time Team Collaboration Platform",
-                desc: "A full-stack real-time Kanban board with live drag-and-drop sync across all connected users, workspace management with invite codes, live presence indicators, and a timestamped activity log.",
+                tagline: "Shared Kanban state across all connected clients — no polling, no refresh.",
+                desc: "Board operations — card moves, column reorders, member presence — propagate via Socket.IO events scoped per workspace. Drag-and-drop is optimistically applied locally and reconciled against the server's authoritative state on broadcast. Workspace access is enforced at socket handshake: JWT is verified before any room join is admitted.",
                 stack: ["React", "Vite", "Tailwind CSS", "Zustand", "Node.js", "Express", "Socket.IO", "MongoDB", "JWT"],
                 live: "https://livecollab-rho.vercel.app/",
                 code: "https://github.com/najmulcodes/livecollab-client",
                 img: "/projects/livecollab.png"
               },
               {
-                name: "Care.xyz",
+                slug: "microtask-platform",
+                category: "featured",
                 featured: true,
-                tagline: "Care Service Booking Platform (Next.js)",
-                desc: "A Next.js-based service platform for booking caregivers across Bangladesh. Features dynamic pricing, cascading location filtering, private booking routes, and Firebase authentication.",
-                stack: ["Next.js", "React", "Firebase", "Tailwind CSS"],
+                name: "MicroTask Platform",
+                tagline: "Three-sided task marketplace with server-enforced lifecycle and Stripe disbursement.",
+                desc: "Worker, Buyer, and Admin each operate in a role-scoped dashboard. Task status transitions — draft → published → submitted → approved/rejected → paid — are validated server-side on every mutation; the client cannot skip states. Stripe payment credits are triggered by webhook confirmation, not client callback, preventing double-credit on retries.",
+                stack: ["React", "Node.js", "Express", "MongoDB", "JWT", "Stripe"],
+                live: "https://microtask-client-iota.vercel.app",
+                code: "https://github.com/najmulcodes/microtask-client",
+                creds: { email: "admin@microtask.com", password: "Admin123", role: "Admin" },
+                img: "/projects/microtask.png"
+              },
+              {
+                slug: "badar-uddin-welfare",
+                category: "featured",
+                featured: true,
+                name: "Badar Uddin Welfare",
+                tagline: "Production charity system — live deployment for a real Bangladeshi NGO.",
+                desc: "Handles the full donation lifecycle for an active organization: member requests, three-tier admin review (superAdmin / admin / member), fund disbursement tracking, and beneficiary records. All role checks are enforced at the API route level. Cloudinary manages signed document uploads; OTP email verification via Brevo gates registration. Full Bengali-language UI.",
+                stack: ["React", "Vite", "Node.js", "Express", "MongoDB", "JWT", "Cloudinary", "Brevo API"],
+                live: "https://badaruddinwelfareorg.vercel.app/",
+                code: "https://github.com/najmulcodes/badaruddinwelfare-client",
+                img: "/projects/badaruddin.png"
+              },
+              {
+                slug: "care.xyz",
+                category: "featured",
+                featured: true,
+                name: "Care.xyz",
+                tagline: "Caregiver booking with cascading location filters and middleware-level route protection.",
+                desc: "Service marketplace for childcare and elderly care across Bangladesh. Location filtering loads lazily across three administrative tiers — division → district → upazila — avoiding the cost of exposing thousands of records upfront. Route protection runs in Next.js middleware before page render; unauthenticated users never receive protected HTML. Pricing adjusts dynamically per service type and duration.",
+                stack: ["Next.js 14", "React", "Firebase Auth", "Tailwind CSS"],
                 live: "https://care-xyz-baby-sitting-elderly-care.vercel.app",
                 code: "https://github.com/najmulcodes/Care.xyz---Baby-Sitting-Elderly-Care-Service-Platform",
                 img: "/projects/carexyz.png"
               },
               {
-                name: "Gatherly",
+                slug: "gatherly",
+                category: "supporting",
                 featured: false,
-                tagline: "Community Discovery Platform",
-                desc: "A community discovery and management platform for Bangladesh built with Next.js 14 App Router. Features credential and Google OAuth auth via NextAuth.js, a searchable community catalog, event listings, and a fully responsive mobile-first design.",
+                name: "Gatherly",
+                tagline: "Community discovery platform with server-rendered listings and multi-provider auth.",
+                desc: "Built on Next.js 14 App Router with a deliberate Server/Client Component boundary: listing pages render server-side for fast initial load; auth-gated interactions are isolated to Client Components. NextAuth.js handles credential and Google OAuth flows, session persistence, and CSRF protection. Mobile-first layout designed around 360px as the baseline viewport.",
                 stack: ["Next.js 14", "NextAuth.js", "Custom CSS", "localStorage"],
                 live: "https://gatherly-navy.vercel.app/",
                 code: "https://github.com/najmulcodes/Gatherly",
                 img: "/projects/gatherly.png"
               },
               {
-                name: "ClubSphere",
+                slug: "clubsphere",
+                category: "supporting",
                 featured: false,
-                tagline: "Membership & Event Management System",
-                desc: "A role-based club management system with event handling, membership approval flows, and protected routes using JWT authentication.",
-                stack: ["React", "Node.js", "Express", "MongoDB"],
+                name: "ClubSphere",
+                tagline: "Club management with resource-level ownership enforcement and approval workflows.",
+                desc: "Membership requests go through a multi-step admin approval before access is granted. Event operations are checked at the resource level, not just role level — a club admin can only modify events they created. Ownership is stored as a denormalized creator ID on each event document, making the check a single field comparison rather than a join.",
+                stack: ["React", "Node.js", "Express", "MongoDB", "JWT"],
                 live: "https://clubsphere-client1.netlify.app/",
                 code: "https://github.com/najmulcodes/clubsphere-client",
                 img: "/projects/clubsphere.png"
               },
               {
-                name: "BookHub",
+                slug: "bookhub",
+                category: "supporting",
                 featured: false,
-                tagline: "Book Management Platform",
-                desc: "A CRUD-based application for managing books with REST API integration. Includes real-time UI updates and structured data handling.",
+                name: "BookHub",
+                tagline: "Book catalog with optimistic UI updates and consistent REST API design.",
+                desc: "Built as a deliberate exercise in API fundamentals: consistent response envelopes, machine-readable error codes, and proper HTTP semantics across all endpoints. Edits apply optimistically and roll back from a pre-mutation snapshot on failure — no re-fetch, no stale data flash. This pattern was carried forward as a baseline into every subsequent MERN project.",
                 stack: ["React", "Node.js", "Express", "MongoDB"],
                 live: "https://bookhub-heaven.surge.sh",
                 code: "https://github.com/najmulcodes/bookhub-client",
                 img: "/projects/bookhub.png"
               },
-            ].map(({ name, featured, flagship, tagline, desc, stack, live, code, creds, img }) => (
+            ].map(({ name, featured, flagship, tagline, desc, stack, live, code, creds, img, slug }) => (
 
               <article key={name} className={`p-proj-card p-reveal${flagship ? " flagship" : ""}${featured ? " featured" : ""}`}>
 
@@ -795,7 +800,7 @@ const greetings = [
                   <a href={code} target="_blank" rel="noreferrer" className="p-proj-btn code">
                     <i className="fab fa-github" /> Code
                   </a>
-                  <a href={`/projects/${name.toLowerCase().replace(/\s+/g, "-")}`} className="p-proj-btn code">
+                  <a href={`/projects/${slug}`} className="p-proj-btn code">
                     Details
                   </a>
                 </div>
