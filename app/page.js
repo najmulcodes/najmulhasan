@@ -5,15 +5,16 @@ import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import ContactForm from "../components/ContactForm";
+
 export default function Portfolio() {
 
-const greetings = [
-  "Hello,",
-  "Hola,",
-  "Bonjour,",
-  "مرحبا،",
-  "こんにちは"
-];
+  const greetings = [
+    "Hello,",
+    "Hola,",
+    "Bonjour,",
+    "مرحبا،",
+    "こんにちは"
+  ];
 
   useEffect(() => {
     const fa = document.createElement("link");
@@ -161,7 +162,6 @@ const greetings = [
         .p-btn-ghost{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;border:1px solid rgba(255,255,255,.12);color:var(--white);font-size:.84rem;border-radius:9px;background:transparent;transition:border-color .2s,background .2s,transform .2s}
         .p-btn-ghost:hover{border-color:var(--teal-mid);background:var(--teal-dim);transform:translateY(-2px)}
 
-        /* ─── UPGRADED PROFILE CARD ─── */
         .p-hero-card{
           background:linear-gradient(160deg,#131c28 0%,#0d1117 60%,#111a24 100%);
           border:1px solid rgba(0,229,195,0.14);
@@ -269,43 +269,6 @@ const greetings = [
           letter-spacing:.08em;
           line-height:1.3;
           position:relative;z-index:1;
-        }
-
-        .p-card-badges{
-          display:flex;
-          flex-direction:column;
-          gap:8px;
-          margin-bottom:18px;
-        }
-        .p-card-badge-row{
-          display:flex;
-          align-items:center;
-          gap:10px;
-          padding:9px 12px;
-          border-radius:10px;
-          background:rgba(255,255,255,0.025);
-          border:1px solid rgba(0,229,195,0.10);
-          transition:border-color .2s, background .2s;
-        }
-        .p-card-badge-row:hover{
-          border-color:rgba(0,229,195,0.22);
-          background:rgba(0,229,195,0.04);
-        }
-        .p-badge-icon{
-          width:28px;height:28px;border-radius:8px;flex-shrink:0;
-          background:rgba(0,229,195,0.10);
-          border:1px solid rgba(0,229,195,0.18);
-          display:flex;align-items:center;justify-content:center;
-          font-size:.72rem;color:var(--teal);
-        }
-        .p-badge-text{
-          display:flex;flex-direction:column;gap:1px;
-        }
-        .p-badge-title{
-          font-size:.75rem;font-weight:700;color:var(--white);line-height:1.2;letter-spacing:.01em;
-        }
-        .p-badge-sub{
-          font-size:.65rem;color:var(--muted);line-height:1.2;font-family:var(--fm);
         }
 
         .p-card-cta{
@@ -537,11 +500,12 @@ const greetings = [
             </div>
           </div>
 
-          {/* ── UPGRADED PROFILE CARD ── */}
           <div className="p-hero-card">
             <div className="p-card-photo-wrap">
               <div className="p-card-photo-ring">
-                <img src="/profile.png" alt="Najmul Hasan"
+                <img
+                  src="/profile.png"
+                  alt="Najmul Hasan profile photo"
                   onError={e => {
                     e.currentTarget.style.display = "none";
                     e.currentTarget.parentElement.innerHTML = '<div class="p-card-initials">NH</div>';
@@ -557,14 +521,14 @@ const greetings = [
             <div className="p-card-meta">
               <div className="p-card-meta-row"><i className="fas fa-envelope" /><a href="mailto:najmulhasanshahin@gmail.com">najmulhasanshahin@gmail.com</a></div>
               <div className="p-card-meta-row"><i className="fas fa-map-marker-alt" />Dhaka, Bangladesh</div>
-              <div className="p-card-meta-row"><i className="fas fa-briefcase" />Open to Full-time & Freelance</div>
-              <div className="p-card-meta-row"><i className="fas fa-globe" /><a href="https://najmulcodes.vercel.app/" target="_blank" rel="noreferrer">najmulcodes.vercel.app</a></div>
+              <div className="p-card-meta-row"><i className="fas fa-briefcase" />Open to Full-time &amp; Freelance</div>
+              <div className="p-card-meta-row"><i className="fas fa-globe" /><a href="https://najmulcodes.vercel.app/" target="_blank" rel="noopener noreferrer">najmulcodes.vercel.app</a></div>
             </div>
             <div className="p-card-divider" />
 
             <div className="p-card-stats">
               {[
-                ["6+", "Production Projects"],
+                ["7+", "Projects Built"],
                 ["MERN", "Ecosystem"],
                 ["UI/UX", "User Focused"],
               ].map(([n, l]) => (
@@ -668,8 +632,8 @@ const greetings = [
                 flagship: true,
                 featured: true,
                 name: "DevFolio Analyzer",
-                tagline: "Porfolio & GitHub profile intelligence — scored, structured, and actionable.",
-                desc: "Connects the GitHub REST API with Anthropic Claude to evaluate developer profiles across contribution consistency, repository quality, tech breadth, and documentation depth. Scoring is deterministic and separated from the AI layer — Claude generates qualitative feedback on top of a stable numeric score, so the dashboard renders correctly even when the AI response varies.",
+                tagline: "GitHub profile intelligence — deterministically scored, AI-augmented, and structured.",
+                desc: "Connects the GitHub REST API with Anthropic Claude to evaluate developer profiles across contribution consistency, repository quality, tech breadth, and documentation depth. Scoring is deterministic and separated from the AI layer — Claude generates qualitative feedback on top of a stable numeric score, so the dashboard renders correctly even when model response varies.",
                 stack: ["React", "Node.js", "Express", "MongoDB", "JWT", "GitHub API", "Anthropic Claude"],
                 live: "https://devfolioanalyzer.vercel.app/",
                 code: "https://github.com/najmulcodes/devfolio-analyzer",
@@ -687,6 +651,18 @@ const greetings = [
                 live: "https://livecollab-rho.vercel.app/",
                 code: "https://github.com/najmulcodes/livecollab-client",
                 img: "/projects/livecollab.png"
+              },
+              {
+                slug: "petcare-system",
+                category: "featured",
+                featured: true,
+                name: "Whisker Dairy — PetCare System",
+                tagline: "Health tracking and time-based reminder system for managing pet care.",
+                desc: "A full-stack system that converts pet health data into actionable states and automated reminders using scheduling logic and notification workflows. Classifies pet health into overdue, due-today, and upcoming states, then delivers browser push notifications with timezone-aware scheduling via Service Workers.",
+                stack: ["React", "Tailwind CSS", "Node.js", "Express.js", "Supabase", "REST API", "Service Workers"],
+                live: "https://whiskerdairy.vercel.app//",
+                code: "https://github.com/najmulcodes/petcare",
+                img: "/projects/petcare.png"
               },
               {
                 slug: "microtask-platform",
@@ -707,7 +683,7 @@ const greetings = [
                 featured: true,
                 name: "Badar Uddin Welfare",
                 tagline: "Production charity system — live deployment for a real Bangladeshi NGO.",
-                desc: "Handles the full donation lifecycle for an active organization: member requests, three-tier admin review (superAdmin / admin / member), fund disbursement tracking, and beneficiary records. All role checks are enforced at the API route level. Cloudinary manages signed document uploads; OTP email verification via Brevo gates registration. Full Bengali-language UI.",
+                desc: "Handles the full donation lifecycle for an active organization: member requests, three-tier admin review (superAdmin / admin / member), fund disbursement tracking, and beneficiary records. All role checks are enforced at the API route level. Cloudinary manages signed document uploads; OTP email verification via Brevo gates registration.",
                 stack: ["React", "Vite", "Node.js", "Express", "MongoDB", "JWT", "Cloudinary", "Brevo API"],
                 live: "https://badaruddinwelfareorg.vercel.app/",
                 code: "https://github.com/najmulcodes/badaruddinwelfare-client",
@@ -719,7 +695,7 @@ const greetings = [
                 featured: true,
                 name: "Care.xyz",
                 tagline: "Caregiver booking with cascading location filters and middleware-level route protection.",
-                desc: "Service marketplace for childcare and elderly care across Bangladesh. Location filtering loads lazily across three administrative tiers — division → district → upazila — avoiding the cost of exposing thousands of records upfront. Route protection runs in Next.js middleware before page render; unauthenticated users never receive protected HTML. Pricing adjusts dynamically per service type and duration.",
+                desc: "Service marketplace for booking childcare and elderly care across Bangladesh. Location filtering loads lazily across three administrative tiers — division → district → upazila. Route protection runs in Next.js middleware before page render; unauthenticated users never receive protected HTML. Pricing adjusts dynamically per service type and duration.",
                 stack: ["Next.js 14", "React", "Firebase Auth", "Tailwind CSS"],
                 live: "https://care-xyz-baby-sitting-elderly-care.vercel.app",
                 code: "https://github.com/najmulcodes/Care.xyz---Baby-Sitting-Elderly-Care-Service-Platform",
@@ -731,7 +707,7 @@ const greetings = [
                 featured: false,
                 name: "Gatherly",
                 tagline: "Community discovery platform with server-rendered listings and multi-provider auth.",
-                desc: "Built on Next.js 14 App Router with a deliberate Server/Client Component boundary: listing pages render server-side for fast initial load; auth-gated interactions are isolated to Client Components. NextAuth.js handles credential and Google OAuth flows, session persistence, and CSRF protection. Mobile-first layout designed around 360px as the baseline viewport.",
+                desc: "Built on Next.js 14 App Router with a deliberate Server/Client Component boundary: listing pages render server-side for fast initial load; auth-gated interactions are isolated to Client Components. NextAuth.js handles credential and Google OAuth flows, session persistence, and CSRF protection.",
                 stack: ["Next.js 14", "NextAuth.js", "Custom CSS", "localStorage"],
                 live: "https://gatherly-navy.vercel.app/",
                 code: "https://github.com/najmulcodes/Gatherly",
@@ -743,7 +719,7 @@ const greetings = [
                 featured: false,
                 name: "ClubSphere",
                 tagline: "Club management with resource-level ownership enforcement and approval workflows.",
-                desc: "Membership requests go through a multi-step admin approval before access is granted. Event operations are checked at the resource level, not just role level — a club admin can only modify events they created. Ownership is stored as a denormalized creator ID on each event document, making the check a single field comparison rather than a join.",
+                desc: "Membership requests go through a multi-step admin approval before access is granted. Event operations are checked at the resource level — a club admin can only modify events they created. Ownership is stored as a denormalized creator ID on each event document, making the check a single field comparison rather than a join.",
                 stack: ["React", "Node.js", "Express", "MongoDB", "JWT"],
                 live: "https://clubsphere-client1.netlify.app/",
                 code: "https://github.com/najmulcodes/clubsphere-client",
@@ -755,7 +731,7 @@ const greetings = [
                 featured: false,
                 name: "BookHub",
                 tagline: "Book catalog with optimistic UI updates and consistent REST API design.",
-                desc: "Built as a deliberate exercise in API fundamentals: consistent response envelopes, machine-readable error codes, and proper HTTP semantics across all endpoints. Edits apply optimistically and roll back from a pre-mutation snapshot on failure — no re-fetch, no stale data flash. This pattern was carried forward as a baseline into every subsequent MERN project.",
+                desc: "Built as a deliberate exercise in API fundamentals: consistent response envelopes, machine-readable error codes, and proper HTTP semantics across all endpoints. Edits apply optimistically and roll back from a pre-mutation snapshot on failure — no re-fetch, no stale data flash.",
                 stack: ["React", "Node.js", "Express", "MongoDB"],
                 live: "https://bookhub-heaven.surge.sh",
                 code: "https://github.com/najmulcodes/bookhub-client",
@@ -766,7 +742,13 @@ const greetings = [
               <article key={name} className={`p-proj-card p-reveal${flagship ? " flagship" : ""}${featured ? " featured" : ""}`}>
 
                 <div className="p-proj-thumb-wrap">
-                  <img src={img} alt={name} className="p-proj-thumb" onError={e => { e.currentTarget.style.display = "none" }} />
+                  <img
+                    src={img}
+                    alt={`${name} project screenshot`}
+                    className="p-proj-thumb"
+                    loading="lazy"
+                    onError={e => { e.currentTarget.style.display = "none"; }}
+                  />
                 </div>
 
                 <div className="p-proj-body">
@@ -794,10 +776,10 @@ const greetings = [
                 </div>
 
                 <div className="p-proj-actions">
-                  <a href={live} target="_blank" rel="noreferrer" className="p-proj-btn live">
+                  <a href={live} target="_blank" rel="noopener noreferrer" className="p-proj-btn live">
                     <i className="fas fa-external-link-alt" /> Live
                   </a>
-                  <a href={code} target="_blank" rel="noreferrer" className="p-proj-btn code">
+                  <a href={code} target="_blank" rel="noopener noreferrer" className="p-proj-btn code">
                     <i className="fab fa-github" /> Code
                   </a>
                   <a href={`/projects/${slug}`} className="p-proj-btn code">
@@ -932,20 +914,17 @@ const greetings = [
           </div>
 
           <div className="p-ct-soc p-reveal">
-            <a href="https://github.com/najmulcodes" target="_blank" rel="noreferrer" className="p-ct-soc-btn gh">
+            <a href="https://github.com/najmulcodes" target="_blank" rel="noopener noreferrer" className="p-ct-soc-btn gh">
               <i className="fab fa-github" /> GitHub
             </a>
-            <a href="https://www.linkedin.com/in/najmulcodes/" target="_blank" rel="noreferrer" className="p-ct-soc-btn li">
+            <a href="https://www.linkedin.com/in/najmulcodes/" target="_blank" rel="noopener noreferrer" className="p-ct-soc-btn li">
               <i className="fab fa-linkedin" /> LinkedIn
             </a>
-            <a href="https://wa.me/8801840242448" target="_blank" rel="noreferrer" className="p-ct-soc-btn wa">
+            <a href="https://wa.me/8801840242448" target="_blank" rel="noopener noreferrer" className="p-ct-soc-btn wa">
               <i className="fab fa-whatsapp" /> WhatsApp
             </a>
           </div>
 
-          <p className="p-ct-copy p-reveal">
-            © {new Date().getFullYear()} <span>Najmul Hasan . All rights reserved.</span> — Crafted with Next.js &amp; Tailwind CSS.
-          </p>
         </div>
       </section>
 

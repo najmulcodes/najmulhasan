@@ -9,10 +9,10 @@ import Footer from "../../../components/Footer";
 const projects = {
   "devfolio-analyzer": {
     name: "DevFolio Analyzer",
-    tagline: "Porfolio & GitHub profile intelligence — scored, structured, and actionable.",
+    tagline: "GitHub profile intelligence — deterministically scored, AI-augmented, and structured.",
     img: "/projects/devfolio-analyzer.png",
     live: "https://devfolioanalyzer.vercel.app/",
-    code: "https://github.com/najmulcodes/devfolioanalyzer",
+    code: "https://github.com/najmulcodes/devfolio-analyzer",
     overview:
       "Connects the GitHub REST API with Anthropic Claude to evaluate developer profiles across contribution consistency, repository quality, tech breadth, and documentation depth. Scoring is deterministic and decoupled from the AI layer — a stable numeric score is computed first, then Claude generates qualitative feedback on top of it. This ensures the dashboard renders correctly regardless of model response variance. Authenticated users get a persistent analysis history; guest mode allows instant evaluation without signup.",
     features: [
@@ -82,6 +82,45 @@ const projects = {
       "Card assignment with per-user task filtering across workspaces",
       "Rich-text card descriptions with inline comment threads and @mentions",
       "Redis pub/sub adapter for horizontal Socket.IO scaling across multiple Node instances",
+    ],
+  },
+
+  "petcare-system": {
+    name: "Whisker Dairy — PetCare System",
+    tagline: "Health tracking and time-based reminder system for managing pet care.",
+    img: "/projects/petcare.png",
+    live: "https://whiskerdairy.vercel.app//",
+    code: "https://github.com/najmulcodes/petcare",
+    overview:
+      "A full-stack system that converts pet health data into actionable states and automated reminders using scheduling logic and notification workflows. Pet records (vaccines, medications, feeding times) are classified server-side into overdue, due-today, and upcoming states. The frontend dashboard aggregates these states per pet and surfaces them as prioritized action items. Browser push notifications are delivered via the Web Push API and Service Workers, with timezone-aware scheduling to ensure reminders fire at the correct local time.",
+    features: [
+      "Health classification engine — server-side state resolution into overdue, due-today, and upcoming categories per pet record",
+      "Time-based reminder system for vaccines, medication schedules, and feeding times with configurable intervals",
+      "Browser push notifications via Service Workers and Web Push API with timezone-aware scheduling",
+      "Pet profile management with image upload support via Supabase Storage",
+      "Dashboard aggregation view showing health status across all registered pets at a glance",
+      "REST API backend with Supabase as the persistent data layer; JWT-based auth for user isolation",
+    ],
+    tech: {
+      frontend: ["React", "Tailwind CSS", "Vite"],
+      backend: ["Node.js", "Express.js", "Supabase"],
+      database: ["Supabase (PostgreSQL)"],
+      auth: ["JWT", "Supabase Auth"],
+    },
+    challenges: [
+      "Timezone accuracy — push notification scheduling had to account for the user's local timezone rather than the server's UTC offset",
+      "Service Worker lifecycle — the SW needed to handle push events even when the browser tab was closed or backgrounded",
+      "State classification correctness — health states (overdue vs due-today) depended on precise date comparisons that needed to be consistent between server and client",
+    ],
+    solutions: [
+      "Stored all schedule times as UTC in the database; the client sends its timezone offset at registration, and the server computes the correct UTC delivery time for each push subscription",
+      "Implemented a persistent SW registration pattern that re-subscribes on app load; tested background push delivery across Chrome and Firefox",
+      "Centralized date comparison logic into a shared utility module used by both the API routes and the frontend display layer — single source of truth for state resolution",
+    ],
+    future: [
+      "Vet appointment scheduling with calendar integration and reminder escalation",
+      "Multi-pet household support with shared access for family members",
+      "Health history export as a PDF report for vet visits",
     ],
   },
 
@@ -243,7 +282,7 @@ const projects = {
     live: "https://clubsphere-client1.netlify.app/",
     code: "https://github.com/najmulcodes/clubsphere-client",
     overview:
-      "Handles club membership and event logistics for organizations with multiple clubs under one platform. Membership requests go through an admin approval step before access is granted. Event operations are enforced at the resource level, not just role level — a club admin can only modify events they created, preventing cross-club interference. Ownership is stored as a denormalized creator ID on each event document, making the authorization check a single field comparison on read rather than a collection join. The MERN stack is kept intentionally lean here — no UI library, no state management library beyond React state — to demonstrate fundamentals without scaffolding.",
+      "Handles club membership and event logistics for organizations with multiple clubs under one platform. Membership requests go through an admin approval step before access is granted. Event operations are enforced at the resource level, not just role level — a club admin can only modify events they created, preventing cross-club interference. Ownership is stored as a denormalized creator ID on each event document, making the authorization check a single field comparison on read rather than a collection join.",
     features: [
       "Multi-step membership approval — request → admin review → grant/deny with optional reason",
       "Resource-level ownership enforcement: event mutations check creator ID server-side, not just user role",
@@ -276,7 +315,7 @@ const projects = {
     live: "https://bookhub-heaven.surge.sh",
     code: "https://github.com/najmulcodes/bookhub-client",
     overview:
-      "Built as a deliberate exercise in REST API fundamentals before adding complexity in later projects. Every endpoint returns a consistent response envelope (status, data, message); error responses include machine-readable codes alongside human-readable messages; all mutations return the updated resource rather than a generic success flag. Optimistic updates on the frontend keep the UI responsive — edits appear immediately and roll back cleanly from a pre-mutation snapshot if the API call fails. This pattern was carried forward into every subsequent MERN project as a baseline.",
+      "Built as a deliberate exercise in REST API fundamentals before adding complexity in later projects. Every endpoint returns a consistent response envelope (status, data, message); error responses include machine-readable codes alongside human-readable messages; all mutations return the updated resource rather than a generic success flag. Optimistic updates on the frontend keep the UI responsive — edits appear immediately and roll back cleanly from a pre-mutation snapshot if the API call fails.",
     features: [
       "Consistent API response envelope across all endpoints — predictable shape for every frontend consumer",
       "Optimistic UI updates with snapshot-based rollback on failure — no re-fetch, no stale data flash",
@@ -354,7 +393,6 @@ export default function ProjectDetails() {
         }
         a{text-decoration:none;color:inherit}
 
-        /* ── PROJECT IMAGE — full width, no crop ── */
         .proj-img-wrap {
           margin-bottom: 36px;
           border-radius: 14px;
@@ -362,17 +400,15 @@ export default function ProjectDetails() {
           border: 1px solid rgba(255,255,255,.07);
           box-shadow: 0 10px 40px rgba(0,0,0,.4);
           background: var(--bg2);
-          /* Let the image determine the height naturally */
           line-height: 0;
         }
         .proj-img-wrap img {
           width: 100%;
-          height: auto;          /* full image visible — no crop */
+          height: auto;
           display: block;
-          object-fit: contain;   /* contain keeps aspect ratio intact */
+          object-fit: contain;
         }
 
-        /* Navbar styles */
         .p-nav{
           position:fixed;top:0;left:0;right:0;z-index:100;
           display:flex;align-items:center;justify-content:space-between;
@@ -429,12 +465,10 @@ export default function ProjectDetails() {
           .p-mobile-menu-icons a:hover{color:var(--teal);border-color:var(--teal-mid)}
         }
 
-        /* Footer */
         .p-footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 6vw;text-align:center;position:relative;z-index:1}
         .p-footer p{font-size:.76rem;color:var(--muted)}
         .p-footer span{color:var(--teal)}
 
-        /* Back button */
         .p-back-btn{
           display:inline-flex;align-items:center;gap:6px;
           margin-bottom:14px;font-size:.82rem;color:var(--muted);
@@ -443,7 +477,6 @@ export default function ProjectDetails() {
         }
         .p-back-btn:hover{color:var(--teal);border-color:var(--teal-mid);background:var(--teal-dim)}
 
-        /* Project action buttons */
         .p-proj-btn{
           display:inline-flex;align-items:center;gap:7px;
           font-size:.8rem;font-weight:600;padding:10px 20px;
@@ -462,11 +495,10 @@ export default function ProjectDetails() {
 
           <Link href="/#projects" className="p-back-btn">← Back to Projects</Link>
 
-          {/* ── PROJECT IMAGE — full, no cropping ── */}
           <div className="proj-img-wrap">
             <img
               src={project.img}
-              alt={project.name}
+              alt={`${project.name} project screenshot`}
               loading="lazy"
             />
           </div>
@@ -476,10 +508,10 @@ export default function ProjectDetails() {
             <h2 style={{ fontSize: "1.6rem", marginBottom: "6px", color: "var(--white)" }}>{project.name}</h2>
             <p style={{ color: "var(--teal)", marginBottom: "18px" }}>{project.tagline}</p>
             <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
-              <a href={project.live} target="_blank" rel="noreferrer" className="p-proj-btn live">
+              <a href={project.live} target="_blank" rel="noopener noreferrer" className="p-proj-btn live">
                 <i className="fas fa-external-link-alt" /> Live
               </a>
-              <a href={project.code} target="_blank" rel="noreferrer" className="p-proj-btn code">
+              <a href={project.code} target="_blank" rel="noopener noreferrer" className="p-proj-btn code">
                 <i className="fab fa-github" /> Code
               </a>
             </div>
@@ -505,7 +537,7 @@ export default function ProjectDetails() {
                   <p><strong style={{ color: "var(--white)" }}>Frontend:</strong> {data.frontend.join(", ")}</p>
                   <p><strong style={{ color: "var(--white)" }}>Backend:</strong> {data.backend.join(", ")}</p>
                   <p><strong style={{ color: "var(--white)" }}>Database:</strong> {data.database.join(", ")}</p>
-                  {data.auth.length > 0 && (
+                  {data.auth && data.auth.length > 0 && (
                     <p><strong style={{ color: "var(--white)" }}>Auth:</strong> {data.auth.join(", ")}</p>
                   )}
                 </div>
