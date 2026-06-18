@@ -1,7 +1,7 @@
 import "./globals.css";
 
 export const metadata = {
-  metadataBase: new URL("https://najmul-portfolio-six.vercel.app"),
+  metadataBase: new URL("https://najmulcodes.vercel.app"),
 
   title: {
     default: "Najmul Hasan | Full-Stack Developer",
@@ -13,6 +13,7 @@ export const metadata = {
 
   keywords: [
     "Najmul Hasan",
+    "najmulcodes",
     "Full Stack Developer",
     "MERN Stack Developer",
     "React Developer",
@@ -23,14 +24,14 @@ export const metadata = {
     "Bangladesh Developer",
   ],
 
-  authors: [{ name: "Najmul Hasan" }],
+  authors: [{ name: "Najmul Hasan", url: "https://najmulcodes.vercel.app" }],
   creator: "Najmul Hasan",
 
   openGraph: {
     title: "Najmul Hasan | Full-Stack Developer",
     description:
       "Full-Stack Developer specialising in React, Next.js, Node.js and MongoDB.",
-    url: "https://najmul-portfolio-six.vercel.app",
+    url: "https://najmulcodes.vercel.app",
     siteName: "Najmul Hasan Portfolio",
     images: [
       {
@@ -57,10 +58,54 @@ export const metadata = {
   },
 };
 
+// Person + WebSite structured data — this is what lets Google merge
+// your GitHub, LinkedIn, and this site into one confirmed entity
+// instead of treating them as unrelated pages.
+const personSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      name: "Najmul Hasan",
+      alternateName: "najmulcodes",
+      url: "https://najmulcodes.vercel.app",
+      image: "https://najmulcodes.vercel.app/profile.png",
+      jobTitle: "Full-Stack Software Engineer",
+      worksFor: {
+        "@type": "Organization",
+        name: "Independent / Freelance",
+      },
+      sameAs: [
+        "https://github.com/najmulcodes",
+        "https://www.linkedin.com/in/najmulcodes",
+      ],
+      knowsAbout: [
+        "React",
+        "Next.js",
+        "Node.js",
+        "MongoDB",
+        "Express",
+        "JavaScript",
+        "REST API",
+        "JWT Authentication",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      name: "Najmul Hasan Portfolio",
+      url: "https://najmulcodes.vercel.app",
+    },
+  ],
+};
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="app-body">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
         {children}
       </body>
     </html>
