@@ -1,16 +1,16 @@
 <!-- PREMIUM HEADER -->
 
 <p align="center">
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:2563eb,100:0f172a&height=200&section=header&text=Najmul%20Hasan%20Developer%20Portfolio&fontSize=40&fontColor=ffffff&animation=fadeIn"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:2563eb,100:0f172a&height=200&section=header&text=Najmul%20Hasan%20%E2%80%94%20Portfolio&fontSize=40&fontColor=ffffff&animation=fadeIn"/>
 </p>
 
 <p align="center">
-<b>Full Stack Developer | MERN Stack | Next.js</b><br/>
-A modern developer portfolio showcasing projects, technical skills, experience, education, and contact details in a polished single-page experience.
+<b>Full Stack Engineer &nbsp;·&nbsp; Founder &nbsp;·&nbsp; CEO & CPO — Navicore Software</b><br/>
+A developer portfolio showcasing production projects, technical depth, and the ventures I run.
 </p>
 
 <p align="center">
-<img src="https://img.shields.io/badge/Next.js%2016-Framework-black?style=for-the-badge&logo=next.js"/>
+<img src="https://img.shields.io/badge/Next.js-Framework-black?style=for-the-badge&logo=next.js"/>
 <img src="https://img.shields.io/badge/React%2019-Frontend-blue?style=for-the-badge&logo=react"/>
 <img src="https://img.shields.io/badge/Custom%20CSS-Styling-00e5c3?style=for-the-badge"/>
 <img src="https://img.shields.io/badge/Framer%20Motion-Animations-purple?style=for-the-badge"/>
@@ -34,18 +34,27 @@ A modern developer portfolio showcasing projects, technical skills, experience, 
 
 # 🧑‍💻 About This Project
 
-This portfolio website was built to present my work as a **Full Stack Developer**, highlighting real-world projects, technical capabilities, professional experience, and academic background.
+This portfolio was built to present my work as a **Full Stack Engineer and Founder**, highlighting production-grade projects, live ventures, technical capabilities, and professional background.
 
-The goal is to give recruiters, clients, and collaborators a **clear and modern overview of my work, skills, and development journey.**
+The goal is to give clients, collaborators, and employers a **clear, honest picture of what I build and how I work.**
 
-The website focuses on:
+The site covers:
 
-- Clean developer-focused UI  
-- Smooth single-page navigation  
-- Responsive layout across devices  
-- Project showcase with live and code links  
-- Professional experience and education timeline  
-- Easy contact access for opportunities  
+- Clean developer-focused UI with smooth animations
+- Responsive layout across all devices
+- Production project showcase with live links
+- Live venture section (Navicore Software + RailMate Bangladesh)
+- Professional experience and education timeline
+- Direct contact for work opportunities
+
+---
+
+# 🏢 Live Ventures
+
+| Venture | Role | Status |
+|---------|------|--------|
+| [Navicore Software](https://software.navicore.co) | Founder, CEO & CPO | Active |
+| [RailMate Bangladesh](https://railmatebd.com) | Founder, Lead Engineer | Live Beta |
 
 ---
 
@@ -53,7 +62,7 @@ The website focuses on:
 
 | Layer | Technology |
 |-------|-----------|
-| Frontend Framework | Next.js 16 (App Router) |
+| Frontend Framework | Next.js (App Router) |
 | UI Library | React 19 |
 | Styling | Custom CSS |
 | Animations | Framer Motion |
@@ -65,17 +74,17 @@ The website focuses on:
 
 # ✨ Key Features
 
-### Modern Developer Portfolio
-Clean layout designed to showcase projects, skills, and background professionally.
+### Production-Grade Portfolio
+Built to reflect real engineering standards — not a template, not a tutorial.
 
 ### Fully Responsive
-Optimized for Mobile, Tablet and Desktop.
+Optimized for Mobile, Tablet, and Desktop.
 
 ### Smooth Navigation
-- Fixed top navigation • Section-based scrolling • Active section indicators  
+Fixed top navigation · Section-based scrolling · Active section indicators
 
 ### Animated Interface
-- Reveal-on-scroll effects • Interactive cards • Smooth hover states  
+Reveal-on-scroll effects · Interactive cards · Smooth hover states
 
 ### Professional Sections
 Hero · About · Skills · Projects · Experience · Education · Contact
@@ -126,15 +135,15 @@ public/
   <img src="./public/projects/badaruddin.png" alt="Badar Uddin Welfare" width="100%"/>
 </a>
 
-**Tagline:** Charity Management Platform
+**Tagline:** Production welfare management for a live Bangladeshi NGO
 
-A production-focused charity management system designed for real organizational use. Includes donation request workflows, admin approval system, and role-based dashboards to manage funds, activities, and beneficiary records.
+A production system actively used by a real organisation. Replaces manual fund-tracking with role-based access (Admin / Member), donation request lifecycle with approval gates, beneficiary records, and Cloudinary-backed media. Built to operational standards.
 
 **Features:**
-- Public website for donation requests  
-- Private member portal  
-- Fund and donation tracking dashboards  
-- Help request approval workflow  
+- Public website for donation requests
+- Private member portal
+- Fund and donation tracking dashboards
+- Help request approval workflow
 
 **Tech Stack:**
 ![React](https://img.shields.io/badge/React-blue?style=flat-square&logo=react)
@@ -155,15 +164,15 @@ A production-focused charity management system designed for real organizational 
   <img src="./public/projects/microtask.png" alt="MicroTask Platform" width="100%"/>
 </a>
 
-**Tagline:** Role-Based Freelance Marketplace
+**Tagline:** Three-sided role-based marketplace with Stripe payments
 
-A multi-role micro-tasking platform with Worker, Buyer, and Admin dashboards. Includes task lifecycle management, secure JWT authentication, Stripe-based payments, and submission approval workflows.
+A multi-role micro-tasking platform with Worker, Buyer, and Admin dashboards. Role is enforced server-side — not inferred from client state. Stripe coin-based payment system, full task lifecycle, and Google OAuth.
 
 **Features:**
-- Role-based dashboards (Worker / Buyer / Admin)  
-- Task posting and submission flow  
-- Stripe payment integration  
-- Google OAuth authentication  
+- Role-based dashboards (Worker / Buyer / Admin)
+- Task posting and submission flow
+- Stripe payment integration
+- Google OAuth authentication
 
 **Tech Stack:**
 ![React](https://img.shields.io/badge/React-blue?style=flat-square&logo=react)
@@ -188,15 +197,15 @@ A multi-role micro-tasking platform with Worker, Buyer, and Admin dashboards. In
 
 **Tagline:** AI-Powered GitHub Profile Analyzer
 
-A full-stack analytics dashboard that fetches real GitHub data, scores profiles deterministically across 6 factors, and generates AI-powered insights using the Claude API — with graceful fallback when unavailable.
+Fetches live GitHub data, scores profiles deterministically across 6 weighted factors, then layers Claude API insights on top. AI fails gracefully — output stays consistent regardless. Authenticated users get persistent history with score-over-time charting.
 
 **Features:**
-- GitHub Profile Analysis via REST API  
-- Deterministic scoring (0–100) across 6 key factors  
-- AI-Powered insights using Anthropic Claude API  
-- Guest Mode — instant analysis, no account required  
-- Authenticated users can save history and track scores  
-- KPI cards, score-over-time chart (Recharts), and activity table  
+- GitHub Profile Analysis via REST API
+- Deterministic scoring (0–100) across 6 key factors
+- AI-Powered insights using Anthropic Claude API
+- Guest Mode — instant analysis, no account required
+- Authenticated users can save history and track scores
+- KPI cards, score-over-time chart (Recharts), and activity table
 
 **Tech Stack:**
 ![React](https://img.shields.io/badge/React-blue?style=flat-square&logo=react)
@@ -217,17 +226,17 @@ A full-stack analytics dashboard that fetches real GitHub data, scores profiles 
   <img src="./public/projects/livecollab.png" alt="LiveCollab" width="100%"/>
 </a>
 
-**Tagline:** Real-Time Team Collaboration Platform
+**Tagline:** Real-Time Kanban with Socket.IO sync
 
-A full-stack real-time Kanban board with live drag-and-drop sync across all connected users, workspace management with invite codes, live presence indicators, and a timestamped activity log.
+Real-time Kanban board with drag-and-drop sync across all connected clients. Rooms scoped per workspace, optimistic updates with server-side conflict resolution, heartbeat-based presence tracking, invite-code onboarding, and a persistent activity log.
 
 **Features:**
-- JWT-based register / login with protected routes  
-- Workspaces with invite codes and member management  
-- Real-Time Kanban Board — drag-and-drop via Socket.IO  
-- Live Presence — see who's online in your workspace  
-- Timestamped Activity Log for every board action  
-- Zustand + React Query for efficient client-side state  
+- JWT-based register / login with protected routes
+- Workspaces with invite codes and member management
+- Real-Time Kanban Board — drag-and-drop via Socket.IO
+- Live Presence — see who's online in your workspace
+- Timestamped Activity Log for every board action
+- Zustand + React Query for efficient client-side state
 
 **Tech Stack:**
 ![React](https://img.shields.io/badge/React-blue?style=flat-square&logo=react)
@@ -248,17 +257,16 @@ A full-stack real-time Kanban board with live drag-and-drop sync across all conn
   <img src="./public/projects/gatherly.png" alt="Gatherly" width="100%"/>
 </a>
 
-**Tagline:** Community Discovery Platform
+**Tagline:** Community Discovery Platform — Next.js 14 + TypeScript
 
-A community discovery and management platform for Bangladesh built with Next.js 14 App Router. Features credential and Google OAuth auth via NextAuth.js, a searchable community catalog, event listings, and a fully responsive mobile-first design.
+Community discovery platform with dual-provider auth via NextAuth.js (credentials + Google OAuth), edge-level route protection via Next.js middleware, and a searchable community catalog. Mobile-first, built around real browsing patterns.
 
 **Features:**
-- Email/password credentials + Google OAuth via NextAuth.js  
-- Searchable, filterable community catalog with category chips  
-- Community detail pages with banner, description, and join button  
-- Protected 'Start a Community' form with inline validation  
-- Protected 'Manage Communities' table with View and Remove actions  
-- Fully responsive mobile-first layout with hamburger nav  
+- Email/password credentials + Google OAuth via NextAuth.js
+- Searchable, filterable community catalog with category chips
+- Protected 'Start a Community' form with inline validation
+- Protected 'Manage Communities' table with View and Remove actions
+- Fully responsive mobile-first layout with hamburger nav
 
 **Tech Stack:**
 ![Next.js](https://img.shields.io/badge/Next.js-black?style=flat-square&logo=next.js)
@@ -270,21 +278,21 @@ A community discovery and management platform for Bangladesh built with Next.js 
 
 ---
 
-## 🩺 Care.xyz – Baby Sitting & Elderly Care Platform
+## 🩺 Care.xyz – Caregiver Booking Platform
 
 <a href="https://care-xyz-baby-sitting-elderly-care.vercel.app" target="_blank">
   <img src="./public/projects/carexyz.png" alt="Care.xyz" width="100%"/>
 </a>
 
-**Tagline:** Care Service Booking Platform (Next.js)
+**Tagline:** Care Service Booking — Next.js · Firebase Auth
 
-A Next.js-based service platform for booking professional caregivers across Bangladesh. Features dynamic pricing, cascading location filtering, private booking routes, and Firebase authentication.
+Next.js caregiver booking platform with cascading location selectors (district → sub-district), a dynamic pricing engine by service type and duration, and Firebase auth with protected routes enforced at both page and API level.
 
 **Features:**
-- Cascading location selectors  
-- Dynamic cost calculation  
-- Private booking routes  
-- Firebase authentication  
+- Cascading location selectors
+- Dynamic cost calculation
+- Private booking routes
+- Firebase authentication
 
 **Tech Stack:**
 ![Next.js](https://img.shields.io/badge/Next.js-black?style=flat-square&logo=next.js)
@@ -305,13 +313,13 @@ A Next.js-based service platform for booking professional caregivers across Bang
 
 **Tagline:** Membership & Event Management System
 
-A role-based club management system with event handling, membership approval flows, and protected routes using JWT authentication.
+Role-based club management system with event handling, membership approval flows, and protected routes using JWT authentication.
 
 **Features:**
-- JWT-protected routes  
-- Membership approval flow  
-- Event and member management  
-- Responsive dashboard interface  
+- JWT-protected routes
+- Membership approval flow
+- Event and member management
+- Responsive dashboard interface
 
 **Tech Stack:**
 ![React](https://img.shields.io/badge/React-blue?style=flat-square&logo=react)
@@ -332,13 +340,13 @@ A role-based club management system with event handling, membership approval flo
 
 **Tagline:** Book Management Platform
 
-A CRUD-based application for managing books with REST API integration. Includes real-time UI updates and structured data handling.
+CRUD-based application for managing books with REST API integration. Includes real-time UI updates and structured data handling.
 
 **Features:**
-- Browse and manage books  
-- Add, edit, and delete functionality  
-- Real-time state updates  
-- Clean responsive interface  
+- Browse and manage books
+- Add, edit, and delete functionality
+- Real-time state updates
+- Clean responsive interface
 
 **Tech Stack:**
 ![React](https://img.shields.io/badge/React-blue?style=flat-square&logo=react)
@@ -351,18 +359,13 @@ A CRUD-based application for managing books with REST API integration. Includes 
 
 ---
 
-# 🧠 Developer Background
+# 🧠 Background
 
-I hold a **Bachelor of Business Administration in Accounting & Finance**, and transitioned into **Full Stack Web Development** to build structured and scalable web applications.
+I hold a **Bachelor of Business Administration in Accounting & Finance** and transitioned into full-stack engineering to build production-grade software systems.
 
-My professional experience includes:
+I now run **Navicore Software** — a software development company building custom solutions for clients in Bangladesh and internationally — and **RailMate Bangladesh**, a live railway companion app for millions of potential passengers.
 
-- Data Operations  
-- IT Support  
-- Technical troubleshooting  
-- Analytical problem solving  
-
-These experiences shaped my approach to building **efficient, maintainable, and user-focused software systems.**
+My business and analytical background shapes how I approach software: scoped precisely, built to last, and maintained like it still has to work in five years.
 
 ---
 
@@ -371,6 +374,7 @@ These experiences shaped my approach to building **efficient, maintainable, and 
 | Platform | Link |
 |----------|------|
 | 📧 Email | [najmulhasanshahin@gmail.com](mailto:najmulhasanshahin@gmail.com) |
+| 🌐 Navicore Software | [software.navicore.co](https://software.navicore.co) |
 | 🐙 GitHub | [github.com/najmulcodes](https://github.com/najmulcodes) |
 | 💼 LinkedIn | [linkedin.com/in/najmulcodes](https://www.linkedin.com/in/najmulcodes/) |
 | 💬 WhatsApp | [wa.me/8801840242448](https://wa.me/8801840242448) |
@@ -379,33 +383,17 @@ These experiences shaped my approach to building **efficient, maintainable, and 
 
 # ⚙ Installation & Setup
 
-Clone the repository
 ```bash
 git clone https://github.com/najmulcodes/najmul-portfolio.git
-```
-
-Navigate to the project folder
-```bash
 cd najmul-portfolio
-```
-
-Install dependencies
-```bash
 npm install
-```
-
-Run development server
-```bash
 npm run dev
 ```
 
-Build production version
+Production build:
+
 ```bash
 npm run build
-```
-
-Run ESLint
-```bash
 npm run lint
 ```
 
@@ -413,20 +401,18 @@ npm run lint
 
 # 🚀 Deployment
 
-The portfolio is deployed using **Vercel**.
-
-Live URL: **https://najmul-portfolio-six.vercel.app/**
+Deployed on **Vercel** — [najmulcodes.vercel.app](https://najmulcodes.vercel.app/)
 
 ---
 
 # 📄 License
 
-This project is open-source and available under the **MIT License**.
+MIT License — open source, feel free to reference.
 
 ---
 
 <p align="center">
-⭐ If you like this project, consider giving it a star on GitHub.
+⭐ If you find this useful, a star on GitHub is appreciated.
 </p>
 
 <p align="center">
