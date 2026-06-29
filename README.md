@@ -22,10 +22,10 @@ A developer portfolio showcasing production projects, technical depth, and the v
 
 # 🌐 Live Portfolio
 
-**👉 [najmulcodes.vercel.app](https://najmulcodes.vercel.app/)**
+**👉 [najmulhasan.navicore.co](https://najmulhasan.navicore.co/)**
 
 <p align="center">
-  <a href="https://najmulcodes.vercel.app/" target="_blank">
+  <a href="https://najmulhasan.navicore.co/" target="_blank">
     <img src="./public/projects/portfolio.png" alt="Najmul Hasan Portfolio" width="720"/>
   </a>
 </p>
@@ -221,7 +221,7 @@ A multi-role micro-tasking platform with Worker, Buyer, and Admin dashboards. Ro
 
 ## 🤖 DevFolio Analyzer – AI-Powered GitHub Profile Analyzer
 
-<a href="https://devfolio-analyzer.vercel.app/" target="_blank">
+<a href="https://devfolio.navicore.co/" target="_blank">
   <img src="./public/projects/devfolio-analyzer.png" alt="DevFolio Analyzer" width="100%"/>
 </a>
 
@@ -246,7 +246,7 @@ Fetches live GitHub data, scores profiles deterministically across 6 weighted fa
 ![Claude API](https://img.shields.io/badge/Claude_API-orange?style=flat-square)
 
 **Links:**
-🌐 [Live Site](https://devfolio-analyzer.vercel.app/) &nbsp;|&nbsp; 💻 [Source Code](https://github.com/najmulcodes/devfolio-analyzer)
+🌐 [Live Site](https://devfolio.navicore.co/) &nbsp;|&nbsp; 💻 [Source Code](https://github.com/najmulcodes/devfolio-analyzer)
 
 ---
 
@@ -431,7 +431,7 @@ npm run lint
 
 # 🚀 Deployment
 
-Deployed on **Vercel** — [najmulcodes.vercel.app](https://najmulcodes.vercel.app/)
+Deployed on **Vercel** — [najmulhasan.navicore.co](https://najmulhasan.navicore.co/)
 
 ---
 

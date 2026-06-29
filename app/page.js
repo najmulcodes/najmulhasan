@@ -521,7 +521,7 @@ export default function Portfolio() {
               <div className="p-card-meta-row"><i className="fas fa-envelope" /><a href="mailto:najmulhasanshahin@gmail.com">najmulhasanshahin@gmail.com</a></div>
               <div className="p-card-meta-row"><i className="fas fa-map-marker-alt" />Dhaka, Bangladesh</div>
               <div className="p-card-meta-row"><i className="fas fa-briefcase" />Open to Full-time &amp; Freelance</div>
-              <div className="p-card-meta-row"><i className="fas fa-globe" /><a href="https://najmulcodes.vercel.app/" target="_blank" rel="noopener noreferrer">najmulcodes.vercel.app</a></div>
+              <div className="p-card-meta-row"><i className="fas fa-globe" /><a href="https://najmulhasan.navicore.co/" target="_blank" rel="noopener noreferrer">najmulhasan.navicore.co</a></div>
             </div>
             <div className="p-card-divider" />
 
@@ -647,7 +647,7 @@ export default function Portfolio() {
                 tagline: "GitHub profile intelligence — deterministically scored, AI-augmented, and structured.",
                 desc: "Connects the GitHub REST API with Anthropic Claude to evaluate developer profiles across contribution consistency, repository quality, tech breadth, and documentation depth. Scoring is deterministic and separated from the AI layer — Claude generates qualitative feedback on top of a stable numeric score, so the dashboard renders correctly even when model response varies.",
                 stack: ["React", "Node.js", "Express", "MongoDB", "JWT", "GitHub API", "Anthropic Claude"],
-                live: "https://devfolioanalyzer.vercel.app/",
+                live: "https://devfolio.navicore.co/",
                 code: "https://github.com/najmulcodes/devfolio-analyzer",
                 img: "/projects/devfolio-analyzer.png"
               },
