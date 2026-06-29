@@ -1,7 +1,7 @@
 <!-- PREMIUM HEADER -->
 
 <p align="center">
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:2563eb,100:0f172a&height=200&section=header&text=Najmul%20Hasan%20%E2%80%94%20Portfolio&fontSize=40&fontColor=ffffff&animation=fadeIn"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:030810,50:0a1628,100:1a0f00&height=200&section=header&text=Najmul%20Hasan%20%E2%80%94%20Portfolio&fontSize=40&fontColor=ffffff&animation=fadeIn"/>
 </p>
 
 <p align="center">
@@ -446,5 +446,5 @@ MIT License — open source, feel free to reference.
 </p>
 
 <p align="center">
-<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0f172a,100:2563eb&height=120&section=footer"/>
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:1a0f00,50:0a1628,100:030810&height=120&section=footer"/>
 </p>
