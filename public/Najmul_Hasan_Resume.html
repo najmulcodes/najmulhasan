@@ -9,209 +9,103 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
+*{margin:0;padding:0;box-sizing:border-box;}
+
+html, body{
+height:100%;
 }
 
 body{
 font-family:'Inter',sans-serif;
 color:#1a1a1a;
-line-height:1.3;
-max-width:900px;
-padding:30px;
+line-height:1.35;
+width:210mm;
+min-height:297mm;
+padding:12mm 14mm;
 margin:0 auto;
 background-color:#fff;
-font-size:10.5pt;
+font-size:9.2pt;
 -webkit-print-color-adjust:exact;
 }
 
-/* clickable links */
-a{
-color:#0b57d0;
-text-decoration:none;
-}
+a{color:#0b57d0;text-decoration:none;}
+a[href]{pointer-events:auto;}
 
-a[href]{
-pointer-events:auto;
-}
+header{text-align:center;margin-bottom:5px;}
 
-/* Header */
+h1{font-size:20pt;font-weight:900;margin-bottom:3px;color:#000;}
 
-header{
-text-align:center;
-margin-bottom:6px;
-}
-
-h1{
-font-size:24pt;
-font-weight:900;
-margin-bottom:1px;
-color:#000;
-}
-
-.role{
-font-size:14pt;
-font-weight:600;
-color:#444;
-margin-bottom:4px;
-}
+.role{font-size:12pt;font-weight:600;color:#444;margin-bottom:4px;}
 
 .contact-row{
-display:flex;
-justify-content:center;
-align-items:center;
-gap:14px;
-font-size:9.5pt;
-margin-bottom:8px;
+display:flex;justify-content:center;align-items:center;
+gap:10px;font-size:8.8pt;margin-bottom:5px;
 }
 
 .social-row{
-display:flex;
-justify-content:center;
-align-items:center;
-gap:10px;
-font-size:9.5pt;
+display:flex;justify-content:center;align-items:center;
+gap:6px;font-size:8.8pt;
 }
 
-.icon-text{
-display:inline-flex;
-align-items:center;
-gap:8px;
-color:#1a1a1a;
-text-decoration:none;
-}
+.icon-text{display:inline-flex;align-items:center;gap:8px;color:#1a1a1a;text-decoration:none;}
+.icon-text i{font-size:12pt;width:13px;text-align:center;color:#333;}
+.link-accent{color:#0b57d0 !important;font-weight:900;}
 
-.icon-text i{
-font-size:12pt;
-width:12px;
-text-align:center;
-color:#333;
-}
-
-.link-accent{
-color:#0b57d0 !important;
-font-weight:900;
-}
-
-/* sections */
-
-section{
-margin-bottom:2px;
-padding-left: 8px
-}
+section{margin-bottom:3px;padding-left:6px;}
 
 h2{
-font-size:13pt;
-font-weight:900;
+font-size:11.5pt;font-weight:900;
 border-bottom:1.5px solid #333;
-margin-bottom:1px;
-padding-bottom:1px;
+margin-bottom:3px;padding-bottom:1px;
 text-transform:uppercase;
 }
 
-.small{
-font-size:10pt;
-color:#1a1a1a;
-}
+.small{font-size:9pt;color:#1a1a1a;}
 
-/* projects */
-
-.project{
-margin-bottom:2px;
-}
+.project{margin-bottom:3px;}
 
 .project-header{
-display:flex;
-justify-content:space-between;
-align-items:baseline;
-margin-bottom:1px;
+display:flex;justify-content:space-between;
+align-items:baseline;margin-bottom:3px;
 }
 
-.project-title{
-font-weight:900;
-font-size:11pt;
-}
+.project-title{font-weight:900;font-size:9.8pt;}
 
-.project-links{
-font-size:10pt;
-}
+.project-links{font-size:9pt;}
+.project-links a{color:#0b57d0;text-decoration:underline;font-weight:700;}
 
-.project-links a{
-color:#0b57d0;
-text-decoration:underline;
-font-weight:700;
-}
+.overview{font-size:9pt;font-weight:800;color:#815252;margin-bottom:3px;}
+.tech-stack{font-size:9pt;font-weight:900;color:#444;margin-top:3px;margin-bottom:3px;}
 
-.overview{
-font-size:10pt;
-font-weight:800;
-color:#815252;
-margin: bottom 4px;
-}
+ul{list-style-type:disc;margin-left:26px;margin-top:3px;}
+li{margin-bottom:3px;font-size:9pt;}
 
-.tech-stack{
-font-size:10pt;
-font-weight:900;
-color:#444;
-margin: bottom 4px;
-}
-
-ul{
-list-style-type:disc;
-margin-left:30px;
-margin-top:2px;
-}
-
-li{
-margin-bottom:1px;
-}
-
-.certificate {
-  text-align: center;
-  margin-top: 4px;
-  margin-bottom: 4px;
-}
-
-.certificate a {
-  font-size: 12px;
-  text-decoration: none;
-  color:#0b57d0;
-}
-
-.certificate a:hover {
-  text-decoration: underline;
-}
-
-/* rows */
+.certificate{text-align:center;margin-top:1px;margin-bottom:3px;}
+.certificate a{font-size:9pt;text-decoration:none;color:#0b57d0;}
+.certificate a:hover{text-decoration:underline;}
 
 .split-row{
-display:flex;
-justify-content:space-between;
-align-items:baseline;
-margin-bottom:1px;
+display:flex;justify-content:space-between;
+align-items:baseline;margin-bottom:3px;
 }
 
-.bold{
-font-weight:900;
-}
+.bold{font-weight:900;}
+
+/* Skills spacing */
+.small p { margin-bottom: 3px; }
 
 @media print{
-body{
-padding:0;
+body{padding:10mm 10mm;width:210mm;}
+@page{size:A4;margin:0;}
 }
-}
-
 </style>
 </head>
 
 <body>
 
 <header>
-
 <h1>Najmul Hasan</h1>
-<div class="role">Full Stack MERN Developer</div>
+<div class="role">Full Stack Engineer &amp; Founder, NAVICORE</div>
 
 <div class="contact-row">
 <span class="icon-text"><i class="fa-solid fa-envelope"></i> najmulhasanshahin@gmail.com</span>
@@ -222,96 +116,86 @@ padding:0;
 </div>
 
 <div class="social-row">
-
 <a href="https://www.linkedin.com/in/najmulcodes" target="_blank" class="icon-text link-accent">
 <i class="fa-brands fa-linkedin"></i> LinkedIn
 </a>
-
 <span>|</span>
-
 <a href="https://github.com/najmulcodes" target="_blank" class="icon-text link-accent">
 <i class="fa-brands fa-github"></i> GitHub
 </a>
-
 <span>|</span>
-
-<a href="https://najmulcodes.vercel.app/" target="_blank" class="icon-text link-accent">
+<a href="https://najmulcodes.navicore.co/" target="_blank" class="icon-text link-accent">
 <i class="fa-solid fa-briefcase"></i> Portfolio
 </a>
-
+<span>|</span>
+<a href="https://railmatebd.com" target="_blank" class="icon-text link-accent">
+<i class="fa-solid fa-train"></i> RailMate
+</a>
 </div>
-
 </header>
 
 
 <section>
-
 <h2>Career Objective</h2>
-
 <p class="small">
-Full Stack MERN Developer focused on building and stabilizing real-world applications. Experienced in designing APIs, handling authentication, and resolving production-level issues such as API mismatches, state inconsistencies, and real-time data flow.
+Full Stack Engineer with production experience building consumer mobile and web applications, backend automation systems, and multi-role platforms. Founder and CEO of NAVICORE — a Bangladesh-based technology venture builder. Currently developing RailMate Bangladesh (railmatebd.com), a live railway companion platform covering 130+ trains and 52+ stations, with a React Native app in private beta. Focused on building practical tools that solve real problems for everyday people in Bangladesh.
 </p>
-
 </section>
 
 
 <section>
-
 <h2>SKILLS</h2>
-
 <div class="small">
-
-<p><b>Frontend:</b> React, JavaScript, HTML, CSS, Tailwind CSS</p>
-
-<p><b>Backend:</b> Node.js, Express.js</p>
-
-<p><b>Database:</b> MongoDB, Supabase</p>
-
-<p><b>Core:</b> REST API, JWT Authentication, API Integration, State Management</p>
-
-<p><b>Tools:</b> Git, GitHub, Postman</p>
-
+<p><b>Languages:</b> JavaScript, TypeScript, Python</p>
+<p><b>Frontend &amp; Mobile:</b> React, Next.js, React Native, Expo Router, NativeWind, Zustand, HTML, CSS, Tailwind CSS, Shadcn, Daisy UI</p>
+<p><b>Backend:</b> Node.js, Express.js, Python (aiogram, Pyrogram)</p>
+<p><b>Database:</b> MongoDB, Supabase (PostgreSQL), Firebase, Prisma (learning)</p>
+<p><b>Tools &amp; Platforms:</b> Git, GitHub, EAS (Expo Application Services), Vercel, Cloudflare, Stripe, Postman, NextAuth, VS Code, Docker (learning), AWS (learning)</p>
+<p><b>AI &amp; APIs:</b> Anthropic Claude API, GitHub REST API, PostHog, Socket.IO, Cloudinary, Brevo</p>
+<p><b>In Progress:</b> RAG, LangChain, Vector Databases, CI/CD</p>
 </div>
-
 </section>
 
 
 <section>
-
 <h2>PROJECTS</h2>
 
 <div class="project">
-
   <div class="project-header">
-    <span class="project-title">DevFolio Analyzer (AI-Powered Portfolio & GitHub Profile Analyzer)</span>
+    <span class="project-title">RailMate Bangladesh — Railway Companion Platform &nbsp;·&nbsp; <span style="color:#1a7a3c;">Live Product</span></span>
+    <div class="project-links">
+      <a href="https://railmatebd.com" target="_blank">railmatebd.com</a> |
+      <a href="https://github.com/najmulcodes/NAVICORE" target="_blank">GitHub</a>
+    </div>
+  </div>
+  <p class="overview">Bangladesh's most trusted railway companion — real-time train schedules, community delay reports, and journey planning for 130+ trains across 52+ stations.</p>
+  <ul class="small">
+    <li>Architected and built the full platform solo: Next.js 15 website (live), React Native mobile app (private beta), and separate backend API — all deployed on Vercel with Supabase as primary database and auth.</li>
+    <li>Implemented bilingual (Bengali + English) i18n routing, SEO infrastructure with structured JSON-LD, sitemap, and Google Search Console integration.</li>
+    <li>Built OTP-based authentication via Supabase, community reporting system, per-IP rate limiting, and production error handling across the full stack.</li>
+    <li>Configured custom domain infrastructure on Cloudflare (railmatebd.com, api.railmatebd.com) with PostHog analytics and EAS build pipeline targeting Google Play.</li>
+  </ul>
+  <p class="tech-stack">Technology: Next.js 15, React Native, Expo Router, NativeWind, Zustand, Supabase, EAS, PostHog, Cloudflare, Resend, Zod</p>
+</div>
+
+<div class="project">
+  <div class="project-header">
+    <span class="project-title">DevFolio Analyzer (AI-Powered Portfolio &amp; GitHub Profile Analyzer)</span>
     <div class="project-links">
       <a href="https://devfolioanalyzer.vercel.app/" target="_blank">Preview</a> |
       <a href="https://github.com/najmulcodes/devfolio-analyzer" target="_blank">Client Code</a>
     </div>
   </div>
-
-  <p class="overview">
-    A full-stack analytics dashboard that evaluates GitHub profiles with a deterministic scoring engine and AI-powered insights via the Claude API.
-  </p>
-
+  <p class="overview">A full-stack analytics dashboard that evaluates GitHub profiles with a deterministic scoring engine and AI-powered insights via the Claude API.</p>
   <ul class="small">
-    <li>Built a 0–100 scoring system across 6 factors (repos, stars, followers, activity); layered Claude API insights with graceful fallback.</li>
-    <li>Implemented guest mode for instant analysis and authenticated history with paginated MongoDB endpoints.</li>
-    <li>Integrated GitHub REST API with optional token support; visualised score trends with Recharts.</li>
-    <li>Resolved production issues including OAuth flow errors, API route mismatches, and CORS handling.</li>
+    <li>Built a structured scoring system to evaluate GitHub profiles with clear and consistent data flow.</li>
+    <li>Integrated external APIs and ensured stable frontend-backend communication; resolved production issues including API mismatches, OAuth errors, and CORS handling.</li>
+    <li>Ensured consistent API contract between frontend and backend, reducing data mismatches in production.</li>
   </ul>
-
-  <p class="tech-stack">
-    Technology: React 18, React Router, Recharts, Node.js, Express.js, MongoDB, JWT, Claude (Anthropic) API
-  </p>
-
+  <p class="tech-stack">Technology: React 18, React Router, Recharts, Node.js, Express.js, MongoDB, JWT, Claude (Anthropic) API</p>
 </div>
 
-
 <div class="project">
-
-  <div class="project">
-
   <div class="project-header">
     <span class="project-title">LiveCollab — Real-Time Collaboration Platform</span>
     <div class="project-links">
@@ -319,107 +203,90 @@ Full Stack MERN Developer focused on building and stabilizing real-world applica
       <a href="https://github.com/najmulcodes/livecollab-client" target="_blank">Client Code</a>
     </div>
   </div>
-
-  <p class="overview">
-    A real-time collaboration platform with workspace management, role-based access, and live updates.
-  </p>
-
+  <p class="overview">A real-time collaboration platform with workspace management, role-based access, and live updates.</p>
   <ul class="small">
-    <li>Built real-time communication system using Socket.IO for live updates.</li>
-    <li>Implemented role-based workspace system (Owner/Admin/Member).</li>
-    <li>Fixed state synchronization issues and improved UI consistency.</li>
-    <li>Stabilized system behavior by aligning frontend state with backend events.</li>
+    <li>Designed real-time event flow using Socket.IO to maintain consistent state across users; implemented role-based workspace system with controlled access and actions.</li>
+    <li>Resolved synchronization issues between frontend state and backend events to improve reliability.</li>
   </ul>
-
-  <p class="tech-stack">
-    Technology: React, Node.js, Express.js, MongoDB, Socket.IO, JWT
-  </p>
-
+  <p class="tech-stack">Technology: React, Node.js, Express.js, MongoDB, Socket.IO, JWT</p>
 </div>
-
 
 <div class="project">
-
   <div class="project-header">
-    <span class="project-title">MicroTask Platform</span>
+    <span class="project-title">Whisker Dairy — PetCare System</span>
     <div class="project-links">
-      <a href="https://microtask-client-iota.vercel.app/" target="_blank">Preview</a> |
-      <a href="https://github.com/najmulcodes/microtask-client" target="_blank">Client Code</a>
+      <a href="https://whiskerdairy.vercel.app/" target="_blank">Preview</a> |
+      <a href="https://github.com/najmulcodes/Petcare" target="_blank">Client Code</a>
     </div>
   </div>
-
-  <p class="overview">
-    A task marketplace platform where users can create, manage, and complete micro-tasks with secure payment integration.
-  </p>
-
+  <p class="overview">A pet care management system that tracks health records, schedules reminders, and monitors pet expenses in one place.</p>
   <ul class="small">
-    <li>Implemented secure payment validation using backend verification instead of relying on frontend callbacks.</li>
-    <li>Implemented role-based dashboards for task creators and workers with real-time task status updates.</li>
-    <li>Optimized database structure in MongoDB to efficiently manage task-user relationships and transactions.</li>
+    <li>Built a health summary system classifying records as overdue, due today, or upcoming; implemented browser notification flow for vaccination, medication, and feeding schedules.</li>
+    <li>Fixed timezone and data consistency issues to keep dashboard updates and reminders accurate.</li>
   </ul>
-
-  <p class="tech-stack">
-    Technology: React, Tailwind CSS, Node.js, Express.js, MongoDB, Firebase Authentication, Stripe API, JWT
-  </p>
-
+  <p class="tech-stack">Technology: React, Tailwind CSS, Node.js, Express.js, Supabase, REST API, Service Workers</p>
 </div>
 
 </section>
 
 
 <section>
-
 <h2>EDUCATION</h2>
+<div class="split-row">
+<span class="bold">BBA Accounting &amp; Finance</span>
+<span>2019 – 2023</span>
+</div>
+<p class="small">City College &nbsp; Dhaka, Bangladesh</p>
+</section>
+
+
+<section>
+<h2>COURSE</h2>
 
 <div class="split-row">
-<span class="bold">BBA Accounting & Finance</span>
-<span>2019 – 2023</span>
-<div class="entry" style="margin-top: 2px;">
-    <div>
-        <p class="small">City College Dhaka, Bangladesh</p>
-    </div>
+<span class="bold">AI-Driven Software Engineering — Level 2 &nbsp;·&nbsp; Programming Hero</span>
+<span>April 2026 – Present</span>
 </div>
-</section>
-
-
-<section>
-
-<h2>COURSE</h2>
+<p class="small" style="margin-bottom:5px;">TypeScript, PostgreSQL, Prisma, Docker, AWS, RAG, LangChain, Vector DBs, CI/CD</p>
 
 <div class="split-row">
 <span class="bold">Complete Web Development Course – Programming Hero</span>
 <span>2025 – 2026</span>
 </div>
-
 <p class="certificate">
-  <a href="https://drive.google.com/file/d/1npAH6Q-1M70o7lRlyuFjzFLO0IYJ8M11/view?usp=sharing" target="_blank">
-    <i class="fa-solid fa-certificate"></i> View Certificate
-  </a>
+  <a href="https://drive.google.com/file/d/1npAH6Q-1M70o7lRlyuFjzFLO0IYJ8M11/view?usp=sharing" target="_blank"><i class="fa-solid fa-certificate"></i> View Certificate</a>
 </p>
-
 </section>
 
-<section>
 
+<section>
 <h2>EXPERIENCE</h2>
 
 <div class="split-row">
-<span class="bold">Data Entry Specialist — Nation IT Limited</span>
-<span>2024 – Present</span>
+<span class="bold">Founder, CEO &amp; Chief Product Officer — NAVICORE</span>
+<span>June 2026 – Present</span>
 </div>
+<p class="small">NAVICORE Foundation · Dhaka, Bangladesh &nbsp;·&nbsp; <a href="https://navicore.co" target="_blank">navicore.co</a></p>
+<ul class="small" style="margin-top:3px;margin-bottom:4px;">
+  <li>Founded NAVICORE, a technology venture builder, and led end-to-end product development of RailMate Bangladesh — from architecture through live deployment — as the sole engineer.</li>
+  <li>Managing Navicore Software division, delivering client web and automation projects that fund the consumer platform ecosystem.</li>
+</ul>
 
-<p class="small">
-  Maintained high data accuracy and consistency, improving attention to detail and structured workflow handling.
-</p>
-
+<div class="split-row">
+<span class="bold">Freelance Full Stack Developer</span>
+<span>2025 – Present</span>
+</div>
+<p class="small">Self-employed · Dhaka, Bangladesh</p>
+<ul class="small" style="margin-top:3px;">
+  <li>Build and deliver backend automation bots and web applications for clients (paid, friend-referred).</li>
+  <li>Scope, estimate, and independently ship projects end-to-end — from requirements through deployment.</li>
+</ul>
 </section>
 
+
 <section>
-  
 <h2>LANGUAGES</h2>
-
 <p class="small">Bengali (Native), English (Fluent), Hindi (Fluent), Arabic (Fluent)</p>
-
 </section>
 
 </body>

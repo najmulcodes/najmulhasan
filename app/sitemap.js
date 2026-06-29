@@ -1,5 +1,5 @@
 export default function sitemap() {
-  const baseUrl = "https://najmulcodes.vercel.app";
+  const baseUrl = "https://najmulhasan.navicore.co";
 
   // Real routes that exist in app/projects/[slug]/page.js
   const projectSlugs = [

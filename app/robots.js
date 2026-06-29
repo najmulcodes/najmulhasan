@@ -4,6 +4,6 @@ export default function robots() {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: "https://najmulcodes.vercel.app/sitemap.xml",
+    sitemap: "https://najmulhasan.navicore.co",
   };
 }
