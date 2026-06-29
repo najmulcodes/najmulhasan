@@ -487,12 +487,11 @@ export default function Portfolio() {
                 I&apos;m Najmul Hasan
               </motion.span>
               <span className="role">
-                Full-Stack Developer · MERN · React · Next.js
+                Full-Stack Engineer · Founder · CEO &amp; CPO — Navicore Software
               </span>
             </h1>
             <p className="p-hero-desc">
-              Business graduate turned developer — I build structured, scalable web applications
-              with React, Node.js and MongoDB. Focused on clean code and great user experience.
+              Founder of Navicore Software. I build production-grade software systems — from architecture to deployment — for businesses in Bangladesh and internationally.
             </p>
             <div className="p-hero-btns">
               <a href="#projects" className="p-btn-teal"><i className="fas fa-rocket" /> View Projects</a>
@@ -516,7 +515,7 @@ export default function Portfolio() {
             </div>
 
             <div className="p-card-name">Najmul Hasan</div>
-            <div className="p-card-role">// Full-Stack Developer · MERN Stack</div>
+            <div className="p-card-role">// Founder · CEO & CPO — Navicore Software</div>
 
             <div className="p-card-meta">
               <div className="p-card-meta-row"><i className="fas fa-envelope" /><a href="mailto:najmulhasanshahin@gmail.com">najmulhasanshahin@gmail.com</a></div>
@@ -528,9 +527,9 @@ export default function Portfolio() {
 
             <div className="p-card-stats">
               {[
-                ["7+", "Projects Built"],
-                ["MERN", "Ecosystem"],
-                ["UI/UX", "User Focused"],
+                ["12+", "Projects Delivered"],
+                ["2", "Live Ventures"],
+                ["3", "Countries"],
               ].map(([n, l]) => (
                 <div key={l} className="p-stat-box">
                   <div className="p-stat-num">{n}</div>
@@ -561,26 +560,26 @@ export default function Portfolio() {
                 <div className="p-tline"><span className="p-tprompt">$</span><span className="p-tcmd">&nbsp;cat najmul.json</span></div>
                 <div className="p-tout">{"{"}</div>
                 <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;name&quot;</span>: <span className="p-tstr">&quot;Najmul Hasan&quot;</span>,</div>
-                <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;role&quot;</span>: <span className="p-tstr">&quot;Full-Stack Developer&quot;</span>,</div>
+                <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;role&quot;</span>: <span className="p-tstr">&quot;Founder · CEO &amp; CPO&quot;</span>,</div>
+                <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;company&quot;</span>: <span className="p-tstr">&quot;Navicore Software&quot;</span>,</div>
                 <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;location&quot;</span>: <span className="p-tstr">&quot;Dhaka, Bangladesh&quot;</span>,</div>
-                <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;education&quot;</span>: <span className="p-tstr">&quot;BBA Accounting &amp; Finance&quot;</span>,</div>
-                <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;experience&quot;</span>: <span className="p-tnum">3</span>,</div>
-                <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;projects&quot;</span>: <span className="p-tnum">10</span>,</div>
+                <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;projects&quot;</span>: <span className="p-tnum">12</span>,</div>
+                <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;ventures&quot;</span>: <span className="p-tnum">2</span>,</div>
                 <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;available&quot;</span>: <span className="p-tbool">true</span>,</div>
                 <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;stack&quot;</span>: [</div>
-                <div className="p-tout">&nbsp;&nbsp;&nbsp;&nbsp;<span className="p-tstr">&quot;React&quot;</span>, <span className="p-tstr">&quot;Node.js&quot;</span>,</div>
-                <div className="p-tout">&nbsp;&nbsp;&nbsp;&nbsp;<span className="p-tstr">&quot;MongoDB&quot;</span>, <span className="p-tstr">&quot;Express&quot;</span></div>
+                <div className="p-tout">&nbsp;&nbsp;&nbsp;&nbsp;<span className="p-tstr">&quot;React Native&quot;</span>, <span className="p-tstr">&quot;Next.js&quot;</span>,</div>
+                <div className="p-tout">&nbsp;&nbsp;&nbsp;&nbsp;<span className="p-tstr">&quot;Node.js&quot;</span>, <span className="p-tstr">&quot;Supabase&quot;</span></div>
                 <div className="p-tout">&nbsp;&nbsp;]</div>
                 <div className="p-tout">{"}"}<span className="p-tcursor"/></div>
               </div>
             </div>
             <div className="p-about-text p-reveal">
               <h3>Hello!</h3>
-              <p>My name is <strong>Najmul</strong> and I specialise in web development. I&apos;m a highly motivated individual dedicated to writing clean, robust, reusable code — striving to never stop learning and improving.</p>
-              <p>I hold a <strong>Bachelor of Business Administration in Accounting &amp; Finance</strong> and have worked across data operations and IT support — fields that sharpened my analytical thinking and problem-solving mindset.</p>
-              <p>When I&apos;m not coding, I enjoy reading blogs, learning or picking up some new hands-on side projects.</p>
+              <p>My name is <strong>Najmul</strong>. I&apos;m a full-stack engineer and the founder, CEO &amp; CPO of <strong>Navicore Software</strong> — a software development company building custom solutions for businesses in Bangladesh and internationally.</p>
+              <p>Every project I take on is handled directly by me, from architecture through deployment. No middlemen, no handoffs. I also build and run <strong>RailMate Bangladesh</strong>, a live railway companion app built for millions of passengers.</p>
+              <p>I hold a <strong>BBA in Accounting &amp; Finance</strong>. My business background shapes how I think about software: scoped precisely, built to last, maintained like it still has to work in five years.</p>
               <div className="p-tags">
-                {["React","Node.js","MongoDB","Express","JavaScript","Tailwind CSS","REST API","JWT"].map(t=>(
+                {["React Native","Next.js","Node.js","Python","Supabase","MongoDB","TypeScript","Tailwind CSS","Socket.IO","Stripe","JWT","Cloudinary"].map(t=>(
                   <span key={t} className="p-tag">{t}</span>
                 ))}
               </div>
@@ -626,6 +625,19 @@ export default function Portfolio() {
 
           <div className="p-proj-list">
             {[
+              {
+                slug: "navicore-software",
+                category: "flagship",
+                flagship: true,
+                featured: true,
+                name: "Navicore Software",
+                tagline: "The software company I founded — custom engineering, direct delivery, no middlemen.",
+                desc: "Navicore Software builds custom mobile apps, web platforms, backend systems, and automation solutions for clients in Bangladesh and internationally. Every project is handled directly by me from architecture to deployment. Also running RailMate Bangladesh — a live railway companion app built for 10 million potential passengers.",
+                stack: ["React Native", "Next.js", "Node.js", "Python", "Supabase", "MongoDB", "Expo", "TypeScript"],
+                live: "https://software.navicore.co",
+                code: null,
+                img: "/projects/navicore-software.png"
+              },
               {
                 slug: "devfolio-analyzer",
                 category: "flagship",
@@ -779,9 +791,11 @@ export default function Portfolio() {
                   <a href={live} target="_blank" rel="noopener noreferrer" className="p-proj-btn live">
                     <i className="fas fa-external-link-alt" /> Live
                   </a>
-                  <a href={code} target="_blank" rel="noopener noreferrer" className="p-proj-btn code">
-                    <i className="fab fa-github" /> Code
-                  </a>
+                  {code && (
+                    <a href={code} target="_blank" rel="noopener noreferrer" className="p-proj-btn code">
+                      <i className="fab fa-github" /> Code
+                    </a>
+                  )}
                   <a href={`/projects/${slug}`} className="p-proj-btn code">
                     Details
                   </a>
@@ -800,7 +814,8 @@ export default function Portfolio() {
           <h2 className="p-sec-title p-reveal">Professional <span>Experience</span></h2>
           <div className="p-timeline">
             {[
-              {title:"Data Entry Specialist",sub:"Nation IT Limited",period:"2024 – June 2025",current:true,desc:"Managing structured data operations, maintaining records and ensuring data accuracy across business workflows."},
+              {title:"Founder · CEO & CPO",sub:"Navicore Software",period:"2026 – Present",current:true,desc:"Founded and run Navicore Software — building custom mobile apps, web platforms, and backend systems for clients in Bangladesh and internationally. Also founded and lead engineering for RailMate Bangladesh, a live Android railway companion app."},
+              {title:"Data Entry Specialist",sub:"Nation IT Limited",period:"2024 – June 2025",current:false,desc:"Managing structured data operations, maintaining records and ensuring data accuracy across business workflows."},
               {title:"Computer Operator",sub:"IT Solution Feni",period:"2015 – 2017",current:false,desc:"Provided IT support and computer operations, handling technical troubleshooting and system maintenance."},
               {title:"Cashier",sub:"Alkhimah Allraqiyat Restaurant — Saudi Arabia",period:"Overseas",current:false,desc:"Managed point-of-sale transactions, customer service, and daily cash reconciliation."},
             ].map(({title,sub,period,current,desc})=>(
@@ -810,7 +825,7 @@ export default function Portfolio() {
                     <div><div className="p-tl-title">{title}</div><div className="p-tl-sub">{sub}</div></div>
                     <div style={{display:"flex",flexDirection:"column",gap:6,alignItems:"flex-end"}}>
                       <span className="p-tl-period">{period}</span>
-                      {current && <span className="p-current">Last Job</span>}
+                      {current && <span className="p-current">Current</span>}
                     </div>
                   </div>
                   <p className="p-tl-desc">{desc}</p>
