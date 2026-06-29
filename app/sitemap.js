@@ -1,8 +1,26 @@
-export default function sitemap() {
-  const baseUrl = "https://najmulhasan.navicore.co";
+import type { MetadataRoute } from "next";
 
-  // Real routes that exist in app/projects/[slug]/page.js
+export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = "https://najmulhasan.navicore.co";
+  const now = new Date();
+
+  const staticPages = [
+    {
+      url: baseUrl,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 1,
+    },
+    {
+      url: `${baseUrl}/projects`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
+    },
+  ];
+
   const projectSlugs = [
+    "navicore-software",
     "devfolio-analyzer",
     "livecollab",
     "petcare-system",
@@ -14,20 +32,12 @@ export default function sitemap() {
     "bookhub",
   ];
 
-  const projectRoutes = projectSlugs.map((slug) => ({
+  const projectPages = projectSlugs.map((slug) => ({
     url: `${baseUrl}/projects/${slug}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly",
-    priority: 0.7,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
   }));
 
-  return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: "weekly",
-      priority: 1,
-    },
-    ...projectRoutes,
-  ];
+  return [...staticPages, ...projectPages];
 }
