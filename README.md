@@ -129,6 +129,36 @@ public/
 
 ---
 
+## 🏢 Navicore Software – Custom Software Development Company
+
+<a href="https://software.navicore.co" target="_blank">
+  <img src="./public/projects/navicore-software.png" alt="Navicore Software" width="100%"/>
+</a>
+
+**Tagline:** Founder-led software company — direct engineering, no middlemen
+
+The company I founded and run as CEO & CPO. Navicore Software builds custom mobile apps, web platforms, backend systems, and automation solutions for businesses in Bangladesh and internationally. Every project is handled directly by me from architecture to deployment.
+
+**Services:**
+- Mobile app development (React Native / Expo)
+- Web application development (Next.js / Node.js)
+- Backend & API development
+- Automation & bot systems
+- Platform audits & modernisation
+
+**Built With:**
+![React Native](https://img.shields.io/badge/React_Native-blue?style=flat-square&logo=react)
+![Next.js](https://img.shields.io/badge/Next.js-black?style=flat-square&logo=next.js)
+![Node.js](https://img.shields.io/badge/Node.js-green?style=flat-square&logo=node.js)
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python)
+![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=flat-square&logo=supabase)
+![MongoDB](https://img.shields.io/badge/MongoDB-darkgreen?style=flat-square&logo=mongodb)
+
+**Links:**
+🌐 [software.navicore.co](https://software.navicore.co)
+
+---
+
 ## 🏆 Badar Uddin Welfare – Charity Management Platform
 
 <a href="https://badaruddinwelfareorg.vercel.app/" target="_blank">
