@@ -7,6 +7,44 @@ import Navbar from "../../../components/Navbar";
 import Footer from "../../../components/Footer";
 
 const projects = {
+  "navicore-software": {
+    name: "Navicore Software",
+    tagline: "The software company I founded — custom engineering, direct delivery, no middlemen.",
+    img: "/projects/navicore-software.png",
+    live: "https://software.navicore.co",
+    code: null,
+    overview:
+      "Navicore Software builds custom mobile apps, web platforms, backend systems, and automation solutions for clients in Bangladesh and internationally. Every project is handled directly by me from architecture to deployment — no middlemen, no handoffs. I also founded and lead engineering for RailMate Bangladesh, a live Android railway companion app built for over 10 million potential passengers.",
+    features: [
+      "Custom mobile app development with React Native and Expo for Android and iOS",
+      "Web platform engineering with Next.js — SSR, SSG, and App Router patterns",
+      "Backend API development with Node.js, Express, and Supabase",
+      "RailMate Bangladesh — live railway companion app with real-time schedule data",
+      "Direct client delivery: architecture, development, and deployment handled by one engineer",
+      "International client delivery alongside domestic Bangladeshi projects",
+    ],
+    tech: {
+      frontend: ["React Native", "Next.js", "React", "Expo"],
+      backend: ["Node.js", "Express", "Python"],
+      database: ["Supabase (PostgreSQL)", "MongoDB"],
+      auth: ["JWT", "Supabase Auth"],
+    },
+    challenges: [
+      "Delivering production-grade systems solo while maintaining direct communication with each client",
+      "Building RailMate Bangladesh to handle real-time schedule data reliably for a high-potential user base",
+      "Scaling service quality across multiple active client engagements simultaneously",
+    ],
+    solutions: [
+      "Defined strict project scopes upfront; documented architecture decisions so handoff or future maintenance is unambiguous",
+      "RailMate uses a background sync service to pull and cache schedule data, keeping the app fast even on low-bandwidth connections",
+      "Sequenced project timelines to avoid context-switching between active builds; each project has a dedicated focus period",
+    ],
+    future: [
+      "Expand RailMate Bangladesh to cover all BD Railway routes and add live delay tracking",
+      "Grow Navicore's client base in Southeast Asia and the UK",
+      "Launch a second product under Navicore targeting Bangladeshi SMB operations",
+    ],
+  },
   "devfolio-analyzer": {
     name: "DevFolio Analyzer",
     tagline: "GitHub profile intelligence — deterministically scored, AI-augmented, and structured.",

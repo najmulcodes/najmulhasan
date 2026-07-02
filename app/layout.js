@@ -1,7 +1,7 @@
 import "./globals.css";
 
 export const metadata = {
-  metadataBase: new URL("https://najmulcodes.vercel.app"),
+  metadataBase: new URL("https://najmulhasan.navicore.co"),
 
   title: {
     default: "Najmul Hasan | Full-Stack Developer",
@@ -24,14 +24,14 @@ export const metadata = {
     "Bangladesh Developer",
   ],
 
-  authors: [{ name: "Najmul Hasan", url: "https://najmulcodes.vercel.app" }],
+  authors: [{ name: "Najmul Hasan", url: "https://najmulhasan.navicore.co" }],
   creator: "Najmul Hasan",
 
   openGraph: {
     title: "Najmul Hasan | Full-Stack Developer",
     description:
       "Full-Stack Developer specialising in React, Next.js, Node.js and MongoDB.",
-    url: "https://najmulcodes.vercel.app",
+    url: "https://najmulhasan.navicore.co",
     siteName: "Najmul Hasan Portfolio",
     images: [
       {
@@ -68,12 +68,13 @@ const personSchema = {
       "@type": "Person",
       name: "Najmul Hasan",
       alternateName: "najmulcodes",
-      url: "https://najmulcodes.vercel.app",
-      image: "https://najmulcodes.vercel.app/profile.png",
+      url: "https://najmulhasan.navicore.co",
+      image: "https://najmulhasan.navicore.co/profile.png",
       jobTitle: "Full-Stack Software Engineer",
       worksFor: {
         "@type": "Organization",
-        name: "Independent / Freelance",
+        name: "Navicore Software",
+        url: "https://software.navicore.co",
       },
       sameAs: [
         "https://github.com/najmulcodes",
@@ -93,7 +94,7 @@ const personSchema = {
     {
       "@type": "WebSite",
       name: "Najmul Hasan Portfolio",
-      url: "https://najmulcodes.vercel.app",
+      url: "https://najmulhasan.navicore.co",
     },
   ],
 };
