@@ -24,10 +24,10 @@ export default function Portfolio() {
 
     const fonts = document.createElement("link");
     fonts.rel = "stylesheet";
-    fonts.href = "https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap";
+    fonts.href = "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap";
     document.head.appendChild(fonts);
 
-    const sections = ["hero","about","skills","projects","experience","education","contact"];
+    const sections = ["hero","about","ventures","skills","projects","experience","education","contact"];
     const navLinks  = document.querySelectorAll(".p-nav-links a");
     const dots      = document.querySelectorAll(".p-side-dot");
 
@@ -77,14 +77,14 @@ export default function Portfolio() {
     <>
       <style>{`
         :root {
-          --bg:#0d1117; --bg2:#161b22; --bg3:#1c2333;
-          --teal:#00e5c3;
-          --teal-dim:rgba(0,229,195,0.10);
-          --teal-mid:rgba(0,229,195,0.22);
-          --white:#e6edf3; --muted:#7d8590;
+          --bg:#080D17; --bg2:#0D1B35; --bg3:#132244;
+          --teal:#D4A843;
+          --teal-dim:rgba(212,168,67,0.10);
+          --teal-mid:rgba(212,168,67,0.22);
+          --white:#F0F4FF; --muted:#8FA3C0;
           --border:rgba(255,255,255,0.07);
-          --fh:'Space Grotesk',sans-serif;
-          --fm:'Fira Code',monospace;
+          --fh:'Plus Jakarta Sans',sans-serif;
+          --fm:'JetBrains Mono',monospace;
         }
         *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
         html{scroll-behavior:smooth}
@@ -329,6 +329,21 @@ export default function Portfolio() {
         .p-tag{font-family:var(--fm);font-size:.72rem;padding:4px 12px;border-radius:20px;background:var(--teal-dim);border:1px solid var(--teal-mid);color:var(--teal);transition:background .2s,transform .2s}
         .p-tag:hover{background:rgba(0,229,195,.18);transform:translateY(-1px)}
 
+        .p-venture-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;margin-top:20px}
+        .p-venture-card{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:28px;transition:border-color .3s,transform .3s,box-shadow .3s;position:relative;overflow:hidden}
+        .p-venture-card:hover{border-color:var(--teal-mid);transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,.4)}
+        .p-venture-img{width:100%;height:180px;border-radius:12px;background:linear-gradient(135deg,#0D1B35,#132244);margin-bottom:20px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+        .p-venture-img img{width:100%;height:100%;object-fit:cover;object-position:top center}
+        .p-venture-img i{font-size:3.5rem;color:var(--teal);opacity:.4}
+        .p-venture-badge{display:inline-block;font-size:.62rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 12px;border-radius:20px;background:var(--teal-dim);border:1px solid var(--teal-mid);color:var(--teal);margin-bottom:12px}
+        .p-venture-tagline{font-size:.84rem;color:var(--teal);font-weight:600;margin-bottom:12px;line-height:1.5}
+        .p-venture-desc{font-size:.84rem;color:var(--muted);line-height:1.75;margin-bottom:18px}
+        .p-venture-status{display:inline-flex;align-items:center;gap:6px;font-size:.72rem;font-weight:600;color:var(--teal);padding:4px 12px;border-radius:20px;background:var(--teal-dim);border:1px solid var(--teal-mid);margin-bottom:16px}
+        .p-venture-status::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--teal);animation:p-pulse 1.8s infinite}
+        .p-venture-stack{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px}
+        .p-venture-link{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:var(--teal);color:#080D17;font-weight:700;font-size:.82rem;border-radius:10px;transition:opacity .2s,transform .2s,box-shadow .2s}
+        .p-venture-link:hover{opacity:.88;transform:translateY(-2px);box-shadow:0 8px 24px rgba(212,168,67,.3)}
+
         .p-skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
         .p-skill-card{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:24px 22px;transition:border-color .3s,transform .3s,box-shadow .3s}
         .p-skill-card:hover{border-color:var(--teal-mid);transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.4),0 0 40px rgba(0,229,195,.055)}
@@ -460,7 +475,7 @@ export default function Portfolio() {
       <div className="p-topo" />
 
       <div className="p-side-nav">
-        {["hero","about","skills","projects","experience","education","contact"].map((s,i) => (
+        {["hero","about","ventures","skills","projects","experience","education","contact"].map((s,i) => (
           <div key={s} className={`p-side-dot${i===0?" active":""}`} title={s} />
         ))}
       </div>
@@ -471,7 +486,7 @@ export default function Portfolio() {
           <div>
             <div className="p-hero-tag">
               <span className="p-tag-dot" />
-              Available for opportunities
+              Founder & CEO — NAVICORE
             </div>
             <h1 className="p-hero-title">
               <span className="hi">
@@ -487,11 +502,11 @@ export default function Portfolio() {
                 I&apos;m Najmul Hasan
               </motion.span>
               <span className="role">
-                Full-Stack Engineer · Founder · CEO &amp; CPO — Navicore Software
+                Founder, CEO &amp; CPO — NAVICORE · Full-Stack Engineer
               </span>
             </h1>
             <p className="p-hero-desc">
-              Founder of Navicore Software. I build production-grade software systems — from architecture to deployment — for businesses in Bangladesh and internationally.
+              Founder of NAVICORE — a Bangladesh-based technology ecosystem. I lead RailMate Bangladesh, our flagship railway companion app, and Navicore Software, the engineering practice that funds it. Every system, from architecture to deployment, is built and run by me directly.
             </p>
             <div className="p-hero-btns">
               <a href="#projects" className="p-btn-teal"><i className="fas fa-rocket" /> View Projects</a>
@@ -515,13 +530,13 @@ export default function Portfolio() {
             </div>
 
             <div className="p-card-name">Najmul Hasan</div>
-            <div className="p-card-role">// Founder · CEO & CPO — Navicore Software</div>
+            <div className="p-card-role">{'// '}Founder, CEO & CPO — NAVICORE</div>
 
             <div className="p-card-meta">
-              <div className="p-card-meta-row"><i className="fas fa-envelope" /><a href="mailto:najmulhasanshahin@gmail.com">najmulhasanshahin@gmail.com</a></div>
+              <div className="p-card-meta-row"><i className="fas fa-envelope" /><a href="mailto:najmul@navicore.co">najmul@navicore.co</a></div>
               <div className="p-card-meta-row"><i className="fas fa-map-marker-alt" />Dhaka, Bangladesh</div>
-              <div className="p-card-meta-row"><i className="fas fa-briefcase" />Open to Full-time &amp; Freelance</div>
-              <div className="p-card-meta-row"><i className="fas fa-globe" /><a href="https://najmulhasan.navicore.co/" target="_blank" rel="noopener noreferrer">najmulhasan.navicore.co</a></div>
+              <div className="p-card-meta-row"><i className="fas fa-building" /><a href="https://navicore.co" target="_blank" rel="noopener noreferrer">navicore.co</a></div>
+              <div className="p-card-meta-row"><i className="fas fa-train" /><a href="https://railmatebd.com" target="_blank" rel="noopener noreferrer">railmatebd.com</a></div>
             </div>
             <div className="p-card-divider" />
 
@@ -538,7 +553,7 @@ export default function Portfolio() {
               ))}
             </div>
 
-            <a href="https://drive.google.com/file/d/1sHxGHO29oPhT-yzq8B47znDVpPOGYnS8/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="p-card-cta">
+            <a href="/Najmul_Hasan_Resume.pdf" target="_blank" rel="noopener noreferrer" className="p-card-cta">
               <i className="fas fa-file-alt" /> Resume
             </a>
           </div>
@@ -561,11 +576,10 @@ export default function Portfolio() {
                 <div className="p-tout">{"{"}</div>
                 <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;name&quot;</span>: <span className="p-tstr">&quot;Najmul Hasan&quot;</span>,</div>
                 <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;role&quot;</span>: <span className="p-tstr">&quot;Founder · CEO &amp; CPO&quot;</span>,</div>
-                <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;company&quot;</span>: <span className="p-tstr">&quot;Navicore Software&quot;</span>,</div>
+                <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;company&quot;</span>: <span className="p-tstr">&quot;NAVICORE&quot;</span>,</div>
+                <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;ventures&quot;</span>: [<span className="p-tstr">&quot;RailMate Bangladesh&quot;</span>, <span className="p-tstr">&quot;Navicore Software&quot;</span>],</div>
                 <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;location&quot;</span>: <span className="p-tstr">&quot;Dhaka, Bangladesh&quot;</span>,</div>
-                <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;projects&quot;</span>: <span className="p-tnum">12</span>,</div>
-                <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;ventures&quot;</span>: <span className="p-tnum">2</span>,</div>
-                <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;available&quot;</span>: <span className="p-tbool">true</span>,</div>
+                <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;focus&quot;</span>: <span className="p-tstr">&quot;RailMate Bangladesh&quot;</span>,</div>
                 <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;stack&quot;</span>: [</div>
                 <div className="p-tout">&nbsp;&nbsp;&nbsp;&nbsp;<span className="p-tstr">&quot;React Native&quot;</span>, <span className="p-tstr">&quot;Next.js&quot;</span>,</div>
                 <div className="p-tout">&nbsp;&nbsp;&nbsp;&nbsp;<span className="p-tstr">&quot;Node.js&quot;</span>, <span className="p-tstr">&quot;Supabase&quot;</span></div>
@@ -575,15 +589,58 @@ export default function Portfolio() {
             </div>
             <div className="p-about-text p-reveal">
               <h3>Hello!</h3>
-              <p>My name is <strong>Najmul</strong>. I&apos;m a full-stack engineer and the founder, CEO &amp; CPO of <strong>Navicore Software</strong> — a software development company building custom solutions for businesses in Bangladesh and internationally.</p>
-              <p>Every project I take on is handled directly by me, from architecture through deployment. No middlemen, no handoffs. I also build and run <strong>RailMate Bangladesh</strong>, a live railway companion app built for millions of passengers.</p>
-              <p>I hold a <strong>BBA in Accounting &amp; Finance</strong>. My business background shapes how I think about software: scoped precisely, built to last, maintained like it still has to work in five years.</p>
+              <p>I&apos;m Najmul — founder, CEO, and CPO of <strong>NAVICORE</strong>, a technology ecosystem I&apos;m building from Dhaka, Bangladesh, alongside my co-founder, <strong>Nusrat Jahan Bably</strong>. NAVICORE&apos;s flagship venture is <strong>RailMate Bangladesh</strong>, a railway companion app built for millions of passengers. <strong>Navicore Software</strong>, our client engineering practice, funds that work.</p>
+              <p>Every system I ship — architecture, backend, mobile, deployment — I build and run directly. No middlemen, no handoffs.</p>
+              <p>I hold a <strong>BBA in Accounting &amp; Finance</strong>, and that business background shapes how I approach engineering: scoped precisely, built to last, maintained like it still has to work in five years.</p>
               <div className="p-tags">
                 {["React Native","Next.js","Node.js","Python","Supabase","MongoDB","TypeScript","Tailwind CSS","Socket.IO","Stripe","JWT","Cloudinary"].map(t=>(
                   <span key={t} className="p-tag">{t}</span>
                 ))}
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* VENTURES */}
+      <section id="ventures" className="p-section">
+        <div className="p-inner">
+          <p className="p-sec-label p-reveal">What I&apos;ve built</p>
+          <h2 className="p-sec-title p-reveal">The <span>NAVICORE</span> Ecosystem</h2>
+          <p style={{color:"var(--muted)",fontSize:".88rem",marginBottom:"32px"}} className="p-reveal">NAVICORE is the umbrella for everything I build. Two ventures are active today.</p>
+
+          <div className="p-venture-grid">
+            <article className="p-venture-card p-reveal">
+              <div className="p-venture-img">
+                <i className="fas fa-train" />
+              </div>
+              <span className="p-venture-badge">Flagship Venture</span>
+              <h3 className="p-venture-tagline">Bangladesh&apos;s railway companion app — schedules, fares, and live delay reports from the community.</h3>
+              <p className="p-venture-desc">A bilingual (Bengali/English) travel companion for Bangladesh Railway passengers, currently in private beta. Built on React Native and Expo with a Supabase backend, real-time community delay reporting, and a verified schedule dataset covering 137 trains across 1,225 stops. I own the product, architecture, and engineering end to end.</p>
+              <span className="p-venture-status">Private Beta</span>
+              <div className="p-venture-stack">
+                {["React Native","Expo","Supabase","Next.js","TypeScript"].map(t => <span key={t} className="p-tech">{t}</span>)}
+              </div>
+              <a href="https://railmatebd.com" target="_blank" rel="noopener noreferrer" className="p-venture-link">
+                <i className="fas fa-external-link-alt" /> Visit RailMate
+              </a>
+            </article>
+
+            <article className="p-venture-card p-reveal">
+              <div className="p-venture-img">
+                <img src="/projects/navicore-software.png" alt="Navicore Software" onError={e => { e.currentTarget.style.display = "none"; }} />
+              </div>
+              <span className="p-venture-badge">Active Venture</span>
+              <h3 className="p-venture-tagline">The engineering practice that funds NAVICORE — custom software for clients in Bangladesh and internationally.</h3>
+              <p className="p-venture-desc">Custom mobile apps, web platforms, backend systems, and automation, delivered directly by me from architecture through deployment. Navicore Software&apos;s client revenue funds RailMate&apos;s development without outside investors.</p>
+              <span className="p-venture-status">Active</span>
+              <div className="p-venture-stack">
+                {["React Native","Next.js","Node.js","Python","Supabase","MongoDB"].map(t => <span key={t} className="p-tech">{t}</span>)}
+              </div>
+              <a href="https://software.navicore.co" target="_blank" rel="noopener noreferrer" className="p-venture-link">
+                <i className="fas fa-external-link-alt" /> Visit Navicore Software
+              </a>
+            </article>
           </div>
         </div>
       </section>
@@ -626,22 +683,20 @@ export default function Portfolio() {
           <div className="p-proj-list">
             {[
               {
-                slug: "navicore-software",
-                category: "flagship",
-                flagship: true,
+                slug: "railmate",
+                category: "featured",
                 featured: true,
-                name: "Navicore Software",
-                tagline: "The software company I founded — custom engineering, direct delivery, no middlemen.",
-                desc: "Navicore Software builds custom mobile apps, web platforms, backend systems, and automation solutions for clients in Bangladesh and internationally. Every project is handled directly by me from architecture to deployment. Also running RailMate Bangladesh — a live railway companion app built for 10 million potential passengers.",
-                stack: ["React Native", "Next.js", "Node.js", "Python", "Supabase", "MongoDB", "Expo", "TypeScript"],
-                live: "https://software.navicore.co",
+                name: "RailMate Bangladesh",
+                tagline: "Bangladesh's railway companion app — schedules, fares, and live delay reports from the community.",
+                desc: "A bilingual (Bengali/English) travel companion for Bangladesh Railway passengers, currently in private beta. Built on React Native and Expo with a Supabase backend, real-time community delay reporting, and a verified schedule dataset covering 137 trains across 1,225 stops. I own the product, architecture, and engineering end to end.",
+                stack: ["React Native", "Expo", "Supabase", "Next.js", "TypeScript"],
+                live: "https://railmatebd.com",
                 code: null,
-                img: "/projects/navicore-software.png"
+                img: null
               },
               {
                 slug: "devfolio-analyzer",
-                category: "flagship",
-                flagship: true,
+                category: "featured",
                 featured: true,
                 name: "DevFolio Analyzer",
                 tagline: "GitHub profile intelligence — deterministically scored, AI-augmented, and structured.",
@@ -653,8 +708,7 @@ export default function Portfolio() {
               },
               {
                 slug: "livecollab",
-                category: "flagship",
-                flagship: true,
+                category: "featured",
                 featured: true,
                 name: "LiveCollab",
                 tagline: "Shared Kanban state across all connected clients — no polling, no refresh.",
@@ -753,14 +807,18 @@ export default function Portfolio() {
 
               <article key={name} className={`p-proj-card p-reveal${flagship ? " flagship" : ""}${featured ? " featured" : ""}`}>
 
-                <div className="p-proj-thumb-wrap">
-                  <img
-                    src={img}
-                    alt={`${name} project screenshot`}
-                    className="p-proj-thumb"
-                    loading="lazy"
-                    onError={e => { e.currentTarget.style.display = "none"; }}
-                  />
+                <div className="p-proj-thumb-wrap" style={!img ? {background:"linear-gradient(135deg,#0D1B35,#132244)",display:"flex",alignItems:"center",justifyContent:"center"} : {}}>
+                  {img ? (
+                    <img
+                      src={img}
+                      alt={`${name} project screenshot`}
+                      className="p-proj-thumb"
+                      loading="lazy"
+                      onError={e => { e.currentTarget.style.display = "none"; }}
+                    />
+                  ) : (
+                    <i className="fas fa-train" style={{fontSize:"3.5rem",color:"var(--teal)",opacity:".4"}} />
+                  )}
                 </div>
 
                 <div className="p-proj-body">
@@ -814,10 +872,8 @@ export default function Portfolio() {
           <h2 className="p-sec-title p-reveal">Professional <span>Experience</span></h2>
           <div className="p-timeline">
             {[
-              {title:"Founder · CEO & CPO",sub:"Navicore Software",period:"2026 – Present",current:true,desc:"Founded and run Navicore Software — building custom mobile apps, web platforms, and backend systems for clients in Bangladesh and internationally. Also founded and lead engineering for RailMate Bangladesh, a live Android railway companion app."},
-              {title:"Data Entry Specialist",sub:"Nation IT Limited",period:"2024 – June 2025",current:false,desc:"Managing structured data operations, maintaining records and ensuring data accuracy across business workflows."},
-              {title:"Computer Operator",sub:"IT Solution Feni",period:"2015 – 2017",current:false,desc:"Provided IT support and computer operations, handling technical troubleshooting and system maintenance."},
-              {title:"Cashier",sub:"Alkhimah Allraqiyat Restaurant — Saudi Arabia",period:"Overseas",current:false,desc:"Managed point-of-sale transactions, customer service, and daily cash reconciliation."},
+              {title:"Founder · CEO & CPO",sub:"NAVICORE",period:"2026 – Present",current:true,desc:"Founded and lead NAVICORE, building RailMate Bangladesh (flagship railway companion app, private beta) and Navicore Software (client engineering practice funding the ecosystem). Own architecture, engineering, and delivery directly across both ventures."},
+              {title:"Early Career — IT & Operations",sub:"Bangladesh & Saudi Arabia",period:"2015 – 2025",current:false,desc:"Computer operations, structured data management, and customer-facing roles across IT support and service industries — the operational foundation before transitioning fully into software engineering."},
             ].map(({title,sub,period,current,desc})=>(
               <div key={title} className="p-tl-item p-reveal">
                 <div className="p-tl-card">
@@ -843,10 +899,8 @@ export default function Portfolio() {
           <h2 className="p-sec-title p-reveal">My <span>Education</span></h2>
           <div className="p-timeline">
             {[
-              {title:"BBA — Accounting & Finance",sub:"City College",period:"2019 – 2023",extra:"CGPA 3.04",desc:null},
+              {title:"BBA — Accounting & Finance",sub:"City College",period:"2019 – 2023",extra:null,desc:null},
               {title:"Certification — Complete Web Development",sub:"Programming Hero",period:"2025 – 2026",extra:null,desc:"Full Stack Track — covering React, Node.js, Express, MongoDB and deployment."},
-              {title:"HSC — Business Studies",sub:"South East Degree College",period:"2013 – 2015",extra:null,desc:null},
-              {title:"SSC — Business Studies",sub:"FazilPur Farhad Nagar Zinnah High School",period:"2007 – 2013",extra:null,desc:null},
             ].map(({title,sub,period,extra,desc})=>(
               <div key={title} className="p-tl-item p-reveal">
                 <div className="p-tl-card">
@@ -905,9 +959,9 @@ export default function Portfolio() {
 
           <div className="p-ct-grid">
             <div className="p-ct-left p-reveal">
-              <a href="mailto:najmulhasanshahin@gmail.com" className="p-ct-item">
+              <a href="mailto:najmul@navicore.co" className="p-ct-item">
                 <div className="p-ct-icon"><i className="fas fa-envelope" /></div>
-                <div><p className="p-ct-lbl">Email</p><p className="p-ct-val">najmulhasanshahin@gmail.com</p></div>
+                <div><p className="p-ct-lbl">Email</p><p className="p-ct-val">najmul@navicore.co</p></div>
               </a>
               <a href="tel:+8801840242448" className="p-ct-item">
                 <div className="p-ct-icon"><i className="fas fa-phone" /></div>

@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "next lint"
   },
   "dependencies": {
     "framer-motion": "^12.38.0",
@@ -26,7 +26,7 @@
     "tailwindcss": "^4",
     "typescript": "^5"
   },
-  "description": "<!-- PREMIUM HEADER -->",
+  "description": "Najmul Hasan — Founder & CEO, NAVICORE. Personal portfolio.",
   "main": "index.js",
   "repository": {
     "type": "git",

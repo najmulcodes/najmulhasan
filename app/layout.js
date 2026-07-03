@@ -4,16 +4,22 @@ export const metadata = {
   metadataBase: new URL("https://najmulhasan.navicore.co"),
 
   title: {
-    default: "Najmul Hasan | Full-Stack Developer",
+    default: "Najmul Hasan | Founder & CEO, NAVICORE",
     template: "%s | Najmul Hasan",
   },
 
   description:
-    "Portfolio of Najmul Hasan — Full-Stack Developer specialising in React, Next.js, Node.js and MongoDB. Building structured and scalable web applications.",
+    "Najmul Hasan is the Founder, CEO & CPO of NAVICORE, building RailMate Bangladesh and Navicore Software from Dhaka, Bangladesh.",
 
   keywords: [
     "Najmul Hasan",
     "najmulcodes",
+    "NAVICORE",
+    "RailMate Bangladesh",
+    "Navicore Software",
+    "Founder",
+    "CEO",
+    "Technology Entrepreneur Bangladesh",
     "Full Stack Developer",
     "MERN Stack Developer",
     "React Developer",
@@ -28,9 +34,9 @@ export const metadata = {
   creator: "Najmul Hasan",
 
   openGraph: {
-    title: "Najmul Hasan | Full-Stack Developer",
+    title: "Najmul Hasan | Founder & CEO, NAVICORE",
     description:
-      "Full-Stack Developer specialising in React, Next.js, Node.js and MongoDB.",
+      "Founder, CEO & CPO of NAVICORE, building RailMate Bangladesh and Navicore Software from Dhaka, Bangladesh.",
     url: "https://najmulhasan.navicore.co",
     siteName: "Najmul Hasan Portfolio",
     images: [
@@ -47,9 +53,9 @@ export const metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Najmul Hasan | Full-Stack Developer",
+    title: "Najmul Hasan | Founder & CEO, NAVICORE",
     description:
-      "Full-Stack Developer specialising in React, Next.js, Node.js and MongoDB.",
+      "Founder, CEO & CPO of NAVICORE, building RailMate Bangladesh and Navicore Software from Dhaka, Bangladesh.",
     images: ["/preview.png"],
   },
 
@@ -70,15 +76,17 @@ const personSchema = {
       alternateName: "najmulcodes",
       url: "https://najmulhasan.navicore.co",
       image: "https://najmulhasan.navicore.co/profile.png",
-      jobTitle: "Full-Stack Software Engineer",
+      jobTitle: "Founder, CEO & Chief Product Officer",
       worksFor: {
         "@type": "Organization",
-        name: "Navicore Software",
-        url: "https://software.navicore.co",
+        name: "NAVICORE",
+        url: "https://navicore.co",
       },
       sameAs: [
         "https://github.com/najmulcodes",
         "https://www.linkedin.com/in/najmulcodes",
+        "https://navicore.co",
+        "https://railmatebd.com",
       ],
       knowsAbout: [
         "React",

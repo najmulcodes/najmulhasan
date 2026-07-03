@@ -18,6 +18,7 @@ export default function Navbar() {
   const navLinks = [
     ["/#hero", "Home"],
     ["/#about", "About"],
+    ["/#ventures", "Ventures"],
     ["/#skills", "Skills"],
     ["/#projects", "Projects"],
     ["/#experience", "Experience"],
