@@ -27,7 +27,7 @@ export default function Portfolio() {
     fonts.href = "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap";
     document.head.appendChild(fonts);
 
-    const sections = ["hero","about","ventures","skills","projects","experience","education","contact"];
+    const sections = ["hero","about","ventures","skills","projects","experience","contact"];
     const navLinks  = document.querySelectorAll(".p-nav-links a");
     const dots      = document.querySelectorAll(".p-side-dot");
 
@@ -475,7 +475,7 @@ export default function Portfolio() {
       <div className="p-topo" />
 
       <div className="p-side-nav">
-        {["hero","about","ventures","skills","projects","experience","education","contact"].map((s,i) => (
+        {["hero","about","ventures","skills","projects","experience","contact"].map((s,i) => (
           <div key={s} className={`p-side-dot${i===0?" active":""}`} title={s} />
         ))}
       </div>
@@ -533,7 +533,7 @@ export default function Portfolio() {
             <div className="p-card-role">{'// '}Founder, CEO & CPO — NAVICORE</div>
 
             <div className="p-card-meta">
-              <div className="p-card-meta-row"><i className="fas fa-envelope" /><a href="mailto:najmul@navicore.co">najmul@navicore.co</a></div>
+              <div className="p-card-meta-row"><i className="fas fa-envelope" /><a href="mailto:najmulhasan@navicore.co">najmulhasan@navicore.co</a></div>
               <div className="p-card-meta-row"><i className="fas fa-map-marker-alt" />Dhaka, Bangladesh</div>
               <div className="p-card-meta-row"><i className="fas fa-building" /><a href="https://navicore.co" target="_blank" rel="noopener noreferrer">navicore.co</a></div>
               <div className="p-card-meta-row"><i className="fas fa-train" /><a href="https://railmatebd.com" target="_blank" rel="noopener noreferrer">railmatebd.com</a></div>
@@ -612,7 +612,7 @@ export default function Portfolio() {
           <div className="p-venture-grid">
             <article className="p-venture-card p-reveal">
               <div className="p-venture-img">
-                <i className="fas fa-train" />
+                <img src="/projects/railmate.png" alt="RailMate Bangladesh" onError={e => { e.currentTarget.style.display = "none"; e.currentTarget.parentElement.innerHTML = '<i class="fas fa-train" style="font-size:3.5rem;color:var(--teal);opacity:.4"></i>'; }} />
               </div>
               <span className="p-venture-badge">Flagship Venture</span>
               <h3 className="p-venture-tagline">Bangladesh&apos;s railway companion app — schedules, fares, and live delay reports from the community.</h3>
@@ -692,7 +692,7 @@ export default function Portfolio() {
                 stack: ["React Native", "Expo", "Supabase", "Next.js", "TypeScript"],
                 live: "https://railmatebd.com",
                 code: null,
-                img: null
+                img: "/projects/railmate.png"
               },
               {
                 slug: "devfolio-analyzer",
@@ -892,35 +892,8 @@ export default function Portfolio() {
         </div>
       </section>
 
-      {/* EDUCATION */}
-      <section id="education" className="p-section alt">
-        <div className="p-inner">
-          <p className="p-sec-label p-reveal">Academic background</p>
-          <h2 className="p-sec-title p-reveal">My <span>Education</span></h2>
-          <div className="p-timeline">
-            {[
-              {title:"BBA — Accounting & Finance",sub:"City College",period:"2019 – 2023",extra:null,desc:null},
-              {title:"Certification — Complete Web Development",sub:"Programming Hero",period:"2025 – 2026",extra:null,desc:"Full Stack Track — covering React, Node.js, Express, MongoDB and deployment."},
-            ].map(({title,sub,period,extra,desc})=>(
-              <div key={title} className="p-tl-item p-reveal">
-                <div className="p-tl-card">
-                  <div className="p-tl-top">
-                    <div><div className="p-tl-title">{title}</div><div className="p-tl-sub">{sub}</div></div>
-                    <div style={{display:"flex",flexDirection:"column",gap:6,alignItems:"flex-end"}}>
-                      <span className="p-tl-period">{period}</span>
-                      {extra && <span style={{fontFamily:"var(--fm)",fontSize:".68rem",color:"var(--teal)"}}>{extra}</span>}
-                    </div>
-                  </div>
-                  {desc && <p className="p-tl-desc">{desc}</p>}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* CONTACT */}
-      <section id="contact" className="p-section" style={{paddingBottom:"60px"}}>
+      <section id="contact" className="p-section alt" style={{paddingBottom:"60px"}}>
         <style>{`
           .p-ct-header{text-align:center;margin-bottom:36px}
           .p-ct-header .p-sec-label{justify-content:center}
@@ -959,9 +932,9 @@ export default function Portfolio() {
 
           <div className="p-ct-grid">
             <div className="p-ct-left p-reveal">
-              <a href="mailto:najmul@navicore.co" className="p-ct-item">
+              <a href="mailto:najmulhasan@navicore.co" className="p-ct-item">
                 <div className="p-ct-icon"><i className="fas fa-envelope" /></div>
-                <div><p className="p-ct-lbl">Email</p><p className="p-ct-val">najmul@navicore.co</p></div>
+                <div><p className="p-ct-lbl">Email</p><p className="p-ct-val">najmulhasan@navicore.co</p></div>
               </a>
               <a href="tel:+8801840242448" className="p-ct-item">
                 <div className="p-ct-icon"><i className="fas fa-phone" /></div>

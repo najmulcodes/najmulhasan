@@ -22,7 +22,6 @@ export default function Navbar() {
     ["/#skills", "Skills"],
     ["/#projects", "Projects"],
     ["/#experience", "Experience"],
-    ["/#education", "Education"],
     ["/#contact", "Contact"],
   ];
 
