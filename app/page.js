@@ -553,7 +553,7 @@ export default function Portfolio() {
               ))}
             </div>
 
-            <a href="/Najmul_Hasan_Resume.pdf" target="_blank" rel="noopener noreferrer" className="p-card-cta">
+            <a href="https://drive.google.com/file/d/1a2rHe-yB0WdpCjJYlapPTIfpKlrAO1ye/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="p-card-cta">
               <i className="fas fa-file-alt" /> Resume
             </a>
           </div>

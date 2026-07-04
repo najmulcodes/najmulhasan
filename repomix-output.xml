@@ -1,0 +1,3014 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+.gitignore
+app/favicon.ico
+app/globals.css
+app/layout.js
+app/page.js
+app/projects/[slug]/page.js
+app/robots.js
+app/sitemap.js
+components/ContactForm.jsx
+components/Footer.jsx
+components/Navbar.jsx
+components/WordRotate.jsx
+cspell.json
+eslint.config.mjs
+next.config.ts
+package.json
+postcss.config.mjs
+public/googled60f3c79bb1aa9f6.html
+public/Najmul_Hasan_Resume.html
+public/Najmul_Hasan_Resume.pdf
+public/profile.png
+public/projects/badaruddin.png
+public/projects/bookhub.png
+public/projects/carexyz.png
+public/projects/clubsphere.png
+public/projects/devfolio-analyzer.png
+public/projects/gatherly.png
+public/projects/livecollab.png
+public/projects/microtask.png
+public/projects/navicore-software.png
+public/projects/petcare.png
+public/projects/portfolio.png
+README.md
+tsconfig.json
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="eslint.config.mjs">
+import { defineConfig, globalIgnores } from "eslint/config";
+import nextVitals from "eslint-config-next/core-web-vitals";
+import nextTs from "eslint-config-next/typescript";
+
+const eslintConfig = defineConfig([
+  ...nextVitals,
+  ...nextTs,
+  // Override default ignores of eslint-config-next.
+  globalIgnores([
+    // Default ignores of eslint-config-next:
+    ".next/**",
+    "out/**",
+    "build/**",
+    "next-env.d.ts",
+  ]),
+]);
+
+export default eslintConfig;
+</file>
+
+<file path="next.config.ts">
+import type { NextConfig } from "next";
+
+const nextConfig: NextConfig = {
+  /* config options here */
+};
+
+export default nextConfig;
+</file>
+
+<file path="postcss.config.mjs">
+const config = {
+  plugins: {
+    "@tailwindcss/postcss": {},
+  },
+};
+
+export default config;
+</file>
+
+<file path="tsconfig.json">
+{
+  "compilerOptions": {
+    "target": "ES2017",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "noEmit": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "incremental": true,
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": ["./*"]
+    }
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts",
+    "**/*.mts"
+  ],
+  "exclude": ["node_modules"]
+}
+</file>
+
+<file path=".gitignore">
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+#pdf_vai
+aaha.js
+</file>
+
+<file path="components/Footer.jsx">
+"use client";
+import { useEffect, useState } from "react";
+
+export default function Footer() {
+  const [year, setYear] = useState("");
+
+  useEffect(() => {
+    setYear(new Date().getFullYear());
+  }, []);
+
+  return (
+    <footer className="p-footer">
+      <p>
+        © {year} <span>Najmul Hasan. All rights reserved.</span> — Full Stack
+        Developer · Dhaka, Bangladesh
+      </p>
+    </footer>
+  );
+}
+</file>
+
+<file path="components/Navbar.jsx">
+"use client";
+import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
+
+export default function Navbar() {
+  const navRef = useRef(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const navbar = navRef.current;
+    const onScroll = () => {
+      if (navbar) navbar.classList.toggle("scrolled", window.scrollY > 30);
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  const navLinks = [
+    ["/#hero", "Home"],
+    ["/#about", "About"],
+    ["/#skills", "Skills"],
+    ["/#projects", "Projects"],
+    ["/#experience", "Experience"],
+    ["/#education", "Education"],
+    ["/#contact", "Contact"],
+  ];
+
+  return (
+    <>
+      <nav className="p-nav" ref={navRef}>
+        <div className="p-logo">
+          <span className="bracket">&lt;C/&gt; </span>
+          <span className="pname">NajmulHasan</span>
+        </div>
+        <ul className="p-nav-links">
+          {navLinks.map(([href, label]) => (
+            <li key={href}>
+              <Link href={href}>{label}</Link>
+            </li>
+          ))}
+        </ul>
+        <div className="p-nav-icons">
+          <a href="https://github.com/najmulcodes" target="_blank" rel="noreferrer" aria-label="GitHub">
+            <i className="fab fa-github" />
+          </a>
+          <a href="https://www.linkedin.com/in/najmulcodes/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+            <i className="fab fa-linkedin" />
+          </a>
+          <a href="https://wa.me/8801840242448" target="_blank" rel="noreferrer" aria-label="WhatsApp">
+            <i className="fab fa-whatsapp" />
+          </a>
+          <button
+            className={`p-hamburger${menuOpen ? " open" : ""}`}
+            onClick={() => setMenuOpen((o) => !o)}
+            aria-label="Menu"
+          >
+            <span />
+            <span />
+            <span />
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile drawer — ONE instance only */}
+      <div className={`p-mobile-menu${menuOpen ? " open" : ""}`}>
+        <ul>
+          {navLinks.map(([href, label]) => (
+            <li key={href}>
+              <Link href={href} onClick={() => setMenuOpen(false)}>
+                {label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <div className="p-mobile-menu-icons">
+          <a href="https://github.com/najmulcodes" target="_blank" rel="noreferrer">
+            <i className="fab fa-github" />
+          </a>
+          <a href="https://www.linkedin.com/in/najmulcodes/" target="_blank" rel="noreferrer">
+            <i className="fab fa-linkedin" />
+          </a>
+          <a href="https://wa.me/8801840242448" target="_blank" rel="noreferrer">
+            <i className="fab fa-whatsapp" />
+          </a>
+        </div>
+      </div>
+    </>
+  );
+}
+</file>
+
+<file path="cspell.json">
+{
+  "words": ["Najmul", "Hasan"]
+}
+</file>
+
+<file path="public/googled60f3c79bb1aa9f6.html">
+google-site-verification: googled60f3c79bb1aa9f6.html
+</file>
+
+<file path="app/globals.css">
+@import "tailwindcss";
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+</file>
+
+<file path="components/ContactForm.jsx">
+"use client";
+import { useState } from "react";
+
+export default function ContactForm() {
+  const [form, setForm] = useState({ name: "", email: "", subject: "", message: "" });
+  const [status, setStatus] = useState(null); // null | "sending" | "success" | "error"
+
+  const handleChange = (e) =>
+    setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus("sending");
+
+    try {
+      const res = await fetch("https://formspree.io/f/mlgolyed", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
+        body: JSON.stringify(form),
+      });
+
+      if (res.ok) {
+        setStatus("success");
+        setForm({ name: "", email: "", subject: "", message: "" });
+        setTimeout(() => setStatus(null), 5000);
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
+  };
+
+  return (
+    <>
+      <style>{`
+        .cf-card{
+          background:var(--bg2);border:1px solid var(--border);
+          border-radius:16px;padding:20px 22px;position:relative;
+          overflow:hidden;margin-bottom:0;
+        }
+        .cf-card::before{
+          content:'';position:absolute;top:0;left:0;right:0;height:2px;
+          background:linear-gradient(90deg,var(--teal),rgba(0,229,195,.1));
+        }
+        .cf-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+        .cf-group{margin-bottom:12px}
+        .cf-lbl{
+          display:block;font-size:.72rem;font-weight:600;
+          color:var(--white);margin-bottom:5px;letter-spacing:.04em;
+        }
+        .cf-input,.cf-textarea{
+          width:100%;box-sizing:border-box;
+          background:var(--bg);border:1px solid var(--border);
+          border-radius:9px;padding:9px 13px;
+          color:var(--white);font-size:.84rem;
+          font-family:var(--fh);transition:border-color .2s,box-shadow .2s;
+          outline:none;resize:none;
+        }
+        .cf-input::placeholder,.cf-textarea::placeholder{color:var(--muted)}
+        .cf-input:focus,.cf-textarea:focus{
+          border-color:var(--teal-mid);
+          box-shadow:0 0 0 3px rgba(0,229,195,.07);
+        }
+        .cf-textarea{min-height:90px}
+        .cf-btn{
+          width:100%;padding:10px 20px;background:var(--teal);
+          color:#0d1117;font-family:var(--fh);font-weight:700;
+          font-size:.86rem;border:none;border-radius:9px;
+          cursor:pointer;display:flex;align-items:center;
+          justify-content:center;gap:8px;
+          transition:opacity .2s,transform .2s,box-shadow .2s;margin-top:2px;
+        }
+        .cf-btn:hover:not(:disabled){
+          opacity:.88;transform:translateY(-2px);
+          box-shadow:0 10px 28px rgba(0,229,195,.28);
+        }
+        .cf-btn:disabled{opacity:.55;cursor:not-allowed}
+        .cf-status{
+          margin-top:14px;padding:13px;border-radius:10px;
+          font-size:.85rem;font-weight:600;text-align:center;
+        }
+        .cf-status.success{
+          background:rgba(63,185,80,.1);
+          border:1px solid rgba(63,185,80,.22);color:#3fb950;
+        }
+        .cf-status.error{
+          background:rgba(248,81,73,.1);
+          border:1px solid rgba(248,81,73,.22);color:#f85149;
+        }
+        @media(max-width:500px){.cf-row{grid-template-columns:1fr}}
+      `}</style>
+
+      <form className="cf-card p-reveal" onSubmit={handleSubmit}>
+        <div className="cf-row">
+          <div className="cf-group">
+            <label className="cf-lbl">Name</label>
+            <input className="cf-input" type="text" name="name" placeholder="Your name"
+              value={form.name} onChange={handleChange} required />
+          </div>
+          <div className="cf-group">
+            <label className="cf-lbl">Email</label>
+            <input className="cf-input" type="email" name="email" placeholder="your@email.com"
+              value={form.email} onChange={handleChange} required />
+          </div>
+        </div>
+        <div className="cf-group">
+          <label className="cf-lbl">Subject</label>
+          <input className="cf-input" type="text" name="subject" placeholder="What's this about?"
+            value={form.subject} onChange={handleChange} />
+        </div>
+        <div className="cf-group">
+          <label className="cf-lbl">Message</label>
+          <textarea className="cf-textarea" name="message" placeholder="Your message..."
+            value={form.message} onChange={handleChange} required />
+        </div>
+        <button className="cf-btn" type="submit" disabled={status === "sending"}>
+          <i className="fas fa-paper-plane" />
+          {status === "sending" ? "Sending…" : "Send Message"}
+        </button>
+        {status === "success" && (
+          <div className="cf-status success">✓ Message sent! I&apos;ll get back to you soon.</div>
+        )}
+        {status === "error" && (
+          <div className="cf-status error">Something went wrong. Please try emailing me directly.</div>
+        )}
+      </form>
+    </>
+  );
+}
+</file>
+
+<file path="components/WordRotate.jsx">
+"use client";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+
+export default function WordRotate({ words = [] }) {
+  const [index, setIndex] = useState(0);
+
+  useEffect(() => {
+    if (!words.length) return;
+
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % words.length);
+    }, 2800);
+
+    return () => clearInterval(interval);
+  }, [words]);
+
+  return (
+    <span style={{ display: "inline-block" }}>
+      <AnimatePresence mode="wait">
+        <motion.span
+          key={words[index]}
+          style={{
+            display: "inline-block",
+            direction: /[\u0600-\u06FF]/.test(words[index]) ? "rtl" : "ltr"
+          }}
+          initial={{
+            opacity: 0,
+            y: 6,
+            filter: "blur(6px)"
+          }}
+          animate={{
+            opacity: 0.85,
+            y: 0,
+            filter: "blur(0px)"
+          }}
+          exit={{
+            opacity: 0,
+            y: -6,
+            filter: "blur(6px)"
+          }}
+          transition={{
+            duration: 0.6,
+            ease: [0.4, 0, 0.2, 1]
+          }}
+        >
+          {words[index]}
+        </motion.span>
+      </AnimatePresence>
+    </span>
+  );
+}
+</file>
+
+<file path="app/robots.js">
+import type { MetadataRoute } from "next";
+
+export default function robots(): MetadataRoute.Robots {
+  return {
+    rules: [
+      {
+        userAgent: "*",
+        allow: "/",
+      },
+    ],
+    sitemap: "https://najmulhasan.navicore.co/sitemap.xml",
+    host: "https://najmulhasan.navicore.co",
+  };
+}
+</file>
+
+<file path="app/sitemap.js">
+import type { MetadataRoute } from "next";
+
+export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = "https://najmulhasan.navicore.co";
+  const now = new Date();
+
+  const staticPages = [
+    {
+      url: baseUrl,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 1,
+    },
+    {
+      url: `${baseUrl}/projects`,
+      lastModified: now,
+      changeFrequency: "weekly" as const,
+      priority: 0.9,
+    },
+  ];
+
+  const projectSlugs = [
+    "navicore-software",
+    "devfolio-analyzer",
+    "livecollab",
+    "petcare-system",
+    "microtask-platform",
+    "badar-uddin-welfare",
+    "care.xyz",
+    "gatherly",
+    "clubsphere",
+    "bookhub",
+  ];
+
+  const projectPages = projectSlugs.map((slug) => ({
+    url: `${baseUrl}/projects/${slug}`,
+    lastModified: now,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
+  return [...staticPages, ...projectPages];
+}
+</file>
+
+<file path="package.json">
+{
+  "name": "najmul-portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "framer-motion": "^12.38.0",
+    "next": "16.1.6",
+    "puppeteer": "^24.40.0",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-icons": "^5.5.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.1.6",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  },
+  "description": "<!-- PREMIUM HEADER -->",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/najmulcodes/najmul-portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/najmulcodes/najmul-portfolio/issues"
+  },
+  "homepage": "https://github.com/najmulcodes/najmul-portfolio#readme"
+}
+</file>
+
+<file path="app/layout.js">
+import "./globals.css";
+
+export const metadata = {
+  metadataBase: new URL("https://najmulcodes.vercel.app"),
+
+  title: {
+    default: "Najmul Hasan | Full-Stack Developer",
+    template: "%s | Najmul Hasan",
+  },
+
+  description:
+    "Portfolio of Najmul Hasan — Full-Stack Developer specialising in React, Next.js, Node.js and MongoDB. Building structured and scalable web applications.",
+
+  keywords: [
+    "Najmul Hasan",
+    "najmulcodes",
+    "Full Stack Developer",
+    "MERN Stack Developer",
+    "React Developer",
+    "Next.js Developer",
+    "Node.js Developer",
+    "MongoDB",
+    "Web Developer Portfolio",
+    "Bangladesh Developer",
+  ],
+
+  authors: [{ name: "Najmul Hasan", url: "https://najmulcodes.vercel.app" }],
+  creator: "Najmul Hasan",
+
+  openGraph: {
+    title: "Najmul Hasan | Full-Stack Developer",
+    description:
+      "Full-Stack Developer specialising in React, Next.js, Node.js and MongoDB.",
+    url: "https://najmulcodes.vercel.app",
+    siteName: "Najmul Hasan Portfolio",
+    images: [
+      {
+        url: "/preview.png",
+        width: 1200,
+        height: 630,
+        alt: "Najmul Hasan Portfolio",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+
+  twitter: {
+    card: "summary_large_image",
+    title: "Najmul Hasan | Full-Stack Developer",
+    description:
+      "Full-Stack Developer specialising in React, Next.js, Node.js and MongoDB.",
+    images: ["/preview.png"],
+  },
+
+  icons: {
+    icon: "/icon.png",
+  },
+};
+
+// Person + WebSite structured data — this is what lets Google merge
+// your GitHub, LinkedIn, and this site into one confirmed entity
+// instead of treating them as unrelated pages.
+const personSchema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      name: "Najmul Hasan",
+      alternateName: "najmulcodes",
+      url: "https://najmulcodes.vercel.app",
+      image: "https://najmulcodes.vercel.app/profile.png",
+      jobTitle: "Full-Stack Software Engineer",
+      worksFor: {
+        "@type": "Organization",
+        name: "Independent / Freelance",
+      },
+      sameAs: [
+        "https://github.com/najmulcodes",
+        "https://www.linkedin.com/in/najmulcodes",
+      ],
+      knowsAbout: [
+        "React",
+        "Next.js",
+        "Node.js",
+        "MongoDB",
+        "Express",
+        "JavaScript",
+        "REST API",
+        "JWT Authentication",
+      ],
+    },
+    {
+      "@type": "WebSite",
+      name: "Najmul Hasan Portfolio",
+      url: "https://najmulcodes.vercel.app",
+    },
+  ],
+};
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en">
+      <body className="app-body">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
+        {children}
+      </body>
+    </html>
+  );
+}
+</file>
+
+<file path="public/Najmul_Hasan_Resume.html">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Najmul Hasan Resume</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+html, body{
+height:100%;
+}
+
+body{
+font-family:'Inter',sans-serif;
+color:#1a1a1a;
+line-height:1.35;
+width:210mm;
+min-height:297mm;
+padding:12mm 14mm;
+margin:0 auto;
+background-color:#fff;
+font-size:9.2pt;
+-webkit-print-color-adjust:exact;
+}
+
+a{color:#0b57d0;text-decoration:none;}
+a[href]{pointer-events:auto;}
+
+header{text-align:center;margin-bottom:5px;}
+
+h1{font-size:20pt;font-weight:900;margin-bottom:3px;color:#000;}
+
+.role{font-size:12pt;font-weight:600;color:#444;margin-bottom:4px;}
+
+.contact-row{
+display:flex;justify-content:center;align-items:center;
+gap:10px;font-size:8.8pt;margin-bottom:5px;
+}
+
+.social-row{
+display:flex;justify-content:center;align-items:center;
+gap:6px;font-size:8.8pt;
+}
+
+.icon-text{display:inline-flex;align-items:center;gap:8px;color:#1a1a1a;text-decoration:none;}
+.icon-text i{font-size:12pt;width:13px;text-align:center;color:#333;}
+.link-accent{color:#0b57d0 !important;font-weight:900;}
+
+section{margin-bottom:3px;padding-left:6px;}
+
+h2{
+font-size:11.5pt;font-weight:900;
+border-bottom:1.5px solid #333;
+margin-bottom:3px;padding-bottom:1px;
+text-transform:uppercase;
+}
+
+.small{font-size:9pt;color:#1a1a1a;}
+
+.project{margin-bottom:3px;}
+
+.project-header{
+display:flex;justify-content:space-between;
+align-items:baseline;margin-bottom:3px;
+}
+
+.project-title{font-weight:900;font-size:9.8pt;}
+
+.project-links{font-size:9pt;}
+.project-links a{color:#0b57d0;text-decoration:underline;font-weight:700;}
+
+.overview{font-size:9pt;font-weight:800;color:#815252;margin-bottom:3px;}
+.tech-stack{font-size:9pt;font-weight:900;color:#444;margin-top:3px;margin-bottom:3px;}
+
+ul{list-style-type:disc;margin-left:26px;margin-top:3px;}
+li{margin-bottom:3px;font-size:9pt;}
+
+.certificate{text-align:center;margin-top:1px;margin-bottom:3px;}
+.certificate a{font-size:9pt;text-decoration:none;color:#0b57d0;}
+.certificate a:hover{text-decoration:underline;}
+
+.split-row{
+display:flex;justify-content:space-between;
+align-items:baseline;margin-bottom:3px;
+}
+
+.bold{font-weight:900;}
+
+/* Skills spacing */
+.small p { margin-bottom: 3px; }
+
+@media print{
+body{padding:10mm 10mm;width:210mm;}
+@page{size:A4;margin:0;}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Najmul Hasan</h1>
+<div class="role">Full Stack Engineer &amp; Founder, NAVICORE</div>
+
+<div class="contact-row">
+<span class="icon-text"><i class="fa-solid fa-envelope"></i> najmulhasanshahin@gmail.com</span>
+<span>|</span>
+<span class="icon-text"><i class="fa-solid fa-phone"></i> +8801840242448</span>
+<span>|</span>
+<span class="icon-text"><i class="fa-solid fa-location-dot"></i> Dhaka, Bangladesh</span>
+</div>
+
+<div class="social-row">
+<a href="https://www.linkedin.com/in/najmulcodes" target="_blank" class="icon-text link-accent">
+<i class="fa-brands fa-linkedin"></i> LinkedIn
+</a>
+<span>|</span>
+<a href="https://github.com/najmulcodes" target="_blank" class="icon-text link-accent">
+<i class="fa-brands fa-github"></i> GitHub
+</a>
+<span>|</span>
+<a href="https://najmulcodes.navicore.co/" target="_blank" class="icon-text link-accent">
+<i class="fa-solid fa-briefcase"></i> Portfolio
+</a>
+<span>|</span>
+<a href="https://railmatebd.com" target="_blank" class="icon-text link-accent">
+<i class="fa-solid fa-train"></i> RailMate
+</a>
+</div>
+</header>
+
+
+<section>
+<h2>Career Objective</h2>
+<p class="small">
+Full Stack Engineer with production experience building consumer mobile and web applications, backend automation systems, and multi-role platforms. Founder and CEO of NAVICORE — a Bangladesh-based technology venture builder. Currently developing RailMate Bangladesh (railmatebd.com), a live railway companion platform covering 130+ trains and 52+ stations, with a React Native app in private beta. Focused on building practical tools that solve real problems for everyday people in Bangladesh.
+</p>
+</section>
+
+
+<section>
+<h2>SKILLS</h2>
+<div class="small">
+<p><b>Languages:</b> JavaScript, TypeScript, Python</p>
+<p><b>Frontend &amp; Mobile:</b> React, Next.js, React Native, Expo Router, NativeWind, Zustand, HTML, CSS, Tailwind CSS, Shadcn, Daisy UI</p>
+<p><b>Backend:</b> Node.js, Express.js, Python (aiogram, Pyrogram)</p>
+<p><b>Database:</b> MongoDB, Supabase (PostgreSQL), Firebase, Prisma (learning)</p>
+<p><b>Tools &amp; Platforms:</b> Git, GitHub, EAS (Expo Application Services), Vercel, Cloudflare, Stripe, Postman, NextAuth, VS Code, Docker (learning), AWS (learning)</p>
+<p><b>AI &amp; APIs:</b> Anthropic Claude API, GitHub REST API, PostHog, Socket.IO, Cloudinary, Brevo</p>
+<p><b>In Progress:</b> RAG, LangChain, Vector Databases, CI/CD</p>
+</div>
+</section>
+
+
+<section>
+<h2>PROJECTS</h2>
+
+<div class="project">
+  <div class="project-header">
+    <span class="project-title">RailMate Bangladesh — Railway Companion Platform &nbsp;·&nbsp; <span style="color:#1a7a3c;">Live Product</span></span>
+    <div class="project-links">
+      <a href="https://railmatebd.com" target="_blank">railmatebd.com</a> |
+      <a href="https://github.com/najmulcodes/NAVICORE" target="_blank">GitHub</a>
+    </div>
+  </div>
+  <p class="overview">Bangladesh's most trusted railway companion — real-time train schedules, community delay reports, and journey planning for 130+ trains across 52+ stations.</p>
+  <ul class="small">
+    <li>Architected and built the full platform solo: Next.js 15 website (live), React Native mobile app (private beta), and separate backend API — all deployed on Vercel with Supabase as primary database and auth.</li>
+    <li>Implemented bilingual (Bengali + English) i18n routing, SEO infrastructure with structured JSON-LD, sitemap, and Google Search Console integration.</li>
+    <li>Built OTP-based authentication via Supabase, community reporting system, per-IP rate limiting, and production error handling across the full stack.</li>
+    <li>Configured custom domain infrastructure on Cloudflare (railmatebd.com, api.railmatebd.com) with PostHog analytics and EAS build pipeline targeting Google Play.</li>
+  </ul>
+  <p class="tech-stack">Technology: Next.js 15, React Native, Expo Router, NativeWind, Zustand, Supabase, EAS, PostHog, Cloudflare, Resend, Zod</p>
+</div>
+
+<div class="project">
+  <div class="project-header">
+    <span class="project-title">DevFolio Analyzer (AI-Powered Portfolio &amp; GitHub Profile Analyzer)</span>
+    <div class="project-links">
+      <a href="https://devfolioanalyzer.vercel.app/" target="_blank">Preview</a> |
+      <a href="https://github.com/najmulcodes/devfolio-analyzer" target="_blank">Client Code</a>
+    </div>
+  </div>
+  <p class="overview">A full-stack analytics dashboard that evaluates GitHub profiles with a deterministic scoring engine and AI-powered insights via the Claude API.</p>
+  <ul class="small">
+    <li>Built a structured scoring system to evaluate GitHub profiles with clear and consistent data flow.</li>
+    <li>Integrated external APIs and ensured stable frontend-backend communication; resolved production issues including API mismatches, OAuth errors, and CORS handling.</li>
+    <li>Ensured consistent API contract between frontend and backend, reducing data mismatches in production.</li>
+  </ul>
+  <p class="tech-stack">Technology: React 18, React Router, Recharts, Node.js, Express.js, MongoDB, JWT, Claude (Anthropic) API</p>
+</div>
+
+<div class="project">
+  <div class="project-header">
+    <span class="project-title">LiveCollab — Real-Time Collaboration Platform</span>
+    <div class="project-links">
+      <a href="https://livecollab-rho.vercel.app/" target="_blank">Preview</a> |
+      <a href="https://github.com/najmulcodes/livecollab-client" target="_blank">Client Code</a>
+    </div>
+  </div>
+  <p class="overview">A real-time collaboration platform with workspace management, role-based access, and live updates.</p>
+  <ul class="small">
+    <li>Designed real-time event flow using Socket.IO to maintain consistent state across users; implemented role-based workspace system with controlled access and actions.</li>
+    <li>Resolved synchronization issues between frontend state and backend events to improve reliability.</li>
+  </ul>
+  <p class="tech-stack">Technology: React, Node.js, Express.js, MongoDB, Socket.IO, JWT</p>
+</div>
+
+<div class="project">
+  <div class="project-header">
+    <span class="project-title">Whisker Dairy — PetCare System</span>
+    <div class="project-links">
+      <a href="https://whiskerdairy.vercel.app/" target="_blank">Preview</a> |
+      <a href="https://github.com/najmulcodes/Petcare" target="_blank">Client Code</a>
+    </div>
+  </div>
+  <p class="overview">A pet care management system that tracks health records, schedules reminders, and monitors pet expenses in one place.</p>
+  <ul class="small">
+    <li>Built a health summary system classifying records as overdue, due today, or upcoming; implemented browser notification flow for vaccination, medication, and feeding schedules.</li>
+    <li>Fixed timezone and data consistency issues to keep dashboard updates and reminders accurate.</li>
+  </ul>
+  <p class="tech-stack">Technology: React, Tailwind CSS, Node.js, Express.js, Supabase, REST API, Service Workers</p>
+</div>
+
+</section>
+
+
+<section>
+<h2>EDUCATION</h2>
+<div class="split-row">
+<span class="bold">BBA Accounting &amp; Finance</span>
+<span>2019 – 2023</span>
+</div>
+<p class="small">City College &nbsp; Dhaka, Bangladesh</p>
+</section>
+
+
+<section>
+<h2>COURSE</h2>
+
+<div class="split-row">
+<span class="bold">AI-Driven Software Engineering — Level 2 &nbsp;·&nbsp; Programming Hero</span>
+<span>April 2026 – Present</span>
+</div>
+<p class="small" style="margin-bottom:5px;">TypeScript, PostgreSQL, Prisma, Docker, AWS, RAG, LangChain, Vector DBs, CI/CD</p>
+
+<div class="split-row">
+<span class="bold">Complete Web Development Course – Programming Hero</span>
+<span>2025 – 2026</span>
+</div>
+<p class="certificate">
+  <a href="https://drive.google.com/file/d/1npAH6Q-1M70o7lRlyuFjzFLO0IYJ8M11/view?usp=sharing" target="_blank"><i class="fa-solid fa-certificate"></i> View Certificate</a>
+</p>
+</section>
+
+
+<section>
+<h2>EXPERIENCE</h2>
+
+<div class="split-row">
+<span class="bold">Founder, CEO &amp; Chief Product Officer — NAVICORE</span>
+<span>June 2026 – Present</span>
+</div>
+<p class="small">NAVICORE Foundation · Dhaka, Bangladesh &nbsp;·&nbsp; <a href="https://navicore.co" target="_blank">navicore.co</a></p>
+<ul class="small" style="margin-top:3px;margin-bottom:4px;">
+  <li>Founded NAVICORE, a technology venture builder, and led end-to-end product development of RailMate Bangladesh — from architecture through live deployment — as the sole engineer.</li>
+  <li>Managing Navicore Software division, delivering client web and automation projects that fund the consumer platform ecosystem.</li>
+</ul>
+
+<div class="split-row">
+<span class="bold">Freelance Full Stack Developer</span>
+<span>2025 – Present</span>
+</div>
+<p class="small">Self-employed · Dhaka, Bangladesh</p>
+<ul class="small" style="margin-top:3px;">
+  <li>Build and deliver backend automation bots and web applications for clients (paid, friend-referred).</li>
+  <li>Scope, estimate, and independently ship projects end-to-end — from requirements through deployment.</li>
+</ul>
+</section>
+
+
+<section>
+<h2>LANGUAGES</h2>
+<p class="small">Bengali (Native), English (Fluent), Hindi (Fluent), Arabic (Fluent)</p>
+</section>
+
+</body>
+</html>
+</file>
+
+<file path="app/projects/[slug]/page.js">
+"use client";
+
+import { useEffect } from "react";
+import { useParams } from "next/navigation";
+import Link from "next/link";
+import Navbar from "../../../components/Navbar";
+import Footer from "../../../components/Footer";
+
+const projects = {
+  "devfolio-analyzer": {
+    name: "DevFolio Analyzer",
+    tagline: "GitHub profile intelligence — deterministically scored, AI-augmented, and structured.",
+    img: "/projects/devfolio-analyzer.png",
+    live: "https://devfolioanalyzer.vercel.app/",
+    code: "https://github.com/najmulcodes/devfolio-analyzer",
+    overview:
+      "Connects the GitHub REST API with Anthropic Claude to evaluate developer profiles across contribution consistency, repository quality, tech breadth, and documentation depth. Scoring is deterministic and decoupled from the AI layer — a stable numeric score is computed first, then Claude generates qualitative feedback on top of it. This ensures the dashboard renders correctly regardless of model response variance. Authenticated users get a persistent analysis history; guest mode allows instant evaluation without signup.",
+    features: [
+      "GitHub profile ingestion via REST API — repositories, stars, forks, commit cadence, language breakdown",
+      "Deterministic scoring (0–100) across contribution consistency, tech breadth, documentation quality, and profile completeness",
+      "Claude API integration constrained by a structured system prompt — AI output is schema-validated before reaching the frontend",
+      "Guest mode for instant analysis without authentication",
+      "Persistent analysis history per authenticated user, stored in MongoDB",
+      "Interactive dashboard with KPI cards, score trends, and improvement recommendations",
+    ],
+    tech: {
+      frontend: ["React 18", "React Router", "Recharts"],
+      backend: ["Node.js", "Express"],
+      database: ["MongoDB", "Mongoose"],
+      auth: ["JWT", "bcryptjs"],
+    },
+    challenges: [
+      "LLM output inconsistency — Claude responses varied in structure when prompts were underspecified, breaking frontend render logic",
+      "GitHub API rate limits — unauthenticated requests cap at 60/hr, causing failures for users with large profiles",
+      "Scoring subjectivity — defining what makes a 'strong' profile required iterating on evaluation criteria with real test accounts",
+    ],
+    solutions: [
+      "Enforced a strict JSON schema in the system prompt with fallback defaults for missing fields; added a validation layer before the response reaches the frontend",
+      "Implemented optional GitHub OAuth token pass-through for authenticated calls (5,000 req/hr), with per-user token caching in session",
+      "Separated deterministic scoring logic from the AI layer entirely — the score is computed server-side first; Claude only sees the structured data, not raw API output",
+    ],
+    future: [
+      "Repository-level language and contribution breakdown per project",
+      "Side-by-side profile comparison against role-specific baselines (junior/mid/senior)",
+      "Webhook-triggered re-analysis on new GitHub pushes",
+    ],
+  },
+
+  livecollab: {
+    name: "LiveCollab",
+    tagline: "Shared Kanban state across all connected clients — no polling, no refresh.",
+    img: "/projects/livecollab.png",
+    live: "https://livecollab-rho.vercel.app/",
+    code: "https://github.com/najmulcodes/livecollab-client",
+    overview:
+      "Board operations — card moves, column reorders, member presence — propagate via Socket.IO events scoped per workspace room. Drag-and-drop is optimistically applied locally on the originating client and reconciled against the server's authoritative state on broadcast; other clients update silently without re-fetch. Workspace access is enforced at socket handshake: JWT is verified and membership is checked against MongoDB before any room join is admitted. Zustand manages local board state with selector-based subscriptions to prevent unnecessary re-renders on unrelated updates.",
+    features: [
+      "Bidirectional Socket.IO events for card movement, creation, deletion, and column reorder — all reflected live across sessions",
+      "Optimistic local state with server reconciliation on conflict — last server-confirmed state wins",
+      "Live presence indicators — per-user status visible to all workspace members in real time",
+      "Invite-code workspace onboarding — no email verification required to join a team",
+      "Timestamped activity log persisted to MongoDB — full audit trail of board actions",
+      "JWT auth at socket handshake level — room access is gated before any event is processed",
+    ],
+    tech: {
+      frontend: ["React 18", "Vite", "Tailwind CSS", "Zustand", "React Query", "@dnd-kit"],
+      backend: ["Node.js", "Express", "Socket.IO"],
+      database: ["MongoDB", "Mongoose"],
+      auth: ["JWT", "bcrypt"],
+    },
+    challenges: [
+      "Race conditions on simultaneous drag events from multiple clients targeting the same card position",
+      "Socket room authentication — ensuring users can only emit and receive events for workspaces they belong to",
+      "Zustand store hydration on socket reconnect — stale local state after a dropped connection",
+    ],
+    solutions: [
+      "Server processes drag events sequentially per workspace; broadcasts the authoritative position to all clients including the originator, who discards their optimistic state if it differs",
+      "JWT is verified on every socket handshake; room join is gated behind a workspace membership check against MongoDB before the socket is admitted to the room",
+      "On reconnect, the client fetches a full board snapshot via REST then re-subscribes to socket events — socket events only handle deltas after initial hydration",
+    ],
+    future: [
+      "Card assignment with per-user task filtering across workspaces",
+      "Rich-text card descriptions with inline comment threads and @mentions",
+      "Redis pub/sub adapter for horizontal Socket.IO scaling across multiple Node instances",
+    ],
+  },
+
+  "petcare-system": {
+    name: "Whisker Dairy — PetCare System",
+    tagline: "Health tracking and time-based reminder system for managing pet care.",
+    img: "/projects/petcare.png",
+    live: "https://whiskerdairy.vercel.app//",
+    code: "https://github.com/najmulcodes/petcare",
+    overview:
+      "A full-stack system that converts pet health data into actionable states and automated reminders using scheduling logic and notification workflows. Pet records (vaccines, medications, feeding times) are classified server-side into overdue, due-today, and upcoming states. The frontend dashboard aggregates these states per pet and surfaces them as prioritized action items. Browser push notifications are delivered via the Web Push API and Service Workers, with timezone-aware scheduling to ensure reminders fire at the correct local time.",
+    features: [
+      "Health classification engine — server-side state resolution into overdue, due-today, and upcoming categories per pet record",
+      "Time-based reminder system for vaccines, medication schedules, and feeding times with configurable intervals",
+      "Browser push notifications via Service Workers and Web Push API with timezone-aware scheduling",
+      "Pet profile management with image upload support via Supabase Storage",
+      "Dashboard aggregation view showing health status across all registered pets at a glance",
+      "REST API backend with Supabase as the persistent data layer; JWT-based auth for user isolation",
+    ],
+    tech: {
+      frontend: ["React", "Tailwind CSS", "Vite"],
+      backend: ["Node.js", "Express.js", "Supabase"],
+      database: ["Supabase (PostgreSQL)"],
+      auth: ["JWT", "Supabase Auth"],
+    },
+    challenges: [
+      "Timezone accuracy — push notification scheduling had to account for the user's local timezone rather than the server's UTC offset",
+      "Service Worker lifecycle — the SW needed to handle push events even when the browser tab was closed or backgrounded",
+      "State classification correctness — health states (overdue vs due-today) depended on precise date comparisons that needed to be consistent between server and client",
+    ],
+    solutions: [
+      "Stored all schedule times as UTC in the database; the client sends its timezone offset at registration, and the server computes the correct UTC delivery time for each push subscription",
+      "Implemented a persistent SW registration pattern that re-subscribes on app load; tested background push delivery across Chrome and Firefox",
+      "Centralized date comparison logic into a shared utility module used by both the API routes and the frontend display layer — single source of truth for state resolution",
+    ],
+    future: [
+      "Vet appointment scheduling with calendar integration and reminder escalation",
+      "Multi-pet household support with shared access for family members",
+      "Health history export as a PDF report for vet visits",
+    ],
+  },
+
+  "microtask-platform": {
+    name: "MicroTask Platform",
+    tagline: "Three-sided task marketplace with server-enforced lifecycle and Stripe disbursement.",
+    img: "/projects/microtask.png",
+    live: "https://microtask-client-iota.vercel.app",
+    code: "https://github.com/najmulcodes/microtask-client",
+    overview:
+      "Worker, Buyer, and Admin each operate in a role-scoped dashboard with context-appropriate data fetching and navigation. Task status transitions — draft → published → submitted → approved/rejected → paid — are validated server-side on every mutation; the client cannot skip states by crafting direct API calls. Stripe payment credits are triggered by webhook confirmation, not client callback, preventing double-credit on network retries. JWT payloads carry the user role; all API routes validate the claim before processing.",
+    features: [
+      "Full task lifecycle enforced at the API layer — status transitions validated server-side, not client-driven",
+      "Stripe webhook-based payment confirmation — worker balances credited only after event verification",
+      "Separate dashboard UX per role: Worker, Buyer, Admin — each with role-scoped data fetching",
+      "Submission approval workflow with optional rejection reason returned to the worker",
+      "Admin dispute resolution panel with override capability on approved/rejected outcomes",
+      "Idempotency key check on webhook handler — already-processed events are logged and skipped",
+    ],
+    tech: {
+      frontend: ["React"],
+      backend: ["Node.js", "Express"],
+      database: ["MongoDB"],
+      auth: ["JWT"],
+    },
+    challenges: [
+      "Preventing double payment on network retry when Stripe webhooks arrive out of order",
+      "Keeping three separate frontend experiences maintainable without significant code duplication",
+      "Role changes needing to reflect immediately without forcing re-login",
+    ],
+    solutions: [
+      "Stripe webhook handler checks an idempotency key before processing; already-handled events are logged and exited early",
+      "Dashboard layouts share a common shell component; only the data-fetching hooks and route guards differ per role",
+      "On role change, a silent token refresh endpoint issues a new JWT with the updated role claim; the frontend swaps the stored token without redirecting",
+    ],
+    future: [
+      "Escrow model — Buyer funds locked on task post, released on worker approval",
+      "Worker reputation scoring based on approval rate and dispute history",
+      "Task category browsing with skill-tag and budget-range filtering",
+    ],
+  },
+
+  "badar-uddin-welfare": {
+    name: "Badar Uddin Welfare",
+    tagline: "Production charity system — live deployment for a real Bangladeshi NGO.",
+    img: "/projects/badaruddin.png",
+    live: "https://badaruddinwelfareorg.vercel.app/",
+    code: "https://github.com/najmulcodes/badaruddinwelfare-client",
+    overview:
+      "Deployed for active organizational use by the Badar Uddin Bepari Welfare Organization in Feni, Bangladesh. Handles the full donation lifecycle: member requests, three-tier admin review (superAdmin / admin / member), fund disbursement tracking, and beneficiary records. All role checks are enforced at the API route level — frontend guards are UI only. Cloudinary manages signed document uploads (receipts, ID files), keeping sensitive assets off the application server. OTP email verification via Brevo gates new registrations. The entire UI is in Bengali (Hind Siliguri), requiring deliberate font loading and spacing decisions.",
+    features: [
+      "Three-tier RBAC enforced server-side: superAdmin → admin → member with scoped API permissions",
+      "Donation request workflow with status transitions: pending → under review → approved/rejected",
+      "Cloudinary signed upload presets for receipts and supporting documents",
+      "OTP email verification at registration via Brevo API to reduce fraudulent accounts",
+      "Full Bengali-language UI with Hind Siliguri font loading and consistent rendering across Android browsers",
+      "Admin dashboard with fund summary, pending actions queue, and member activity log",
+    ],
+    tech: {
+      frontend: ["React", "Vite"],
+      backend: ["Node.js", "Express"],
+      database: ["MongoDB"],
+      auth: ["JWT"],
+    },
+    challenges: [
+      "Brevo sender verification required multiple iterations due to SPF/DKIM setup on a shared hosting environment",
+      "Bengali font rendering inconsistency across Android browsers — some weights failed to load correctly",
+      "Role enforcement needed to be airtight at the API layer — frontend-only guards are insufficient for a live organization",
+    ],
+    solutions: [
+      "Configured a verified Brevo sender domain with full SPF and DKIM records; OTP emails now pass spam filters consistently",
+      "Standardized on Hind Siliguri with explicit font-weight declarations and a CSS fallback stack that degrades cleanly on older devices",
+      "All protected routes validate the decoded JWT role server-side before processing the request; frontend route guards handle UX only",
+    ],
+    future: [
+      "Annual fund report generation as a downloadable PDF",
+      "SMS notification fallback for beneficiaries without email access",
+      "Audit log export for organizational accountability and external reporting",
+    ],
+  },
+
+  "care.xyz": {
+    name: "Care.xyz",
+    tagline: "Caregiver booking with cascading location filters and middleware-level route protection.",
+    img: "/projects/carexyz.png",
+    live: "https://care-xyz-baby-sitting-elderly-care.vercel.app",
+    code: "https://github.com/najmulcodes/Care.xyz---Baby-Sitting-Elderly-Care-Service-Platform",
+    overview:
+      "Service marketplace for booking childcare and elderly care providers across Bangladesh. Location filtering cascades across three administrative tiers — division → district → upazila — loading each tier's options lazily on parent selection. This avoids the performance cost of exposing thousands of upazila records on initial load while keeping the UX responsive. Route protection runs in Next.js middleware before page render; unauthenticated users never receive protected HTML. Pricing adjusts dynamically per service type and care duration.",
+    features: [
+      "Cascading location filter: Division → District → Upazila with lazy-loaded option sets per tier",
+      "Dynamic pricing engine — base rate modified by service type, care duration, and location",
+      "Firebase Authentication with Google OAuth and email/password providers",
+      "Next.js middleware-based route protection — redirect at the edge before page HTML is served",
+      "Service listings with availability status and caregiver profile pages",
+    ],
+    tech: {
+      frontend: ["Next.js 14", "React"],
+      backend: ["Firebase"],
+      database: ["Firestore"],
+      auth: ["Firebase Auth"],
+    },
+    challenges: [
+      "Loading all upazila options upfront caused a 3–4 second render delay on low-end Android devices",
+      "Firebase auth state hydration on hard refresh caused a flash of the unauthenticated layout before the redirect fired client-side",
+    ],
+    solutions: [
+      "Switched to on-demand fetching per filter level — district options load only once a division is selected; each tier's dataset is small enough for a single fast fetch without pagination",
+      "Auth state is read from a cookie set on login; Next.js middleware checks the cookie server-side before rendering, eliminating the client-side auth flash entirely",
+    ],
+    future: [
+      "Real-time availability calendar per caregiver with booking slot management",
+      "In-app messaging between booker and caregiver before booking confirmation",
+      "Review and rating system accessible post-booking completion",
+    ],
+  },
+
+  gatherly: {
+    name: "Gatherly",
+    tagline: "Community discovery platform with server-rendered listings and multi-provider auth.",
+    img: "/projects/gatherly.png",
+    live: "https://gatherly-navy.vercel.app/",
+    code: "https://github.com/najmulcodes/gatherly",
+    overview:
+      "Built on Next.js 14 App Router with a deliberate Server/Client Component boundary: community and event listing pages render server-side for fast initial load, while auth-gated interactions (join buttons, create form, manage table) are isolated to Client Components to avoid shipping unnecessary JS for static content. NextAuth.js handles credential and Google OAuth flows, session persistence, and CSRF protection. The mobile-first layout was designed around 360px as the baseline viewport — the majority of the Bangladesh audience accesses the web on mid-range Android devices.",
+    features: [
+      "NextAuth.js with credentials provider and Google OAuth — session persisted via JWT strategy",
+      "Server Component rendering for community and event listing pages — fast TTFB without client JS overhead",
+      "Full-text search across community names, tags, and descriptions",
+      "Mobile-first responsive layout — 360px viewport as design baseline",
+      "Protected community creation form and manage-communities table behind NextAuth session guard",
+      "Middleware-level route protection for /add-club and /manage-clubs routes",
+    ],
+    tech: {
+      frontend: ["Next.js 14 (App Router)", "NextAuth.js v4", "Custom CSS"],
+      backend: ["NextAuth Credentials + Google OAuth"],
+      database: ["localStorage (demo)"],
+      auth: ["NextAuth.js", "JWT sessions"],
+    },
+    challenges: [
+      "NextAuth.js session not available in Server Components without explicit server-side session fetching",
+      "localStorage used for some state — unavailable during SSR, causing hydration mismatches on initial render",
+    ],
+    solutions: [
+      "Used getServerSession from next-auth/next in auth-gated Server Components; Client Components use the useSession hook — both patterns are consistent across the codebase",
+      "Wrapped all localStorage reads in a useEffect with an isMounted guard; longer term this would move to cookie-based or database-backed storage",
+    ],
+    future: [
+      "Replace localStorage with a Prisma + PostgreSQL backend for persistent community data",
+      "Real-time RSVP counts with Socket.IO for live event attendance tracking",
+      "Push notifications for upcoming gatherings in joined communities",
+    ],
+  },
+
+  clubsphere: {
+    name: "ClubSphere",
+    tagline: "Club management with resource-level ownership enforcement and approval workflows.",
+    img: "/projects/clubsphere.png",
+    live: "https://clubsphere-client1.netlify.app/",
+    code: "https://github.com/najmulcodes/clubsphere-client",
+    overview:
+      "Handles club membership and event logistics for organizations with multiple clubs under one platform. Membership requests go through an admin approval step before access is granted. Event operations are enforced at the resource level, not just role level — a club admin can only modify events they created, preventing cross-club interference. Ownership is stored as a denormalized creator ID on each event document, making the authorization check a single field comparison on read rather than a collection join.",
+    features: [
+      "Multi-step membership approval — request → admin review → grant/deny with optional reason",
+      "Resource-level ownership enforcement: event mutations check creator ID server-side, not just user role",
+      "Club-scoped event listings — members only see events from their joined clubs",
+      "JWT auth with protected frontend routes and matching server-side API guards",
+      "Denormalized creator ID on event documents — authorization check is O(1), no join required",
+    ],
+    tech: {
+      frontend: ["React"],
+      backend: ["Node.js", "Express"],
+      database: ["MongoDB"],
+      auth: ["JWT"],
+    },
+    challenges: [
+      "Resource ownership checks required joining membership and event collections on every protected mutation, adding query complexity and latency",
+    ],
+    solutions: [
+      "Denormalized the creator ID into the event document at write time; ownership check on mutation is a single field comparison — trades a small write overhead for significantly faster read-time authorization",
+    ],
+    future: [
+      "Event attendance tracking with QR code check-in for physical events",
+      "Club analytics dashboard — member growth over time and event attendance rate",
+    ],
+  },
+
+  bookhub: {
+    name: "BookHub",
+    tagline: "Book catalog with optimistic UI updates and consistent REST API design.",
+    img: "/projects/bookhub.png",
+    live: "https://bookhub-heaven.surge.sh",
+    code: "https://github.com/najmulcodes/bookhub-client",
+    overview:
+      "Built as a deliberate exercise in REST API fundamentals before adding complexity in later projects. Every endpoint returns a consistent response envelope (status, data, message); error responses include machine-readable codes alongside human-readable messages; all mutations return the updated resource rather than a generic success flag. Optimistic updates on the frontend keep the UI responsive — edits appear immediately and roll back cleanly from a pre-mutation snapshot if the API call fails.",
+    features: [
+      "Consistent API response envelope across all endpoints — predictable shape for every frontend consumer",
+      "Optimistic UI updates with snapshot-based rollback on failure — no re-fetch, no stale data flash",
+      "Search and filter by title, author, and genre",
+      "Cover image management via URL-based storage",
+      "Machine-readable error codes on all failure responses — frontend can differentiate error types without string parsing",
+    ],
+    tech: {
+      frontend: ["React"],
+      backend: ["Node.js", "Express"],
+      database: ["MongoDB"],
+      auth: [],
+    },
+    challenges: [
+      "Ensuring rollback logic was reliable — a failed optimistic update that doesn't revert cleanly leaves the UI in a broken state that's difficult to recover from without a page reload",
+    ],
+    solutions: [
+      "Stored pre-mutation state in a local variable before applying the optimistic update; the catch block restores from that snapshot rather than re-fetching — faster recovery and avoids a flash of stale server data",
+    ],
+    future: [
+      "User authentication with personal reading lists and progress tracking",
+      "ISBN lookup via Open Library API to auto-fill book metadata on add",
+    ],
+  },
+};
+
+export default function ProjectDetails() {
+  const { slug } = useParams();
+  const project = projects[slug];
+
+  useEffect(() => {
+    const fa = document.createElement("link");
+    fa.rel = "stylesheet";
+    fa.href =
+      "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css";
+    document.head.appendChild(fa);
+
+    const fonts = document.createElement("link");
+    fonts.rel = "stylesheet";
+    fonts.href =
+      "https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap";
+    document.head.appendChild(fonts);
+  }, []);
+
+  if (!project) {
+    return (
+      <>
+        <Navbar />
+        <div style={{ padding: "120px 6vw", color: "#e6edf3", background: "#0d1117", minHeight: "100vh" }}>
+          Project not found
+        </div>
+        <Footer />
+      </>
+    );
+  }
+
+  return (
+    <>
+      <style>{`
+        :root {
+          --bg:#0d1117; --bg2:#161b22; --bg3:#1c2333;
+          --teal:#00e5c3;
+          --teal-dim:rgba(0,229,195,0.10);
+          --teal-mid:rgba(0,229,195,0.22);
+          --white:#e6edf3; --muted:#7d8590;
+          --border:rgba(255,255,255,0.07);
+          --fh:'Space Grotesk',sans-serif;
+          --fm:'Fira Code',monospace;
+        }
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+        html{scroll-behavior:smooth}
+        body{
+          background:var(--bg);color:var(--white);
+          font-family:var(--fh);line-height:1.7;overflow-x:hidden;
+        }
+        a{text-decoration:none;color:inherit}
+
+        .proj-img-wrap {
+          margin-bottom: 36px;
+          border-radius: 14px;
+          overflow: hidden;
+          border: 1px solid rgba(255,255,255,.07);
+          box-shadow: 0 10px 40px rgba(0,0,0,.4);
+          background: var(--bg2);
+          line-height: 0;
+        }
+        .proj-img-wrap img {
+          width: 100%;
+          height: auto;
+          display: block;
+          object-fit: contain;
+        }
+
+        .p-nav{
+          position:fixed;top:0;left:0;right:0;z-index:100;
+          display:flex;align-items:center;justify-content:space-between;
+          padding:16px 6vw;
+          background:rgba(13,17,23,.95);
+          backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+          border-bottom:1px solid var(--border);
+        }
+        .p-logo{font-family:var(--fm);font-size:.88rem;color:var(--teal);letter-spacing:.02em}
+        .p-logo .bracket{color:rgba(0,229,195,.55)}
+        .p-logo .pname{color:var(--white)}
+        .p-nav-links{display:flex;gap:4px;list-style:none}
+        .p-nav-links a{font-size:.8rem;font-weight:500;padding:6px 14px;border-radius:8px;color:var(--muted);transition:color .2s,background .2s}
+        .p-nav-links a:hover{color:var(--teal);background:var(--teal-dim)}
+        .p-nav-icons{display:flex;gap:12px;align-items:center}
+        .p-nav-icons a{
+          width:32px;height:32px;display:flex;align-items:center;justify-content:center;
+          border-radius:8px;color:var(--muted);border:1px solid transparent;font-size:1rem;
+          transition:color .2s,border-color .2s,background .2s,transform .2s;
+        }
+        .p-nav-icons a:hover{color:var(--teal);border-color:var(--teal-mid);background:var(--teal-dim);transform:translateY(-2px)}
+        .p-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;border:none;background:transparent;z-index:201}
+        .p-hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:all .3s}
+        .p-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+        .p-hamburger.open span:nth-child(2){opacity:0}
+        .p-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+        .p-mobile-menu{display:none}
+        @media(max-width:640px){
+          .p-nav{padding:14px 5vw}
+          .p-nav-links{display:none}
+          .p-hamburger{display:flex}
+          .p-mobile-menu{
+            display:block;position:fixed;top:0;left:0;right:0;bottom:0;
+            background:rgba(13,17,23,.97);z-index:200;
+            padding:90px 8vw 40px;
+            transform:translateX(100%);transition:transform .3s ease;
+          }
+          .p-mobile-menu.open{transform:translateX(0)}
+          .p-mobile-menu ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+          .p-mobile-menu ul li a{
+            display:block;font-size:1.25rem;font-weight:600;
+            color:var(--muted);padding:14px 0;
+            border-bottom:1px solid var(--border);
+            transition:color .2s;
+          }
+          .p-mobile-menu ul li a:hover{color:var(--teal)}
+          .p-mobile-menu-icons{display:flex;gap:16px;margin-top:32px}
+          .p-mobile-menu-icons a{
+            width:44px;height:44px;border-radius:12px;
+            border:1px solid var(--border);background:var(--bg2);
+            display:flex;align-items:center;justify-content:center;
+            font-size:1.1rem;color:var(--muted);transition:all .2s;
+          }
+          .p-mobile-menu-icons a:hover{color:var(--teal);border-color:var(--teal-mid)}
+        }
+
+        .p-footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 6vw;text-align:center;position:relative;z-index:1}
+        .p-footer p{font-size:.76rem;color:var(--muted)}
+        .p-footer span{color:var(--teal)}
+
+        .p-back-btn{
+          display:inline-flex;align-items:center;gap:6px;
+          margin-bottom:14px;font-size:.82rem;color:var(--muted);
+          border:1px solid var(--border);padding:7px 16px;border-radius:8px;
+          transition:color .2s,border-color .2s,background .2s;
+        }
+        .p-back-btn:hover{color:var(--teal);border-color:var(--teal-mid);background:var(--teal-dim)}
+
+        .p-proj-btn{
+          display:inline-flex;align-items:center;gap:7px;
+          font-size:.8rem;font-weight:600;padding:10px 20px;
+          border-radius:10px;transition:all .2s ease;
+        }
+        .p-proj-btn.live{background:var(--teal);color:#0d1117;}
+        .p-proj-btn.live:hover{opacity:.85;}
+        .p-proj-btn.code{border:1px solid rgba(255,255,255,.1);color:var(--muted);}
+        .p-proj-btn.code:hover{color:var(--teal);border-color:var(--teal);}
+      `}</style>
+
+      <Navbar />
+
+      <div style={{ paddingTop: "36px", background: "var(--bg)", minHeight: "100vh" }}>
+        <div className="p-inner" style={{ maxWidth: "900px", margin: "0 auto", padding: "40px 16px" }}>
+
+          <Link href="/#projects" className="p-back-btn">← Back to Projects</Link>
+
+          <div className="proj-img-wrap">
+            <img
+              src={project.img}
+              alt={`${project.name} project screenshot`}
+              loading="lazy"
+            />
+          </div>
+
+          {/* HEADER */}
+          <div style={{ marginBottom: "36px" }}>
+            <h2 style={{ fontSize: "1.6rem", marginBottom: "6px", color: "var(--white)" }}>{project.name}</h2>
+            <p style={{ color: "var(--teal)", marginBottom: "18px" }}>{project.tagline}</p>
+            <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+              <a href={project.live} target="_blank" rel="noopener noreferrer" className="p-proj-btn live">
+                <i className="fas fa-external-link-alt" /> Live
+              </a>
+              <a href={project.code} target="_blank" rel="noopener noreferrer" className="p-proj-btn code">
+                <i className="fab fa-github" /> Code
+              </a>
+            </div>
+          </div>
+
+          {/* CONTENT BLOCKS */}
+          {[
+            ["Overview", project.overview],
+            ["Key Features", project.features],
+            ["Tech Stack", project.tech],
+            ["Challenges", project.challenges],
+            ["Solutions", project.solutions],
+            ["Future Improvements", project.future],
+          ].map(([title, data], i) => (
+            <div key={i} style={{ marginBottom: "36px", maxWidth: "680px" }}>
+              <h3 style={{ marginBottom: "10px", color: "var(--teal)" }}>{title}</h3>
+              {Array.isArray(data) ? (
+                <ul style={{ color: "var(--muted)", fontSize: ".88rem", paddingLeft: "4px" }}>
+                  {data.map((item, idx) => <li key={idx} style={{ marginBottom: "4px" }}>• {item}</li>)}
+                </ul>
+              ) : typeof data === "object" ? (
+                <div style={{ color: "var(--muted)", fontSize: ".88rem" }}>
+                  <p><strong style={{ color: "var(--white)" }}>Frontend:</strong> {data.frontend.join(", ")}</p>
+                  <p><strong style={{ color: "var(--white)" }}>Backend:</strong> {data.backend.join(", ")}</p>
+                  <p><strong style={{ color: "var(--white)" }}>Database:</strong> {data.database.join(", ")}</p>
+                  {data.auth && data.auth.length > 0 && (
+                    <p><strong style={{ color: "var(--white)" }}>Auth:</strong> {data.auth.join(", ")}</p>
+                  )}
+                </div>
+              ) : (
+                <p style={{ color: "var(--muted)", fontSize: ".88rem" }}>{data}</p>
+              )}
+            </div>
+          ))}
+
+        </div>
+      </div>
+
+      <Footer />
+    </>
+  );
+}
+</file>
+
+<file path="README.md">
+<!-- PREMIUM HEADER -->
+
+<p align="center">
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:030810,50:0a1628,100:1a0f00&height=200&section=header&text=Najmul%20Hasan%20%E2%80%94%20Portfolio&fontSize=40&fontColor=ffffff&animation=fadeIn"/>
+</p>
+
+<p align="center">
+<b>Full Stack Engineer &nbsp;·&nbsp; Founder &nbsp;·&nbsp; CEO & CPO — Navicore Software</b><br/>
+A developer portfolio showcasing production projects, technical depth, and the ventures I run.
+</p>
+
+<p align="center">
+<img src="https://img.shields.io/badge/Next.js-Framework-black?style=for-the-badge&logo=next.js"/>
+<img src="https://img.shields.io/badge/React%2019-Frontend-blue?style=for-the-badge&logo=react"/>
+<img src="https://img.shields.io/badge/Custom%20CSS-Styling-00e5c3?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/Framer%20Motion-Animations-purple?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/Formspree-Contact-ff6347?style=for-the-badge"/>
+<img src="https://img.shields.io/badge/Vercel-Deployment-black?style=for-the-badge&logo=vercel"/>
+</p>
+
+---
+
+# 🌐 Live Portfolio
+
+**👉 [najmulhasan.navicore.co](https://najmulhasan.navicore.co/)**
+
+<p align="center">
+  <a href="https://najmulhasan.navicore.co/" target="_blank">
+    <img src="./public/projects/portfolio.png" alt="Najmul Hasan Portfolio" width="720"/>
+  </a>
+</p>
+
+---
+
+# 🧑‍💻 About This Project
+
+This portfolio was built to present my work as a **Full Stack Engineer and Founder**, highlighting production-grade projects, live ventures, technical capabilities, and professional background.
+
+The goal is to give clients, collaborators, and employers a **clear, honest picture of what I build and how I work.**
+
+The site covers:
+
+- Clean developer-focused UI with smooth animations
+- Responsive layout across all devices
+- Production project showcase with live links
+- Live venture section (Navicore Software + RailMate Bangladesh)
+- Professional experience and education timeline
+- Direct contact for work opportunities
+
+---
+
+# 🏢 Live Ventures
+
+| Venture | Role | Status |
+|---------|------|--------|
+| [Navicore Software](https://software.navicore.co) | Founder, CEO & CPO | Active |
+| [RailMate Bangladesh](https://railmatebd.com) | Founder, Lead Engineer | Live Beta |
+
+---
+
+# 🚀 Tech Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Frontend Framework | Next.js (App Router) |
+| UI Library | React 19 |
+| Styling | Custom CSS |
+| Animations | Framer Motion |
+| Icons / Fonts | Font Awesome + Google Fonts |
+| Contact Form | Formspree |
+| Deployment | Vercel |
+
+---
+
+# ✨ Key Features
+
+### Production-Grade Portfolio
+Built to reflect real engineering standards — not a template, not a tutorial.
+
+### Fully Responsive
+Optimized for Mobile, Tablet, and Desktop.
+
+### Smooth Navigation
+Fixed top navigation · Section-based scrolling · Active section indicators
+
+### Animated Interface
+Reveal-on-scroll effects · Interactive cards · Smooth hover states
+
+### Professional Sections
+Hero · About · Skills · Projects · Experience · Education · Contact
+
+---
+
+# 📂 Project Structure
+```
+app/
+├── layout.js
+├── page.js
+├── globals.css
+└── projects/
+    └── [slug]/
+        └── page.js
+
+components/
+├── Navbar.jsx
+├── Footer.jsx
+├── ContactForm.jsx
+└── WordRotate.jsx
+
+public/
+├── profile.jpg
+└── projects/
+    ├── portfolio.png
+    ├── badaruddin.png
+    ├── bookhub.png
+    ├── carexyz.png
+    ├── clubsphere.png
+    ├── microtask.png
+    ├── devfolio-analyzer.png
+    ├── livecollab.png
+    └── gatherly.png
+```
+
+---
+
+# 📌 Featured Projects
+
+> Click any thumbnail to visit the live site.
+
+---
+
+## 🏢 Navicore Software – Custom Software Development Company
+
+<a href="https://software.navicore.co" target="_blank">
+  <img src="./public/projects/navicore-software.png" alt="Navicore Software" width="100%"/>
+</a>
+
+**Tagline:** Founder-led software company — direct engineering, no middlemen
+
+The company I founded and run as CEO & CPO. Navicore Software builds custom mobile apps, web platforms, backend systems, and automation solutions for businesses in Bangladesh and internationally. Every project is handled directly by me from architecture to deployment.
+
+**Services:**
+- Mobile app development (React Native / Expo)
+- Web application development (Next.js / Node.js)
+- Backend & API development
+- Automation & bot systems
+- Platform audits & modernisation
+
+**Built With:**
+![React Native](https://img.shields.io/badge/React_Native-blue?style=flat-square&logo=react)
+![Next.js](https://img.shields.io/badge/Next.js-black?style=flat-square&logo=next.js)
+![Node.js](https://img.shields.io/badge/Node.js-green?style=flat-square&logo=node.js)
+![Python](https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python)
+![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=flat-square&logo=supabase)
+![MongoDB](https://img.shields.io/badge/MongoDB-darkgreen?style=flat-square&logo=mongodb)
+
+**Links:**
+🌐 [software.navicore.co](https://software.navicore.co)
+
+---
+
+## 🏆 Badar Uddin Welfare – Charity Management Platform
+
+<a href="https://badaruddinwelfareorg.vercel.app/" target="_blank">
+  <img src="./public/projects/badaruddin.png" alt="Badar Uddin Welfare" width="100%"/>
+</a>
+
+**Tagline:** Production welfare management for a live Bangladeshi NGO
+
+A production system actively used by a real organisation. Replaces manual fund-tracking with role-based access (Admin / Member), donation request lifecycle with approval gates, beneficiary records, and Cloudinary-backed media. Built to operational standards.
+
+**Features:**
+- Public website for donation requests
+- Private member portal
+- Fund and donation tracking dashboards
+- Help request approval workflow
+
+**Tech Stack:**
+![React](https://img.shields.io/badge/React-blue?style=flat-square&logo=react)
+![Node.js](https://img.shields.io/badge/Node.js-green?style=flat-square&logo=node.js)
+![Express](https://img.shields.io/badge/Express-grey?style=flat-square)
+![MongoDB](https://img.shields.io/badge/MongoDB-darkgreen?style=flat-square&logo=mongodb)
+![JWT](https://img.shields.io/badge/JWT-black?style=flat-square)
+![Cloudinary](https://img.shields.io/badge/Cloudinary-blue?style=flat-square)
+
+**Links:**
+🌐 [Live Site](https://badaruddinwelfareorg.vercel.app/) &nbsp;|&nbsp; 💻 [Source Code](https://github.com/najmulcodes/badaruddinwelfare-client)
+
+---
+
+## ⚡ MicroTask Platform – Freelance Micro-Tasking Marketplace
+
+<a href="https://microtask-client-iota.vercel.app" target="_blank">
+  <img src="./public/projects/microtask.png" alt="MicroTask Platform" width="100%"/>
+</a>
+
+**Tagline:** Three-sided role-based marketplace with Stripe payments
+
+A multi-role micro-tasking platform with Worker, Buyer, and Admin dashboards. Role is enforced server-side — not inferred from client state. Stripe coin-based payment system, full task lifecycle, and Google OAuth.
+
+**Features:**
+- Role-based dashboards (Worker / Buyer / Admin)
+- Task posting and submission flow
+- Stripe payment integration
+- Google OAuth authentication
+
+**Tech Stack:**
+![React](https://img.shields.io/badge/React-blue?style=flat-square&logo=react)
+![Node.js](https://img.shields.io/badge/Node.js-green?style=flat-square&logo=node.js)
+![Express](https://img.shields.io/badge/Express-grey?style=flat-square)
+![MongoDB](https://img.shields.io/badge/MongoDB-darkgreen?style=flat-square&logo=mongodb)
+![JWT](https://img.shields.io/badge/JWT-black?style=flat-square)
+![Stripe](https://img.shields.io/badge/Stripe-purple?style=flat-square&logo=stripe)
+
+**Links:**
+🌐 [Live Site](https://microtask-client-iota.vercel.app) &nbsp;|&nbsp; 💻 [Source Code](https://github.com/najmulcodes/microtask-client)
+
+> **Demo Credentials:** Email: `admin@microtask.com` · Password: `Admin123` · Role: Admin
+
+---
+
+## 🤖 DevFolio Analyzer – AI-Powered GitHub Profile Analyzer
+
+<a href="https://devfolio.navicore.co/" target="_blank">
+  <img src="./public/projects/devfolio-analyzer.png" alt="DevFolio Analyzer" width="100%"/>
+</a>
+
+**Tagline:** AI-Powered GitHub Profile Analyzer
+
+Fetches live GitHub data, scores profiles deterministically across 6 weighted factors, then layers Claude API insights on top. AI fails gracefully — output stays consistent regardless. Authenticated users get persistent history with score-over-time charting.
+
+**Features:**
+- GitHub Profile Analysis via REST API
+- Deterministic scoring (0–100) across 6 key factors
+- AI-Powered insights using Anthropic Claude API
+- Guest Mode — instant analysis, no account required
+- Authenticated users can save history and track scores
+- KPI cards, score-over-time chart (Recharts), and activity table
+
+**Tech Stack:**
+![React](https://img.shields.io/badge/React-blue?style=flat-square&logo=react)
+![Node.js](https://img.shields.io/badge/Node.js-green?style=flat-square&logo=node.js)
+![Express](https://img.shields.io/badge/Express-grey?style=flat-square)
+![MongoDB](https://img.shields.io/badge/MongoDB-darkgreen?style=flat-square&logo=mongodb)
+![JWT](https://img.shields.io/badge/JWT-black?style=flat-square)
+![Claude API](https://img.shields.io/badge/Claude_API-orange?style=flat-square)
+
+**Links:**
+🌐 [Live Site](https://devfolio.navicore.co/) &nbsp;|&nbsp; 💻 [Source Code](https://github.com/najmulcodes/devfolio-analyzer)
+
+---
+
+## 🎯 LiveCollab – Real-Time Team Collaboration Platform
+
+<a href="https://livecollab-rho.vercel.app/" target="_blank">
+  <img src="./public/projects/livecollab.png" alt="LiveCollab" width="100%"/>
+</a>
+
+**Tagline:** Real-Time Kanban with Socket.IO sync
+
+Real-time Kanban board with drag-and-drop sync across all connected clients. Rooms scoped per workspace, optimistic updates with server-side conflict resolution, heartbeat-based presence tracking, invite-code onboarding, and a persistent activity log.
+
+**Features:**
+- JWT-based register / login with protected routes
+- Workspaces with invite codes and member management
+- Real-Time Kanban Board — drag-and-drop via Socket.IO
+- Live Presence — see who's online in your workspace
+- Timestamped Activity Log for every board action
+- Zustand + React Query for efficient client-side state
+
+**Tech Stack:**
+![React](https://img.shields.io/badge/React-blue?style=flat-square&logo=react)
+![Vite](https://img.shields.io/badge/Vite-purple?style=flat-square)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-38bdf8?style=flat-square&logo=tailwindcss)
+![Socket.IO](https://img.shields.io/badge/Socket.IO-black?style=flat-square)
+![Node.js](https://img.shields.io/badge/Node.js-green?style=flat-square&logo=node.js)
+![MongoDB](https://img.shields.io/badge/MongoDB-darkgreen?style=flat-square&logo=mongodb)
+
+**Links:**
+🌐 [Live Site](https://livecollab-rho.vercel.app/) &nbsp;|&nbsp; 💻 [Source Code](https://github.com/najmulcodes/livecollab-client)
+
+---
+
+## 🌍 Gatherly – Community Discovery Platform
+
+<a href="https://gatherly-navy.vercel.app/" target="_blank">
+  <img src="./public/projects/gatherly.png" alt="Gatherly" width="100%"/>
+</a>
+
+**Tagline:** Community Discovery Platform — Next.js 14 + TypeScript
+
+Community discovery platform with dual-provider auth via NextAuth.js (credentials + Google OAuth), edge-level route protection via Next.js middleware, and a searchable community catalog. Mobile-first, built around real browsing patterns.
+
+**Features:**
+- Email/password credentials + Google OAuth via NextAuth.js
+- Searchable, filterable community catalog with category chips
+- Protected 'Start a Community' form with inline validation
+- Protected 'Manage Communities' table with View and Remove actions
+- Fully responsive mobile-first layout with hamburger nav
+
+**Tech Stack:**
+![Next.js](https://img.shields.io/badge/Next.js-black?style=flat-square&logo=next.js)
+![NextAuth.js](https://img.shields.io/badge/NextAuth.js-grey?style=flat-square)
+![Custom CSS](https://img.shields.io/badge/Custom_CSS-purple?style=flat-square)
+
+**Links:**
+🌐 [Live Site](https://gatherly-navy.vercel.app/) &nbsp;|&nbsp; 💻 [Source Code](https://github.com/najmulcodes/Gatherly)
+
+---
+
+## 🩺 Care.xyz – Caregiver Booking Platform
+
+<a href="https://care-xyz-baby-sitting-elderly-care.vercel.app" target="_blank">
+  <img src="./public/projects/carexyz.png" alt="Care.xyz" width="100%"/>
+</a>
+
+**Tagline:** Care Service Booking — Next.js · Firebase Auth
+
+Next.js caregiver booking platform with cascading location selectors (district → sub-district), a dynamic pricing engine by service type and duration, and Firebase auth with protected routes enforced at both page and API level.
+
+**Features:**
+- Cascading location selectors
+- Dynamic cost calculation
+- Private booking routes
+- Firebase authentication
+
+**Tech Stack:**
+![Next.js](https://img.shields.io/badge/Next.js-black?style=flat-square&logo=next.js)
+![React](https://img.shields.io/badge/React-blue?style=flat-square&logo=react)
+![Firebase](https://img.shields.io/badge/Firebase-orange?style=flat-square&logo=firebase)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind-38bdf8?style=flat-square&logo=tailwindcss)
+
+**Links:**
+🌐 [Live Site](https://care-xyz-baby-sitting-elderly-care.vercel.app) &nbsp;|&nbsp; 💻 [Source Code](https://github.com/najmulcodes/Care.xyz---Baby-Sitting-Elderly-Care-Service-Platform)
+
+---
+
+## 🎯 ClubSphere – Membership & Event Management System
+
+<a href="https://clubsphere-client1.netlify.app/" target="_blank">
+  <img src="./public/projects/clubsphere.png" alt="ClubSphere" width="100%"/>
+</a>
+
+**Tagline:** Membership & Event Management System
+
+Role-based club management system with event handling, membership approval flows, and protected routes using JWT authentication.
+
+**Features:**
+- JWT-protected routes
+- Membership approval flow
+- Event and member management
+- Responsive dashboard interface
+
+**Tech Stack:**
+![React](https://img.shields.io/badge/React-blue?style=flat-square&logo=react)
+![Node.js](https://img.shields.io/badge/Node.js-green?style=flat-square&logo=node.js)
+![Express](https://img.shields.io/badge/Express-grey?style=flat-square)
+![MongoDB](https://img.shields.io/badge/MongoDB-darkgreen?style=flat-square&logo=mongodb)
+
+**Links:**
+🌐 [Live Site](https://clubsphere-client1.netlify.app/) &nbsp;|&nbsp; 💻 [Source Code](https://github.com/najmulcodes/clubsphere-client)
+
+---
+
+## 📚 BookHub – Online Book Platform
+
+<a href="https://bookhub-heaven.surge.sh" target="_blank">
+  <img src="./public/projects/bookhub.png" alt="BookHub" width="100%"/>
+</a>
+
+**Tagline:** Book Management Platform
+
+CRUD-based application for managing books with REST API integration. Includes real-time UI updates and structured data handling.
+
+**Features:**
+- Browse and manage books
+- Add, edit, and delete functionality
+- Real-time state updates
+- Clean responsive interface
+
+**Tech Stack:**
+![React](https://img.shields.io/badge/React-blue?style=flat-square&logo=react)
+![Node.js](https://img.shields.io/badge/Node.js-green?style=flat-square&logo=node.js)
+![Express](https://img.shields.io/badge/Express-grey?style=flat-square)
+![MongoDB](https://img.shields.io/badge/MongoDB-darkgreen?style=flat-square&logo=mongodb)
+
+**Links:**
+🌐 [Live Site](https://bookhub-heaven.surge.sh) &nbsp;|&nbsp; 💻 [Source Code](https://github.com/najmulcodes/bookhub-client)
+
+---
+
+# 🧠 Background
+
+I hold a **Bachelor of Business Administration in Accounting & Finance** and transitioned into full-stack engineering to build production-grade software systems.
+
+I now run **Navicore Software** — a software development company building custom solutions for clients in Bangladesh and internationally — and **RailMate Bangladesh**, a live railway companion app for millions of potential passengers.
+
+My business and analytical background shapes how I approach software: scoped precisely, built to last, and maintained like it still has to work in five years.
+
+---
+
+# 📬 Contact
+
+| Platform | Link |
+|----------|------|
+| 📧 Email | [najmulhasanshahin@gmail.com](mailto:najmulhasanshahin@gmail.com) |
+| 🌐 Navicore Software | [software.navicore.co](https://software.navicore.co) |
+| 🐙 GitHub | [github.com/najmulcodes](https://github.com/najmulcodes) |
+| 💼 LinkedIn | [linkedin.com/in/najmulcodes](https://www.linkedin.com/in/najmulcodes/) |
+| 💬 WhatsApp | [wa.me/8801840242448](https://wa.me/8801840242448) |
+
+---
+
+# ⚙ Installation & Setup
+
+```bash
+git clone https://github.com/najmulcodes/najmul-portfolio.git
+cd najmul-portfolio
+npm install
+npm run dev
+```
+
+Production build:
+
+```bash
+npm run build
+npm run lint
+```
+
+---
+
+# 🚀 Deployment
+
+Deployed on **Vercel** — [najmulhasan.navicore.co](https://najmulhasan.navicore.co/)
+
+---
+
+# 📄 License
+
+MIT License — open source, feel free to reference.
+
+---
+
+<p align="center">
+⭐ If you find this useful, a star on GitHub is appreciated.
+</p>
+
+<p align="center">
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:1a0f00,50:0a1628,100:030810&height=120&section=footer"/>
+</p>
+</file>
+
+<file path="app/page.js">
+"use client";
+import { useEffect } from "react";
+import WordRotate from "../components/WordRotate";
+import { motion } from "framer-motion";
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import ContactForm from "../components/ContactForm";
+
+export default function Portfolio() {
+
+  const greetings = [
+    "Hello,",
+    "Hola,",
+    "Bonjour,",
+    "مرحبا،",
+    "こんにちは"
+  ];
+
+  useEffect(() => {
+    const fa = document.createElement("link");
+    fa.rel = "stylesheet";
+    fa.href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css";
+    document.head.appendChild(fa);
+
+    const fonts = document.createElement("link");
+    fonts.rel = "stylesheet";
+    fonts.href = "https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap";
+    document.head.appendChild(fonts);
+
+    const sections = ["hero","about","skills","projects","experience","education","contact"];
+    const navLinks  = document.querySelectorAll(".p-nav-links a");
+    const dots      = document.querySelectorAll(".p-side-dot");
+
+    const secObs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const id  = entry.target.id;
+        const idx = sections.indexOf(id);
+        navLinks.forEach(a => a.classList.remove("active"));
+        const match = document.querySelector(`.p-nav-links a[href="#${id}"]`);
+        if (match) match.classList.add("active");
+        dots.forEach(d => d.classList.remove("active"));
+        if (idx >= 0 && dots[idx]) dots[idx].classList.add("active");
+      });
+    }, { rootMargin: "-40% 0px -55% 0px", threshold: 0 });
+
+    sections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) secObs.observe(el);
+    });
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener("click", () => {
+        const el = document.getElementById(sections[i]);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      });
+    });
+
+    const reveals = document.querySelectorAll(".p-reveal");
+    const revObs  = new IntersectionObserver(entries => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add("p-visible"), i * 55);
+          revObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    reveals.forEach(el => revObs.observe(el));
+
+    return () => {
+      secObs.disconnect();
+      revObs.disconnect();
+    };
+  }, []);
+
+  return (
+    <>
+      <style>{`
+        :root {
+          --bg:#0d1117; --bg2:#161b22; --bg3:#1c2333;
+          --teal:#00e5c3;
+          --teal-dim:rgba(0,229,195,0.10);
+          --teal-mid:rgba(0,229,195,0.22);
+          --white:#e6edf3; --muted:#7d8590;
+          --border:rgba(255,255,255,0.07);
+          --fh:'Space Grotesk',sans-serif;
+          --fm:'Fira Code',monospace;
+        }
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+        html{scroll-behavior:smooth}
+        body{
+          background:var(--bg);color:var(--white);
+          font-family:var(--fh);line-height:1.7;overflow-x:hidden;
+        }
+        a{text-decoration:none;color:inherit}
+        ul{list-style:none}
+        img{display:block}
+        ::-webkit-scrollbar{width:4px}
+        ::-webkit-scrollbar-track{background:var(--bg)}
+        ::-webkit-scrollbar-thumb{background:var(--teal);border-radius:4px}
+        ::selection{background:rgba(0,229,195,.2)}
+
+        .p-topo{
+          position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.035;
+          background-image:
+            repeating-radial-gradient(circle at 25% 55%,transparent 0,transparent 38px,rgba(0,229,195,1) 39px,transparent 40px),
+            repeating-radial-gradient(circle at 75% 18%,transparent 0,transparent 58px,rgba(0,229,195,1) 59px,transparent 60px),
+            repeating-radial-gradient(circle at 55% 82%,transparent 0,transparent 76px,rgba(0,229,195,1) 77px,transparent 78px);
+        }
+        .p-nav{
+          position:fixed;top:0;left:0;right:0;z-index:100;
+          display:flex;align-items:center;justify-content:space-between;
+          padding:16px 6vw;
+          background:rgba(13,17,23,.82);
+          backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);
+          border-bottom:1px solid var(--border);
+          transition:box-shadow .3s,background .3s;
+        }
+        .p-nav.scrolled{background:rgba(13,17,23,.95);box-shadow:0 4px 32px rgba(0,0,0,.55)}
+        .p-logo{font-family:var(--fm);font-size:.88rem;color:var(--teal);letter-spacing:.02em}
+        .p-logo .bracket{color:rgba(0,229,195,.55)}
+        .p-logo .pname{color:var(--white)}
+        .p-nav-links{display:flex;gap:4px}
+        .p-nav-links a{font-size:.8rem;font-weight:500;padding:6px 14px;border-radius:8px;color:var(--muted);transition:color .2s,background .2s}
+        .p-nav-links a:hover,.p-nav-links a.active{color:var(--teal);background:var(--teal-dim)}
+        .p-nav-icons{display:flex;gap:12px;align-items:center}
+        .p-nav-icons a{
+          width:32px;height:32px;display:flex;align-items:center;justify-content:center;
+          border-radius:8px;color:var(--muted);border:1px solid transparent;font-size:1rem;
+          transition:color .2s,border-color .2s,background .2s,transform .2s;
+        }
+        .p-nav-icons a:hover{color:var(--teal);border-color:var(--teal-mid);background:var(--teal-dim);transform:translateY(-2px)}
+
+        .p-side-nav{position:fixed;left:20px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:13px;z-index:90}
+        .p-side-dot{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.12);border:1px solid var(--muted);cursor:pointer;transition:background .25s,height .3s,border-color .25s,box-shadow .25s}
+        .p-side-dot.active{background:var(--teal);border-color:var(--teal);height:20px;border-radius:4px;box-shadow:0 0 10px rgba(0,229,195,.45)}
+
+        #hero{min-height:100vh;display:flex;align-items:center;padding:80px 6vw 60px;position:relative;z-index:1}
+        .p-hero-inner{display:grid;grid-template-columns:1fr 320px;gap:60px;align-items:center;max-width:1100px;width:100%;margin:0 auto}
+        .p-hero-tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--fm);font-size:.72rem;color:var(--teal);background:var(--teal-dim);border:1px solid var(--teal-mid);padding:5px 14px;border-radius:20px;margin-bottom:24px;animation:p-fadeUp .6s ease both}
+        .p-tag-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);box-shadow:0 0 8px var(--teal);animation:p-pulse 1.8s infinite}
+        .p-hero-title{font-size:clamp(2.2rem,4.5vw,3.8rem);font-weight:700;line-height:1.1;letter-spacing:-.03em;animation:p-fadeUp .6s .1s ease both;margin-bottom:20px}
+        .p-hero-title .hi{
+          display: inline-block;
+          color: var(--muted);
+          font-weight: 400;
+          font-size: 0.6em;
+          line-height: 1.2;
+          margin-bottom: 10px;
+          min-height: 1.2em;
+          letter-spacing: 0.02em;
+        }
+        .p-hero-title .name{
+          display: block;
+          will-change: transform, opacity;
+        }
+        .p-hero-title .role{display:block;font-size:.56em;font-weight:400;color:var(--teal);letter-spacing:0;margin-top:8px}
+        .p-hero-desc{color:var(--muted);font-size:.92rem;max-width:500px;line-height:1.85;margin-bottom:36px;animation:p-fadeUp .6s .2s ease both}
+        .p-hero-btns{display:flex;gap:12px;flex-wrap:wrap;animation:p-fadeUp .6s .3s ease both}
+        .p-btn-teal{display:inline-flex;align-items:center;gap:8px;padding:11px 28px;background:var(--teal);color:#0d1117;font-weight:700;font-size:.84rem;border-radius:9px;transition:opacity .2s,transform .2s,box-shadow .2s}
+        .p-btn-teal:hover{opacity:.88;transform:translateY(-2px);box-shadow:0 10px 28px rgba(0,229,195,.3)}
+        .p-btn-ghost{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;border:1px solid rgba(255,255,255,.12);color:var(--white);font-size:.84rem;border-radius:9px;background:transparent;transition:border-color .2s,background .2s,transform .2s}
+        .p-btn-ghost:hover{border-color:var(--teal-mid);background:var(--teal-dim);transform:translateY(-2px)}
+
+        .p-hero-card{
+          background:linear-gradient(160deg,#131c28 0%,#0d1117 60%,#111a24 100%);
+          border:1px solid rgba(0,229,195,0.14);
+          border-radius:22px;
+          padding:26px 24px 22px;
+          animation:p-fadeUp .6s .15s ease both;
+          position:relative;
+          overflow:hidden;
+          box-shadow:0 0 0 1px rgba(0,229,195,0.04) inset, 0 24px 64px rgba(0,0,0,0.5);
+        }
+        .p-hero-card::before{
+          content:'';position:absolute;top:0;left:0;right:0;height:2px;
+          background:linear-gradient(90deg,var(--teal) 0%,#0099ff 60%,transparent 100%);
+        }
+        .p-hero-card::after{
+          content:'';position:absolute;
+          top:-40px;right:-40px;
+          width:180px;height:180px;
+          background:radial-gradient(circle,rgba(0,229,195,0.09) 0%,transparent 70%);
+          pointer-events:none;
+        }
+
+        .p-card-photo-wrap{position:relative;width:86px;height:86px;margin-bottom:16px}
+        .p-card-photo-ring{
+          width:86px;height:86px;border-radius:50%;
+          padding:2.5px;
+          background:linear-gradient(135deg,var(--teal),#0099ff 60%,transparent);
+          display:flex;align-items:center;justify-content:center;
+        }
+        .p-card-photo-ring img{width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:top center;border:2px solid #0d1117}
+        .p-card-initials{width:100%;height:100%;border-radius:50%;background:linear-gradient(135deg,var(--teal),#0099ff);display:flex;align-items:center;justify-content:center;font-size:1.6rem;font-weight:700;color:#0d1117}
+        .p-card-online{position:absolute;bottom:3px;right:3px;width:14px;height:14px;border-radius:50%;background:#3fb950;border:2px solid #0d1117;box-shadow:0 0 8px rgba(63,185,80,.55);animation:p-pulse 2s infinite}
+
+        .p-card-name{font-size:1.05rem;font-weight:700;color:var(--white);margin-bottom:2px;letter-spacing:-.01em}
+        .p-card-role{font-family:var(--fm);font-size:.7rem;color:var(--teal);margin-bottom:18px;opacity:.85}
+
+        .p-card-meta{display:flex;flex-direction:column;gap:8px;margin-bottom:18px}
+        .p-card-meta-row{
+          display:flex;align-items:center;gap:10px;
+          font-size:.75rem;color:var(--muted);line-height:1.3;
+          padding:7px 10px;
+          border-radius:9px;
+          background:rgba(255,255,255,0.03);
+          border:1px solid transparent;
+          transition:border-color .2s, background .2s;
+        }
+        .p-card-meta-row:hover{
+          border-color:rgba(0,229,195,0.12);
+          background:rgba(0,229,195,0.04);
+        }
+        .p-card-meta-row i{color:var(--teal);width:13px;text-align:center;font-size:.72rem;flex-shrink:0}
+        .p-card-meta-row a{color:var(--muted);transition:color .2s}
+        .p-card-meta-row a:hover{color:var(--teal)}
+
+        .p-card-divider{height:1px;background:rgba(255,255,255,0.06);margin:16px 0}
+
+        .p-card-stats{
+          display:grid;
+          grid-template-columns:repeat(3,1fr);
+          gap:10px;
+          margin-bottom:18px;
+        }
+        .p-stat-box{
+          position:relative;
+          height:90px;
+          display:flex;
+          flex-direction:column;
+          justify-content:center;
+          align-items:center;
+          text-align:center;
+          padding:10px 6px;
+          border-radius:14px;
+          background:rgba(255,255,255,0.03);
+          border:1px solid rgba(0,229,195,0.12);
+          overflow:hidden;
+          transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+          cursor:default;
+        }
+        .p-stat-box::before{
+          content:'';
+          position:absolute;
+          inset:0;
+          background:radial-gradient(circle at top center, rgba(0,229,195,0.14), transparent 70%);
+          opacity:0;
+          transition:opacity .3s ease;
+        }
+        .p-stat-box:hover{
+          transform:translateY(-4px);
+          border-color:rgba(0,229,195,0.35);
+          box-shadow:0 10px 28px rgba(0,229,195,0.10);
+        }
+        .p-stat-box:hover::before{opacity:1}
+        .p-stat-num{
+          font-size:1.3rem;
+          font-weight:700;
+          color:#00ffd0;
+          line-height:1;
+          margin-bottom:4px;
+          position:relative;z-index:1;
+        }
+        .p-stat-lbl{
+          font-size:.58rem;
+          color:rgba(255,255,255,0.55);
+          text-transform:uppercase;
+          letter-spacing:.08em;
+          line-height:1.3;
+          position:relative;z-index:1;
+        }
+
+        .p-card-cta{
+          margin-top:6px;
+          width:100%;
+          display:flex;justify-content:center;align-items:center;gap:8px;
+          padding:12px 20px;
+          border-radius:12px;
+          background:linear-gradient(135deg,#00ffd0 0%,#00c9a7 100%);
+          color:#00221d;
+          font-family:var(--fh);
+          font-weight:700;
+          font-size:.84rem;
+          border:none;cursor:pointer;
+          position:relative;overflow:hidden;
+          transition:transform .25s ease, box-shadow .25s ease;
+          text-decoration:none;
+        }
+        .p-card-cta::before{
+          content:'';
+          position:absolute;inset:0;
+          background:radial-gradient(circle at top center, rgba(255,255,255,0.28), transparent 65%);
+          opacity:0;
+          transition:opacity .3s ease;
+        }
+        .p-card-cta:hover{
+          transform:translateY(-2px);
+          box-shadow:0 10px 30px rgba(0,255,208,0.28);
+        }
+        .p-card-cta:hover::before{opacity:1}
+        .p-card-cta:active{transform:scale(0.97)}
+
+        .p-section{padding:100px 6vw;position:relative;z-index:1}
+        .p-section.alt{background:var(--bg2)}
+        .p-inner{max-width:1100px;margin:0 auto}
+        .p-sec-label{font-family:var(--fm);font-size:.7rem;color:var(--teal);letter-spacing:.12em;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:10px}
+        .p-sec-label::after{content:'';flex:1 0 40px;max-width:80px;height:1px;background:linear-gradient(90deg,var(--teal-mid),transparent)}
+        .p-sec-title{font-size:clamp(1.7rem,3vw,2.5rem);font-weight:700;letter-spacing:-.03em;margin-bottom:52px;color:var(--white)}
+        .p-sec-title span{color:var(--teal)}
+
+        .p-about-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:start}
+        .p-terminal{background:var(--bg);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:border-color .3s,box-shadow .3s}
+        .p-terminal:hover{border-color:var(--teal-mid);box-shadow:0 0 32px rgba(0,229,195,.05)}
+        .p-tbar{background:var(--bg3);padding:10px 16px;display:flex;align-items:center;gap:7px;border-bottom:1px solid var(--border)}
+        .p-tdot{width:10px;height:10px;border-radius:50%}
+        .p-tdot.r{background:#ff5f57} .p-tdot.y{background:#febc2e} .p-tdot.g{background:#28c840}
+        .p-ttitle{margin-left:auto;margin-right:auto;font-size:.72rem;color:var(--muted);font-family:var(--fm)}
+        .p-tbody{padding:22px 20px;font-family:var(--fm);font-size:.8rem;line-height:1.95;color:var(--muted)}
+        .p-tline{display:flex;gap:8px}
+        .p-tprompt{color:var(--teal)} .p-tcmd{color:var(--white)}
+        .p-tout{padding-left:18px}
+        .p-tval{color:#79c0ff} .p-tstr{color:#a5d6ff} .p-tnum{color:var(--teal)} .p-tbool{color:#ff7b72}
+        .p-tcursor{display:inline-block;width:8px;height:13px;background:var(--teal);vertical-align:middle;animation:p-blink 1s step-end infinite;margin-left:4px}
+        .p-about-text h3{font-size:1.2rem;font-weight:700;color:var(--white);margin-bottom:16px}
+        .p-about-text p{color:var(--muted);font-size:.88rem;margin-bottom:14px}
+        .p-about-text strong{color:var(--white)}
+        .p-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+        .p-tag{font-family:var(--fm);font-size:.72rem;padding:4px 12px;border-radius:20px;background:var(--teal-dim);border:1px solid var(--teal-mid);color:var(--teal);transition:background .2s,transform .2s}
+        .p-tag:hover{background:rgba(0,229,195,.18);transform:translateY(-1px)}
+
+        .p-skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
+        .p-skill-card{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:24px 22px;transition:border-color .3s,transform .3s,box-shadow .3s}
+        .p-skill-card:hover{border-color:var(--teal-mid);transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.4),0 0 40px rgba(0,229,195,.055)}
+        .p-skill-cat{display:flex;align-items:center;gap:10px;margin-bottom:18px}
+        .p-skill-dot{width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 9px var(--teal)}
+        .p-skill-lbl{font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--teal)}
+        .p-skill-icons{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+        .p-icon-box{display:flex;flex-direction:column;align-items:center;gap:6px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:12px 4px;transition:border-color .2s,background .2s,transform .2s}
+        .p-icon-box:hover{border-color:var(--teal-mid);background:var(--teal-dim);transform:translateY(-2px)}
+        .p-icon-box i{font-size:1.35rem;line-height:1}
+        .p-icon-box span{font-size:.58rem;color:var(--muted);text-align:center;line-height:1.2}
+        .fa-html5{color:#e34f26} .fa-css3-alt{color:#2965f1} .fa-js{color:#f7df1e}
+        .fa-react{color:#61dafb} .fa-node-js{color:#6cc24a} .fa-git-alt{color:#f14e32}
+        .fa-database{color:#47a248} .fa-npm{color:#cb3837}
+
+        .p-proj-list{display:flex;flex-direction:column;gap:22px}
+        .p-proj-card{
+          background:var(--bg);border:1px solid var(--border);border-radius:16px;
+          padding:24px 28px;
+          display:flex;flex-direction:row;gap:20px;align-items:flex-start;
+          transition:border-color .3s,transform .3s,box-shadow .3s;
+          position:relative;overflow:hidden;
+        }
+        .p-proj-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:transparent;transition:background .3s;border-radius:2px 0 0 2px}
+        .p-proj-card:hover{border-color:rgba(0,229,195,.18);transform:translateX(5px);box-shadow:0 8px 40px rgba(0,0,0,.35)}
+        .p-proj-card:hover::before,.p-proj-card.featured::before{background:var(--teal)}
+        .p-proj-card.flagship::before{background:linear-gradient(180deg,#79c0ff 0%,var(--teal) 100%)}
+        .p-proj-card.featured{border-color:rgba(0,229,195,.15)}
+        .p-proj-card.flagship{border-color:rgba(121,192,255,.32);box-shadow:0 16px 48px rgba(0,0,0,.32),0 0 0 1px rgba(121,192,255,.08) inset}
+        .p-proj-thumb-wrap{width:200px;min-width:200px;height:130px;border-radius:12px;overflow:hidden;flex-shrink:0;background:var(--bg3);}
+        .p-proj-thumb{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;border-radius:0;}
+        .p-proj-body{flex:1;min-width:0;}
+        .p-proj-header{display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap;}
+        .p-proj-name{font-size:1.1rem;font-weight:700;color:var(--white)}
+        .p-feat-badge{font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:3px 9px;border-radius:20px;background:var(--teal-dim);border:1px solid var(--teal-mid);color:var(--teal)}
+        .p-feat-badge.flagship{background:rgba(121,192,255,.14);border-color:rgba(121,192,255,.35);color:#a5d6ff}
+        .p-proj-tagline{font-size:.8rem;color:var(--teal);font-weight:500;margin-bottom:12px}
+        .p-proj-desc{font-size:.84rem;color:var(--muted);max-width:640px;margin-bottom:18px;line-height:1.75}
+        .p-proj-stack{display:flex;flex-wrap:wrap;gap:7px}
+        .p-tech{font-family:var(--fm);font-size:.7rem;padding:3px 10px;border-radius:20px;background:rgba(255,255,255,.04);border:1px solid var(--border);color:var(--muted);transition:color .2s,border-color .2s}
+        .p-proj-card:hover .p-tech{color:var(--teal);border-color:var(--teal-mid)}
+        .p-proj-actions{display:flex;flex-direction:column;gap:10px;align-items:flex-end;flex-shrink:0}
+        .p-proj-btn{display:inline-flex;align-items:center;gap:7px;font-size:.76rem;font-weight:600;padding:8px 16px;border-radius:8px;white-space:nowrap;transition:all .2s}
+        .p-proj-btn.live{background:var(--teal);color:#0d1117}
+        .p-proj-btn.live:hover{opacity:.85;transform:translateY(-1px);box-shadow:0 6px 20px rgba(0,229,195,.28)}
+        .p-proj-btn.code{border:1px solid var(--border);color:var(--muted);background:transparent}
+        .p-proj-btn.code:hover{border-color:var(--teal-mid);color:var(--teal);background:var(--teal-dim)}
+        .p-proj-creds{margin-top:12px;padding:10px 14px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;font-family:var(--fm);font-size:.72rem;line-height:1.8}
+        .p-proj-creds .cred-title{color:var(--teal);font-weight:700;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;margin-bottom:4px}
+        .p-proj-creds .cred-row{color:var(--muted)}
+        .p-proj-creds .cred-val{color:var(--white);font-weight:600}
+
+        .p-timeline{max-width:700px;position:relative}
+        .p-timeline::before{content:'';position:absolute;left:0;top:12px;bottom:12px;width:1px;background:linear-gradient(to bottom,var(--teal),transparent 90%);opacity:.28}
+        .p-tl-item{padding-left:2.4rem;margin-bottom:26px;position:relative}
+        .p-tl-item::before{content:'';position:absolute;left:-4px;top:10px;width:9px;height:9px;border-radius:50%;background:var(--teal);box-shadow:0 0 12px rgba(0,229,195,.5)}
+        .p-tl-card{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:20px 24px;transition:border-color .2s,box-shadow .2s}
+        .p-tl-card:hover{border-color:var(--teal-mid);box-shadow:0 4px 20px rgba(0,0,0,.25)}
+        .p-tl-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;margin-bottom:6px}
+        .p-tl-title{font-size:.9rem;font-weight:700;color:var(--white)}
+        .p-tl-period{font-family:var(--fm);font-size:.68rem;color:var(--teal);padding:2px 10px;border-radius:20px;border:1px solid var(--teal-mid);background:var(--teal-dim);white-space:nowrap}
+        .p-tl-sub{font-size:.8rem;color:var(--muted);margin-bottom:8px}
+        .p-tl-desc{font-size:.8rem;color:var(--muted);line-height:1.7}
+        .p-current{display:inline-flex;align-items:center;gap:5px;font-size:.62rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#3fb950;padding:2px 9px;border-radius:20px;background:rgba(63,185,80,.08);border:1px solid rgba(63,185,80,.22)}
+        .p-current::before{content:'';width:5px;height:5px;border-radius:50%;background:#3fb950;animation:p-pulse 1.5s infinite}
+
+        @keyframes p-fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+        @keyframes p-pulse{0%,100%{opacity:1}50%{opacity:.3}}
+        @keyframes p-blink{50%{opacity:0}}
+        .p-reveal{opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s ease}
+        .p-reveal.p-visible{opacity:1;transform:none}
+
+        .p-footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 6vw;text-align:center;position:relative;z-index:1}
+        .p-footer p{font-size:.76rem;color:var(--muted)}
+        .p-footer span{color:var(--teal)}
+
+        .p-dl-mobile{display:none}
+        @media(max-width:900px){
+          .p-hero-inner{grid-template-columns:1fr}
+          .p-hero-card{display:block;max-width:340px;margin:32px auto 0}
+          .p-dl-mobile{display:none}
+          .p-about-grid{grid-template-columns:1fr}
+          .p-proj-actions{flex-direction:row;align-items:flex-start}
+          .p-side-nav{display:none}
+        }
+        @media(max-width:640px){
+          .p-proj-card{flex-direction:column;}
+          .p-proj-thumb-wrap{width:100% !important;min-width:unset !important;height:180px !important;}
+        }
+        .p-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;border:none;background:transparent;z-index:201}
+        .p-hamburger span{display:block;width:24px;height:2px;background:var(--white);border-radius:2px;transition:all .3s}
+        .p-hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+        .p-hamburger.open span:nth-child(2){opacity:0}
+        .p-hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+        .p-mobile-menu{display:none}
+        @media(max-width:640px){
+          .p-nav{padding:14px 5vw}
+          .p-nav-links{display:none}
+          .p-hamburger{display:flex}
+          .p-hero-btns{flex-direction:column}
+          .p-section{padding:80px 5vw}
+          .p-mobile-menu{
+            display:block;position:fixed;top:0;left:0;right:0;bottom:0;
+            background:rgba(13,17,23,.97);z-index:200;
+            padding:90px 8vw 40px;
+            transform:translateX(100%);transition:transform .3s ease;
+          }
+          .p-mobile-menu.open{transform:translateX(0)}
+          .p-mobile-menu ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+          .p-mobile-menu ul li a{
+            display:block;font-size:1.25rem;font-weight:600;
+            color:var(--muted);padding:14px 0;
+            border-bottom:1px solid var(--border);
+            transition:color .2s;
+          }
+          .p-mobile-menu ul li a:hover,.p-mobile-menu ul li a.active{color:var(--teal)}
+          .p-mobile-menu-icons{display:flex;gap:16px;margin-top:32px}
+          .p-mobile-menu-icons a{
+            width:44px;height:44px;border-radius:12px;
+            border:1px solid var(--border);background:var(--bg2);
+            display:flex;align-items:center;justify-content:center;
+            font-size:1.1rem;color:var(--muted);transition:all .2s;
+          }
+          .p-mobile-menu-icons a:hover{color:var(--teal);border-color:var(--teal-mid)}
+        }
+      `}</style>
+
+      <Navbar />
+      <div className="p-topo" />
+
+      <div className="p-side-nav">
+        {["hero","about","skills","projects","experience","education","contact"].map((s,i) => (
+          <div key={s} className={`p-side-dot${i===0?" active":""}`} title={s} />
+        ))}
+      </div>
+
+      {/* HERO */}
+      <section id="hero">
+        <div className="p-hero-inner">
+          <div>
+            <div className="p-hero-tag">
+              <span className="p-tag-dot" />
+              Available for opportunities
+            </div>
+            <h1 className="p-hero-title">
+              <span className="hi">
+                <WordRotate words={greetings} />
+              </span>
+              <motion.span
+                key="name"
+                className="name"
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1], delay: 0.15 }}
+              >
+                I&apos;m Najmul Hasan
+              </motion.span>
+              <span className="role">
+                Full-Stack Engineer · Founder · CEO &amp; CPO — Navicore Software
+              </span>
+            </h1>
+            <p className="p-hero-desc">
+              Founder of Navicore Software. I build production-grade software systems — from architecture to deployment — for businesses in Bangladesh and internationally.
+            </p>
+            <div className="p-hero-btns">
+              <a href="#projects" className="p-btn-teal"><i className="fas fa-rocket" /> View Projects</a>
+              <a href="#contact" className="p-btn-ghost"><i className="fas fa-paper-plane" /> Let&apos;s Talk</a>
+            </div>
+          </div>
+
+          <div className="p-hero-card">
+            <div className="p-card-photo-wrap">
+              <div className="p-card-photo-ring">
+                <img
+                  src="https://res.cloudinary.com/del0g4led/image/upload/v1782623770/Najmul_Hasan_evs9un.jpg"
+                  alt="Najmul Hasan profile photo"
+                  onError={e => {
+                    e.currentTarget.style.display = "none";
+                    e.currentTarget.parentElement.innerHTML = '<div class="p-card-initials">NH</div>';
+                  }}
+                />
+              </div>
+              <span className="p-card-online" />
+            </div>
+
+            <div className="p-card-name">Najmul Hasan</div>
+            <div className="p-card-role">// Founder · CEO & CPO — Navicore Software</div>
+
+            <div className="p-card-meta">
+              <div className="p-card-meta-row"><i className="fas fa-envelope" /><a href="mailto:najmulhasanshahin@gmail.com">najmulhasanshahin@gmail.com</a></div>
+              <div className="p-card-meta-row"><i className="fas fa-map-marker-alt" />Dhaka, Bangladesh</div>
+              <div className="p-card-meta-row"><i className="fas fa-briefcase" />Open to Full-time &amp; Freelance</div>
+              <div className="p-card-meta-row"><i className="fas fa-globe" /><a href="https://najmulhasan.navicore.co/" target="_blank" rel="noopener noreferrer">najmulhasan.navicore.co</a></div>
+            </div>
+            <div className="p-card-divider" />
+
+            <div className="p-card-stats">
+              {[
+                ["12+", "Projects Delivered"],
+                ["2", "Live Ventures"],
+                ["3", "Countries"],
+              ].map(([n, l]) => (
+                <div key={l} className="p-stat-box">
+                  <div className="p-stat-num">{n}</div>
+                  <div className="p-stat-lbl">{l}</div>
+                </div>
+              ))}
+            </div>
+
+            <a href="https://drive.google.com/file/d/1sHxGHO29oPhT-yzq8B47znDVpPOGYnS8/view?usp=drive_link" target="_blank" rel="noopener noreferrer" className="p-card-cta">
+              <i className="fas fa-file-alt" /> Resume
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ABOUT */}
+      <section id="about" className="p-section alt">
+        <div className="p-inner">
+          <p className="p-sec-label p-reveal">About me</p>
+          <h2 className="p-sec-title p-reveal">About <span>Me</span></h2>
+          <div className="p-about-grid">
+            <div className="p-terminal p-reveal">
+              <div className="p-tbar">
+                <div className="p-tdot r"/><div className="p-tdot y"/><div className="p-tdot g"/>
+                <span className="p-ttitle">najmul.json</span>
+              </div>
+              <div className="p-tbody">
+                <div className="p-tline"><span className="p-tprompt">$</span><span className="p-tcmd">&nbsp;cat najmul.json</span></div>
+                <div className="p-tout">{"{"}</div>
+                <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;name&quot;</span>: <span className="p-tstr">&quot;Najmul Hasan&quot;</span>,</div>
+                <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;role&quot;</span>: <span className="p-tstr">&quot;Founder · CEO &amp; CPO&quot;</span>,</div>
+                <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;company&quot;</span>: <span className="p-tstr">&quot;Navicore Software&quot;</span>,</div>
+                <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;location&quot;</span>: <span className="p-tstr">&quot;Dhaka, Bangladesh&quot;</span>,</div>
+                <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;projects&quot;</span>: <span className="p-tnum">12</span>,</div>
+                <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;ventures&quot;</span>: <span className="p-tnum">2</span>,</div>
+                <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;available&quot;</span>: <span className="p-tbool">true</span>,</div>
+                <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;stack&quot;</span>: [</div>
+                <div className="p-tout">&nbsp;&nbsp;&nbsp;&nbsp;<span className="p-tstr">&quot;React Native&quot;</span>, <span className="p-tstr">&quot;Next.js&quot;</span>,</div>
+                <div className="p-tout">&nbsp;&nbsp;&nbsp;&nbsp;<span className="p-tstr">&quot;Node.js&quot;</span>, <span className="p-tstr">&quot;Supabase&quot;</span></div>
+                <div className="p-tout">&nbsp;&nbsp;]</div>
+                <div className="p-tout">{"}"}<span className="p-tcursor"/></div>
+              </div>
+            </div>
+            <div className="p-about-text p-reveal">
+              <h3>Hello!</h3>
+              <p>My name is <strong>Najmul</strong>. I&apos;m a full-stack engineer and the founder, CEO &amp; CPO of <strong>Navicore Software</strong> — a software development company building custom solutions for businesses in Bangladesh and internationally.</p>
+              <p>Every project I take on is handled directly by me, from architecture through deployment. No middlemen, no handoffs. I also build and run <strong>RailMate Bangladesh</strong>, a live railway companion app built for millions of passengers.</p>
+              <p>I hold a <strong>BBA in Accounting &amp; Finance</strong>. My business background shapes how I think about software: scoped precisely, built to last, maintained like it still has to work in five years.</p>
+              <div className="p-tags">
+                {["React Native","Next.js","Node.js","Python","Supabase","MongoDB","TypeScript","Tailwind CSS","Socket.IO","Stripe","JWT","Cloudinary"].map(t=>(
+                  <span key={t} className="p-tag">{t}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SKILLS */}
+      <section id="skills" className="p-section">
+        <div className="p-inner">
+          <p className="p-sec-label p-reveal">Technical skills</p>
+          <h2 className="p-sec-title p-reveal"><span>&lt;/&gt;</span> Skills</h2>
+          <p style={{color:"var(--muted)",fontSize:".86rem",marginTop:"-40px",marginBottom:"44px"}} className="p-reveal">Striving to never stop learning and improving.</p>
+          <div className="p-skills-grid">
+            {[
+              {cat:"Web Development", icons:[["fab fa-html5","HTML5"],["fab fa-css3-alt","CSS3"],["fab fa-js","JS"],["fab fa-react","React"]]},
+              {cat:"Backend / API",    icons:[["fab fa-node-js","Node.js"],["fas fa-server","Express","#68a063"],["fas fa-database","MongoDB"],["fas fa-lock","JWT","#f7df1e"]]},
+              {cat:"Tools & Platforms",icons:[["fab fa-git-alt","Git"],["fab fa-github","GitHub"],["fas fa-cloud","Netlify","#00c7b7"],["fas fa-bolt","Vercel","#e2e2e2"]]},
+              {cat:"Design & Styling", icons:[["fas fa-wind","Tailwind","#38bdf8"],["fas fa-palette","Framer","#b57bee"],["fab fa-figma","Figma","#f24e1e"],["fab fa-npm","npm"]]},
+            ].map(({cat,icons})=>(
+              <div key={cat} className="p-skill-card p-reveal">
+                <div className="p-skill-cat"><div className="p-skill-dot"/><span className="p-skill-lbl">{cat}</span></div>
+                <div className="p-skill-icons">
+                  {icons.map(([cls,label,color])=>(
+                    <div key={label} className="p-icon-box">
+                      <i className={cls} style={color?{color}:{}} />
+                      <span>{label}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PROJECTS */}
+      <section id="projects" className="p-section alt">
+        <div className="p-inner">
+          <p className="p-sec-label p-reveal">Selected work</p>
+          <h2 className="p-sec-title p-reveal">My <span>Projects</span></h2>
+
+          <div className="p-proj-list">
+            {[
+              {
+                slug: "navicore-software",
+                category: "flagship",
+                flagship: true,
+                featured: true,
+                name: "Navicore Software",
+                tagline: "The software company I founded — custom engineering, direct delivery, no middlemen.",
+                desc: "Navicore Software builds custom mobile apps, web platforms, backend systems, and automation solutions for clients in Bangladesh and internationally. Every project is handled directly by me from architecture to deployment. Also running RailMate Bangladesh — a live railway companion app built for 10 million potential passengers.",
+                stack: ["React Native", "Next.js", "Node.js", "Python", "Supabase", "MongoDB", "Expo", "TypeScript"],
+                live: "https://software.navicore.co",
+                code: null,
+                img: "/projects/navicore-software.png"
+              },
+              {
+                slug: "devfolio-analyzer",
+                category: "flagship",
+                flagship: true,
+                featured: true,
+                name: "DevFolio Analyzer",
+                tagline: "GitHub profile intelligence — deterministically scored, AI-augmented, and structured.",
+                desc: "Connects the GitHub REST API with Anthropic Claude to evaluate developer profiles across contribution consistency, repository quality, tech breadth, and documentation depth. Scoring is deterministic and separated from the AI layer — Claude generates qualitative feedback on top of a stable numeric score, so the dashboard renders correctly even when model response varies.",
+                stack: ["React", "Node.js", "Express", "MongoDB", "JWT", "GitHub API", "Anthropic Claude"],
+                live: "https://devfolio.navicore.co/",
+                code: "https://github.com/najmulcodes/devfolio-analyzer",
+                img: "/projects/devfolio-analyzer.png"
+              },
+              {
+                slug: "livecollab",
+                category: "flagship",
+                flagship: true,
+                featured: true,
+                name: "LiveCollab",
+                tagline: "Shared Kanban state across all connected clients — no polling, no refresh.",
+                desc: "Board operations — card moves, column reorders, member presence — propagate via Socket.IO events scoped per workspace. Drag-and-drop is optimistically applied locally and reconciled against the server's authoritative state on broadcast. Workspace access is enforced at socket handshake: JWT is verified before any room join is admitted.",
+                stack: ["React", "Vite", "Tailwind CSS", "Zustand", "Node.js", "Express", "Socket.IO", "MongoDB", "JWT"],
+                live: "https://livecollab-rho.vercel.app/",
+                code: "https://github.com/najmulcodes/livecollab-client",
+                img: "/projects/livecollab.png"
+              },
+              {
+                slug: "petcare-system",
+                category: "featured",
+                featured: true,
+                name: "Whisker Dairy — PetCare System",
+                tagline: "Health tracking and time-based reminder system for managing pet care.",
+                desc: "A full-stack system that converts pet health data into actionable states and automated reminders using scheduling logic and notification workflows. Classifies pet health into overdue, due-today, and upcoming states, then delivers browser push notifications with timezone-aware scheduling via Service Workers.",
+                stack: ["React", "Tailwind CSS", "Node.js", "Express.js", "Supabase", "REST API", "Service Workers"],
+                live: "https://whiskerdairy.vercel.app//",
+                code: "https://github.com/najmulcodes/petcare",
+                img: "/projects/petcare.png"
+              },
+              {
+                slug: "microtask-platform",
+                category: "featured",
+                featured: true,
+                name: "MicroTask Platform",
+                tagline: "Three-sided task marketplace with server-enforced lifecycle and Stripe disbursement.",
+                desc: "Worker, Buyer, and Admin each operate in a role-scoped dashboard. Task status transitions — draft → published → submitted → approved/rejected → paid — are validated server-side on every mutation; the client cannot skip states. Stripe payment credits are triggered by webhook confirmation, not client callback, preventing double-credit on retries.",
+                stack: ["React", "Node.js", "Express", "MongoDB", "JWT", "Stripe"],
+                live: "https://microtask-client-iota.vercel.app",
+                code: "https://github.com/najmulcodes/microtask-client",
+                creds: { email: "admin@microtask.com", password: "Admin123", role: "Admin" },
+                img: "/projects/microtask.png"
+              },
+              {
+                slug: "badar-uddin-welfare",
+                category: "featured",
+                featured: true,
+                name: "Badar Uddin Welfare",
+                tagline: "Production charity system — live deployment for a real Bangladeshi NGO.",
+                desc: "Handles the full donation lifecycle for an active organization: member requests, three-tier admin review (superAdmin / admin / member), fund disbursement tracking, and beneficiary records. All role checks are enforced at the API route level. Cloudinary manages signed document uploads; OTP email verification via Brevo gates registration.",
+                stack: ["React", "Vite", "Node.js", "Express", "MongoDB", "JWT", "Cloudinary", "Brevo API"],
+                live: "https://badaruddinwelfareorg.vercel.app/",
+                code: "https://github.com/najmulcodes/badaruddinwelfare-client",
+                img: "/projects/badaruddin.png"
+              },
+              {
+                slug: "care.xyz",
+                category: "featured",
+                featured: true,
+                name: "Care.xyz",
+                tagline: "Caregiver booking with cascading location filters and middleware-level route protection.",
+                desc: "Service marketplace for booking childcare and elderly care across Bangladesh. Location filtering loads lazily across three administrative tiers — division → district → upazila. Route protection runs in Next.js middleware before page render; unauthenticated users never receive protected HTML. Pricing adjusts dynamically per service type and duration.",
+                stack: ["Next.js 14", "React", "Firebase Auth", "Tailwind CSS"],
+                live: "https://care-xyz-baby-sitting-elderly-care.vercel.app",
+                code: "https://github.com/najmulcodes/Care.xyz---Baby-Sitting-Elderly-Care-Service-Platform",
+                img: "/projects/carexyz.png"
+              },
+              {
+                slug: "gatherly",
+                category: "supporting",
+                featured: false,
+                name: "Gatherly",
+                tagline: "Community discovery platform with server-rendered listings and multi-provider auth.",
+                desc: "Built on Next.js 14 App Router with a deliberate Server/Client Component boundary: listing pages render server-side for fast initial load; auth-gated interactions are isolated to Client Components. NextAuth.js handles credential and Google OAuth flows, session persistence, and CSRF protection.",
+                stack: ["Next.js 14", "NextAuth.js", "Custom CSS", "localStorage"],
+                live: "https://gatherly-navy.vercel.app/",
+                code: "https://github.com/najmulcodes/Gatherly",
+                img: "/projects/gatherly.png"
+              },
+              {
+                slug: "clubsphere",
+                category: "supporting",
+                featured: false,
+                name: "ClubSphere",
+                tagline: "Club management with resource-level ownership enforcement and approval workflows.",
+                desc: "Membership requests go through a multi-step admin approval before access is granted. Event operations are checked at the resource level — a club admin can only modify events they created. Ownership is stored as a denormalized creator ID on each event document, making the check a single field comparison rather than a join.",
+                stack: ["React", "Node.js", "Express", "MongoDB", "JWT"],
+                live: "https://clubsphere-client1.netlify.app/",
+                code: "https://github.com/najmulcodes/clubsphere-client",
+                img: "/projects/clubsphere.png"
+              },
+              {
+                slug: "bookhub",
+                category: "supporting",
+                featured: false,
+                name: "BookHub",
+                tagline: "Book catalog with optimistic UI updates and consistent REST API design.",
+                desc: "Built as a deliberate exercise in API fundamentals: consistent response envelopes, machine-readable error codes, and proper HTTP semantics across all endpoints. Edits apply optimistically and roll back from a pre-mutation snapshot on failure — no re-fetch, no stale data flash.",
+                stack: ["React", "Node.js", "Express", "MongoDB"],
+                live: "https://bookhub-heaven.surge.sh",
+                code: "https://github.com/najmulcodes/bookhub-client",
+                img: "/projects/bookhub.png"
+              },
+            ].map(({ name, featured, flagship, tagline, desc, stack, live, code, creds, img, slug }) => (
+
+              <article key={name} className={`p-proj-card p-reveal${flagship ? " flagship" : ""}${featured ? " featured" : ""}`}>
+
+                <div className="p-proj-thumb-wrap">
+                  <img
+                    src={img}
+                    alt={`${name} project screenshot`}
+                    className="p-proj-thumb"
+                    loading="lazy"
+                    onError={e => { e.currentTarget.style.display = "none"; }}
+                  />
+                </div>
+
+                <div className="p-proj-body">
+                  <div className="p-proj-header">
+                    <h3 className="p-proj-name">{name}</h3>
+                    {flagship ? (
+                      <span className="p-feat-badge flagship">Flagship</span>
+                    ) : featured && (
+                      <span className="p-feat-badge">Featured</span>
+                    )}
+                  </div>
+                  <p className="p-proj-tagline">{tagline}</p>
+                  <p className="p-proj-desc">{desc}</p>
+                  {creds && (
+                    <div className="p-proj-creds">
+                      <div className="cred-title"><i className="fas fa-key" /> Demo Login</div>
+                      <div className="cred-row">Email <span className="cred-val">{creds.email}</span></div>
+                      <div className="cred-row">Password <span className="cred-val">{creds.password}</span></div>
+                      <div className="cred-row">Role <span className="cred-val">{creds.role}</span></div>
+                    </div>
+                  )}
+                  <div className="p-proj-stack">
+                    {stack.map(t => <span key={t} className="p-tech">{t}</span>)}
+                  </div>
+                </div>
+
+                <div className="p-proj-actions">
+                  <a href={live} target="_blank" rel="noopener noreferrer" className="p-proj-btn live">
+                    <i className="fas fa-external-link-alt" /> Live
+                  </a>
+                  {code && (
+                    <a href={code} target="_blank" rel="noopener noreferrer" className="p-proj-btn code">
+                      <i className="fab fa-github" /> Code
+                    </a>
+                  )}
+                  <a href={`/projects/${slug}`} className="p-proj-btn code">
+                    Details
+                  </a>
+                </div>
+
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* EXPERIENCE */}
+      <section id="experience" className="p-section">
+        <div className="p-inner">
+          <p className="p-sec-label p-reveal">Work history</p>
+          <h2 className="p-sec-title p-reveal">Professional <span>Experience</span></h2>
+          <div className="p-timeline">
+            {[
+              {title:"Founder · CEO & CPO",sub:"Navicore Software",period:"2026 – Present",current:true,desc:"Founded and run Navicore Software — building custom mobile apps, web platforms, and backend systems for clients in Bangladesh and internationally. Also founded and lead engineering for RailMate Bangladesh, a live Android railway companion app."},
+              {title:"Data Entry Specialist",sub:"Nation IT Limited",period:"2024 – June 2025",current:false,desc:"Managing structured data operations, maintaining records and ensuring data accuracy across business workflows."},
+              {title:"Computer Operator",sub:"IT Solution Feni",period:"2015 – 2017",current:false,desc:"Provided IT support and computer operations, handling technical troubleshooting and system maintenance."},
+              {title:"Cashier",sub:"Alkhimah Allraqiyat Restaurant — Saudi Arabia",period:"Overseas",current:false,desc:"Managed point-of-sale transactions, customer service, and daily cash reconciliation."},
+            ].map(({title,sub,period,current,desc})=>(
+              <div key={title} className="p-tl-item p-reveal">
+                <div className="p-tl-card">
+                  <div className="p-tl-top">
+                    <div><div className="p-tl-title">{title}</div><div className="p-tl-sub">{sub}</div></div>
+                    <div style={{display:"flex",flexDirection:"column",gap:6,alignItems:"flex-end"}}>
+                      <span className="p-tl-period">{period}</span>
+                      {current && <span className="p-current">Current</span>}
+                    </div>
+                  </div>
+                  <p className="p-tl-desc">{desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* EDUCATION */}
+      <section id="education" className="p-section alt">
+        <div className="p-inner">
+          <p className="p-sec-label p-reveal">Academic background</p>
+          <h2 className="p-sec-title p-reveal">My <span>Education</span></h2>
+          <div className="p-timeline">
+            {[
+              {title:"BBA — Accounting & Finance",sub:"City College",period:"2019 – 2023",extra:"CGPA 3.04",desc:null},
+              {title:"Certification — Complete Web Development",sub:"Programming Hero",period:"2025 – 2026",extra:null,desc:"Full Stack Track — covering React, Node.js, Express, MongoDB and deployment."},
+              {title:"HSC — Business Studies",sub:"South East Degree College",period:"2013 – 2015",extra:null,desc:null},
+              {title:"SSC — Business Studies",sub:"FazilPur Farhad Nagar Zinnah High School",period:"2007 – 2013",extra:null,desc:null},
+            ].map(({title,sub,period,extra,desc})=>(
+              <div key={title} className="p-tl-item p-reveal">
+                <div className="p-tl-card">
+                  <div className="p-tl-top">
+                    <div><div className="p-tl-title">{title}</div><div className="p-tl-sub">{sub}</div></div>
+                    <div style={{display:"flex",flexDirection:"column",gap:6,alignItems:"flex-end"}}>
+                      <span className="p-tl-period">{period}</span>
+                      {extra && <span style={{fontFamily:"var(--fm)",fontSize:".68rem",color:"var(--teal)"}}>{extra}</span>}
+                    </div>
+                  </div>
+                  {desc && <p className="p-tl-desc">{desc}</p>}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CONTACT */}
+      <section id="contact" className="p-section" style={{paddingBottom:"60px"}}>
+        <style>{`
+          .p-ct-header{text-align:center;margin-bottom:36px}
+          .p-ct-header .p-sec-label{justify-content:center}
+          .p-ct-header .p-sec-label::after{display:none}
+          .p-ct-header .p-sec-title{margin-bottom:12px}
+          .p-ct-sub{color:var(--muted);font-size:.88rem;line-height:1.8}
+          .p-ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start;margin-bottom:24px;}
+          .p-ct-left{display:flex;flex-direction:column;gap:14px}
+          .p-ct-item{display:flex;align-items:center;gap:16px;padding:18px 20px;background:var(--bg2);border:1px solid var(--border);border-radius:14px;text-decoration:none;transition:border-color .22s,box-shadow .22s,transform .22s;}
+          .p-ct-item:hover{border-color:var(--teal-mid);box-shadow:0 6px 24px rgba(0,229,195,.08);transform:translateX(4px);}
+          .p-ct-icon{width:42px;height:42px;border-radius:11px;flex-shrink:0;background:var(--teal-dim);border:1px solid var(--teal-mid);display:flex;align-items:center;justify-content:center;}
+          .p-ct-icon i{color:var(--teal);font-size:.92rem}
+          .p-ct-lbl{font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:3px;}
+          .p-ct-val{font-size:.86rem;color:var(--white);font-weight:600;line-height:1.3}
+          .p-ct-soc{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:24px}
+          .p-ct-soc-btn{display:inline-flex;align-items:center;gap:9px;padding:11px 24px;border-radius:12px;border:1px solid var(--border);background:var(--bg2);font-size:.8rem;font-weight:600;color:var(--muted);transition:all .22s;}
+          .p-ct-soc-btn i{font-size:.95rem}
+          .p-ct-soc-btn:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(0,229,195,.1)}
+          .p-ct-soc-btn.gh:hover{border-color:rgba(255,255,255,.25);color:var(--white);background:rgba(255,255,255,.05)}
+          .p-ct-soc-btn.li:hover{border-color:rgba(10,102,194,.5);color:#0a66c2;background:rgba(10,102,194,.08)}
+          .p-ct-soc-btn.wa:hover{border-color:rgba(37,211,102,.4);color:#25d366;background:rgba(37,211,102,.08)}
+          .p-ct-copy{text-align:center;padding-top:20px;border-top:1px solid var(--border);font-size:.75rem;color:var(--muted);}
+          .p-ct-copy span{color:var(--teal)}
+          @media(max-width:760px){.p-ct-grid{grid-template-columns:1fr}}
+        `}</style>
+
+        <div className="p-inner">
+          <div className="p-ct-header">
+            <p className="p-sec-label p-reveal">Get in touch</p>
+            <h2 className="p-sec-title p-reveal">Let&apos;s Work <span>Together</span></h2>
+            <p className="p-ct-sub p-reveal">
+              Open to full-time roles, freelance projects and collaborations.<br />
+              I&apos;d love to hear about what you&apos;re building.
+            </p>
+          </div>
+
+          <div className="p-ct-grid">
+            <div className="p-ct-left p-reveal">
+              <a href="mailto:najmulhasanshahin@gmail.com" className="p-ct-item">
+                <div className="p-ct-icon"><i className="fas fa-envelope" /></div>
+                <div><p className="p-ct-lbl">Email</p><p className="p-ct-val">najmulhasanshahin@gmail.com</p></div>
+              </a>
+              <a href="tel:+8801840242448" className="p-ct-item">
+                <div className="p-ct-icon"><i className="fas fa-phone" /></div>
+                <div><p className="p-ct-lbl">Phone</p><p className="p-ct-val">+880 1840-242448</p></div>
+              </a>
+              <div className="p-ct-item" style={{cursor:"default"}}>
+                <div className="p-ct-icon"><i className="fas fa-map-marker-alt" /></div>
+                <div><p className="p-ct-lbl">Location</p><p className="p-ct-val">Dhaka, Bangladesh</p></div>
+              </div>
+              <div className="p-ct-item" style={{cursor:"default"}}>
+                <div className="p-ct-icon"><i className="fas fa-clock" /></div>
+                <div><p className="p-ct-lbl">Response Time</p><p className="p-ct-val">Within 24 hours</p></div>
+              </div>
+            </div>
+
+            <div className="p-reveal">
+              <ContactForm />
+            </div>
+          </div>
+
+          <div className="p-ct-soc p-reveal">
+            <a href="https://github.com/najmulcodes" target="_blank" rel="noopener noreferrer" className="p-ct-soc-btn gh">
+              <i className="fab fa-github" /> GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/najmulcodes/" target="_blank" rel="noopener noreferrer" className="p-ct-soc-btn li">
+              <i className="fab fa-linkedin" /> LinkedIn
+            </a>
+            <a href="https://wa.me/8801840242448" target="_blank" rel="noopener noreferrer" className="p-ct-soc-btn wa">
+              <i className="fab fa-whatsapp" /> WhatsApp
+            </a>
+          </div>
+
+        </div>
+      </section>
+
+      <Footer />
+    </>
+  );
+}
+</file>
+
+</files>
