@@ -343,6 +343,13 @@ export default function Portfolio() {
         .p-venture-stack{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px}
         .p-venture-link{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;background:var(--teal);color:#080D17;font-weight:700;font-size:.82rem;border-radius:10px;transition:opacity .2s,transform .2s,box-shadow .2s}
         .p-venture-link:hover{opacity:.88;transform:translateY(-2px);box-shadow:0 8px 24px rgba(212,168,67,.3)}
+        .p-venture-card.horizon:hover{border-color:var(--border);transform:none;box-shadow:0 16px 48px rgba(0,0,0,.4)}
+        .p-venture-badge.horizon{background:rgba(143,163,192,.08);border-color:var(--border);color:var(--muted)}
+        .p-venture-status.horizon{background:rgba(143,163,192,.08);border-color:var(--border);color:var(--muted)}
+        .p-venture-status.horizon::before{background:var(--muted);animation:none}
+        /* Force a clean 2x2 on wider screens now that there are 4 cards — auto-fit alone would
+           produce an awkward 3-up-1 split once viewport is wide enough for a 3rd 320px column. */
+        @media(min-width:860px){.p-venture-grid{grid-template-columns:repeat(2,1fr)}}
 
         .p-skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
         .p-skill-card{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:24px 22px;transition:border-color .3s,transform .3s,box-shadow .3s}
@@ -607,7 +614,7 @@ export default function Portfolio() {
         <div className="p-inner">
           <p className="p-sec-label p-reveal">What I&apos;ve built</p>
           <h2 className="p-sec-title p-reveal">The <span>NAVICORE</span> Ecosystem</h2>
-          <p style={{color:"var(--muted)",fontSize:".88rem",marginBottom:"32px"}} className="p-reveal">NAVICORE is the umbrella for everything I build. Two ventures are active today.</p>
+          <p style={{color:"var(--muted)",fontSize:".88rem",marginBottom:"32px"}} className="p-reveal">NAVICORE is the umbrella for everything I build. Two ventures are active today — two more are next in the sequence.</p>
 
           <div className="p-venture-grid">
             <article className="p-venture-card p-reveal">
@@ -640,6 +647,26 @@ export default function Portfolio() {
               <a href="https://software.navicore.co" target="_blank" rel="noopener noreferrer" className="p-venture-link">
                 <i className="fas fa-external-link-alt" /> Visit Navicore Software
               </a>
+            </article>
+
+            <article className="p-venture-card horizon p-reveal">
+              <div className="p-venture-img">
+                <img src="/projects/FlyMate_Preview.png" alt="FlyMate Bangladesh" onError={e => { e.currentTarget.style.display = "none"; e.currentTarget.parentElement.innerHTML = '<i class="fas fa-plane" style="font-size:3.5rem;color:var(--teal);opacity:.4"></i>'; }} />
+              </div>
+              <span className="p-venture-badge horizon">Future Venture</span>
+              <h3 className="p-venture-tagline">Bangladesh&apos;s next travel companion — extending the RailMate model to air travel.</h3>
+              <p className="p-venture-desc">FlyMate is on the NAVICORE roadmap and not yet in development. Under NAVICORE&apos;s disciplined-sequencing principle, RailMate Bangladesh and Navicore Software come first — FlyMate begins only once RailMate is validated at scale.</p>
+              <span className="p-venture-status horizon">Not Started</span>
+            </article>
+
+            <article className="p-venture-card horizon p-reveal">
+              <div className="p-venture-img">
+                <img src="/projects/TravelMate_Preview.png" alt="TravelMate Bangladesh" onError={e => { e.currentTarget.style.display = "none"; e.currentTarget.parentElement.innerHTML = '<i class="fas fa-suitcase-rolling" style="font-size:3.5rem;color:var(--teal);opacity:.4"></i>'; }} />
+              </div>
+              <span className="p-venture-badge horizon">Future Venture</span>
+              <h3 className="p-venture-tagline">A broader travel companion for Bangladeshi travelers — the third horizon in the sequence.</h3>
+              <p className="p-venture-desc">TravelMate follows FlyMate in the roadmap. Like every NAVICORE venture, it starts only once the one before it has proven itself — focus creates excellence, expansion follows validation.</p>
+              <span className="p-venture-status horizon">Not Started</span>
             </article>
           </div>
         </div>
