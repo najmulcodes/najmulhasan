@@ -46,6 +46,15 @@ export default function Navbar() {
           <a href="https://www.linkedin.com/in/najmulcodes/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
             <i className="fab fa-linkedin" />
           </a>
+          <a href="https://orcid.org/0009-0001-4704-7768" target="_blank" rel="noreferrer" aria-label="ORCID">
+            <i className="fab fa-orcid" />
+          </a>
+          <a href="https://najmulcodes.medium.com" target="_blank" rel="noreferrer" aria-label="Medium">
+            <i className="fab fa-medium" />
+          </a>
+          <a href="https://hashnode.com/@najmulhasan" target="_blank" rel="noreferrer" aria-label="Hashnode">
+            <i className="fas fa-blog" />
+          </a>
           <a href="https://wa.me/8801840242448" target="_blank" rel="noreferrer" aria-label="WhatsApp">
             <i className="fab fa-whatsapp" />
           </a>
@@ -78,6 +87,15 @@ export default function Navbar() {
           </a>
           <a href="https://www.linkedin.com/in/najmulcodes/" target="_blank" rel="noreferrer">
             <i className="fab fa-linkedin" />
+          </a>
+          <a href="https://orcid.org/0009-0001-4704-7768" target="_blank" rel="noreferrer" aria-label="ORCID">
+            <i className="fab fa-orcid" />
+          </a>
+          <a href="https://najmulcodes.medium.com" target="_blank" rel="noreferrer" aria-label="Medium">
+            <i className="fab fa-medium" />
+          </a>
+          <a href="https://hashnode.com/@najmulhasan" target="_blank" rel="noreferrer" aria-label="Hashnode">
+            <i className="fas fa-blog" />
           </a>
           <a href="https://wa.me/8801840242448" target="_blank" rel="noreferrer">
             <i className="fab fa-whatsapp" />

@@ -9,6 +9,11 @@ export default function Footer() {
       <p>
         © {year} <span>Najmul Hasan. All rights reserved.</span> — Founder & CEO, NAVICORE · Dhaka, Bangladesh
       </p>
+      <p>
+        <a href="https://profile.navicore.co" target="_blank" rel="noopener noreferrer">
+          NAVICORE Company Profile
+        </a>
+      </p>
     </footer>
   );
 }

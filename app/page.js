@@ -17,16 +17,6 @@ export default function Portfolio() {
   ];
 
   useEffect(() => {
-    const fa = document.createElement("link");
-    fa.rel = "stylesheet";
-    fa.href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css";
-    document.head.appendChild(fa);
-
-    const fonts = document.createElement("link");
-    fonts.rel = "stylesheet";
-    fonts.href = "https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap";
-    document.head.appendChild(fonts);
-
     const sections = ["hero","about","ventures","skills","projects","experience","contact"];
     const navLinks  = document.querySelectorAll(".p-nav-links a");
     const dots      = document.querySelectorAll(".p-side-dot");
@@ -988,6 +978,15 @@ export default function Portfolio() {
             </a>
             <a href="https://www.linkedin.com/in/najmulcodes/" target="_blank" rel="noopener noreferrer" className="p-ct-soc-btn li">
               <i className="fab fa-linkedin" /> LinkedIn
+            </a>
+            <a href="https://orcid.org/0009-0001-4704-7768" target="_blank" rel="noopener noreferrer" className="p-ct-soc-btn orcid">
+              <i className="fab fa-orcid" /> ORCID
+            </a>
+            <a href="https://najmulcodes.medium.com" target="_blank" rel="noopener noreferrer" className="p-ct-soc-btn medium">
+              <i className="fab fa-medium" /> Medium
+            </a>
+            <a href="https://hashnode.com/@najmulhasan" target="_blank" rel="noopener noreferrer" className="p-ct-soc-btn hashnode">
+              <i className="fas fa-blog" /> Hashnode
             </a>
             <a href="https://wa.me/8801840242448" target="_blank" rel="noopener noreferrer" className="p-ct-soc-btn wa">
               <i className="fab fa-whatsapp" /> WhatsApp
