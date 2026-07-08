@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import ContactForm from "../components/ContactForm";
+import TiltCard from "../components/TiltCard";
 
 export default function Portfolio() {
 
@@ -17,7 +18,7 @@ export default function Portfolio() {
   ];
 
   useEffect(() => {
-    const sections = ["hero","about","ventures","skills","projects","experience","contact"];
+    const sections = ["hero","about","ventures","skills","projects","testimonials","experience","contact"];
     const navLinks  = document.querySelectorAll(".p-nav-links a");
     const dots      = document.querySelectorAll(".p-side-dot");
 
@@ -63,6 +64,25 @@ export default function Portfolio() {
     };
   }, []);
 
+  useEffect(() => {
+    const hero = document.getElementById("hero");
+    const orbs = document.querySelectorAll(".p-hero-orb");
+    if (!hero || !orbs.length) return;
+
+    function onMove(e) {
+      const rect = hero.getBoundingClientRect();
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      orbs.forEach((orb, i) => {
+        const strength = (i + 1) * 14;
+        orb.style.transform = `translate(${x * strength}px, ${y * strength}px)`;
+      });
+    }
+
+    hero.addEventListener("mousemove", onMove);
+    return () => hero.removeEventListener("mousemove", onMove);
+  }, []);
+
   return (
     <>
       <style>{`
@@ -89,6 +109,40 @@ export default function Portfolio() {
         ::-webkit-scrollbar-track{background:var(--bg)}
         ::-webkit-scrollbar-thumb{background:var(--teal);border-radius:4px}
         ::selection{background:rgba(0,229,195,.2)}
+
+        /* ===== 3D TILT SYSTEM ===== */
+        .p-tilt{
+          --tilt-rx:0deg; --tilt-ry:0deg; --tilt-mx:50%; --tilt-my:50%;
+          perspective:1200px;
+        }
+        .p-tilt-inner{
+          position:relative;
+          height:100%;
+          transform:rotateX(var(--tilt-rx)) rotateY(var(--tilt-ry));
+          transform-style:preserve-3d;
+          transition:transform .5s cubic-bezier(.22,1,.36,1);
+          will-change:transform;
+        }
+        .p-tilt:hover .p-tilt-inner{transition:transform .06s linear}
+        .p-tilt-glow .p-tilt-inner::after{
+          content:"";
+          position:absolute; inset:0; border-radius:inherit;
+          background:radial-gradient(circle at var(--tilt-mx) var(--tilt-my), rgba(212,168,67,.14), transparent 62%);
+          opacity:0; transition:opacity .35s; pointer-events:none; z-index:3;
+        }
+        .p-tilt-glow:hover .p-tilt-inner::after{opacity:1}
+        .p-tilt-inner > *{transform:translateZ(0)}
+
+        /* ===== HERO DEPTH ORBS ===== */
+        .p-hero-orbs{position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:0}
+        .p-hero-orb{
+          position:absolute; border-radius:50%; filter:blur(70px);
+          transition:transform 1.2s cubic-bezier(.22,1,.36,1);
+        }
+        .p-hero-orb.o1{width:380px;height:380px;background:radial-gradient(circle,rgba(212,168,67,.16),transparent 70%);top:-8%;right:2%;}
+        .p-hero-orb.o2{width:280px;height:280px;background:radial-gradient(circle,rgba(19,34,68,.55),transparent 70%);bottom:-10%;left:4%;}
+        .p-hero-orb.o3{width:200px;height:200px;background:radial-gradient(circle,rgba(212,168,67,.08),transparent 70%);top:40%;left:38%;}
+        #hero{position:relative; overflow:hidden}
 
         .p-topo{
           position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.035;
@@ -126,7 +180,7 @@ export default function Portfolio() {
         .p-side-dot.active{background:var(--teal);border-color:var(--teal);height:20px;border-radius:4px;box-shadow:0 0 10px rgba(0,229,195,.45)}
 
         #hero{min-height:100vh;display:flex;align-items:center;padding:80px 6vw 60px;position:relative;z-index:1}
-        .p-hero-inner{display:grid;grid-template-columns:1fr 320px;gap:60px;align-items:center;max-width:1100px;width:100%;margin:0 auto}
+        .p-hero-inner{display:grid;grid-template-columns:1fr 320px;gap:60px;align-items:center;max-width:1100px;width:100%;margin:0 auto;position:relative;z-index:1}
         .p-hero-tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--fm);font-size:.72rem;color:var(--teal);background:var(--teal-dim);border:1px solid var(--teal-mid);padding:5px 14px;border-radius:20px;margin-bottom:24px;animation:p-fadeUp .6s ease both}
         .p-tag-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);box-shadow:0 0 8px var(--teal);animation:p-pulse 1.8s infinite}
         .p-hero-title{font-size:clamp(2.2rem,4.5vw,3.8rem);font-weight:700;line-height:1.1;letter-spacing:-.03em;animation:p-fadeUp .6s .1s ease both;margin-bottom:20px}
@@ -320,7 +374,7 @@ export default function Portfolio() {
         .p-tag:hover{background:rgba(0,229,195,.18);transform:translateY(-1px)}
 
         .p-venture-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;margin-top:20px}
-        .p-venture-card{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:28px;transition:border-color .3s,transform .3s,box-shadow .3s;position:relative;overflow:hidden}
+        .p-venture-card{background:var(--bg);border:1px solid var(--border);border-radius:16px;padding:28px;transition:border-color .3s,transform .3s,box-shadow .3s;position:relative;overflow:hidden;height:100%;box-sizing:border-box}
         .p-venture-card:hover{border-color:var(--teal-mid);transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,.4)}
         .p-venture-img{width:100%;height:180px;border-radius:12px;background:linear-gradient(135deg,#0D1B35,#132244);margin-bottom:20px;display:flex;align-items:center;justify-content:center;overflow:hidden}
         .p-venture-img img{width:100%;height:100%;object-fit:cover;object-position:top center}
@@ -342,7 +396,7 @@ export default function Portfolio() {
         @media(min-width:860px){.p-venture-grid{grid-template-columns:repeat(2,1fr)}}
 
         .p-skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:20px}
-        .p-skill-card{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:24px 22px;transition:border-color .3s,transform .3s,box-shadow .3s}
+        .p-skill-card{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:24px 22px;transition:border-color .3s,transform .3s,box-shadow .3s;height:100%;box-sizing:border-box}
         .p-skill-card:hover{border-color:var(--teal-mid);transform:translateY(-4px);box-shadow:0 16px 40px rgba(0,0,0,.4),0 0 40px rgba(0,229,195,.055)}
         .p-skill-cat{display:flex;align-items:center;gap:10px;margin-bottom:18px}
         .p-skill-dot{width:7px;height:7px;border-radius:50%;background:var(--teal);box-shadow:0 0 9px var(--teal)}
@@ -365,13 +419,14 @@ export default function Portfolio() {
           position:relative;overflow:hidden;
         }
         .p-proj-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:transparent;transition:background .3s;border-radius:2px 0 0 2px}
-        .p-proj-card:hover{border-color:rgba(0,229,195,.18);transform:translateX(5px);box-shadow:0 8px 40px rgba(0,0,0,.35)}
+        .p-proj-card:hover{border-color:rgba(0,229,195,.18);transform:translateX(5px) scale(1.008);box-shadow:0 20px 56px rgba(0,0,0,.4)}
+        .p-proj-thumb-wrap{width:200px;min-width:200px;height:130px;border-radius:12px;overflow:hidden;flex-shrink:0;background:var(--bg3);}
+        .p-proj-thumb{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;border-radius:0;transition:transform .5s cubic-bezier(.22,1,.36,1);}
+        .p-proj-card:hover .p-proj-thumb{transform:scale(1.08)}
         .p-proj-card:hover::before,.p-proj-card.featured::before{background:var(--teal)}
         .p-proj-card.flagship::before{background:linear-gradient(180deg,#79c0ff 0%,var(--teal) 100%)}
         .p-proj-card.featured{border-color:rgba(0,229,195,.15)}
         .p-proj-card.flagship{border-color:rgba(121,192,255,.32);box-shadow:0 16px 48px rgba(0,0,0,.32),0 0 0 1px rgba(121,192,255,.08) inset}
-        .p-proj-thumb-wrap{width:200px;min-width:200px;height:130px;border-radius:12px;overflow:hidden;flex-shrink:0;background:var(--bg3);}
-        .p-proj-thumb{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;border-radius:0;}
         .p-proj-body{flex:1;min-width:0;}
         .p-proj-header{display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap;}
         .p-proj-name{font-size:1.1rem;font-weight:700;color:var(--white)}
@@ -472,13 +527,18 @@ export default function Portfolio() {
       <div className="p-topo" />
 
       <div className="p-side-nav">
-        {["hero","about","ventures","skills","projects","experience","contact"].map((s,i) => (
+        {["hero","about","ventures","skills","projects","testimonials","experience","contact"].map((s,i) => (
           <div key={s} className={`p-side-dot${i===0?" active":""}`} title={s} />
         ))}
       </div>
 
       {/* HERO */}
       <section id="hero">
+        <div className="p-hero-orbs">
+          <div className="p-hero-orb o1" />
+          <div className="p-hero-orb o2" />
+          <div className="p-hero-orb o3" />
+        </div>
         <div className="p-hero-inner">
           <div>
             <div className="p-hero-tag">
@@ -499,7 +559,7 @@ export default function Portfolio() {
                 I&apos;m Najmul Hasan
               </motion.span>
               <span className="role">
-                Founder, CEO &amp; CPO — NAVICORE · Full-Stack Engineer
+                Founder, CEO &amp; CPO — NAVICORE · Full-Stack Software Engineer
               </span>
             </h1>
             <p className="p-hero-desc">
@@ -511,7 +571,7 @@ export default function Portfolio() {
             </div>
           </div>
 
-          <div className="p-hero-card">
+          <TiltCard className="p-hero-card" maxTilt={5}>
             <div className="p-card-photo-wrap">
               <div className="p-card-photo-ring">
                 <img
@@ -553,7 +613,7 @@ export default function Portfolio() {
             <a href="https://drive.google.com/file/d/1a2rHe-yB0WdpCjJYlapPTIfpKlrAO1ye/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="p-card-cta">
               <i className="fas fa-file-alt" /> Resume
             </a>
-          </div>
+          </TiltCard>
         </div>
       </section>
 
@@ -572,6 +632,7 @@ export default function Portfolio() {
                 <div className="p-tline"><span className="p-tprompt">$</span><span className="p-tcmd">&nbsp;cat najmul.json</span></div>
                 <div className="p-tout">{"{"}</div>
                 <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;name&quot;</span>: <span className="p-tstr">&quot;Najmul Hasan&quot;</span>,</div>
+                <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;handle&quot;</span>: <span className="p-tstr">&quot;najmulcodes&quot;</span>,</div>
                 <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;role&quot;</span>: <span className="p-tstr">&quot;Founder · CEO &amp; CPO&quot;</span>,</div>
                 <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;company&quot;</span>: <span className="p-tstr">&quot;NAVICORE&quot;</span>,</div>
                 <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;ventures&quot;</span>: [<span className="p-tstr">&quot;RailMate Bangladesh&quot;</span>, <span className="p-tstr">&quot;Navicore Software&quot;</span>],</div>
@@ -607,6 +668,7 @@ export default function Portfolio() {
           <p style={{color:"var(--muted)",fontSize:".88rem",marginBottom:"32px"}} className="p-reveal">NAVICORE is the umbrella for everything I build. Two ventures are active today — two more are next in the sequence.</p>
 
           <div className="p-venture-grid">
+            <TiltCard maxTilt={4}>
             <article className="p-venture-card p-reveal">
               <div className="p-venture-img">
                 <img src="/projects/railmate.png" alt="RailMate Bangladesh" onError={e => { e.currentTarget.style.display = "none"; e.currentTarget.parentElement.innerHTML = '<i class="fas fa-train" style="font-size:3.5rem;color:var(--teal);opacity:.4"></i>'; }} />
@@ -622,7 +684,9 @@ export default function Portfolio() {
                 <i className="fas fa-external-link-alt" /> Visit RailMate
               </a>
             </article>
+            </TiltCard>
 
+            <TiltCard maxTilt={4}>
             <article className="p-venture-card p-reveal">
               <div className="p-venture-img">
                 <img src="/projects/navicore-software.png" alt="Navicore Software" onError={e => { e.currentTarget.style.display = "none"; }} />
@@ -638,7 +702,9 @@ export default function Portfolio() {
                 <i className="fas fa-external-link-alt" /> Visit Navicore Software
               </a>
             </article>
+            </TiltCard>
 
+            <TiltCard maxTilt={4}>
             <article className="p-venture-card horizon p-reveal">
               <div className="p-venture-img">
                 <img src="/projects/FlyMate_Preview.png" alt="FlyMate Bangladesh" onError={e => { e.currentTarget.style.display = "none"; e.currentTarget.parentElement.innerHTML = '<i class="fas fa-plane" style="font-size:3.5rem;color:var(--teal);opacity:.4"></i>'; }} />
@@ -648,7 +714,9 @@ export default function Portfolio() {
               <p className="p-venture-desc">FlyMate is on the NAVICORE roadmap and not yet in development. Under NAVICORE&apos;s disciplined-sequencing principle, RailMate Bangladesh and Navicore Software come first — FlyMate begins only once RailMate is validated at scale.</p>
               <span className="p-venture-status horizon">Not Started</span>
             </article>
+            </TiltCard>
 
+            <TiltCard maxTilt={4}>
             <article className="p-venture-card horizon p-reveal">
               <div className="p-venture-img">
                 <img src="/projects/TravelMate_Preview.png" alt="TravelMate Bangladesh" onError={e => { e.currentTarget.style.display = "none"; e.currentTarget.parentElement.innerHTML = '<i class="fas fa-suitcase-rolling" style="font-size:3.5rem;color:var(--teal);opacity:.4"></i>'; }} />
@@ -658,6 +726,7 @@ export default function Portfolio() {
               <p className="p-venture-desc">TravelMate follows FlyMate in the roadmap. Like every NAVICORE venture, it starts only once the one before it has proven itself — focus creates excellence, expansion follows validation.</p>
               <span className="p-venture-status horizon">Not Started</span>
             </article>
+            </TiltCard>
           </div>
         </div>
       </section>
@@ -675,7 +744,8 @@ export default function Portfolio() {
               {cat:"Tools & Platforms",icons:[["fab fa-git-alt","Git"],["fab fa-github","GitHub"],["fas fa-cloud","Netlify","#00c7b7"],["fas fa-bolt","Vercel","#e2e2e2"]]},
               {cat:"Design & Styling", icons:[["fas fa-wind","Tailwind","#38bdf8"],["fas fa-palette","Framer","#b57bee"],["fab fa-figma","Figma","#f24e1e"],["fab fa-npm","npm"]]},
             ].map(({cat,icons})=>(
-              <div key={cat} className="p-skill-card p-reveal">
+              <TiltCard key={cat} maxTilt={5}>
+              <div className="p-skill-card p-reveal">
                 <div className="p-skill-cat"><div className="p-skill-dot"/><span className="p-skill-lbl">{cat}</span></div>
                 <div className="p-skill-icons">
                   {icons.map(([cls,label,color])=>(
@@ -686,6 +756,7 @@ export default function Portfolio() {
                   ))}
                 </div>
               </div>
+              </TiltCard>
             ))}
           </div>
         </div>
@@ -904,6 +975,90 @@ export default function Portfolio() {
                   <p className="p-tl-desc">{desc}</p>
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section id="testimonials" className="p-section alt">
+        <style>{`
+          .p-testi-notice{
+            display:flex;align-items:center;gap:10px;
+            background:var(--teal-dim);border:1px dashed var(--teal-mid);
+            border-radius:12px;padding:12px 18px;margin-bottom:28px;
+            font-size:.78rem;color:var(--teal);
+          }
+          .p-testi-notice i{font-size:.9rem}
+          .p-testi-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
+          .p-testi-card{
+            background:var(--bg);border:1px solid var(--border);border-radius:16px;
+            padding:26px;position:relative;overflow:hidden;height:100%;box-sizing:border-box;
+            transition:border-color .3s,transform .3s,box-shadow .3s;
+            display:flex;flex-direction:column;gap:16px;
+          }
+          .p-testi-card:hover{border-color:var(--teal-mid);transform:translateY(-4px);box-shadow:0 16px 48px rgba(0,0,0,.4)}
+          .p-testi-badge{
+            position:absolute;top:14px;right:14px;
+            font-size:.6rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+            color:var(--muted);background:var(--bg2);border:1px solid var(--border);
+            border-radius:20px;padding:4px 10px;
+          }
+          .p-testi-quote{color:#8FA3C0;font-size:.9rem;line-height:1.75;font-style:italic}
+          .p-testi-quote::before{content:'\\201C';color:var(--teal);font-size:1.4rem;margin-right:2px}
+          .p-testi-person{display:flex;align-items:center;gap:12px;margin-top:auto}
+          .p-testi-avatar{
+            width:42px;height:42px;border-radius:50%;flex-shrink:0;
+            background:var(--teal-dim);border:1px solid var(--teal-mid);
+            display:flex;align-items:center;justify-content:center;
+            font-weight:700;color:var(--teal);font-size:.85rem;
+          }
+          .p-testi-name{font-size:.85rem;font-weight:600;color:var(--white)}
+          .p-testi-role{font-size:.72rem;color:var(--muted)}
+        `}</style>
+        <div className="p-inner">
+          <p className="p-sec-label p-reveal">What people say</p>
+          <h2 className="p-sec-title p-reveal">Client <span>Testimonials</span></h2>
+
+          <div className="p-testi-notice p-reveal">
+            <i className="fas fa-circle-info" />
+            These are placeholder examples showing layout and tone — swap in real client quotes when you have them.
+          </div>
+
+          <div className="p-testi-grid">
+            {[
+              {
+                quote: "Example placeholder — replace with a real quote: \u201cNajmul rebuilt our booking flow in weeks, not months, and it hasn't broken once since launch.\u201d",
+                name: "Client Name",
+                role: "Example — CEO, Client Company",
+                initials: "CN",
+              },
+              {
+                quote: "Example placeholder — replace with a real quote: \u201cHe owns everything end to end \u2014 architecture, backend, deployment \u2014 which meant one less thing for us to manage.\u201d",
+                name: "Client Name",
+                role: "Example — Founder, Client Startup",
+                initials: "CN",
+              },
+              {
+                quote: "Example placeholder — replace with a real quote: \u201cResponsive, precise, and honest about tradeoffs. Exactly what you want from an engineering partner.\u201d",
+                name: "Client Name",
+                role: "Example — Product Lead, Client Org",
+                initials: "CN",
+              },
+            ].map((t, i) => (
+              <TiltCard key={i} maxTilt={4}>
+                <div className="p-testi-card p-reveal">
+                  <span className="p-testi-badge">Example</span>
+                  <p className="p-testi-quote">{t.quote}</p>
+                  <div className="p-testi-person">
+                    <div className="p-testi-avatar">{t.initials}</div>
+                    <div>
+                      <div className="p-testi-name">{t.name}</div>
+                      <div className="p-testi-role">{t.role}</div>
+                    </div>
+                  </div>
+                </div>
+              </TiltCard>
             ))}
           </div>
         </div>

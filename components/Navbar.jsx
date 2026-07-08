@@ -21,6 +21,7 @@ export default function Navbar() {
     ["/#ventures", "Ventures"],
     ["/#skills", "Skills"],
     ["/#projects", "Projects"],
+    ["/#testimonials", "Testimonials"],
     ["/#experience", "Experience"],
     ["/#contact", "Contact"],
   ];
