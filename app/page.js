@@ -1,11 +1,11 @@
 "use client";
 import { useEffect } from "react";
 import WordRotate from "../components/WordRotate";
-import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import ContactForm from "../components/ContactForm";
 import TiltCard from "../components/TiltCard";
+import KineticText from "../components/KineticText";
 
 export default function Portfolio() {
 
@@ -183,7 +183,7 @@ export default function Portfolio() {
         .p-hero-inner{display:grid;grid-template-columns:1fr 320px;gap:60px;align-items:center;max-width:1100px;width:100%;margin:0 auto;position:relative;z-index:1}
         .p-hero-tag{display:inline-flex;align-items:center;gap:8px;font-family:var(--fm);font-size:.72rem;color:var(--teal);background:var(--teal-dim);border:1px solid var(--teal-mid);padding:5px 14px;border-radius:20px;margin-bottom:24px;animation:p-fadeUp .6s ease both}
         .p-tag-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);box-shadow:0 0 8px var(--teal);animation:p-pulse 1.8s infinite}
-        .p-hero-title{font-size:clamp(2.2rem,4.5vw,3.8rem);font-weight:700;line-height:1.1;letter-spacing:-.03em;animation:p-fadeUp .6s .1s ease both;margin-bottom:20px}
+        .p-hero-title{font-size:clamp(2.8rem,6.2vw,5.6rem);font-weight:700;line-height:1.02;letter-spacing:-.035em;animation:p-fadeUp .6s .1s ease both;margin-bottom:24px}
         .p-hero-title .hi{
           display: inline-block;
           color: var(--muted);
@@ -465,8 +465,10 @@ export default function Portfolio() {
         @keyframes p-fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
         @keyframes p-pulse{0%,100%{opacity:1}50%{opacity:.3}}
         @keyframes p-blink{50%{opacity:0}}
-        .p-reveal{opacity:0;transform:translateY(26px);transition:opacity .65s ease,transform .65s ease}
+        .p-reveal{opacity:0;transform:translateY(40px) scale(.985);transition:opacity .8s cubic-bezier(.16,1,.3,1),transform .8s cubic-bezier(.16,1,.3,1)}
         .p-reveal.p-visible{opacity:1;transform:none}
+        .p-sec-title.p-reveal{transform:translateY(56px)}
+        .p-sec-title.p-reveal.p-visible{transform:none}
 
         .p-footer{background:var(--bg);border-top:1px solid var(--border);padding:28px 6vw;text-align:center;position:relative;z-index:1}
         .p-footer p{font-size:.76rem;color:var(--muted)}
@@ -549,18 +551,20 @@ export default function Portfolio() {
               <span className="hi">
                 <WordRotate words={greetings} />
               </span>
-              <motion.span
-                key="name"
+              <KineticText
+                as="span"
                 className="name"
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, ease: [0.4, 0, 0.2, 1], delay: 0.15 }}
-              >
-                I&apos;m Najmul Hasan
-              </motion.span>
-              <span className="role">
-                Founder, CEO &amp; CPO — NAVICORE · Full-Stack Software Engineer
-              </span>
+                text="I'm Najmul Hasan"
+                delay={0.15}
+                stagger={0.07}
+              />
+              <KineticText
+                as="span"
+                className="role"
+                text="Founder, CEO & CPO — NAVICORE · Full-Stack Software Engineer"
+                delay={0.85}
+                stagger={0.025}
+              />
             </h1>
             <p className="p-hero-desc">
               Founder of NAVICORE — a Bangladesh-based technology ecosystem. I lead RailMate Bangladesh, our flagship railway companion app, and Navicore Software, the engineering practice that funds it. Every system, from architecture to deployment, is built and run by me directly.

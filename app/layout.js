@@ -118,6 +118,9 @@ const personSchema = {
   ],
 };
 
+import SmoothScroll from "../components/SmoothScroll";
+import CustomCursor from "../components/CustomCursor";
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
@@ -143,7 +146,8 @@ export default function RootLayout({ children }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
-        {children}
+        <CustomCursor />
+        <SmoothScroll>{children}</SmoothScroll>
       </body>
     </html>
   );

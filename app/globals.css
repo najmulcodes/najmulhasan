@@ -5,3 +5,15 @@
   margin: 0;
   padding: 0;
 }
+
+/* Lenis smooth scroll base rules */
+html.lenis, html.lenis body { height: auto; }
+.lenis:not(.lenis-autoToggle).lenis-stopped { overflow: clip; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
+
+/* Hide default cursor on fine-pointer devices once the custom cursor mounts */
+@media (hover: hover) and (pointer: fine) {
+  html.has-custom-cursor, html.has-custom-cursor a, html.has-custom-cursor button {
+    cursor: none;
+  }
+}
