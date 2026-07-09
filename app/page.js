@@ -6,6 +6,7 @@ import Footer from "../components/Footer";
 import ContactForm from "../components/ContactForm";
 import TiltCard from "../components/TiltCard";
 import KineticText from "../components/KineticText";
+import HeroScene3D from "../components/HeroScene3D";
 
 export default function Portfolio() {
 
@@ -143,6 +144,19 @@ export default function Portfolio() {
         .p-hero-orb.o2{width:280px;height:280px;background:radial-gradient(circle,rgba(19,34,68,.55),transparent 70%);bottom:-10%;left:4%;}
         .p-hero-orb.o3{width:200px;height:200px;background:radial-gradient(circle,rgba(212,168,67,.08),transparent 70%);top:40%;left:38%;}
         #hero{position:relative; overflow:hidden}
+
+        .p-hero-3d{
+          position:absolute;
+          top:50%; right:-8%;
+          width:640px; height:640px;
+          transform:translateY(-50%);
+          z-index:0;
+          pointer-events:none;
+        }
+        .p-hero-3d canvas{display:block; width:100% !important; height:100% !important}
+        @media(max-width:900px){
+          .p-hero-3d{display:none}
+        }
 
         .p-topo{
           position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.035;
@@ -541,6 +555,7 @@ export default function Portfolio() {
           <div className="p-hero-orb o2" />
           <div className="p-hero-orb o3" />
         </div>
+        <HeroScene3D />
         <div className="p-hero-inner">
           <div>
             <div className="p-hero-tag">
