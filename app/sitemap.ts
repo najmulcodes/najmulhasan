@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { projects } from "./projects/[slug]/data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://najmulhasan.navicore.co";
@@ -13,20 +14,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  const projectSlugs = [
-    "navicore-software",
-    "devfolio-analyzer",
-    "livecollab",
-    "petcare-system",
-    "microtask-platform",
-    "badar-uddin-welfare",
-    "care.xyz",
-    "gatherly",
-    "clubsphere",
-    "bookhub",
-  ];
-
-  const projectPages = projectSlugs.map((slug) => ({
+  // Sourced directly from app/projects/[slug]/data.js — the same object
+  // generateStaticParams uses — instead of a separately hand-maintained
+  // list. The old hardcoded list here was already missing "railmate" and
+  // had silently drifted out of sync with the real project data.
+  const projectPages = Object.keys(projects).map((slug) => ({
     url: `${baseUrl}/projects/${slug}`,
     lastModified: now,
     changeFrequency: "monthly" as const,

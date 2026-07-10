@@ -4,6 +4,43 @@
 // a Server Component.
 
 const projects = {
+  "railmate": {
+    name: "RailMate Bangladesh",
+    tagline: "Bangladesh's railway companion app — schedules, fares, and live delay reports from the community.",
+    img: "/projects/railmate.png",
+    live: "https://railmatebd.com",
+    code: null,
+    overview:
+      "A bilingual (Bengali/English) travel companion for Bangladesh Railway passengers, currently in private beta. Built on React Native and Expo with a Supabase backend, real-time community delay reporting, and a verified schedule dataset covering 137 trains across 1,225 stops. I own the product, architecture, and engineering end to end — this is NAVICORE's flagship venture and the reason Navicore Software exists as a funding engine behind it.",
+    features: [
+      "Verified schedule dataset covering 137 trains across 1,225 stops nationwide",
+      "Real-time, community-sourced delay reporting so passengers know before they leave home",
+      "Fare lookup across classes and routes without needing to queue at a counter",
+      "Fully bilingual interface — Bengali and English — built for the actual passenger base, not just an English-first market",
+      "Background sync service that keeps schedule data fresh even on low-bandwidth mobile connections",
+    ],
+    tech: {
+      frontend: ["React Native", "Expo", "NativeWind"],
+      backend: ["Node.js", "Next.js"],
+      database: ["Supabase (PostgreSQL)"],
+      auth: ["Supabase Auth"],
+    },
+    challenges: [
+      "Delivering reliable real-time data (schedules, delays) to passengers on inconsistent mobile connections across Bangladesh",
+      "Building trust in community-reported delay data without it being gameable or noisy",
+      "Shipping a genuinely bilingual product rather than an English app with a translation layer bolted on",
+    ],
+    solutions: [
+      "Background sync + local caching so the app stays fast and usable even when connectivity drops mid-session",
+      "Structured delay reports tied to specific train/route/time combinations rather than free-text, keeping signal high",
+      "Bengali and English built into the data and UI layer from day one, not retrofitted",
+    ],
+    future: [
+      "Expand coverage to all Bangladesh Railway routes with live delay tracking on every line",
+      "Public launch out of private beta once schedule reliability is validated at scale",
+      "Use RailMate's validation as the gate for starting FlyMate and TravelMate, per NAVICORE's sequencing model",
+    ],
+  },
   "navicore-software": {
     name: "Navicore Software",
     tagline: "The software company I founded — custom engineering, direct delivery, no middlemen.",
