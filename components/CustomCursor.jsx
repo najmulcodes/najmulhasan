@@ -48,7 +48,7 @@ export default function CustomCursor() {
       const hovering = !!e.target.closest('a, button, .p-tilt, input, textarea, [role="button"]');
       ring.style.width = hovering ? "48px" : "28px";
       ring.style.height = hovering ? "48px" : "28px";
-      ring.style.borderColor = hovering ? "var(--teal, #C8A24B)" : "rgba(200,162,75,.55)";
+      ring.style.borderColor = hovering ? "var(--teal, #00E5C3)" : "rgba(0,229,195,.55)";
       ring.style.opacity = hovering ? "1" : ".6";
     }
 
@@ -83,11 +83,11 @@ export default function CustomCursor() {
           border-radius:50%; will-change:transform; opacity:0;
         }
         .p-cursor-dot{
-          width:6px; height:6px; background:var(--teal, #C8A24B);
+          width:6px; height:6px; background:var(--teal, #00E5C3);
           transition:opacity .3s ease;
         }
         .p-cursor-ring{
-          width:28px; height:28px; border:1.5px solid rgba(200,162,75,.55);
+          width:28px; height:28px; border:1.5px solid rgba(0,229,195,.55);
           transition:width .25s cubic-bezier(.22,1,.36,1),height .25s cubic-bezier(.22,1,.36,1),
                      border-color .25s ease, opacity .3s ease;
         }
