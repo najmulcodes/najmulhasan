@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import Navbar from "../../../components/Navbar";
@@ -11,19 +10,11 @@ export default function ProjectDetailClient() {
   const { slug } = useParams();
   const project = projects[slug];
 
-  useEffect(() => {
-    const fonts = document.createElement("link");
-    fonts.rel = "stylesheet";
-    fonts.href =
-      "https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap";
-    document.head.appendChild(fonts);
-  }, []);
-
   if (!project) {
     return (
       <>
         <Navbar />
-        <div style={{ padding: "120px 6vw", color: "#e6edf3", background: "#0d1117", minHeight: "100vh" }}>
+        <div style={{ padding: "120px 6vw", color: "#e6edf3", background: "#051626", minHeight: "100vh" }}>
           Project not found
         </div>
         <Footer />
@@ -35,14 +26,14 @@ export default function ProjectDetailClient() {
     <>
       <style>{`
         :root {
-          --bg:#0d1117; --bg2:#161b22; --bg3:#1c2333;
-          --teal:#00e5c3;
-          --teal-dim:rgba(0,229,195,0.10);
-          --teal-mid:rgba(0,229,195,0.22);
+          --bg:#051626; --bg2:#0A2342; --bg3:#1E2630;
+          --teal:#C8A24B;
+          --teal-dim:rgba(200,162,75,0.10);
+          --teal-mid:rgba(200,162,75,0.22);
           --white:#e6edf3; --muted:#7d8590;
           --border:rgba(255,255,255,0.07);
-          --fh:'Space Grotesk',sans-serif;
-          --fm:'Fira Code',monospace;
+          --fh:'Plus Jakarta Sans',sans-serif;
+          --fm:'JetBrains Mono',monospace;
         }
         *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
         html{scroll-behavior:smooth}
@@ -77,7 +68,7 @@ export default function ProjectDetailClient() {
           border-bottom:1px solid var(--border);
         }
         .p-logo{font-family:var(--fm);font-size:.88rem;color:var(--teal);letter-spacing:.02em}
-        .p-logo .bracket{color:rgba(0,229,195,.55)}
+        .p-logo .bracket{color:rgba(200,162,75,.55)}
         .p-logo .pname{color:var(--white)}
         .p-nav-links{display:flex;gap:4px;list-style:none}
         .p-nav-links a{font-size:.8rem;font-weight:500;padding:6px 14px;border-radius:8px;color:var(--muted);transition:color .2s,background .2s}
@@ -141,7 +132,7 @@ export default function ProjectDetailClient() {
           font-size:.8rem;font-weight:600;padding:10px 20px;
           border-radius:10px;transition:all .2s ease;
         }
-        .p-proj-btn.live{background:var(--teal);color:#0d1117;}
+        .p-proj-btn.live{background:var(--teal);color:var(--bg);}
         .p-proj-btn.live:hover{opacity:.85;}
         .p-proj-btn.code{border:1px solid rgba(255,255,255,.1);color:var(--muted);}
         .p-proj-btn.code:hover{color:var(--teal);border-color:var(--teal);}

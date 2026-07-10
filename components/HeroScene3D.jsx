@@ -45,7 +45,7 @@ export default function HeroScene3D() {
       // Lighting — warm key light (brand gold) + cool fill (navy) for a
       // premium two-tone metallic look, plus ambient so nothing is fully black.
       scene.add(new THREE.AmbientLight(0x334466, 0.9));
-      const keyLight = new THREE.PointLight(0xd4a843, 14, 20);
+      const keyLight = new THREE.PointLight(0xc8a24b, 14, 20);
       keyLight.position.set(3, 2, 4);
       scene.add(keyLight);
       const fillLight = new THREE.PointLight(0x3a5fb8, 8, 20);
@@ -56,7 +56,7 @@ export default function HeroScene3D() {
       // distinctive silhouette, built-in geometry, no custom triangulation.
       const knotGeo = new THREE.TorusKnotGeometry(1.15, 0.34, 180, 24, 2, 3);
       const knotMat = new THREE.MeshPhysicalMaterial({
-        color: 0xd4a843,
+        color: 0xc8a24b,
         metalness: 0.82,
         roughness: 0.28,
         clearcoat: 0.4,
@@ -79,7 +79,7 @@ export default function HeroScene3D() {
 
       const icoGeo2 = new THREE.IcosahedronGeometry(2.5, 1);
       const icoMat2 = new THREE.MeshBasicMaterial({
-        color: 0xd4a843,
+        color: 0xc8a24b,
         wireframe: true,
         transparent: true,
         opacity: 0.1,
