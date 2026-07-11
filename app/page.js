@@ -9,6 +9,7 @@ import TiltCard from "../components/TiltCard";
 import KineticText from "../components/KineticText";
 import RoutePattern from "../components/RoutePattern";
 import SkillsNetwork from "../components/SkillsNetwork";
+import StatCounter from "../components/StatCounter";
 
 const HolographicGlobe = dynamic(() => import("../components/HolographicGlobe"), {
   ssr: false,
@@ -736,7 +737,7 @@ export default function Portfolio() {
               ["2026", "NAVICORE Established"],
             ].map(([v, l]) => (
               <div key={l} className="p-stat-strip-item">
-                <span className="p-stat-strip-val">{v}</span>
+                <span className="p-stat-strip-val"><StatCounter value={v} /></span>
                 <span className="p-stat-strip-lbl">{l}</span>
               </div>
             ))}

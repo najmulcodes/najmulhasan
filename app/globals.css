@@ -12,3 +12,14 @@
     cursor: none;
   }
 }
+
+/* GSAP-driven scroll progress bar */
+.p-scrollbar-track{
+  position: fixed; top: 0; left: 0; width: 100%; height: 2px;
+  z-index: 9998; background: rgba(255,255,255,0.05); pointer-events: none;
+}
+.p-scrollbar-fill{
+  width: 100%; height: 100%; transform-origin: left center; transform: scaleX(0);
+  background: linear-gradient(90deg, #00E5C3, #D4A843);
+  box-shadow: 0 0 8px rgba(0,229,195,0.6);
+}

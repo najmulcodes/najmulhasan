@@ -121,6 +121,7 @@ const personSchema = {
 };
 
 import CustomCursor from "../components/CustomCursor";
+import ScrollProgress from "../components/ScrollProgress";
 
 export default function RootLayout({ children }) {
   return (
@@ -148,6 +149,7 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
         />
         <CustomCursor />
+        <ScrollProgress />
         {children}
       </body>
     </html>
