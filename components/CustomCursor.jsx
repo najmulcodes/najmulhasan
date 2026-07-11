@@ -17,7 +17,8 @@ export default function CustomCursor() {
 
   useEffect(() => {
     const isFinePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-    if (!isFinePointer) return;
+    const isTouchDevice = navigator.maxTouchPoints > 0 || "ontouchstart" in window;
+    if (!isFinePointer || isTouchDevice) return;
 
     document.documentElement.classList.add("has-custom-cursor");
 

@@ -1,6 +1,6 @@
 "use client";
 import { useEffect } from "react";
-import dynamic from "next/dynamic";
+import Image from "next/image";
 import WordRotate from "../components/WordRotate";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -10,11 +10,7 @@ import KineticText from "../components/KineticText";
 import RoutePattern from "../components/RoutePattern";
 import SkillsNetwork from "../components/SkillsNetwork";
 import StatCounter from "../components/StatCounter";
-
-const HolographicGlobe = dynamic(() => import("../components/HolographicGlobe"), {
-  ssr: false,
-  loading: () => null,
-});
+import HeroOrbit from "../components/HeroOrbit";
 
 export default function Portfolio() {
 
@@ -213,17 +209,24 @@ export default function Portfolio() {
           .p-stat-strip-inner{grid-template-columns:repeat(2,1fr)}
         }
 
-        .p-globe-canvas{
+        .p-orbit-wrap{
           position:absolute;
-          top:50%; right:-6%;
-          width:720px; height:720px;
+          top:50%; right:-8%;
+          width:680px; height:680px;
           transform:translateY(-50%);
           z-index:0;
           pointer-events:none;
         }
-        .p-globe-canvas canvas{display:block; width:100% !important; height:100% !important}
+        .p-orbit-svg{width:100%;height:100%;display:block}
+        .p-orbit-spin{
+          transform-origin:300px 300px;
+          animation:p-orbit-rotate 140s linear infinite;
+          transition:transform .3s ease-out;
+        }
+        @keyframes p-orbit-rotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+        .p-orbit-node-pulse{animation:p-node-pulse 2.6s ease-in-out infinite}
         @media(max-width:900px){
-          .p-globe-canvas{display:none}
+          .p-orbit-wrap{display:none}
         }
 
         .p-topo{
@@ -647,7 +650,7 @@ export default function Portfolio() {
           <div className="p-hero-orb o2" />
           <div className="p-hero-orb o3" />
         </div>
-        <HolographicGlobe />
+        <HeroOrbit />
         <div className="p-hero-inner">
           <div>
             <div className="p-hero-tag">
@@ -686,9 +689,12 @@ export default function Portfolio() {
           <TiltCard className="p-hero-card" maxTilt={5}>
             <div className="p-card-photo-wrap">
               <div className="p-card-photo-ring">
-                <img
+                <Image
                   src="https://res.cloudinary.com/del0g4led/image/upload/v1782623770/Najmul_Hasan_evs9un.jpg"
                   alt="Najmul Hasan profile photo"
+                  width={86}
+                  height={86}
+                  priority
                   onError={e => {
                     e.currentTarget.style.display = "none";
                     e.currentTarget.parentElement.innerHTML = '<div class="p-card-initials">NH</div>';
