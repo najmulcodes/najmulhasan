@@ -8,6 +8,7 @@ import ContactForm from "../components/ContactForm";
 import TiltCard from "../components/TiltCard";
 import KineticText from "../components/KineticText";
 import RoutePattern from "../components/RoutePattern";
+import SkillsNetwork from "../components/SkillsNetwork";
 
 const HolographicGlobe = dynamic(() => import("../components/HolographicGlobe"), {
   ssr: false,
@@ -145,7 +146,48 @@ export default function Portfolio() {
         .p-tilt-glow:hover .p-tilt-inner::after{opacity:1}
         .p-tilt-inner > *{transform:translateZ(0)}
 
-        /* ===== HERO DEPTH ORBS ===== */
+        /* ===== SKILLS NETWORK GRAPH ===== */
+        .p-skillnet{position:relative;width:100%;aspect-ratio:800/600;max-width:900px;margin:0 auto;
+          opacity:0;transform:scale(.96);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1);}
+        .p-skillnet-visible{opacity:1;transform:none}
+        .p-skillnet-svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+        .p-skillnet-line{stroke:var(--teal);stroke-width:1;opacity:.18;transition:opacity .4s,stroke-width .4s}
+        .p-skillnet-line-thin{stroke-width:.6;opacity:.12}
+        .p-skillnet-line-on{opacity:.55;stroke-width:1.4}
+        .p-skillnet-line-thin.p-skillnet-line-on{opacity:.4;stroke-width:.9}
+        .p-skillnet-node{
+          position:absolute;transform:translate(-50%,-50%);
+          display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;
+          border-radius:50%;background:var(--bg);border:1px solid var(--border);
+          transition:border-color .3s,box-shadow .3s,transform .3s;
+          cursor:default;text-align:center;
+        }
+        .p-skillnet-node i{color:var(--teal)}
+        .p-skillnet-node span{font-size:.6rem;color:var(--muted);white-space:nowrap;font-family:var(--fm)}
+        .p-skillnet-core{
+          width:100px;height:100px;border-color:var(--gold);
+          box-shadow:0 0 30px rgba(212,168,67,.25),0 0 0 1px rgba(212,168,67,.15) inset;
+        }
+        .p-skillnet-core i{font-size:1.6rem;color:var(--gold);animation:p-node-pulse 2.6s ease-in-out infinite}
+        .p-skillnet-core span{color:var(--gold);font-size:.62rem;letter-spacing:.05em;font-weight:700}
+        .p-skillnet-cat{width:76px;height:76px}
+        .p-skillnet-cat i{font-size:1.15rem}
+        .p-skillnet-cat span{font-size:.56rem}
+        .p-skillnet-skill{width:52px;height:52px;opacity:.55}
+        .p-skillnet-skill i{font-size:.85rem}
+        .p-skillnet-skill span{font-size:.5rem}
+        .p-skillnet-active,.p-skillnet-cat.p-skillnet-active{
+          border-color:var(--teal);transform:translate(-50%,-50%) scale(1.12);
+          box-shadow:0 0 24px var(--teal-mid),0 0 0 1px var(--teal-mid) inset;opacity:1;
+        }
+        .p-skillnet-mobile{display:none}
+        @media(max-width:860px){
+          .p-skillnet{display:none}
+          .p-skillnet-mobile{display:flex;flex-direction:column;gap:20px}
+          .p-skillnet-mobile-cat{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);padding:18px 20px}
+          .p-skillnet-mobile-catlbl{font-family:var(--fh);font-weight:700;color:var(--teal);font-size:.85rem;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+          .p-skillnet-mobile-skills{display:flex;flex-wrap:wrap;gap:8px}
+        }
         .p-hero-orbs{position:absolute; inset:0; overflow:hidden; pointer-events:none; z-index:0}
         .p-hero-orb{
           position:absolute; border-radius:50%; filter:blur(70px);
@@ -823,28 +865,7 @@ export default function Portfolio() {
           <p className="p-sec-label p-reveal">Technical skills</p>
           <h2 className="p-sec-title p-reveal"><span>&lt;/&gt;</span> Skills</h2>
           <p style={{color:"var(--muted)",fontSize:".86rem",marginTop:"-40px",marginBottom:"44px"}} className="p-reveal">Striving to never stop learning and improving.</p>
-          <div className="p-skills-grid">
-            {[
-              {cat:"Web Development", icons:[["fab fa-html5","HTML5"],["fab fa-css3-alt","CSS3"],["fab fa-js","JS"],["fab fa-react","React"]]},
-              {cat:"Backend / API",    icons:[["fab fa-node-js","Node.js"],["fas fa-server","Express","#68a063"],["fas fa-database","MongoDB"],["fas fa-lock","JWT","#f7df1e"]]},
-              {cat:"Tools & Platforms",icons:[["fab fa-git-alt","Git"],["fab fa-github","GitHub"],["fas fa-cloud","Netlify","#00c7b7"],["fas fa-bolt","Vercel","#e2e2e2"]]},
-              {cat:"Design & Styling", icons:[["fas fa-wind","Tailwind","#38bdf8"],["fas fa-palette","Framer","#b57bee"],["fab fa-figma","Figma","#f24e1e"],["fab fa-npm","npm"]]},
-            ].map(({cat,icons})=>(
-              <TiltCard key={cat} maxTilt={5}>
-              <div className="p-skill-card p-reveal">
-                <div className="p-skill-cat"><div className="p-skill-dot"/><span className="p-skill-lbl">{cat}</span></div>
-                <div className="p-skill-icons">
-                  {icons.map(([cls,label,color])=>(
-                    <div key={label} className="p-icon-box">
-                      <i className={cls} style={color?{color}:{}} />
-                      <span>{label}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              </TiltCard>
-            ))}
-          </div>
+          <SkillsNetwork />
         </div>
       </section>
 
