@@ -150,21 +150,46 @@ export default function ProjectDetailClient() {
               src={project.img}
               alt={`${project.name} project screenshot`}
               loading="lazy"
+              onError={(e) => {
+                e.currentTarget.style.display = "none";
+                e.currentTarget.parentElement.innerHTML =
+                  '<div style="display:flex;align-items:center;justify-content:center;height:100%;min-height:220px;"><i class="fas fa-cube" style="font-size:3rem;color:var(--teal);opacity:.35"></i></div>';
+              }}
             />
           </div>
 
           {/* HEADER */}
           <div style={{ marginBottom: "36px" }}>
             <h2 style={{ fontSize: "1.6rem", marginBottom: "6px", color: "var(--white)" }}>{project.name}</h2>
-            <p style={{ color: "var(--teal)", marginBottom: "18px" }}>{project.tagline}</p>
-            <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
-              <a href={project.live} target="_blank" rel="noopener noreferrer" className="p-proj-btn live">
-                <i className="fas fa-external-link-alt" /> Live
-              </a>
-              <a href={project.code} target="_blank" rel="noopener noreferrer" className="p-proj-btn code">
-                <i className="fab fa-github" /> Code
-              </a>
-            </div>
+            <p style={{ color: "var(--teal)", marginBottom: "10px" }}>{project.tagline}</p>
+            {(project.category || project.status) && (
+              <div style={{ display: "flex", gap: "10px", flexWrap: "wrap", marginBottom: "18px" }}>
+                {project.category && (
+                  <span style={{ fontSize: ".7rem", letterSpacing: ".06em", textTransform: "uppercase", color: "var(--muted)", border: "1px solid var(--border)", borderRadius: "var(--radius)", padding: "4px 10px" }}>
+                    {project.category}
+                  </span>
+                )}
+                {project.status && (
+                  <span style={{ fontSize: ".7rem", letterSpacing: ".06em", textTransform: "uppercase", color: "var(--gold, var(--teal))", border: "1px solid var(--border)", borderRadius: "var(--radius)", padding: "4px 10px" }}>
+                    {project.status}
+                  </span>
+                )}
+              </div>
+            )}
+            {(project.live || project.code) && (
+              <div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
+                {project.live && (
+                  <a href={project.live} target="_blank" rel="noopener noreferrer" className="p-proj-btn live">
+                    <i className="fas fa-external-link-alt" /> Live
+                  </a>
+                )}
+                {project.code && (
+                  <a href={project.code} target="_blank" rel="noopener noreferrer" className="p-proj-btn code">
+                    <i className="fab fa-github" /> Code
+                  </a>
+                )}
+              </div>
+            )}
           </div>
 
           {/* CONTENT BLOCKS */}

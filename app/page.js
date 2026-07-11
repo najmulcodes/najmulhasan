@@ -450,7 +450,29 @@ export default function Portfolio() {
         .fa-react{color:#61dafb} .fa-node-js{color:#6cc24a} .fa-git-alt{color:#f14e32}
         .fa-database{color:#47a248} .fa-npm{color:#cb3837}
 
-        .p-proj-list{display:flex;flex-direction:column;gap:22px}
+        .p-proj-list{display:flex;flex-direction:column;gap:22px;position:relative;padding-left:26px}
+        .p-proj-list::before{
+          content:'';position:absolute;left:5px;top:12px;bottom:12px;width:1px;
+          background:linear-gradient(180deg,transparent,var(--teal-mid) 8%,var(--teal-mid) 92%,transparent);
+        }
+        .p-node-dot{
+          position:absolute;left:-26px;top:28px;width:10px;height:10px;border-radius:50%;
+          background:var(--bg);border:1.5px solid var(--teal);z-index:2;
+          box-shadow:0 0 0 3px var(--bg),0 0 10px var(--teal-mid);
+        }
+        .p-node-dot::after{
+          content:'';position:absolute;inset:2px;border-radius:50%;background:var(--teal);
+          animation:p-node-pulse 2.4s ease-in-out infinite;
+        }
+        @keyframes p-node-pulse{0%,100%{opacity:.5;transform:scale(.8)}50%{opacity:1;transform:scale(1)}}
+        .p-node-status{
+          display:inline-flex;align-items:center;gap:6px;font-family:var(--fm);
+          font-size:.66rem;letter-spacing:.05em;text-transform:uppercase;color:var(--gold);
+          margin-bottom:8px;
+        }
+        .p-node-status-dot{width:5px;height:5px;border-radius:50%;background:var(--gold);box-shadow:0 0 6px var(--gold);animation:p-pulse 1.8s infinite}
+        .p-node-open{background:var(--teal-dim);border-color:var(--teal-mid)!important;color:var(--teal)!important}
+        .p-node-open:hover{background:var(--teal);color:var(--bg)!important}
         .p-proj-card{
           background:var(--bg);border:1px solid var(--border);border-radius:16px;
           padding:24px 28px;
@@ -459,7 +481,7 @@ export default function Portfolio() {
           position:relative;overflow:hidden;
         }
         .p-proj-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:transparent;transition:background .3s;border-radius:2px 0 0 2px}
-        .p-proj-card:hover{border-color:rgba(0,229,195,.18);transform:translateX(5px) scale(1.008);box-shadow:0 20px 56px rgba(0,0,0,.4)}
+        .p-proj-card:hover{border-color:rgba(0,229,195,.35);transform:translateX(5px) scale(1.008);box-shadow:0 20px 56px rgba(0,0,0,.4),0 0 32px rgba(0,229,195,.12)}
         .p-proj-thumb-wrap{width:200px;min-width:200px;height:130px;border-radius:var(--radius);overflow:hidden;flex-shrink:0;background:var(--bg3);}
         .p-proj-thumb{width:100%;height:100%;object-fit:cover;object-position:top center;display:block;border-radius:0;transition:transform .5s cubic-bezier(.22,1,.36,1);}
         .p-proj-card:hover .p-proj-thumb{transform:scale(1.08)}
@@ -847,6 +869,32 @@ export default function Portfolio() {
                 img: "/projects/railmate.png"
               },
               {
+                slug: "ayra-ai",
+                category: "featured",
+                featured: true,
+                name: "Ayra AI",
+                tagline: "Your intelligent digital companion — an AI-powered personal operating system.",
+                desc: "An AI-powered personal operating system that organizes information, automates repetitive work, and helps you make better decisions through natural conversation. Not another chatbot — a persistent digital assistant with long-term memory, document understanding, and workflow automation across your daily tools.",
+                stack: ["Next.js", "TypeScript", "Python", "PostgreSQL", "Redis", "OpenAI", "Anthropic", "Gemini"],
+                live: null,
+                code: null,
+                status: "In Active Development",
+                img: "/projects/ayra-ai.png"
+              },
+              {
+                slug: "navicore-os",
+                category: "featured",
+                featured: true,
+                name: "Navicore OS",
+                tagline: "One platform. Every operation.",
+                desc: "An enterprise operating platform for startups and growing organizations — centralizing project management, CRM, finance, HR, analytics, and AI-powered automation into a single ecosystem, so teams stop switching between a dozen disconnected tools.",
+                stack: ["Next.js", "TypeScript", "Node.js", "Python", "PostgreSQL", "Redis", "Kubernetes"],
+                live: null,
+                code: null,
+                status: "Architecture & Core Modules in Development",
+                img: "/projects/navicore-os.png"
+              },
+              {
                 slug: "devfolio-analyzer",
                 category: "featured",
                 featured: true,
@@ -955,9 +1003,11 @@ export default function Portfolio() {
                 code: "https://github.com/najmulcodes/bookhub-client",
                 img: "/projects/bookhub.png"
               },
-            ].map(({ name, featured, flagship, tagline, desc, stack, live, code, creds, img, slug }) => (
+            ].map(({ name, featured, flagship, tagline, desc, stack, live, code, creds, img, slug, status }) => (
 
               <article key={name} className={`p-proj-card p-reveal${flagship ? " flagship" : ""}${featured ? " featured" : ""}`}>
+
+                <span className="p-node-dot" aria-hidden="true" />
 
                 <div className="p-proj-thumb-wrap" style={!img ? {background:"linear-gradient(135deg,var(--bg2),var(--bg3))",display:"flex",alignItems:"center",justifyContent:"center"} : {}}>
                   {img ? (
@@ -966,7 +1016,7 @@ export default function Portfolio() {
                       alt={`${name} project screenshot`}
                       className="p-proj-thumb"
                       loading="lazy"
-                      onError={e => { e.currentTarget.style.display = "none"; }}
+                      onError={e => { e.currentTarget.style.display = "none"; e.currentTarget.parentElement.innerHTML = '<i class="fas fa-cube" style="font-size:3rem;color:var(--teal);opacity:.35"></i>'; e.currentTarget.parentElement.style.display = "flex"; e.currentTarget.parentElement.style.alignItems = "center"; e.currentTarget.parentElement.style.justifyContent = "center"; }}
                     />
                   ) : (
                     <i className="fas fa-train" style={{fontSize:"3.5rem",color:"var(--teal)",opacity:".4"}} />
@@ -982,6 +1032,7 @@ export default function Portfolio() {
                       <span className="p-feat-badge">Featured</span>
                     )}
                   </div>
+                  {status && <div className="p-node-status"><span className="p-node-status-dot" />{status}</div>}
                   <p className="p-proj-tagline">{tagline}</p>
                   <p className="p-proj-desc">{desc}</p>
                   {creds && (
@@ -998,16 +1049,18 @@ export default function Portfolio() {
                 </div>
 
                 <div className="p-proj-actions">
-                  <a href={live} target="_blank" rel="noopener noreferrer" className="p-proj-btn live">
-                    <i className="fas fa-external-link-alt" /> Live
-                  </a>
+                  {live && (
+                    <a href={live} target="_blank" rel="noopener noreferrer" className="p-proj-btn live">
+                      <i className="fas fa-external-link-alt" /> Live
+                    </a>
+                  )}
                   {code && (
                     <a href={code} target="_blank" rel="noopener noreferrer" className="p-proj-btn code">
                       <i className="fab fa-github" /> Code
                     </a>
                   )}
-                  <a href={`/projects/${slug}`} className="p-proj-btn code">
-                    Details
+                  <a href={`/projects/${slug}`} className="p-proj-btn code p-node-open">
+                    <i className="fas fa-satellite-dish" /> Open Module
                   </a>
                 </div>
 

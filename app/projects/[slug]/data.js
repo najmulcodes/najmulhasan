@@ -4,6 +4,96 @@
 // a Server Component.
 
 const projects = {
+  "ayra-ai": {
+    name: "Ayra AI",
+    tagline: "Your intelligent digital companion — an AI-powered personal operating system.",
+    img: "/projects/ayra-ai.png",
+    live: null,
+    code: null,
+    status: "In Active Development",
+    category: "AI Personal Operating System",
+    overview:
+      "Ayra AI is an AI-powered personal operating system designed to help individuals and businesses organize information, automate repetitive work, and make better decisions through natural conversation. Instead of being just another chatbot, Ayra acts as a persistent digital assistant that understands context, remembers workflows, and connects everyday tools into one intelligent workspace. It's my vision of a modern AI operating system — conversation, memory, automation, and productivity combined into a seamless daily experience.",
+    features: [
+      "AI chat with long-term context",
+      "Personal knowledge management",
+      "Document understanding and summarization",
+      "Smart reminders and task management",
+      "Calendar and email assistance",
+      "Voice interaction support",
+      "Multi-model AI support",
+      "Workflow automation",
+      "Secure user memory",
+      "Cross-device synchronization",
+    ],
+    tech: {
+      frontend: ["Next.js", "React", "TypeScript"],
+      backend: ["Python", "Node.js"],
+      database: ["PostgreSQL", "Redis"],
+      auth: ["AI APIs (OpenAI, Gemini, Anthropic)", "Docker", "Vercel", "Railway"],
+    },
+    challenges: [
+      "Giving an AI assistant genuine long-term memory rather than resetting context every session",
+      "Connecting scattered daily tools (notes, calendar, email, tasks) into one coherent workspace instead of another siloed app",
+      "Supporting multiple AI model providers without locking the product to one vendor's roadmap",
+    ],
+    solutions: [
+      "Persistent, secure user memory layer that workflows and conversations are built on top of",
+      "Multi-model architecture so the underlying AI provider can be swapped per task without touching the product surface",
+      "Document understanding and summarization built in as a first-class capability, not an add-on",
+    ],
+    future: [
+      "Expand workflow automation to cover more of a user's daily tool stack",
+      "Broaden voice interaction support across devices",
+      "Public launch once core memory and automation systems are validated",
+    ],
+  },
+  "navicore-os": {
+    name: "Navicore OS",
+    tagline: "One platform. Every operation.",
+    img: "/projects/navicore-os.png",
+    live: null,
+    code: null,
+    status: "Architecture & Core Modules in Development",
+    category: "Business Intelligence & Operations Platform",
+    overview:
+      "Navicore OS is an enterprise operating platform built for startups, software companies, and growing organizations. It centralizes project management, client relationships, finance, analytics, internal communication, and AI-powered automation into a single ecosystem, eliminating the need to switch between multiple business tools. It's designed to become the central operating system for modern businesses — bringing people, projects, data, and AI together in one secure, scalable platform.",
+    features: [
+      "Company dashboard",
+      "Project and task management",
+      "CRM",
+      "HR and employee management",
+      "Finance and invoicing",
+      "Document management",
+      "Business analytics",
+      "AI workflow automation",
+      "Role-based permissions",
+      "Real-time notifications",
+      "API integrations",
+      "Multi-organization support",
+    ],
+    tech: {
+      frontend: ["Next.js", "React", "TypeScript"],
+      backend: ["Node.js", "Python"],
+      database: ["PostgreSQL", "Redis"],
+      auth: ["Docker", "Kubernetes-ready architecture", "Cloud deployment", "AI integrations"],
+    },
+    challenges: [
+      "Replacing a growing company's fragmented tool stack (project management, CRM, finance, HR) with one coherent system",
+      "Supporting multiple organizations and role-based permissions without the architecture becoming unwieldy",
+      "Building AI automation into core business workflows rather than bolting it on as a separate feature",
+    ],
+    solutions: [
+      "Single unified data model underneath project management, CRM, finance, and HR modules",
+      "Multi-organization support and role-based permissions designed into the architecture from the start",
+      "Kubernetes-ready, cloud-deployed architecture built for scale as organizations grow",
+    ],
+    future: [
+      "Complete core modules (dashboard, project management, CRM, finance) and move into active use",
+      "Expand AI workflow automation across every module",
+      "Open the platform to other startups and software companies beyond NAVICORE itself",
+    ],
+  },
   "railmate": {
     name: "RailMate Bangladesh",
     tagline: "Bangladesh's railway companion app — schedules, fares, and live delay reports from the community.",
