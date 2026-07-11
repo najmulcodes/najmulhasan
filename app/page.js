@@ -1227,16 +1227,29 @@ export default function Portfolio() {
           .p-ct-soc-btn.wa:hover{border-color:rgba(37,211,102,.4);color:#25d366;background:rgba(37,211,102,.08)}
           .p-ct-copy{text-align:center;padding-top:20px;border-top:1px solid var(--border);font-size:.75rem;color:var(--muted);}
           .p-ct-copy span{color:var(--teal)}
+          .p-ct-status{
+            display:inline-flex;align-items:center;gap:8px;font-family:var(--fm);
+            font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--teal);
+            background:var(--teal-dim);border:1px solid var(--teal-mid);border-radius:var(--radius);
+            padding:6px 14px;margin-bottom:18px;
+          }
+          .p-ct-status-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);box-shadow:0 0 8px var(--teal);animation:p-pulse 1.8s infinite}
+          .p-ct-bn{display:block;font-size:.78rem;color:var(--muted);margin-top:6px;opacity:.8}
           @media(max-width:760px){.p-ct-grid{grid-template-columns:1fr}}
         `}</style>
 
         <div className="p-inner">
           <div className="p-ct-header">
             <p className="p-sec-label p-reveal">Get in touch</p>
+            <div className="p-ct-status p-reveal">
+              <span className="p-ct-status-dot" />
+              Secure channel established
+            </div>
             <h2 className="p-sec-title p-reveal">Let&apos;s Work <span>Together</span></h2>
             <p className="p-ct-sub p-reveal">
               Open to full-time roles, freelance projects and collaborations.<br />
               I&apos;d love to hear about what you&apos;re building.
+              <span className="p-ct-bn">নতুন সুযোগ ও সহযোগিতার জন্য উন্মুক্ত — আপনি কী তৈরি করছেন, শুনতে চাই।</span>
             </p>
           </div>
 
@@ -1244,19 +1257,19 @@ export default function Portfolio() {
             <div className="p-ct-left p-reveal">
               <a href="mailto:najmulhasan@navicore.co" className="p-ct-item">
                 <div className="p-ct-icon"><i className="fas fa-envelope" /></div>
-                <div><p className="p-ct-lbl">Email</p><p className="p-ct-val">najmulhasan@navicore.co</p></div>
+                <div><p className="p-ct-lbl">Email · ইমেইল</p><p className="p-ct-val">najmulhasan@navicore.co</p></div>
               </a>
               <a href="tel:+8801840242448" className="p-ct-item">
                 <div className="p-ct-icon"><i className="fas fa-phone" /></div>
-                <div><p className="p-ct-lbl">Phone</p><p className="p-ct-val">+880 1840-242448</p></div>
+                <div><p className="p-ct-lbl">Phone · ফোন</p><p className="p-ct-val">+880 1840-242448</p></div>
               </a>
               <div className="p-ct-item" style={{cursor:"default"}}>
                 <div className="p-ct-icon"><i className="fas fa-map-marker-alt" /></div>
-                <div><p className="p-ct-lbl">Location</p><p className="p-ct-val">Dhaka, Bangladesh</p></div>
+                <div><p className="p-ct-lbl">Location · অবস্থান</p><p className="p-ct-val">Dhaka, Bangladesh</p></div>
               </div>
               <div className="p-ct-item" style={{cursor:"default"}}>
                 <div className="p-ct-icon"><i className="fas fa-clock" /></div>
-                <div><p className="p-ct-lbl">Response Time</p><p className="p-ct-val">Within 24 hours</p></div>
+                <div><p className="p-ct-lbl">Response Time · সাড়া দেওয়ার সময়</p><p className="p-ct-val">Within 24 hours</p></div>
               </div>
             </div>
 
