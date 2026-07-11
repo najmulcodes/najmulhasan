@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useMemo, useEffect } from "react";
+import { useRef, useMemo, useEffect, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { Sphere, Points, PointMaterial, Line, Float } from "@react-three/drei";
 import { EffectComposer, Bloom } from "@react-three/postprocessing";
@@ -12,6 +12,14 @@ import * as THREE from "three";
  * geometry, since those are specifically what caused WebGL build/render
  * failures on a past project in this codebase's history. Bloom gives the
  * "glow" look without needing custom shader code.
+ *
+ * PERFORMANCE: this used to render continuously at 60fps forever — full
+ * scene + Bloom post-processing passes — regardless of whether the hero
+ * was actually on screen or the tab was even focused. That's exactly the
+ * kind of thing that spikes GPU usage and drags a whole laptop down, not
+ * just the browser tab. Fixed by pausing the render loop entirely
+ * (frameloop="never") whenever the hero isn't visible or the tab is
+ * backgrounded, via IntersectionObserver + visibilitychange.
  */
 
 const RADIUS = 2.2;
@@ -36,11 +44,10 @@ const HUBS = [
   { lat: 37.7749, lon: -122.4194, label: "San Francisco" },
 ];
 
-function arcPoints(a, b, radius, segments = 48) {
+function arcPoints(a, b, radius, segments = 32) {
   const start = latLongToVec3(a.lat, a.lon, radius);
   const end = latLongToVec3(b.lat, b.lon, radius);
   const mid = start.clone().add(end).multiplyScalar(0.5);
-  // Lift the midpoint outward so the arc bows away from the globe surface.
   mid.normalize().multiplyScalar(radius * 1.45);
   const curve = new THREE.QuadraticBezierCurve3(start, mid, end);
   return curve.getPoints(segments);
@@ -48,6 +55,8 @@ function arcPoints(a, b, radius, segments = 48) {
 
 // Generated once at module load (not inside render/useMemo) — Math.random()
 // is an impure call and React's purity rules flag it if called during render.
+// Reduced from 900 -> 450: still reads as a dense particle field, half the
+// per-frame cost.
 function generateParticlePositions(count) {
   const positions = new Float32Array(count * 3);
   for (let i = 0; i < count; i++) {
@@ -60,7 +69,7 @@ function generateParticlePositions(count) {
   }
   return positions;
 }
-const PARTICLE_POSITIONS = generateParticlePositions(900);
+const PARTICLE_POSITIONS = generateParticlePositions(450);
 
 function Globe() {
   const wireRef = useRef(null);
@@ -90,13 +99,13 @@ function Globe() {
 
   return (
     <group ref={groupRef}>
-      {/* Wireframe globe shell */}
-      <Sphere ref={wireRef} args={[RADIUS, 36, 36]}>
+      {/* Wireframe globe shell — segment count trimmed from 36x36 */}
+      <Sphere ref={wireRef} args={[RADIUS, 28, 28]}>
         <meshBasicMaterial color="#00E5C3" wireframe transparent opacity={0.22} />
       </Sphere>
 
       {/* Solid inner core for depth/occlusion, near-black glass */}
-      <Sphere args={[RADIUS * 0.985, 48, 48]}>
+      <Sphere args={[RADIUS * 0.985, 32, 32]}>
         <meshPhysicalMaterial
           color="#040911"
           transparent
@@ -139,17 +148,56 @@ function Lights() {
 }
 
 export default function HolographicGlobe() {
+  const wrapRef = useRef(null);
+  const [active, setActive] = useState(false);
+  const [reducedMotion] = useState(
+    () => typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  );
+
+  useEffect(() => {
+    const el = wrapRef.current;
+    if (!el) return;
+
+    let tabVisible = document.visibilityState === "visible";
+    let inViewport = false;
+
+    function updateActive() {
+      setActive(inViewport && tabVisible);
+    }
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        inViewport = entry.isIntersecting;
+        updateActive();
+      },
+      { threshold: 0.05 }
+    );
+    io.observe(el);
+
+    function onVisibility() {
+      tabVisible = document.visibilityState === "visible";
+      updateActive();
+    }
+    document.addEventListener("visibilitychange", onVisibility);
+
+    return () => {
+      io.disconnect();
+      document.removeEventListener("visibilitychange", onVisibility);
+    };
+  }, []);
+
   return (
-    <div className="p-globe-canvas" aria-hidden="true">
+    <div ref={wrapRef} className="p-globe-canvas" aria-hidden="true">
       <Canvas
         camera={{ position: [0, 0, 6.2], fov: 42 }}
-        dpr={[1, 1.75]}
-        gl={{ antialias: true, alpha: true }}
+        dpr={[1, 1.5]}
+        gl={{ antialias: true, alpha: true, powerPreference: "low-power" }}
+        frameloop={active && !reducedMotion ? "always" : "never"}
       >
         <Lights />
         <Globe />
         <EffectComposer>
-          <Bloom luminanceThreshold={0.15} luminanceSmoothing={0.9} intensity={0.9} mipmapBlur />
+          <Bloom luminanceThreshold={0.15} luminanceSmoothing={0.9} intensity={0.75} />
         </EffectComposer>
       </Canvas>
     </div>

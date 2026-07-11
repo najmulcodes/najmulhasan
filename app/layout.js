@@ -122,6 +122,8 @@ const personSchema = {
 
 import CustomCursor from "../components/CustomCursor";
 import ScrollProgress from "../components/ScrollProgress";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export default function RootLayout({ children }) {
   return (
@@ -151,6 +153,8 @@ export default function RootLayout({ children }) {
         <CustomCursor />
         <ScrollProgress />
         {children}
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
