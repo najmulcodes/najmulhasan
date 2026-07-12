@@ -289,7 +289,7 @@ export default function Portfolio() {
         .p-hero-tag{display:inline-flex;align-items:center;gap:12px;font-family:var(--fh);font-size:.72rem;font-weight:600;color:var(--teal);letter-spacing:.18em;text-transform:uppercase;margin-bottom:28px;animation:p-fadeUp .6s ease both}
         .p-gold-rule{display:block;height:1px;width:40px;background:var(--teal)}
         .p-tag-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);box-shadow:0 0 8px var(--teal);animation:p-pulse 1.8s infinite}
-        .p-hero-title{font-size:clamp(2.2rem,4.6vw,3.9rem);font-weight:700;line-height:1.08;letter-spacing:-.03em;animation:p-fadeUp .6s .1s ease both;margin-bottom:22px}
+        .p-hero-title{font-size:clamp(2rem,4.2vw,3.5rem);font-weight:700;line-height:1.1;letter-spacing:-.025em;animation:p-fadeUp .6s .1s ease both;margin-bottom:20px}
         .p-hero-title .hi{
           display: inline-block;
           color: var(--muted);
@@ -304,7 +304,7 @@ export default function Portfolio() {
           display: block;
           will-change: transform, opacity;
         }
-        .p-hero-title .role{display:block;font-size:.56em;font-weight:400;color:var(--teal);letter-spacing:0;margin-top:8px}
+        .p-hero-title .role{display:block;font-size:.66em;font-weight:400;color:var(--teal);letter-spacing:0;margin-top:8px}
         .p-hero-desc{color:var(--muted);font-size:.92rem;max-width:500px;line-height:1.85;margin-bottom:36px;animation:p-fadeUp .6s .2s ease both}
         .p-hero-btns{display:flex;gap:12px;flex-wrap:wrap;animation:p-fadeUp .6s .3s ease both}
         .p-btn-teal{display:inline-flex;align-items:center;gap:8px;padding:11px 28px;background:var(--teal);color:var(--bg);font-weight:700;font-size:.84rem;border-radius:3px;transition:opacity .2s,transform .2s,box-shadow .2s}
