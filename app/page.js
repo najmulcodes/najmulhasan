@@ -753,23 +753,23 @@ export default function Portfolio() {
             </a>
           </TiltCard>
         </div>
-
-        <div className="p-stat-strip">
-          <div className="p-stat-strip-inner">
-            {[
-              ["12+", "Projects Delivered"],
-              ["2", "Active Ventures"],
-              ["BD", "Founded in Bangladesh"],
-              ["2026", "NAVICORE Established"],
-            ].map(([v, l]) => (
-              <div key={l} className="p-stat-strip-item">
-                <span className="p-stat-strip-val"><StatCounter value={v} /></span>
-                <span className="p-stat-strip-lbl">{l}</span>
-              </div>
-            ))}
-          </div>
-        </div>
       </section>
+
+      <div className="p-stat-strip">
+        <div className="p-stat-strip-inner">
+          {[
+            ["12+", "Projects Delivered"],
+            ["2", "Active Ventures"],
+            ["BD", "Founded in Bangladesh"],
+            ["2026", "NAVICORE Established"],
+          ].map(([v, l]) => (
+            <div key={l} className="p-stat-strip-item">
+              <span className="p-stat-strip-val"><StatCounter value={v} /></span>
+              <span className="p-stat-strip-lbl">{l}</span>
+            </div>
+          ))}
+        </div>
+      </div>
 
       {/* ABOUT */}
       <section id="about" className="p-section alt">
