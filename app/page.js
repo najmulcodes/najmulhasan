@@ -289,7 +289,7 @@ export default function Portfolio() {
         .p-hero-tag{display:inline-flex;align-items:center;gap:12px;font-family:var(--fh);font-size:.72rem;font-weight:600;color:var(--teal);letter-spacing:.18em;text-transform:uppercase;margin-bottom:28px;animation:p-fadeUp .6s ease both}
         .p-gold-rule{display:block;height:1px;width:40px;background:var(--teal)}
         .p-tag-dot{width:6px;height:6px;border-radius:50%;background:var(--teal);box-shadow:0 0 8px var(--teal);animation:p-pulse 1.8s infinite}
-        .p-hero-title{font-size:clamp(2.8rem,6.2vw,5.6rem);font-weight:700;line-height:1.02;letter-spacing:-.035em;animation:p-fadeUp .6s .1s ease both;margin-bottom:24px}
+        .p-hero-title{font-size:clamp(2.2rem,4.6vw,3.9rem);font-weight:700;line-height:1.08;letter-spacing:-.03em;animation:p-fadeUp .6s .1s ease both;margin-bottom:22px}
         .p-hero-title .hi{
           display: inline-block;
           color: var(--muted);
