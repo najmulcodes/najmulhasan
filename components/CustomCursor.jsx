@@ -42,7 +42,6 @@ export default function CustomCursor() {
         ring.style.opacity = ".6";
         ready = true;
       }
-      setTransform(dot, mx, my);
     }
 
     function onOver(e) {
@@ -55,6 +54,7 @@ export default function CustomCursor() {
 
     function loop() {
       if (ready) {
+        setTransform(dot, mx, my);
         rx += (mx - rx) * 0.28;
         ry += (my - ry) * 0.28;
         setTransform(ring, rx, ry);

@@ -74,18 +74,38 @@ export default function Portfolio() {
     const orbs = document.querySelectorAll(".p-hero-orb");
     if (!hero || !orbs.length) return;
 
-    function onMove(e) {
-      const rect = hero.getBoundingClientRect();
-      const x = (e.clientX - rect.left) / rect.width - 0.5;
-      const y = (e.clientY - rect.top) / rect.height - 0.5;
+    let rect = hero.getBoundingClientRect();
+    let raf = null;
+    let pending = null;
+
+    function onResize() {
+      rect = hero.getBoundingClientRect();
+    }
+
+    function apply() {
+      raf = null;
+      if (!pending) return;
+      const { x, y } = pending;
       orbs.forEach((orb, i) => {
         const strength = (i + 1) * 14;
         orb.style.transform = `translate(${x * strength}px, ${y * strength}px)`;
       });
     }
 
-    hero.addEventListener("mousemove", onMove);
-    return () => hero.removeEventListener("mousemove", onMove);
+    function onMove(e) {
+      const x = (e.clientX - rect.left) / rect.width - 0.5;
+      const y = (e.clientY - rect.top) / rect.height - 0.5;
+      pending = { x, y };
+      if (raf == null) raf = requestAnimationFrame(apply);
+    }
+
+    hero.addEventListener("mousemove", onMove, { passive: true });
+    window.addEventListener("resize", onResize, { passive: true });
+    return () => {
+      hero.removeEventListener("mousemove", onMove);
+      window.removeEventListener("resize", onResize);
+      if (raf != null) cancelAnimationFrame(raf);
+    };
   }, []);
 
   return (
