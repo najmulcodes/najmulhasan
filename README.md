@@ -5,7 +5,7 @@
 </p>
 
 <p align="center">
-<b>Full Stack Engineer &nbsp;·&nbsp; Founder &nbsp;·&nbsp; CEO & CPO — Navicore Software</b><br/>
+<b>Full Stack Engineer &nbsp;·&nbsp; Founder &nbsp;·&nbsp; CEO — Navicore Software</b><br/>
 A developer portfolio showcasing production projects, technical depth, and the ventures I run.
 </p>
 
@@ -53,7 +53,7 @@ The site covers:
 
 | Venture | Role | Status |
 |---------|------|--------|
-| [Navicore Software](https://software.navicore.co) | Founder, CEO & CPO | Active |
+| [Navicore Software](https://software.navicore.co) | Founder & CEO | Active |
 | [RailMate Bangladesh](https://railmatebd.com) | Founder, Lead Engineer | Live Beta |
 
 ---
@@ -137,7 +137,7 @@ public/
 
 **Tagline:** Founder-led software company — direct engineering, no middlemen
 
-The company I founded and run as CEO & CPO. Navicore Software builds custom mobile apps, web platforms, backend systems, and automation solutions for businesses in Bangladesh and internationally. Every project is handled directly by me from architecture to deployment.
+The company I founded and run as CEO. Navicore Software builds custom mobile apps, web platforms, backend systems, and automation solutions for businesses in Bangladesh and internationally. Every project is handled directly by me from architecture to deployment.
 
 **Services:**
 - Mobile app development (React Native / Expo)

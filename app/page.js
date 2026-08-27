@@ -421,36 +421,6 @@ export default function Portfolio() {
           position:relative;z-index:1;
         }
 
-        .p-card-cta{
-          margin-top:6px;
-          width:100%;
-          display:flex;justify-content:center;align-items:center;gap:8px;
-          padding:12px 20px;
-          border-radius:12px;
-          background:linear-gradient(135deg,#00ffd0 0%,#00c9a7 100%);
-          color:#00221d;
-          font-family:var(--fh);
-          font-weight:700;
-          font-size:.84rem;
-          border:none;cursor:pointer;
-          position:relative;overflow:hidden;
-          transition:transform .25s ease, box-shadow .25s ease;
-          text-decoration:none;
-        }
-        .p-card-cta::before{
-          content:'';
-          position:absolute;inset:0;
-          background:radial-gradient(circle at top center, rgba(255,255,255,0.28), transparent 65%);
-          opacity:0;
-          transition:opacity .3s ease;
-        }
-        .p-card-cta:hover{
-          transform:translateY(-2px);
-          box-shadow:0 10px 30px rgba(0,255,208,0.28);
-        }
-        .p-card-cta:hover::before{opacity:1}
-        .p-card-cta:active{transform:scale(0.97)}
-
         .p-section{padding:100px 6vw;position:relative;z-index:1}
         .p-section.alt{background:var(--bg2)}
         .p-inner{max-width:1100px;margin:0 auto}
@@ -692,7 +662,7 @@ export default function Portfolio() {
               <KineticText
                 as="span"
                 className="role"
-                text="Founder, CEO & CPO — NAVICORE · Full-Stack Software Engineer"
+                text="Founder & CEO — NAVICORE · Full-Stack Software Engineer"
                 delay={0.85}
                 stagger={0.025}
               />
@@ -725,7 +695,7 @@ export default function Portfolio() {
             </div>
 
             <div className="p-card-name">Najmul Hasan</div>
-            <div className="p-card-role">{'// '}Founder, CEO & CPO — NAVICORE</div>
+            <div className="p-card-role">{'// '}Founder & CEO — NAVICORE</div>
 
             <div className="p-card-meta">
               <div className="p-card-meta-row"><i className="fas fa-envelope" /><a href="mailto:najmulhasan@navicore.co">najmulhasan@navicore.co</a></div>
@@ -747,10 +717,6 @@ export default function Portfolio() {
                 </div>
               ))}
             </div>
-
-            <a href="https://drive.google.com/file/d/1a2rHe-yB0WdpCjJYlapPTIfpKlrAO1ye/view?usp=sharing" target="_blank" rel="noopener noreferrer" className="p-card-cta">
-              <i className="fas fa-file-alt" /> Resume
-            </a>
           </TiltCard>
         </div>
       </section>
@@ -787,7 +753,7 @@ export default function Portfolio() {
                 <div className="p-tout">{"{"}</div>
                 <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;name&quot;</span>: <span className="p-tstr">&quot;Najmul Hasan&quot;</span>,</div>
                 <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;handle&quot;</span>: <span className="p-tstr">&quot;najmulcodes&quot;</span>,</div>
-                <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;role&quot;</span>: <span className="p-tstr">&quot;Founder · CEO &amp; CPO&quot;</span>,</div>
+                <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;role&quot;</span>: <span className="p-tstr">&quot;Founder &amp; CEO&quot;</span>,</div>
                 <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;company&quot;</span>: <span className="p-tstr">&quot;NAVICORE&quot;</span>,</div>
                 <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;ventures&quot;</span>: [<span className="p-tstr">&quot;RailMate Bangladesh&quot;</span>, <span className="p-tstr">&quot;Navicore Software&quot;</span>],</div>
                 <div className="p-tout">&nbsp;&nbsp;<span className="p-tval">&quot;location&quot;</span>: <span className="p-tstr">&quot;Dhaka, Bangladesh&quot;</span>,</div>
@@ -801,7 +767,7 @@ export default function Portfolio() {
             </div>
             <div className="p-about-text p-reveal">
               <h3>Hello!</h3>
-              <p>I&apos;m Najmul — founder, CEO, and CPO of <strong>NAVICORE</strong>, a technology ecosystem I&apos;m building from Dhaka, Bangladesh, alongside my co-founder, <strong>Nusrat Jahan Bably</strong>. NAVICORE&apos;s flagship venture is <strong>RailMate Bangladesh</strong>, a railway companion app built for millions of passengers. <strong>Navicore Software</strong>, our client engineering practice, funds that work.</p>
+              <p>I&apos;m Najmul — founder and CEO of <strong>NAVICORE</strong>, a technology ecosystem I&apos;m building from Dhaka, Bangladesh, alongside my co-founder, <strong>Nusrat Jahan Bably</strong>. NAVICORE&apos;s flagship venture is <strong>RailMate Bangladesh</strong>, a railway companion app built for millions of passengers. <strong>Navicore Software</strong>, our client engineering practice, funds that work.</p>
               <p>Every system I ship — architecture, backend, mobile, deployment — I build and run directly. No middlemen, no handoffs.</p>
               <p>I hold a <strong>BBA in Accounting &amp; Finance</strong>, and that business background shapes how I approach engineering: scoped precisely, built to last, maintained like it still has to work in five years.</p>
               <div className="p-tags">
@@ -1125,7 +1091,7 @@ export default function Portfolio() {
           <h2 className="p-sec-title p-reveal">Professional <span>Experience</span></h2>
           <div className="p-timeline">
             {[
-              {title:"Founder · CEO & CPO",sub:"NAVICORE",period:"2026 – Present",current:true,desc:"Founded and lead NAVICORE, building RailMate Bangladesh (flagship railway companion app, private beta) and Navicore Software (client engineering practice funding the ecosystem). Own architecture, engineering, and delivery directly across both ventures."},
+              {title:"Founder · CEO",sub:"NAVICORE",period:"2026 – Present",current:true,desc:"Founded and lead NAVICORE, building RailMate Bangladesh (flagship railway companion app, private beta) and Navicore Software (client engineering practice funding the ecosystem). Own architecture, engineering, and delivery directly across both ventures."},
               {title:"Early Career — IT & Operations",sub:"Bangladesh & Saudi Arabia",period:"2015 – 2025",current:false,desc:"Computer operations, structured data management, and customer-facing roles across IT support and service industries — the operational foundation before transitioning fully into software engineering."},
             ].map(({title,sub,period,current,desc})=>(
               <div key={title} className="p-tl-item p-reveal">

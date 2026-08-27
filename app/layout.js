@@ -9,7 +9,7 @@ export const metadata = {
   },
 
   description:
-    "Najmul Hasan is the Founder, CEO & CPO of NAVICORE, building RailMate Bangladesh and Navicore Software from Dhaka, Bangladesh.",
+    "Najmul Hasan is the Founder & CEO of NAVICORE, building RailMate Bangladesh and Navicore Software from Dhaka, Bangladesh.",
 
   keywords: [
     "Najmul Hasan",
@@ -40,7 +40,7 @@ export const metadata = {
   openGraph: {
     title: "Najmul Hasan | Founder & CEO, NAVICORE",
     description:
-      "Founder, CEO & CPO of NAVICORE, building RailMate Bangladesh and Navicore Software from Dhaka, Bangladesh.",
+      "Founder & CEO of NAVICORE, building RailMate Bangladesh and Navicore Software from Dhaka, Bangladesh.",
     url: "https://najmulhasan.navicore.co",
     siteName: "Najmul Hasan Portfolio",
     images: [
@@ -59,7 +59,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Najmul Hasan | Founder & CEO, NAVICORE",
     description:
-      "Founder, CEO & CPO of NAVICORE, building RailMate Bangladesh and Navicore Software from Dhaka, Bangladesh.",
+      "Founder & CEO of NAVICORE, building RailMate Bangladesh and Navicore Software from Dhaka, Bangladesh.",
     images: ["/preview.png"],
   },
 
@@ -83,7 +83,7 @@ const personSchema = {
       // banner image as a stand-in. Add a proper /profile.png (square,
       // 400x400+) to /public and point this back at it.
       image: "https://najmulhasan.navicore.co/preview.png",
-      jobTitle: "Founder, CEO & Chief Product Officer",
+      jobTitle: "Founder & CEO",
       worksFor: {
         "@type": "Organization",
         name: "NAVICORE",
