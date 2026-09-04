@@ -96,7 +96,6 @@ const personSchema = {
         "https://najmulcodes.medium.com",
         "https://hashnode.com/@najmulhasan",
         "https://navicore.co",
-        "https://profile.navicore.co",
         "https://railmatebd.com",
       ],
       knowsAbout: [

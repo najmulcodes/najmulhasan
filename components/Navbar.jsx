@@ -56,9 +56,6 @@ export default function Navbar() {
           <a href="https://hashnode.com/@najmulhasan" target="_blank" rel="noreferrer" aria-label="Hashnode">
             <i className="fas fa-blog" />
           </a>
-          <a href="https://wa.me/8801840242448" target="_blank" rel="noreferrer" aria-label="WhatsApp">
-            <i className="fab fa-whatsapp" />
-          </a>
           <button
             className={`p-hamburger${menuOpen ? " open" : ""}`}
             onClick={() => setMenuOpen((o) => !o)}
@@ -97,9 +94,6 @@ export default function Navbar() {
           </a>
           <a href="https://hashnode.com/@najmulhasan" target="_blank" rel="noreferrer" aria-label="Hashnode">
             <i className="fas fa-blog" />
-          </a>
-          <a href="https://wa.me/8801840242448" target="_blank" rel="noreferrer">
-            <i className="fab fa-whatsapp" />
           </a>
         </div>
       </div>

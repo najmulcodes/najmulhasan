@@ -767,7 +767,7 @@ export default function Portfolio() {
             </div>
             <div className="p-about-text p-reveal">
               <h3>Hello!</h3>
-              <p>I&apos;m Najmul — founder and CEO of <strong>NAVICORE</strong>, a technology ecosystem I&apos;m building from Dhaka, Bangladesh, alongside my co-founder, <strong>Nusrat Jahan Bably</strong>. NAVICORE&apos;s flagship venture is <strong>RailMate Bangladesh</strong>, a railway companion app built for millions of passengers. <strong>Navicore Software</strong>, our client engineering practice, funds that work.</p>
+              <p>I&apos;m Najmul — founder and CEO of <strong>NAVICORE</strong>, a technology ecosystem I&apos;m building from Dhaka, Bangladesh. NAVICORE&apos;s flagship venture is <strong>RailMate Bangladesh</strong>, a railway companion app built for millions of passengers. <strong>Navicore Software</strong>, our client engineering practice, funds that work.</p>
               <p>Every system I ship — architecture, backend, mobile, deployment — I build and run directly. No middlemen, no handoffs.</p>
               <p>I hold a <strong>BBA in Accounting &amp; Finance</strong>, and that business background shapes how I approach engineering: scoped precisely, built to last, maintained like it still has to work in five years.</p>
               <div className="p-tags">
@@ -1252,10 +1252,6 @@ export default function Portfolio() {
                 <div className="p-ct-icon"><i className="fas fa-envelope" /></div>
                 <div><p className="p-ct-lbl">Email · ইমেইল</p><p className="p-ct-val">najmulhasan@navicore.co</p></div>
               </a>
-              <a href="tel:+8801840242448" className="p-ct-item">
-                <div className="p-ct-icon"><i className="fas fa-phone" /></div>
-                <div><p className="p-ct-lbl">Phone · ফোন</p><p className="p-ct-val">+880 1840-242448</p></div>
-              </a>
               <div className="p-ct-item" style={{cursor:"default"}}>
                 <div className="p-ct-icon"><i className="fas fa-map-marker-alt" /></div>
                 <div><p className="p-ct-lbl">Location · অবস্থান</p><p className="p-ct-val">Dhaka, Bangladesh</p></div>
@@ -1286,9 +1282,6 @@ export default function Portfolio() {
             </a>
             <a href="https://hashnode.com/@najmulhasan" target="_blank" rel="noopener noreferrer" className="p-ct-soc-btn hashnode">
               <i className="fas fa-blog" /> Hashnode
-            </a>
-            <a href="https://wa.me/8801840242448" target="_blank" rel="noopener noreferrer" className="p-ct-soc-btn wa">
-              <i className="fab fa-whatsapp" /> WhatsApp
             </a>
           </div>
 
