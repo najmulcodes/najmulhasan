@@ -34,6 +34,13 @@ export const metadata = {
     "Bangladesh Developer",
   ],
 
+  // NOTE: every other route (projects, blog) defines its own alternates.canonical,
+  // which overrides this. Any NEW route must do the same or it will canonicalize to "/".
+  alternates: {
+    canonical: "/",
+    types: { "application/rss+xml": "https://najmulhasan.navicore.co/feed.xml" },
+  },
+
   authors: [{ name: "Najmul Hasan", url: "https://najmulhasan.navicore.co" }],
   creator: "Najmul Hasan",
 
@@ -76,6 +83,7 @@ const personSchema = {
   "@graph": [
     {
       "@type": "Person",
+      "@id": "https://najmulhasan.navicore.co/#person",
       name: "Najmul Hasan",
       alternateName: "najmulcodes",
       url: "https://najmulhasan.navicore.co",

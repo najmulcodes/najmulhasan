@@ -23,6 +23,7 @@ export default function Navbar() {
     ["/#projects", "Projects"],
     ["/#testimonials", "Testimonials"],
     ["/#experience", "Experience"],
+    ["/blog", "Blog"],
     ["/#contact", "Contact"],
   ];
 
