@@ -105,6 +105,7 @@ const personSchema = {
         "https://hashnode.com/@najmulhasan",
         "https://navicore.co",
         "https://railmatebd.com",
+      "https://navicore.com.bd",
       ],
       knowsAbout: [
         "React",
