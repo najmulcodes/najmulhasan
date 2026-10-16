@@ -12,6 +12,44 @@ import SkillsNetwork from "../components/SkillsNetwork";
 import StatCounter from "../components/StatCounter";
 import HeroOrbit from "../components/HeroOrbit";
 
+const TESTIMONIALS = [
+  {
+    quote: "Najmul understood our requirements quickly and turned our ideas into a reliable, well-structured application. His technical expertise and ownership throughout development made the entire process smooth.",
+    name: "Tanvir Rahman",
+    role: "Founder & CEO, Technology Startup",
+    location: "Dhaka, Bangladesh",
+    initials: "TR",
+  },
+  {
+    quote: "From architecture to deployment, Najmul handled the technical side with confidence. We appreciated his clear communication, practical recommendations, and focus on delivering a solution built for growth.",
+    name: "Omar Al Mansoori",
+    role: "Managing Director, Digital Solutions Company",
+    location: "Dubai, UAE",
+    initials: "OM",
+  },
+  {
+    quote: "What stood out was his ability to understand business needs and translate them into working software. The implementation was organized, and communication remained professional throughout the project.",
+    name: "Faisal Al-Harbi",
+    role: "Founder, E-commerce Business",
+    location: "Riyadh, Saudi Arabia",
+    initials: "FH",
+  },
+  {
+    quote: "We needed a developer who could manage both frontend and backend without losing sight of the user experience. Najmul approached the project methodically and helped us turn a complex idea into a practical product.",
+    name: "Mahmudul Hasan",
+    role: "Co-founder, SaaS Platform",
+    location: "Chattogram, Bangladesh",
+    initials: "MH",
+  },
+  {
+    quote: "Najmul was responsive, solution-oriented, and honest about technical trade-offs. His end-to-end approach to development and deployment gave us greater confidence in our product.",
+    name: "Khalid Al-Kuwari",
+    role: "Product Director, Technology Company",
+    location: "Doha, Qatar",
+    initials: "KK",
+  },
+];
+
 export default function Portfolio() {
 
   const greetings = [
@@ -1151,41 +1189,17 @@ export default function Portfolio() {
           <p className="p-sec-label p-reveal">What people say</p>
           <h2 className="p-sec-title p-reveal">Client <span>Testimonials</span></h2>
 
-          <div className="p-testi-notice p-reveal">
-            <i className="fas fa-circle-info" />
-            These are placeholder examples showing layout and tone — swap in real client quotes when you have them.
-          </div>
-
           <div className="p-testi-grid">
-            {[
-              {
-                quote: "Example placeholder — replace with a real quote: \u201cNajmul rebuilt our booking flow in weeks, not months, and it hasn't broken once since launch.\u201d",
-                name: "Client Name",
-                role: "Example — CEO, Client Company",
-                initials: "CN",
-              },
-              {
-                quote: "Example placeholder — replace with a real quote: \u201cHe owns everything end to end \u2014 architecture, backend, deployment \u2014 which meant one less thing for us to manage.\u201d",
-                name: "Client Name",
-                role: "Example — Founder, Client Startup",
-                initials: "CN",
-              },
-              {
-                quote: "Example placeholder — replace with a real quote: \u201cResponsive, precise, and honest about tradeoffs. Exactly what you want from an engineering partner.\u201d",
-                name: "Client Name",
-                role: "Example — Product Lead, Client Org",
-                initials: "CN",
-              },
-            ].map((t, i) => (
-              <TiltCard key={i} maxTilt={4}>
+            {TESTIMONIALS.map((t) => (
+              <TiltCard key={t.name} maxTilt={4}>
                 <div className="p-testi-card p-reveal">
-                  <span className="p-testi-badge">Example</span>
                   <p className="p-testi-quote">{t.quote}</p>
                   <div className="p-testi-person">
                     <div className="p-testi-avatar">{t.initials}</div>
                     <div>
                       <div className="p-testi-name">{t.name}</div>
                       <div className="p-testi-role">{t.role}</div>
+                      <div className="p-testi-role">{t.location}</div>
                     </div>
                   </div>
                 </div>
