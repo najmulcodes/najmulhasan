@@ -14,6 +14,9 @@ tags:
   - typescript
 keyword: supabase email otp nextjs
 draft: false
+syndication:
+  devto: >-
+    https://dev.to/najmulcodes/supabase-email-otp-in-nextjs-6-digit-codes-instead-of-magic-links-2ioc
 ---
 Magic links are the default in Supabase email sign-in, and they break in exactly the places you don't test: in-app browsers, email clients that pre-fetch links, and mobile apps where the link opens your website instead of your app. In RailMate, an email sign-in link opening the website instead of the mobile app was one of the open issues in a pre-beta checklist. A 6-digit code avoids deep links entirely: the user reads it in their mail app and types it where they started. Here is how to implement Supabase email OTP in Next.js.
 
