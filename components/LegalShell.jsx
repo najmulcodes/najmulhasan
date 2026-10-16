@@ -2,7 +2,7 @@ import Link from "next/link";
 import "../app/blog/blog.css";
 
 // Fill this in. While it still starts with "[" it renders as plain text, not a broken mailto: link.
-export const SUPPORT_EMAIL = "[SUPPORT_EMAIL]";
+export const SUPPORT_EMAIL = "hello@navicore.co";
 
 export function Email() {
   return SUPPORT_EMAIL.startsWith("[") ? (
