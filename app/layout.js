@@ -86,7 +86,8 @@ const personSchema = {
       "@id": "https://najmulhasan.navicore.co/#person",
       name: "Najmul Hasan",
       alternateName: ["najmulcodes", "Shariar Ahmed"],
-      url: "https:      image: "https://najmulhasan.navicore.co/profile.jpg",
+      url: "https://najmulhasan.navicore.co",
+      image: "https://najmulhasan.navicore.co/profile.jpg",
       jobTitle: "Founder & CEO",
       worksFor: {
         "@type": "Organization",
