@@ -312,6 +312,8 @@ bnSlug: github-contents-api-cms-nextjs
 syndication:
   devto: >-
     https://dev.to/najmulcodes/github-contents-api-cms-in-nextjs-publish-markdown-without-a-database-4oge
+  blogger: >-
+    http://najmulhasan.navicore.co/2026/10/nextjs-github-contents-api-cms-database.html
 ---
 You can publish from a browser without running a database: an admin form commits a Markdown file to your GitHub repo, and the host redeploys. This post shows that GitHub Contents API CMS pattern in Next.js 16 (App Router), the one rule that trips people up (`sha`), and how to handle a 409.
 
