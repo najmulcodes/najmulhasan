@@ -1,13 +1,24 @@
 ---
-title: "Rate Limiting Next.js API Routes with Upstash Redis (and Why In-Memory Fails on Serverless)"
-seoTitle: "Next.js Rate Limiting with Upstash Redis"
-description: "A production pattern for Next.js rate limiting on Vercel: Upstash sliding windows, per-IP and per-email keys, correct 429 headers, and the in-memory trap."
-date: "2026-10-14"
-tags: ["nextjs", "redis", "security", "serverless"]
-keyword: "next.js rate limiting"
+title: >-
+  Rate Limiting Next.js API Routes with Upstash Redis (and Why In-Memory Fails
+  on Serverless)
+seoTitle: Next.js Rate Limiting with Upstash Redis
+description: >-
+  A production pattern for Next.js rate limiting on Vercel: Upstash sliding
+  windows, per-IP and per-email keys, correct 429 headers, and the in-memory
+  trap.
+date: '2026-10-14'
+tags:
+  - nextjs
+  - redis
+  - security
+  - serverless
+keyword: next.js rate limiting
 draft: false
+syndication:
+  devto: >-
+    https://dev.to/najmulcodes/rate-limiting-nextjs-api-routes-with-upstash-redis-and-why-in-memory-fails-on-serverless-4jom
 ---
-
 Every public endpoint you ship — a contact form, a newsletter signup, an OTP sender — will be hit by bots within days. Next.js rate limiting is the cheapest defence, but the version most tutorials show does nothing once you deploy to serverless. This article covers the pattern I use in production on Vercel with Upstash Redis, the numbers behind my limits, and the failure mode to avoid.
 
 ## The short answer
