@@ -22,6 +22,8 @@ export default function BlogLayout({ children }: { children: React.ReactNode }) 
       <footer className="b-foot">
         © {new Date().getFullYear()} {blog.name} · {blog.author.role} ·{" "}
         <a href={blog.org.url}>{blog.org.name}</a>
+        {" · "}
+        <Link href="/privacy">Privacy</Link> · <Link href="/terms">Terms</Link>
       </footer>
     </div>
   );

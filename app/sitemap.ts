@@ -26,6 +26,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  // Legal pages: fixed date (not `now`) so lastmod only changes when the text does.
+  const legalPages = ["/privacy", "/terms"].map((path) => ({
+    url: `${baseUrl}${path}`,
+    lastModified: new Date("2026-10-16"),
+    changeFrequency: "yearly" as const,
+    priority: 0.3,
+  }));
+
   const articlePages = articles.map((a) => ({
     url: `${baseUrl}/blog/${a.slug}`,
     lastModified: new Date(a.updated ?? a.date),
@@ -33,5 +41,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
-  return [...staticPages, ...projectPages, ...articlePages];
+  return [...staticPages, ...projectPages, ...articlePages, ...legalPages];
 }
