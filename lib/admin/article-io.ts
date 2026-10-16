@@ -15,8 +15,12 @@ export type ArticleInput = {
   keyword: string;
   draft: boolean;
   linkedin: string;
-  bnTitle: string; // Bangla title for the Blogger summary post (optional)
-  bnSummary: string; // Bangla summary for the Blogger summary post (optional)
+  bnTitle: string; // Blogger post title (Bangla, optional)
+  bnSummary: string; // short Bangla summary, used only if bnHtml is empty
+  bnHtml: string; // full Bangla post as HTML for Blogger
+  bnLabels: string; // comma-separated Blogger labels (falls back to tags)
+  bnDescription: string; // Blogger search description (set by hand: the API has no field for it)
+  bnSlug: string; // Blogger permalink (set by hand: the API has no field for it)
   body: string;
 };
 export type Syndication = { devto?: string; hashnode?: string; blogger?: string };
@@ -40,6 +44,8 @@ export function validate(raw: unknown): ArticleInput {
   if (!DATE_RE.test(date) || Number.isNaN(Date.parse(date))) throw new HttpError(400, "date must be YYYY-MM-DD");
   const tags = Array.isArray(r.tags) ? r.tags.map((t) => String(t).trim().toLowerCase()) : [];
   if (tags.length > 8 || tags.some((t) => !TAG_RE.test(t))) throw new HttpError(400, "tags: up to 8, lowercase letters/digits/hyphens");
+  const bnSlug = str(r.bnSlug, "bnSlug", 80);
+  if (bnSlug && !SLUG_RE.test(bnSlug)) throw new HttpError(400, "bnSlug: lowercase letters, digits and hyphens only");
   const body = typeof r.body === "string" ? r.body.replace(/\r\n/g, "\n") : "";
   if (!body.trim()) throw new HttpError(400, "body is required");
   if (body.length > 200_000) throw new HttpError(400, "body is too long");
@@ -55,6 +61,10 @@ export function validate(raw: unknown): ArticleInput {
     linkedin: str(r.linkedin, "linkedin", 3000),
     bnTitle: str(r.bnTitle, "bnTitle", 150),
     bnSummary: str(r.bnSummary, "bnSummary", 1500),
+    bnHtml: str(r.bnHtml, "bnHtml", 40_000),
+    bnLabels: str(r.bnLabels, "bnLabels", 200),
+    bnDescription: str(r.bnDescription, "bnDescription", 300),
+    bnSlug,
     body,
   };
 }
@@ -71,6 +81,10 @@ export function serialize(a: ArticleInput, extra: Extra = {}): string {
   if (a.linkedin) data.linkedin = a.linkedin;
   if (a.bnTitle) data.bnTitle = a.bnTitle;
   if (a.bnSummary) data.bnSummary = a.bnSummary;
+  if (a.bnHtml) data.bnHtml = a.bnHtml;
+  if (a.bnLabels) data.bnLabels = a.bnLabels;
+  if (a.bnDescription) data.bnDescription = a.bnDescription;
+  if (a.bnSlug) data.bnSlug = a.bnSlug;
   if (extra.syndication && Object.keys(extra.syndication).length) data.syndication = extra.syndication;
   return matter.stringify(a.body.trim() + "\n", data);
 }
@@ -91,6 +105,10 @@ export function parseFile(slug: string, text: string): { input: ArticleInput; ex
     linkedin: String(data.linkedin ?? ""),
     bnTitle: String(data.bnTitle ?? ""),
     bnSummary: String(data.bnSummary ?? ""),
+    bnHtml: String(data.bnHtml ?? ""),
+    bnLabels: String(data.bnLabels ?? ""),
+    bnDescription: String(data.bnDescription ?? ""),
+    bnSlug: String(data.bnSlug ?? ""),
     body: content.trim(),
   };
   const extra: Extra = {};

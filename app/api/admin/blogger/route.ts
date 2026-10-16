@@ -23,18 +23,23 @@ export function POST(req: Request) {
 
     const { input, extra } = parseFile(slug, file.content);
     if (input.draft) throw new HttpError(409, "Publish the article on your site first: the link must be live.");
-    if (!input.bnTitle || !input.bnSummary) {
-      throw new HttpError(409, "Add a Bangla title and Bangla summary, then click Update published, before posting to Blogger.");
+    if (!input.bnTitle || !(input.bnHtml || input.bnSummary)) {
+      throw new HttpError(409, "Add a Bangla title and a Bangla post (HTML) or summary, then click Update published, before posting to Blogger.");
     }
     const already = extra.syndication?.blogger;
     if (already && force !== true) throw new HttpError(409, `Already posted: ${already}`);
 
     const canonical = `${c.siteUrl}/blog/${slug}`;
-    const url = await insertBloggerPost({
-      title: input.bnTitle,
-      content: bloggerBody(input.bnSummary, input.title, canonical),
-      labels: input.tags.slice(0, 5),
-    });
+    // Full Bangla HTML post if provided, otherwise the short summary + link.
+    let content = input.bnHtml || bloggerBody(input.bnSummary, input.title, canonical);
+    if (!content.includes(canonical)) {
+      content += `\n<p><a href="${canonical}">Read the original article in English</a></p>`;
+    }
+    const labels = (input.bnLabels ? input.bnLabels.split(",") : input.tags)
+      .map((l) => l.trim())
+      .filter(Boolean)
+      .slice(0, 10);
+    const url = await insertBloggerPost({ title: input.bnTitle, content, labels });
 
     let persisted = true;
     try {

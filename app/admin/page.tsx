@@ -1,5 +1,6 @@
 "use client";
 
+import { parseBloggerBlock } from "@/lib/admin/blogger-block";
 import { useCallback, useEffect, useMemo, useState } from "react";
 
 type Synd = { devto?: string; hashnode?: string; blogger?: string };
@@ -7,14 +8,14 @@ type Cfg = { siteUrl: string; gscProperty: string; devto: boolean; hashnode: boo
 type Meta = { slug: string; title: string; date: string; draft: boolean; tags: string[]; syndication: Synd };
 type Form = {
   slug: string; title: string; seoTitle: string; description: string; date: string;
-  tags: string; keyword: string; draft: boolean; linkedin: string; bnTitle: string; bnSummary: string; body: string;
+  tags: string; keyword: string; draft: boolean; linkedin: string; bnTitle: string; bnSummary: string; bnHtml: string; bnLabels: string; bnDescription: string; bnSlug: string; body: string;
 };
 type Msg = { kind: "ok" | "err"; text: string } | null;
 
 const today = () => new Date().toISOString().slice(0, 10);
 const slugify = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 80);
 const emptyForm = (): Form => ({
-  slug: "", title: "", seoTitle: "", description: "", date: today(), tags: "", keyword: "", draft: true, linkedin: "", bnTitle: "", bnSummary: "", body: "",
+  slug: "", title: "", seoTitle: "", description: "", date: today(), tags: "", keyword: "", draft: true, linkedin: "", bnTitle: "", bnSummary: "", bnHtml: "", bnLabels: "", bnDescription: "", bnSlug: "", body: "",
 });
 
 class ApiError extends Error {
@@ -148,6 +149,8 @@ function Editor({ slug, cfg, onBack, onUnauthorized }: { slug: string | null; cf
   const [msg, setMsg] = useState<Msg>(null);
   const [busy, setBusy] = useState(false);
   const [loaded, setLoaded] = useState(isNew);
+  const [blockOpen, setBlockOpen] = useState(false);
+  const [block, setBlock] = useState("");
 
   const fail = useCallback((e: unknown) => {
     if (e instanceof ApiError && e.status === 401) onUnauthorized(); else setMsg({ kind: "err", text: errText(e) });
@@ -178,6 +181,21 @@ function Editor({ slug, cfg, onBack, onUnauthorized }: { slug: string | null; cf
       setMsg({ kind: "ok", text: draft ? "Saved as draft (committed to GitHub)." : "Published: committed to GitHub, Vercel is deploying." });
       if (!draft) setTab("distribute");
     } catch (e) { fail(e); } finally { setBusy(false); }
+  }
+
+  function importBlock() {
+    const b = parseBloggerBlock(block);
+    if (!b.bnTitle && !b.bnHtml) { setMsg({ kind: "err", text: "Nothing recognised. Paste the Blogger block: Title / Permalink / Labels / Search description lines, then the HTML." }); return; }
+    setForm((f) => ({
+      ...f,
+      bnTitle: b.bnTitle || f.bnTitle,
+      bnSlug: b.bnSlug || f.bnSlug,
+      bnLabels: b.bnLabels || f.bnLabels,
+      bnDescription: b.bnDescription || f.bnDescription,
+      bnHtml: b.bnHtml || f.bnHtml,
+    }));
+    setBlock(""); setBlockOpen(false);
+    setMsg({ kind: "ok", text: "Blogger fields filled. Click Update published (or Save draft) to store them." });
   }
 
   async function loadPreview() {
@@ -220,8 +238,27 @@ function Editor({ slug, cfg, onBack, onUnauthorized }: { slug: string | null; cf
               <label>Primary keyword<input value={form.keyword} onChange={(e) => set("keyword", e.target.value)} /></label>
               <label>Tags (comma separated, max 8)<input value={form.tags} onChange={(e) => set("tags", e.target.value)} placeholder="nextjs, supabase" /></label>
             </div>
-            <label>Bangla title <small>optional: for the Blogger summary post</small><input value={form.bnTitle} onChange={(e) => set("bnTitle", e.target.value)} maxLength={150} lang="bn" /></label>
-            <label>Bangla summary <small>{form.bnSummary.length}/1500: 3–5 short paragraphs, written by you. Posted to Blogger with a link to the English article.</small><textarea rows={5} value={form.bnSummary} onChange={(e) => set("bnSummary", e.target.value)} maxLength={1500} lang="bn" /></label>
+            <fieldset className="adm-fs">
+              <legend>Blogger (Bangla) <small>optional</small></legend>
+              <div className="adm-row">
+                <button type="button" className="adm-btn ghost" onClick={() => setBlockOpen((v) => !v)}>{blockOpen ? "Close import" : "Import Blogger block"}</button>
+                <small>Paste the whole Blogger section (Title, Permalink, Labels, Search description + HTML) and it fills the fields below.</small>
+              </div>
+              {blockOpen && (
+                <div>
+                  <textarea rows={8} value={block} onChange={(e) => setBlock(e.target.value)} placeholder={"Title: ...\nPermalink: ...\nLabels: ...\nSearch description: ...\n\n<p>...</p>"} spellCheck={false} />
+                  <button type="button" className="adm-btn" onClick={importBlock} disabled={!block.trim()}>Fill fields</button>
+                </div>
+              )}
+              <label>Bangla title <small>{form.bnTitle.length}/150</small><input value={form.bnTitle} onChange={(e) => set("bnTitle", e.target.value)} maxLength={150} lang="bn" /></label>
+              <label>Search description <small>{form.bnDescription.length}/150: set by hand in Blogger (see Distribute)</small><textarea rows={2} value={form.bnDescription} onChange={(e) => set("bnDescription", e.target.value)} maxLength={300} lang="bn" /></label>
+              <div className="adm-two">
+                <label>Permalink <small>set by hand in Blogger</small><input value={form.bnSlug} onChange={(e) => set("bnSlug", slugify(e.target.value))} placeholder={form.slug} /></label>
+                <label>Labels <small>comma separated; empty = use tags</small><input value={form.bnLabels} onChange={(e) => set("bnLabels", e.target.value)} maxLength={200} /></label>
+              </div>
+              <label>Bangla post (HTML) <small>{form.bnHtml.length}/40000: posted to Blogger as is</small><textarea className="adm-body" rows={12} value={form.bnHtml} onChange={(e) => set("bnHtml", e.target.value)} maxLength={40000} lang="bn" spellCheck={false} /></label>
+              <label>Short Bangla summary <small>{form.bnSummary.length}/1500: used only when the HTML post above is empty</small><textarea rows={3} value={form.bnSummary} onChange={(e) => set("bnSummary", e.target.value)} maxLength={1500} lang="bn" /></label>
+            </fieldset>
             <label>Body (Markdown)<textarea className="adm-body" rows={26} value={form.body} onChange={(e) => set("body", e.target.value)} spellCheck /></label>
           </div>
           <aside className="adm-side">
@@ -324,11 +361,13 @@ function Distribute({ form, url, cfg, syndication, setSyndication, linkedin, onL
         <small>{note.hn}</small>
       </Step>
 
-      <Step n={6} title="Blogger (Bangla summary)" state={syndication.blogger ? "done" : cfg.blogger ? "auto" : "off"}
-        desc={syndication.blogger ? `Already posted: ${syndication.blogger}` : cfg.blogger ? (form.bnTitle && form.bnSummary ? "Posts your Bangla title and summary with a link to the English original (never the full article)." : "Fill in the Bangla title and summary on the Write tab, click Update published, then post.") : "Set the BLOGGER_* variables in Vercel to enable (see ADMIN-SETUP.md)."}>
+      <Step n={6} title="Blogger (Bangla)" state={syndication.blogger ? "done" : cfg.blogger ? "auto" : "off"}
+        desc={syndication.blogger ? `Already posted: ${syndication.blogger}` : cfg.blogger ? (form.bnTitle && (form.bnHtml || form.bnSummary) ? "Posts your Bangla title and post to Blogger. The API cannot set the permalink or search description: copy them below into the post's settings in Blogger." : "Fill in the Blogger (Bangla) fields on the Write tab, click Update published, then post.") : "Set the BLOGGER_* variables in Vercel to enable (see ADMIN-SETUP.md)."}>
         {syndication.blogger
           ? <button className="adm-btn ghost" onClick={() => open(syndication.blogger!)}>Open on Blogger</button>
-          : <button className="adm-btn" disabled={!cfg.blogger || !live || !form.bnTitle || !form.bnSummary} onClick={() => run("bl", async () => { const r = await post<{ url: string }>("/api/admin/blogger", { slug: form.slug }); setSyndication({ ...syndication, blogger: r.url }); return "Posted ✓"; })}>Post to Blogger</button>}
+          : <button className="adm-btn" disabled={!cfg.blogger || !live || !form.bnTitle || !(form.bnHtml || form.bnSummary)} onClick={() => run("bl", async () => { const r = await post<{ url: string }>("/api/admin/blogger", { slug: form.slug }); setSyndication({ ...syndication, blogger: r.url }); return "Posted ✓"; })}>Post to Blogger</button>}
+        <button className="adm-btn ghost" disabled={!form.bnSlug} onClick={async () => { await copy(form.bnSlug); flash("bl", "Permalink copied"); }}>Copy permalink</button>
+        <button className="adm-btn ghost" disabled={!form.bnDescription} onClick={async () => { await copy(form.bnDescription); flash("bl", "Search description copied"); }}>Copy search description</button>
         <small>{note.bl}</small>
       </Step>
 

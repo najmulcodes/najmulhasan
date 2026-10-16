@@ -40,7 +40,7 @@ export function POST(req: Request) {
   return handle(async () => {
     requireAdmin(req);
     requireSameOrigin(req);
-    const raw = await readJson<Record<string, unknown>>(req);
+    const raw = await readJson<Record<string, unknown>>(req, 700_000); // Bangla is 3 bytes/char
     const input = validate(raw);
     const sha = typeof raw.sha === "string" && /^[a-f0-9]{40}$/.test(raw.sha) ? raw.sha : undefined;
     const c = cfg();
