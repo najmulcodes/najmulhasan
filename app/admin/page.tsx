@@ -2,18 +2,19 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 
-type Cfg = { siteUrl: string; gscProperty: string; devto: boolean; indexnow: boolean };
-type Meta = { slug: string; title: string; date: string; draft: boolean; tags: string[]; syndication: { devto?: string } };
+type Synd = { devto?: string; hashnode?: string; blogger?: string };
+type Cfg = { siteUrl: string; gscProperty: string; devto: boolean; hashnode: boolean; blogger: boolean; indexnow: boolean };
+type Meta = { slug: string; title: string; date: string; draft: boolean; tags: string[]; syndication: Synd };
 type Form = {
   slug: string; title: string; seoTitle: string; description: string; date: string;
-  tags: string; keyword: string; draft: boolean; linkedin: string; body: string;
+  tags: string; keyword: string; draft: boolean; linkedin: string; bnTitle: string; bnSummary: string; body: string;
 };
 type Msg = { kind: "ok" | "err"; text: string } | null;
 
 const today = () => new Date().toISOString().slice(0, 10);
 const slugify = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 80);
 const emptyForm = (): Form => ({
-  slug: "", title: "", seoTitle: "", description: "", date: today(), tags: "", keyword: "", draft: true, linkedin: "", body: "",
+  slug: "", title: "", seoTitle: "", description: "", date: today(), tags: "", keyword: "", draft: true, linkedin: "", bnTitle: "", bnSummary: "", body: "",
 });
 
 class ApiError extends Error {
@@ -111,6 +112,8 @@ function List({ onOpen, onUnauthorized }: { onOpen: (s: string | null) => void; 
             </div>
             <span className={`adm-badge ${a.draft ? "draft" : "live"}`}>{a.draft ? "Draft" : "Published"}</span>
             {a.syndication.devto && <span className="adm-badge">dev.to</span>}
+            {a.syndication.hashnode && <span className="adm-badge">Hashnode</span>}
+            {a.syndication.blogger && <span className="adm-badge">Blogger</span>}
           </li>
         ))}
       </ul>
@@ -139,7 +142,7 @@ function Editor({ slug, cfg, onBack, onUnauthorized }: { slug: string | null; cf
   const [sha, setSha] = useState<string | undefined>();
   const [slugLocked, setSlugLocked] = useState(!isNew);
   const [persistedDraft, setPersistedDraft] = useState<boolean | null>(null);
-  const [syndication, setSyndication] = useState<{ devto?: string }>({});
+  const [syndication, setSyndication] = useState<Synd>({});
   const [tab, setTab] = useState<"write" | "preview" | "distribute">("write");
   const [html, setHtml] = useState("");
   const [msg, setMsg] = useState<Msg>(null);
@@ -152,7 +155,7 @@ function Editor({ slug, cfg, onBack, onUnauthorized }: { slug: string | null; cf
 
   useEffect(() => {
     if (!slug) return;
-    api<{ article: Omit<Form, "tags"> & { tags: string[] }; sha: string; syndication: { devto?: string } }>(`/api/admin/articles?slug=${encodeURIComponent(slug)}`)
+    api<{ article: Omit<Form, "tags"> & { tags: string[] }; sha: string; syndication: Synd }>(`/api/admin/articles?slug=${encodeURIComponent(slug)}`)
       .then((r) => {
         setForm({ ...r.article, tags: r.article.tags.join(", ") });
         setSha(r.sha); setPersistedDraft(r.article.draft); setSyndication(r.syndication); setLoaded(true);
@@ -217,6 +220,8 @@ function Editor({ slug, cfg, onBack, onUnauthorized }: { slug: string | null; cf
               <label>Primary keyword<input value={form.keyword} onChange={(e) => set("keyword", e.target.value)} /></label>
               <label>Tags (comma separated, max 8)<input value={form.tags} onChange={(e) => set("tags", e.target.value)} placeholder="nextjs, supabase" /></label>
             </div>
+            <label>Bangla title <small>optional: for the Blogger summary post</small><input value={form.bnTitle} onChange={(e) => set("bnTitle", e.target.value)} maxLength={150} lang="bn" /></label>
+            <label>Bangla summary <small>{form.bnSummary.length}/1500: 3–5 short paragraphs, written by you. Posted to Blogger with a link to the English article.</small><textarea rows={5} value={form.bnSummary} onChange={(e) => set("bnSummary", e.target.value)} maxLength={1500} lang="bn" /></label>
             <label>Body (Markdown)<textarea className="adm-body" rows={26} value={form.body} onChange={(e) => set("body", e.target.value)} spellCheck /></label>
           </div>
           <aside className="adm-side">
@@ -250,7 +255,7 @@ function Editor({ slug, cfg, onBack, onUnauthorized }: { slug: string | null; cf
 }
 
 function Distribute({ form, url, cfg, syndication, setSyndication, linkedin, onLinkedin, saveLinkedin, fail }: {
-  form: Form; url: string; cfg: Cfg; syndication: { devto?: string }; setSyndication: (s: { devto?: string }) => void;
+  form: Form; url: string; cfg: Cfg; syndication: Synd; setSyndication: (s: Synd) => void;
   linkedin: string; onLinkedin: (v: string) => void; saveLinkedin: () => void; fail: (e: unknown) => void;
 }) {
   const [live, setLive] = useState<boolean | null>(null);
@@ -300,28 +305,40 @@ function Distribute({ form, url, cfg, syndication, setSyndication, linkedin, onL
         {syndication.devto
           ? <button className="adm-btn ghost" onClick={() => open(syndication.devto!)}>Open on dev.to</button>
           : <>
-              <button className="adm-btn" disabled={!cfg.devto || !live} onClick={() => run("dv", async () => { const r = await post<{ url: string }>("/api/admin/devto", { slug: form.slug, publish: false }); setSyndication({ devto: r.url }); return "Draft created ✓"; })}>Create draft</button>
-              <button className="adm-btn ghost" disabled={!cfg.devto || !live} onClick={() => run("dv", async () => { const r = await post<{ url: string }>("/api/admin/devto", { slug: form.slug, publish: true }); setSyndication({ devto: r.url }); return "Published ✓"; })}>Publish now</button>
+              <button className="adm-btn" disabled={!cfg.devto || !live} onClick={() => run("dv", async () => { const r = await post<{ url: string }>("/api/admin/devto", { slug: form.slug, publish: false }); setSyndication({ ...syndication, devto: r.url }); return "Draft created ✓"; })}>Create draft</button>
+              <button className="adm-btn ghost" disabled={!cfg.devto || !live} onClick={() => run("dv", async () => { const r = await post<{ url: string }>("/api/admin/devto", { slug: form.slug, publish: true }); setSyndication({ ...syndication, devto: r.url }); return "Published ✓"; })}>Publish now</button>
             </>}
         <small>{note.dv}</small>
       </Step>
 
-      <Step n={5} title="Hashnode" state="manual"
-        desc="Hashnode's API now needs a paid Pro plan, so paste it manually. In the editor, set the original article URL.">
+      <Step n={5} title="Hashnode" state={syndication.hashnode ? "done" : cfg.hashnode ? "auto" : "manual"}
+        desc={syndication.hashnode ? `Already posted: ${syndication.hashnode}` : cfg.hashnode ? "Posts to your Hashnode blog with the original URL set to your site. Copy buttons stay as a manual fallback." : "Set HASHNODE_TOKEN in Vercel to enable one-click posting, or paste manually: set the original article URL in the editor."}>
+        {cfg.hashnode && !syndication.hashnode && (
+          <button className="adm-btn" disabled={!live} onClick={() => run("hn", async () => { const r = await post<{ url: string }>("/api/admin/hashnode", { slug: form.slug }); setSyndication({ ...syndication, hashnode: r.url }); return "Posted ✓"; })}>Post to Hashnode</button>
+        )}
+        {syndication.hashnode && <button className="adm-btn ghost" onClick={() => open(syndication.hashnode!)}>Open on Hashnode</button>}
         <button className="adm-btn ghost" onClick={async () => { await copy(form.title); flash("hn", "Title copied"); }}>Copy title</button>
         <button className="adm-btn ghost" onClick={async () => { await copy(markdown); flash("hn", "Markdown copied"); }}>Copy markdown</button>
         <button className="adm-btn ghost" onClick={async () => { await copy(url); flash("hn", "Original URL copied"); }}>Copy original URL</button>
-        <button className="adm-btn" onClick={() => open("https://hashnode.com")}>Open Hashnode</button>
+        <button className="adm-btn ghost" onClick={() => open("https://hashnode.com")}>Open Hashnode</button>
         <small>{note.hn}</small>
       </Step>
 
-      <Step n={6} title="Medium" state="manual"
+      <Step n={6} title="Blogger (Bangla summary)" state={syndication.blogger ? "done" : cfg.blogger ? "auto" : "off"}
+        desc={syndication.blogger ? `Already posted: ${syndication.blogger}` : cfg.blogger ? (form.bnTitle && form.bnSummary ? "Posts your Bangla title and summary with a link to the English original (never the full article)." : "Fill in the Bangla title and summary on the Write tab, click Update published, then post.") : "Set the BLOGGER_* variables in Vercel to enable (see ADMIN-SETUP.md)."}>
+        {syndication.blogger
+          ? <button className="adm-btn ghost" onClick={() => open(syndication.blogger!)}>Open on Blogger</button>
+          : <button className="adm-btn" disabled={!cfg.blogger || !live || !form.bnTitle || !form.bnSummary} onClick={() => run("bl", async () => { const r = await post<{ url: string }>("/api/admin/blogger", { slug: form.slug }); setSyndication({ ...syndication, blogger: r.url }); return "Posted ✓"; })}>Post to Blogger</button>}
+        <small>{note.bl}</small>
+      </Step>
+
+      <Step n={7} title="Medium" state="manual"
         desc="No public API for new accounts. Use Import a story with your URL; Medium sets the canonical to your site.">
         <button className="adm-btn" onClick={async () => { await copy(url); open("https://medium.com/p/import"); flash("md", "URL copied. Paste it in the import box."); }}>Copy URL + open import</button>
         <small>{note.md}</small>
       </Step>
 
-      <Step n={7} title="LinkedIn" state="manual"
+      <Step n={8} title="LinkedIn" state="manual"
         desc="Post the text, then add the article link as the first comment (links in the body reduce reach).">
         <textarea rows={7} value={linkedin} onChange={(e) => onLinkedin(e.target.value)} />
         <div className="adm-row">

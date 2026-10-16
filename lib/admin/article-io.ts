@@ -15,9 +15,12 @@ export type ArticleInput = {
   keyword: string;
   draft: boolean;
   linkedin: string;
+  bnTitle: string; // Bangla title for the Blogger summary post (optional)
+  bnSummary: string; // Bangla summary for the Blogger summary post (optional)
   body: string;
 };
-export type Extra = Record<string, unknown> & { syndication?: { devto?: string } };
+export type Syndication = { devto?: string; hashnode?: string; blogger?: string };
+export type Extra = Record<string, unknown> & { syndication?: Syndication };
 
 export function assertSlug(slug: unknown): asserts slug is string {
   if (typeof slug !== "string" || slug.length > 80 || !SLUG_RE.test(slug)) throw new HttpError(400, "Invalid slug");
@@ -50,6 +53,8 @@ export function validate(raw: unknown): ArticleInput {
     keyword: str(r.keyword, "keyword", 100, true),
     draft: r.draft === true,
     linkedin: str(r.linkedin, "linkedin", 3000),
+    bnTitle: str(r.bnTitle, "bnTitle", 150),
+    bnSummary: str(r.bnSummary, "bnSummary", 1500),
     body,
   };
 }
@@ -64,6 +69,8 @@ export function serialize(a: ArticleInput, extra: Extra = {}): string {
   data.keyword = a.keyword;
   data.draft = a.draft;
   if (a.linkedin) data.linkedin = a.linkedin;
+  if (a.bnTitle) data.bnTitle = a.bnTitle;
+  if (a.bnSummary) data.bnSummary = a.bnSummary;
   if (extra.syndication && Object.keys(extra.syndication).length) data.syndication = extra.syndication;
   return matter.stringify(a.body.trim() + "\n", data);
 }
@@ -82,11 +89,13 @@ export function parseFile(slug: string, text: string): { input: ArticleInput; ex
     keyword: String(data.keyword ?? ""),
     draft: data.draft === true,
     linkedin: String(data.linkedin ?? ""),
+    bnTitle: String(data.bnTitle ?? ""),
+    bnSummary: String(data.bnSummary ?? ""),
     body: content.trim(),
   };
   const extra: Extra = {};
   if (data.updated) extra.updated = toDate(data.updated);
-  if (data.syndication && typeof data.syndication === "object") extra.syndication = data.syndication as Extra["syndication"];
+  if (data.syndication && typeof data.syndication === "object") extra.syndication = data.syndication as Syndication;
   return { input, extra };
 }
 

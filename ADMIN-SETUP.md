@@ -13,6 +13,8 @@ No new npm packages are needed for the admin itself. Works on Next 14 and Next 1
 | `GITHUB_REPO` | `owner/name` of the portfolio repo |
 | `GITHUB_BRANCH` | `main` (the branch Vercel deploys) |
 | `DEVTO_API_KEY` | optional: dev.to → Settings → Extensions → API keys |
+| `HASHNODE_TOKEN` | optional: hashnode.com/settings/developer → generate token. Enables **Post to Hashnode**. Optional `HASHNODE_PUBLICATION_ID` (defaults to your first publication) |
+| `BLOGGER_CLIENT_ID` / `_CLIENT_SECRET` / `_REFRESH_TOKEN` / `BLOGGER_BLOG_ID` | optional: enables **Post to Blogger** (Bangla summary + link to the English original). Setup in section 4 |
 | `INDEXNOW_KEY` | optional: any 8–128 chars `[a-zA-Z0-9-]`, e.g. `openssl rand -hex 16` (served at `/indexnow-key.txt` automatically) |
 | `UPSTASH_REDIS_REST_URL` / `_TOKEN` | optional but recommended: throttles login to 5 tries / 10 min / IP |
 | `SITE_URL`, `GSC_PROPERTY` | optional; defaults `https://najmulhasan.navicore.co` and `sc-domain:navicore.co` |
@@ -28,9 +30,10 @@ Local use: same variables in `.env.local`. Saving from localhost still commits t
    2. Google: copies the URL and opens Search Console. Click *Request indexing* (Google has no API for this).
    3. Bing / Yandex: one-click IndexNow.
    4. dev.to: creates a draft (or publishes) with the canonical URL set; remembers it so no duplicates.
-   5. Hashnode: copy title/markdown/original URL (its API is paid since 13 May 2026).
-   6. Medium: copies the URL and opens the import page (no API for new accounts).
-   7. LinkedIn: edit the text, copy it, open the composer, put the link in the first comment.
+   5. Hashnode: **Post to Hashnode** (needs `HASHNODE_TOKEN`; remembered so no duplicates). The copy buttons stay as a manual fallback.
+   6. Blogger: **Post to Blogger** posts your Bangla title + summary with a link to the English original (never the full article). Fill both Bangla fields on the Write tab and click Update published first.
+   7. Medium: copies the URL and opens the import page (no API for new accounts).
+   8. LinkedIn: edit the text, copy it, open the composer, put the link in the first comment.
 
 ## 3. Security
 
@@ -39,3 +42,11 @@ Local use: same variables in `.env.local`. Saving from localhost still commits t
 - The GitHub token never reaches the browser; the token can only write contents of one repo.
 - `/admin` is `noindex`. Slugs, tags, dates and sizes are validated server-side.
 - Preview HTML comes from the same renderer as the site and drops raw HTML.
+
+## 4. Blogger one-time setup
+
+1. Google Cloud Console → new project → enable **Blogger API v3**.
+2. OAuth consent screen → External → add your Google account → **publish the app to "In production"** (in "Testing" the refresh token expires after 7 days).
+3. Credentials → OAuth client ID → **Desktop app**. Put the client ID and secret in `.env.local` as `BLOGGER_CLIENT_ID` / `BLOGGER_CLIENT_SECRET`, plus `BLOGGER_BLOG_ID` (the numeric id in the Blogger dashboard URL).
+4. `node --env-file=.env.local scripts/blogger-auth.mjs`, approve in the browser, copy the printed `BLOGGER_REFRESH_TOKEN`.
+5. Add all four `BLOGGER_*` variables in Vercel and redeploy.

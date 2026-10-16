@@ -9,6 +9,8 @@ export function cfg() {
     articlesDir: "content/articles",
     githubApi: process.env.GITHUB_API_URL ?? "https://api.github.com",
     devtoApi: process.env.DEVTO_API_URL ?? "https://dev.to/api",
+    hashnodeApi: process.env.HASHNODE_API_URL ?? "https://gql.hashnode.com",
+    bloggerApi: process.env.BLOGGER_API_URL ?? "https://www.googleapis.com/blogger/v3",
     indexnowApi: process.env.INDEXNOW_API_URL ?? "https://api.indexnow.org/IndexNow",
     gscProperty: process.env.GSC_PROPERTY ?? `sc-domain:${host.split(".").slice(-2).join(".")}`,
   };
@@ -19,3 +21,12 @@ export const indexnowKey = () => {
   const k = process.env.INDEXNOW_KEY ?? "";
   return INDEXNOW_KEY_RE.test(k) ? k : "";
 };
+
+export const hashnodeEnabled = () => !!process.env.HASHNODE_TOKEN;
+export const bloggerEnabled = () =>
+  !!(
+    process.env.BLOGGER_CLIENT_ID &&
+    process.env.BLOGGER_CLIENT_SECRET &&
+    process.env.BLOGGER_REFRESH_TOKEN &&
+    process.env.BLOGGER_BLOG_ID
+  );
