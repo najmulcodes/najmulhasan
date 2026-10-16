@@ -36,7 +36,11 @@
 .adm-tabs button:disabled{opacity:.4;cursor:not-allowed}
 .adm-grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:20px;align-items:start}
 .adm-fields{display:flex;flex-direction:column;gap:14px}
-.adm-two{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.adm-two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
+.adm-fields label,.adm-two label{min-width:0}
+.adm-fs{border:1px solid var(--line);border-radius:12px;padding:14px;margin:0;display:flex;flex-direction:column;gap:12px;min-width:0}
+.adm-fs legend{padding:0 6px;color:var(--gold);font-weight:600}
+.adm-fs textarea.adm-body{min-height:180px}
 .adm-side{display:flex;flex-direction:column;gap:14px;position:sticky;top:12px}
 .adm-checks{list-style:none;margin:0;padding:0;font-size:13px;color:var(--mut);display:flex;flex-direction:column;gap:5px}
 .adm-checks .ok{color:var(--acc)}

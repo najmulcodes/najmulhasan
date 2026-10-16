@@ -31,7 +31,7 @@ Local use: same variables in `.env.local`. Saving from localhost still commits t
    3. Bing / Yandex: one-click IndexNow.
    4. dev.to: creates a draft (or publishes) with the canonical URL set; remembers it so no duplicates.
    5. Hashnode: **Post to Hashnode** (needs `HASHNODE_TOKEN`; remembered so no duplicates). The copy buttons stay as a manual fallback.
-   6. Blogger: **Post to Blogger** posts your Bangla title + summary with a link to the English original (never the full article). Fill both Bangla fields on the Write tab and click Update published first.
+   6. Blogger: **Post to Blogger** posts your Bangla title and Bangla HTML post (or, if the HTML is empty, a short summary with a link to the English original). On the Write tab use **Import Blogger block** to paste the whole generated Blogger section, then click Update published. Blogger's API has no fields for permalink or search description, so use the **Copy permalink / Copy search description** buttons and paste them into the post's settings in Blogger.
    7. Medium: copies the URL and opens the import page (no API for new accounts).
    8. LinkedIn: edit the text, copy it, open the composer, put the link in the first comment.
 
