@@ -85,12 +85,8 @@ const personSchema = {
       "@type": "Person",
       "@id": "https://najmulhasan.navicore.co/#person",
       name: "Najmul Hasan",
-      alternateName: "najmulcodes",
-      url: "https://najmulhasan.navicore.co",
-      // TODO: no dedicated square headshot exists yet — using the OG
-      // banner image as a stand-in. Add a proper /profile.png (square,
-      // 400x400+) to /public and point this back at it.
-      image: "https://najmulhasan.navicore.co/preview.png",
+      alternateName: ["najmulcodes", "Shariar Ahmed"],
+      url: "https:      image: "https://najmulhasan.navicore.co/profile.jpg",
       jobTitle: "Founder & CEO",
       worksFor: {
         "@type": "Organization",
@@ -106,6 +102,7 @@ const personSchema = {
         "https://navicore.co",
         "https://railmatebd.com",
         "https://navicore.com.bd",
+        "https://najmulcodes.blogspot.com",
       ],
       knowsAbout: [
         "React",
