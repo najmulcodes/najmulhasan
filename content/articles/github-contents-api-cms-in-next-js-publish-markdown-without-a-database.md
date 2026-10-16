@@ -14,7 +14,7 @@ tags:
   - vercel
   - app-router
 keyword: github contents api cms
-draft: true
+draft: false
 bnTitle: 'Next.js-এ GitHub Contents API দিয়ে CMS: database ছাড়াই'
 bnSummary: >-
   আমার ব্লগে কোনো database নেই।
