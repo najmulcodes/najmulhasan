@@ -9,7 +9,7 @@ export const metadata = {
 
 export default function TermsPage() {
   return (
-    <LegalShell title="Terms of Service" updatedIso="2026-10-16" updatedLabel="16 October 2026">
+    <LegalShell title="Terms of Service" updatedIso="2026-10-17" updatedLabel="17 October 2026">
       <p>
         These terms apply when you use <strong>najmulhasan.navicore.co</strong> (the
         &ldquo;site&rdquo;), operated by Najmul Hasan (also known as Shariar Ahmed). By using the
@@ -83,7 +83,7 @@ export default function TermsPage() {
       <h2>Links to other sites</h2>
       <p>
         The site links to sites we do not control, such as GitHub, LinkedIn, dev.to, Hashnode,
-        Medium, Blogger and demos of projects. We are not responsible for their content or how
+        Medium, Blogger, Facebook and demos of projects. We are not responsible for their content or how
         they handle your data.
       </p>
 

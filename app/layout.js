@@ -95,6 +95,7 @@ const personSchema = {
         url: "https://navicore.co",
       },
       sameAs: [
+        "https://www.facebook.com/najmulcodes",
         "https://github.com/najmulcodes",
         "https://www.linkedin.com/in/najmulcodes",
         "https://orcid.org/0009-0001-4704-7768",
