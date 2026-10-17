@@ -3,13 +3,13 @@ import LegalShell, { Email } from "../../components/LegalShell";
 export const metadata = {
   title: "Privacy Policy",
   description:
-    "How najmulhasan.navicore.co handles contact messages, analytics, cookies and Google API (Blogger) access, in plain language.",
+    "How najmulhasan.navicore.co handles contact messages, analytics, cookies, Google API (Blogger) access and its Facebook Page, in plain language.",
   alternates: { canonical: "/privacy" },
 };
 
 export default function PrivacyPage() {
   return (
-    <LegalShell title="Privacy Policy" updatedIso="2026-10-16" updatedLabel="16 October 2026">
+    <LegalShell title="Privacy Policy" updatedIso="2026-10-17" updatedLabel="17 October 2026">
       <p>
         This policy explains what happens to your information when you use{" "}
         <strong>najmulhasan.navicore.co</strong> (the &ldquo;site&rdquo;). It describes what the
@@ -174,6 +174,31 @@ export default function PrivacyPage() {
         through IndexNow. These requests carry content the owner has written for publication
         (article text, titles and links). They do not carry visitor data.
       </p>
+
+      <h2>Facebook Page</h2>
+      <p>
+        We run a public Facebook Page at{" "}
+        <a href="https://www.facebook.com/najmulcodes">facebook.com/najmulcodes</a> to share
+        articles from this site. The Page is hosted by Meta, which handles your data on Facebook
+        under its own{" "}
+        <a href="https://www.facebook.com/privacy/policy/">Privacy Policy</a>. This policy
+        covers only this site.
+      </p>
+      <ul>
+        <li>
+          If you message, comment on or react to the Page, we see what you send and your public
+          Facebook name. We use it only to reply, and we do not export it to other systems.
+        </li>
+        <li>
+          As Page owner we see aggregated statistics (reach, reactions, link clicks) provided by
+          Meta. They do not identify individual visitors.
+        </li>
+        <li>
+          This site does not use the Meta Pixel, the Facebook SDK or Facebook Login, and sends no
+          visitor data to Meta. When someone shares a link to this site on Facebook, Meta fetches
+          the page&rsquo;s public title, description and image to build the preview.
+        </li>
+      </ul>
 
       <h2>International transfers</h2>
       <p>
